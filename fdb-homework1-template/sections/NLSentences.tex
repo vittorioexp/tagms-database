@@ -11,23 +11,17 @@ it is also possible to make analytics to monitor sales and expenses.
 
 In this system:
 \begin{itemize}
-    \item the technical employees will manage the products in the inventory, invoices, and the employees;
-    \item The sellers, on the other hand, will have to deal with customers, orders, shipments and payments;
-    \item Managers will be in charge of managing suppliers and contracts;
-    \item Data analysts will have access to the acquired data for inventory, cost and profit analysis;
-    \item A system administrator will be responsible for managing the access privileges for each user on the system.
+    \item technical employees manage products in the inventory, invoices, and employees;
+    \item sellers, on the other hand, have to deal with customers, orders, shipments, and payments;
+    \item managers are in charge of managing suppliers and contracts;
+    \item data analysts have access to the acquired data for inventory, cost and profit analysis;
+    \item a system administrator will be responsible for managing the access privileges for each user on the system.
 \end{itemize}
 
 The figure of the Manager is important for the management of relationships (and therefore of contracts) with suppliers.
-The latter are intended to supply the raw materials to the company. For example, if the company produces sugary drinks, suppliers
-will supply elements such as sugars, additives, artificial colors, water and natural flavors. In addition to these elements, there
-will be suppliers who will supply different types of packaging such as glass or aluminum latins, double corrugated cardboard boxes.
-The Managers manage relations with suppliers through contracts, within which certain parameters are specified such as: type of
-contract, duration of the contract, monetary agreement, quantity requested and finally an identification for both the supplier
-and the raw material. It will therefore be possible for managers to view, for example through a list, all the contracts stipulated
-with the different suppliers. Furthermore, through the identification of the raw materials, managers have the possibility to filter
-contracts based on the type of product. Therefore, it is possible that the company can purchase the same type of product from different suppliers.
-Contracts stipulated between managers and suppliers are of different types. They can be:
+The latter are intended to supply raw materials to the company. For example, if the company produces sugary drinks, suppliers
+will provide ingredients such as sugars, additives, artificial colors, water and natural flavors. In addition to these elements, there
+will be suppliers who will provide different types of packaging, such as glass, aluminum latins, or double corrugated cardboard boxes. Suppliers must be registered in the system, along with their name and contact details. Managers stipulate and maintain contracts with suppliers. These contracts are characterized by the following parameters: type of contract, duration of the contract, monetary agreement, quantity requested, and an identification for both the supplier and the raw material the first provides. It will therefore be possible for managers to inspect, for example through a list, all the contracts stipulated with the different suppliers. Furthermore, through the identification of the raw materials, managers have the possibility to filter contracts based on the type of product. Therefore, it is possible that the company can purchase the same type of product from different suppliers. Contracts stipulated between managers and suppliers are of different types:
 \begin{itemize}
     \item Joint venture;
     \item Partnership;
@@ -35,7 +29,9 @@ Contracts stipulated between managers and suppliers are of different types. They
     \item Network contract for joint operation.
 \end{itemize}
 
+A customer should be able to register to a website in order to search for products to buy, view and manage its orders, and to write reviews -- made of a rating and some comments -- about products. Upon registering, it must specify its name, contact details, and delivery address. The customer receives an invoice with all the details when it places an order and can track it with a dedicated tracking number provided when the shipment is assigned to the courier. To ensure small orders to be evaded in an efficient manner, some products can be produced in advance, which means that the inventory should have a little stock of them, acting as a ``buffer''. If instead an order requires more products than how many are already in stock, the first is held pending until the requested goods are manufactured and packaged for the shipping. Of course, products -- as well as items -- that are expired, must be removed from the inventory as soon as possible and disposed of, as they cannot be sold anymore.
 
+In the inventory, items are stored with name, relative quantity, and expiration date. In particular, when there is a shortage of one or more items, the supplier providing it will be immediately notified with an automatic e-mail. Also, when a product is manufactured but has not been purchased yet, it should be stored in the inventory as well, with name, quantity, and expiration date. When a shipment that contains a specific product leaves the factory, the latter must be deleted from the inventory.
 
 OLD TEXT:
 
