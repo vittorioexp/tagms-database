@@ -34,8 +34,13 @@ Order & Set of products that a customer wants to buy &  & Invoice, Inventory \\\
 Product & The final good to sell to customers & Merchandise & Item, Inventory \\\hline
 Invoice & Commercial document issued to customers & Bill & Order, Customer \\\hline
 Customer & A customer who buys the products & Company, Client, Buyer & Invoice, Employee \\\hline
-Employee & Who work for the factory & Worker, Staff member & Customer, Role, Department \\\hline
-Role & The role that an employee can have, that is: manager, salesman, worker, data analyst and system administrator & & Employee \\\hline
+Employee & A generic employee of the factory & Worker, Staff member & Customer, Role, Department, Manager, Salesman, Data Analyst, System Administrator, Worker \\\hline
+Role & The role that an employee can have & & Employee \\\hline
+Manager & Company worker that manages suppliers and contracts &  & Supplier, Product, Item, Inventory, Contract \\\hline
+Salesman & Worker of the company that deal with customers and orders &  & Customer, Order, Inventory \\\hline
+Data Analyst & Business operator who accesses the data to be analyzed and performs the analysis &  & Customer, Order, Item, Product, Inventory, Manager \\\hline
+System Administrator & Administrator of the system who manages the roles of different users &  & Employee \\\hline
+Worker & Generic company worker who performs other tasks &  & Employee \\\hline
 Department & The sector of the company in which one or more employees work & Division, Branch, Sector & Employee \\\hline
 Supplier & A company that supplies the items & & Product, Item, Manager, Contract \\\hline
 Contract & Agreement made between the factory and a supplier & Deal, Arrangement, Agreement & Manager, Item, Product \\\hline
