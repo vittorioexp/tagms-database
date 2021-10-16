@@ -28,18 +28,18 @@
 \begin{longtable}{|p{.20\columnwidth}|p{.30\columnwidth} |p{.20\columnwidth}|p{.20\columnwidth}|} 
 \hline
 \textbf{Term} & \textbf{Description} & \textbf{Synonyms} & \textbf{Connection} \\\hline
-Inventory & A tidy collection of items with relative quantities & Catalogue, Register, List &  Parts, Orders, Product \\\hline
-Item & The ingredients needed for the manufacturing of final products & Object, Ingredient & Inventory, Product\\\hline
-Orders & Requests of specific products by customers & & Invoice, Inventory\\\hline
-Product & The final good & Merchandise, food & Parts, Inventory\\\hline
-Invoice & Bill issued to customers & Bill, payment proof & Orders, Customer\\\hline
-Customer & The company requesting for products & Company, Client, Buyer & Invoice, Employee\\\hline
-Employee & Whoever is working for the factory & Worker, Staff member, Operator & Customer, Roles, Departments\\\hline
-Roles & The several roles each employee plays as, that are: manager, seller, worker, data analyst, and system administrator & & Employee\\\hline
-Departments & The several divisions in which each employee works & Divisions, Branches, Units, Sectors & Employee\\\hline
-Supplier & The company which restocks items & & Product, Manager, Contract\\\hline
-Contract & Agreement made between the factory and a supplier & Deal, Arrangement, Agreement & Manager, Item\\\hline
+Inventory & An ordered collection of items, with relative quantities, present in the warehouse & Stock &  Item, Order, Product \\\hline
+Item & The ingredients needed for the manufacturing of final products & Ingredient & Inventory, Product \\\hline
+Order & Set of products that a customer wants to buy &  & Invoice, Inventory \\\hline
+Product & The final good to sell to customers & Merchandise & Item, Inventory \\\hline
+Invoice & Commercial document issued to customers & Bill & Order, Customer \\\hline
+Customer & A customer who buys the products & Company, Client, Buyer & Invoice, Employee \\\hline
+Employee & Who work for the factory & Worker, Staff member & Customer, Role, Department \\\hline
+Role & The role that an employee can have, that is: manager, salesman, worker, data analyst and system administrator & & Employee \\\hline
+Department & The sector of the company in which one or more employees work & Division, Branch, Sector & Employee \\\hline
+Supplier & A company that supplies the items & & Product, Item, Manager, Contract \\\hline
+Contract & Agreement made between the factory and a supplier & Deal, Arrangement, Agreement & Manager, Item, Product \\\hline
 
-\caption{Describe in this table the terms of your system}
+\caption{The terms of the system}
 \label{tab:termGlossary}
 \end{longtable}
