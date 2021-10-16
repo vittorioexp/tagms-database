@@ -28,16 +28,17 @@
 \begin{longtable}{|p{.20\columnwidth}|p{.30\columnwidth} |p{.20\columnwidth}|p{.20\columnwidth}|} 
 \hline
 \textbf{Term} & \textbf{Description} & \textbf{Synonyms} & \textbf{Connection} \\\hline
-Inventory & A tidy collection of items with relative quantities & Catalogue, register, list &  Parts, Orders, Product \vspace{5pt} \\\hline
-Parts & The item needed for the manufacturing of final products & Items, objects & Inventory, Product\\\hline
+Inventory & A tidy collection of items with relative quantities & Catalogue, Register, List &  Parts, Orders, Product \\\hline
+Item & The ingredients needed for the manufacturing of final products & Object, Ingredient & Inventory, Product\\\hline
 Orders & Requests of specific products by customers & & Invoice, Inventory\\\hline
 Product & The final good & Merchandise, food & Parts, Inventory\\\hline
 Invoice & Bill issued to customers & Bill, payment proof & Orders, Customer\\\hline
-Customer & The company requesting for products & Company, client, buyer & Invoice, Employee\\\hline
-Employee & Whoever is working for the factory & Worker, staff member, operator & Customer, Roles, Departments\\\hline
-Roles & The several roles each employee plays as & & Employee\\\hline
+Customer & The company requesting for products & Company, Client, Buyer & Invoice, Employee\\\hline
+Employee & Whoever is working for the factory & Worker, Staff member, Operator & Customer, Roles, Departments\\\hline
+Roles & The several roles each employee plays as, that are: manager, seller, worker, data analyst, and system administrator & & Employee\\\hline
 Departments & The several divisions in which each employee works & Divisions, Branches, Units, Sectors & Employee\\\hline
-Supplier & The company which restocks items & & Product, Manager\\\hline
+Supplier & The company which restocks items & & Product, Manager, Contract\\\hline
+Contract & Agreement made between the factory and a supplier & Deal, Arrangement, Agreement & Manager, Item\\\hline
 
 \caption{Describe in this table the terms of your system}
 \label{tab:termGlossary}
