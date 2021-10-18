@@ -4,9 +4,9 @@
 A manufacturing company needs a database to manage the overall inventories of the organization from the delivery of supplies to the production of goods and up to shipment of items. The objective of the company is to develop an Inventory Management System.
 There are four types of employee:
 \begin{itemize}
-	\item manager, which handles suppliers and contracts stipulated with them
-	\item salesman, that deals with customers and orders made by them, and payments
-	\item data analyst, which performs analyses and predictions based on the collected system data
+	\item manager, which handles suppliers and contracts stipulated with them, and minimum inventory levels
+	\item salesman, that creates customers' profile when making their first order, insert orders in the system on behalf the customers, and handle payments made by them
+	\item data analyst, which performs periodic analyses and predictions based on the collected system data to avoid excess, lack of items, or expiration of products and communicate analysis results to the manager that changes the contract with the supplier or increases/decreases the minimum product number in stock
 	\item worker, that is responsible for managing the inventory, shipments, generating invoices, and manufacturing products
 \end{itemize}
 Each employee is defined as: name, surname, e-mail address, phone number, department, and role.\\
@@ -22,8 +22,23 @@ Also customers are registered in the platform with name and contact details. The
 	\item a timestamp, stating in which day, month, year, and at which time the order was issued
 	\item products requested and their quantity
 \end{itemize}
-Data analysts:
+Items are stored in the inventory along with:
 \begin{itemize}
-	\item perform periodic analyses on inventory levels to avoid excess, lack of items, or expiration of products
-	\item communicate analysis results to the manager through reports to let him solve the situation with suppliers providing the products in excess or in scarcity
+	\item expiration date
+	\item a brief description
+	\item company of origin (? check with Marco/Vittorio in NLSentences)
 \end{itemize}
+Finished products are also stored in the inventory and they are characterized by:
+\begin{itemize}
+	\item name, expiration date, and a brief description (there's no such information in NLSentences)
+	\item a minimum quantity to be held in stock
+\end{itemize}
+Invoices are generated when an order is payed. They contain the following information (there's no such information in NLSentences):
+\begin{itemize}
+	\item which products have been bought
+	\item quantities bought for each product
+	\item total cost of the order
+	\item which payment method has been used
+\end{itemize}
+Payments consist in just a reference to the order the customer is paying for, and ...\\
+Shipments are created each time the products requested by a certain order are packaged and handed to the courier. They consist of a reference to a certain order and a tracking number that is communicated to the customer.
