@@ -29,7 +29,7 @@
 \hline
 \textbf{Term} & \textbf{Description} & \textbf{Synonyms} & \textbf{Connection} \\\hline
 Inventory & An ordered collection of items and product with relative quantities, present in the warehouse & Stock &  Item, Order, Product \\\hline
-Invalid Inventory & An ordered collection of items and product, with relative quantities, present in the warehouse that are expired & Stock &  Item, Order, Product \\\hline
+Expired Inventory & An ordered collection of items and product, with relative quantities, present in the warehouse that are expired & Stock &  Item, Product \\\hline
 Item & The ingredients needed for the manufacturing of final products & Ingredient & Inventory, Product \\\hline
 Order & Set of products that a customer wants to buy &  & Invoice, Inventory \\\hline
 Product & The final good to sell to customers & Merchandise & Item, Inventory \\\hline
@@ -44,9 +44,9 @@ System Administrator & Administrator of the system who manages the roles of diff
 Worker & Generic company worker who performs some tasks, such as use the machinery and ship the products &  & Employee, Shipment \\\hline
 Department & The sector of the company in which one or more employees work & Division, Branch, Sector & Employee \\\hline
 Supplier & A company that supplies the items & & Product, Item, Manager, Contract \\\hline
-Contract & Agreement made between the factory and a supplier & Deal, Arrangement, Agreement & Manager, Item, Product \\\hline
+Contract & Agreement made between the factory and a supplier & Deal, Arrangement, Agreement & Manager, Supplier, Item, Product \\\hline
 Shipment & The process of sending products to a customer by means of a courier &  & Order, Worker \\\hline
-Payment & The process of paying for products done by a customer &  & Order \\\hline
+Payment & The process of paying for products done by a customer &  & Order, Invoice \\\hline
 
 \caption{The terms of the system}
 \label{tab:termGlossary}
