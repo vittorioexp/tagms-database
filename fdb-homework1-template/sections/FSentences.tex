@@ -40,5 +40,12 @@ Invoices are generated when an order is payed. They contain the following inform
 	\item total cost of the order
 	\item which payment method has been used
 \end{itemize}
-Payments consist in just a reference to the order the customer is paying for, and ...\\
+Payments consist in:
+\begin{itemize}
+	\item a reference to the order the customer is paying for
+	\item a reference to the generated invoice
+	\item the payment method used
+	\item currency used for the payment
+	\item total amount payed
+\end{itemize}
 Shipments are created each time the products requested by a certain order are packaged and handed to the courier. They consist of a reference to a certain order and a tracking number that is communicated to the customer.
