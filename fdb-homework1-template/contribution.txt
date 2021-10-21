@@ -6,7 +6,7 @@ Users and Stakeholders : Esposito, Tunahan, Zanini
 
 Natural Language Sentences: Amedeo, Esposito, Basso
 
-Filtered Senteces: Amedeo , Tunahan
+Filtered Senteces: Amedeo 
 
 Term Glossary: Martin, Amedeo, Esposito
 
