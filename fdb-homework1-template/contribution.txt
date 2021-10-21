@@ -9,7 +9,8 @@ Natural Language Sentences
 Filtered Senteces
 
 Term Glossary
-Functional Requirements
+
+Functional Requirements: Amedeo
 
 Non-functional Requirements
 
