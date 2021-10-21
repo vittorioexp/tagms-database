@@ -8,14 +8,14 @@ The system should:
     \item guarantee privacy of the data using authorization and authentication to access the system
     \item Being capable of handling simultaneous access of at most 100 users;
     \item Guarantee secure and asynchronous processing of transactions along the production pipeline;
-    \item Restrict the submission of new entries to the role: salesmen should be able to enter and modify only customer-related data, technical workers and data analysts should only be able to access data but not to create any new entries, managers should be able to enter and modify only suppliers-related data and admins should be able to access and modify any entry in the database;
+    \item Restrict the submission of new entries to the role: salesmen should be able to enter and modify only customer-related data, workers should be able to enter only shipments, and data analysts should only be able to access data but not to create any new entries, managers should be able to enter and modify only suppliers-related data and admins should be able to access and modify any entry in the database;
     \item perform efficient automatic creation of new entries when a new order/contract is entered 
     \item perform efficient computation of queries such as:
     \begin{enumerate}
 	    \item inbound transactions associated to a certain supplier
 	    \item outbound transactions associated to a certain customer
 	    \item set of elements filtered by certain characteristics (filtered research) in the current inventory, as well as in the past transactions
-   		\item entries submitted of modified by a certain employee (?)
+   		\item entries submitted or modified by a certain employee
     \end{enumerate}
     \item User-friendly interface for submitting orders or contracts, editing and displaying data
     \item In order to get a realistic metrics for accounting and reports, demand forecasting has been managed in the inventory management system.
