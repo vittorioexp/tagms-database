@@ -2,13 +2,13 @@ Objectives: Zanini
 
 Interviews: Zanini
 
-Users and Stakeholders : Tunahan, Zanini
+Users and Stakeholders : Esposito, Tunahan, Zanini
 
-Natural Language Sentences: Amedeo
+Natural Language Sentences: Amedeo, Esposito
 
 Filtered Senteces: Amedeo , Tunahan
 
-Term Glossary: Martin, Amedeo
+Term Glossary: Martin, Amedeo, Esposito
 
 Functional Requirements:
 
