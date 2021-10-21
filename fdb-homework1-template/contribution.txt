@@ -1,4 +1,4 @@
-Objectives: Zanini
+Objectives: Zanini, Quiroz
 
 Interviews: Zanini
 
@@ -10,7 +10,7 @@ Filtered Senteces: Amedeo
 
 Term Glossary: Martin, Amedeo, Esposito
 
-Functional Requirements:
+Functional Requirements: Quiroz
 
 Non-functional Requirements: Martin
 
