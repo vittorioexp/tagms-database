@@ -2,11 +2,11 @@ Objectives
 
 Interviews
 
-Users and Stakeholders
+Users and Stakeholders : Tunahan
 
 Natural Language Sentences: Amedeo
 
-Filtered Senteces: Amedeo
+Filtered Senteces: Amedeo , Tunahan
 
 Term Glossary: Martin, Amedeo
 
