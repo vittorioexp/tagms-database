@@ -4,7 +4,7 @@ Interviews: Zanini
 
 Users and Stakeholders : Esposito, Tunahan, Zanini
 
-Natural Language Sentences: Amedeo, Esposito
+Natural Language Sentences: Amedeo, Esposito, Basso
 
 Filtered Senteces: Amedeo , Tunahan
 
