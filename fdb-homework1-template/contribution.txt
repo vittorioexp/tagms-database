@@ -4,11 +4,11 @@ Interviews
 
 Users and Stakeholders
 
-Natural Language Sentences
+Natural Language Sentences: Amedeo
 
 Filtered Senteces: Amedeo
 
-Term Glossary
+Term Glossary: Amedeo
 
 Functional Requirements:
 
