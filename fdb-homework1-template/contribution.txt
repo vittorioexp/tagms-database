@@ -6,11 +6,11 @@ Users and Stakeholders
 
 Natural Language Sentences
 
-Filtered Senteces
+Filtered Senteces: Amedeo
 
 Term Glossary
 
-Functional Requirements: Amedeo
+Functional Requirements:
 
 Non-functional Requirements
 
