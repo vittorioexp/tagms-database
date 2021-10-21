@@ -4,11 +4,11 @@ Interviews: Zanini
 
 Users and Stakeholders : Esposito, Tunahan, Zanini
 
-Natural Language Sentences: Amedeo, Esposito, Basso
+Natural Language Sentences: Esposito, Basso, Giuliani
 
-Filtered Senteces: Amedeo 
+Filtered Senteces: Giuliani 
 
-Term Glossary: Martin, Amedeo, Esposito
+Term Glossary: Martin, Esposito, Giuliani & Zanini first part mostly (uploaded only by Giuliani as Zanini was having problems with Git)
 
 Functional Requirements: Quiroz
 
