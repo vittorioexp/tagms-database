@@ -8,10 +8,10 @@ Natural Language Sentences
 
 Filtered Senteces: Amedeo
 
-Term Glossary
+Term Glossary: Martin
 
 Functional Requirements:
 
-Non-functional Requirements
+Non-functional Requirements: Martin
 
 Constraints
