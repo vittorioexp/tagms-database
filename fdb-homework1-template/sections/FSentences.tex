@@ -1,15 +1,17 @@
 \section{Filtered Sentences}
 %Organize, in a schematic way, the information that can be extracted from the Natural Language Sentences
 
-A manufacturing company needs a database to manage the overall inventories of the organization from the delivery of supplies to the production of goods and up to shipment of items. The objective of the company is to develop an Inventory Management System.\\
-There are four types of employee:
+A manufacturing company needs a database to manage the overall inventories of the organization from the delivery of supplies to the production of goods and up to shipment of items. The objective of the company is to develop an Inventory Management System.\\\\
+There are four types of employee, i.e., possible roles:
 \begin{itemize}
 	\item manager, which handles suppliers and contracts stipulated with them, and minimum inventory levels
 	\item salesman, that creates customers' profile when making their first order, insert orders in the system on behalf of the customers, and handle payments made by them
 	\item data analyst, which performs periodic analyses and predictions based on the collected system data to avoid excess, lack of items, or expiration of products and communicate analysis results to the manager that changes the contract with the supplier or increases/decreases the minimum product number in stock
 	\item worker, that is responsible for managing the inventory, shipments, generating invoices, and manufacturing products, depending on which department it is assigned
 \end{itemize}
-Each employee is defined as: name, surname, e-mail address, phone number, department, and role.\\
+\vspace{5pt}
+Each employee is defined as: name, surname, e-mail address, phone number, department, and role.\\\\
+The departments are identified by a name and number (as there may be more than one department regarding the same operations).\\\\
 Suppliers are registered in the system with name and contact details, along with the relative contract. The latter is described by:
 \begin{itemize}
 	\item type of contract %(joint venture, partnership, collaboration-type network agreement, and network contract for joint operation)
@@ -17,22 +19,27 @@ Suppliers are registered in the system with name and contact details, along with
 	\item the items the supplier is committed to provide
 	\item quantity of items expected to be provided by the supplier
 \end{itemize}
+\vspace{5pt}
 Also customers are registered in the platform with name and contact details. They interface with salesmen to make orders, which are characterized by:
 \begin{itemize}
 	\item a timestamp, stating in which day, month, year, and at which time the order was issued
 	\item products requested and their quantity
 \end{itemize}
+\vspace{5pt}
 Items are stored in the inventory along with:
 \begin{itemize}
 	\item expiration date
 	\item a brief description
 	\item the supplier providing them
 \end{itemize}
+\vspace{5pt}
 Finished products are also stored in the inventory and they are characterized by:
 \begin{itemize}
 	\item name, expiration date, and a brief description
 	\item a minimum quantity to be held in stock
 \end{itemize}
+\vspace{5pt}
+When the inventory periodic check is carried out, any item or finished product that turns out to be expired is moved to the expired inventory. This is necessary to let data analysts estimate how many items and products are wasted in a given time span. Once the analyses have been carried out, the expired inventory is flushed.\\\\
 Invoices are generated when an order is payed. They contain the following information:
 \begin{itemize}
 	\item which products have been bought
@@ -40,6 +47,7 @@ Invoices are generated when an order is payed. They contain the following inform
 	\item total cost of the order
 	\item which payment method has been used
 \end{itemize}
+\vspace{5pt}
 Payments consist in:
 \begin{itemize}
 	\item a reference to the order the customer is paying for
@@ -48,4 +56,5 @@ Payments consist in:
 	\item currency used for the payment
 	\item total amount payed
 \end{itemize}
+\vspace{5pt}
 Shipments are created each time the products requested by a certain order are packaged and handed to the courier. They consist of a reference to a certain order and a tracking number that is communicated to the customer.
