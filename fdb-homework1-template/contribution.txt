@@ -14,4 +14,4 @@ Functional Requirements: Quiroz
 
 Non-functional Requirements: Collado, Cimarosto
 
-Constraints
+Constraints: Esposito
