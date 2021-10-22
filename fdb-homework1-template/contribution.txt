@@ -8,10 +8,10 @@ Natural Language Sentences: Esposito, Basso, Giuliani
 
 Filtered Sentences: Giuliani 
 
-Term Glossary: Collado, Esposito, Giuliani & Zanini first part mostly (uploaded only by Giuliani as Zanini was having problems with Git)
+Term Glossary: Collado, Esposito, Cimarosto, Giuliani & Zanini first part mostly (uploaded only by Giuliani as Zanini was having problems with Git)
 
 Functional Requirements: Quiroz
 
-Non-functional Requirements: Collado
+Non-functional Requirements: Collado, Cimarosto
 
 Constraints
