@@ -10,8 +10,8 @@ Filtered Sentences: Giuliani
 
 Term Glossary: Collado, Esposito, Cimarosto, Giuliani & Zanini first part mostly (uploaded only by Giuliani as Zanini was having problems with Git)
 
-Functional Requirements: Quiroz
+Functional Requirements: Quiroz, Basso
 
 Non-functional Requirements: Collado, Cimarosto
 
-Constraints: Esposito
+Constraints: Esposito, Basso
