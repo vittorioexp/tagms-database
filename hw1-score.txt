@@ -1,23 +1,17 @@
-"SCORE: 5.5
+"SCORE: 5.25
 
 
 COMMENTS ABOUT THE HOMEWORK:
 
-- A folder containing hw1 was expected; it should not be directly in the root of the repository
+- The motivation behind the homework is clear, however it is less clear what is the company you are modeling (or working with). From the Natural language section seems to be a company working with beverages. However, a clear definition of the problem in terms of your mini world of interest is a little hard to find -- making it hard to grasp.
 
-- The PDF file of your report is missing. I also got compilation errors
+- Interviews with stakeholders are too generic and shallow and not reflect what could be the features and needs required for your application
 
-- The objectives of the system are quite generic: they somewhat describe what an English institute is but not what it needs from the system. Then, the two general goal (1) and (2)  almost do not concern the English institute and sound as ""manage data""
+- I am not sure you need to keep an expired inventory. To identify expired items you can simply run a query on the inventory that can look for items with expiration dates that are earlier than a specific one. 
 
-- It is odd that you list students as actors in the system (NL part) but not as stakeholders
-
-- Funcitonal requirements are a bit confused. They should be a list of operations on the items in the glossary, here you have some sort of grouping and not all the areas of the glossary seem to be covered. 
-
-- I do not understand in which sense ""Scalability: The students split based on their level and age"" is a functional requirement (actually I do not understand the sentence at all)
+- Functional and non functional requirements are ok.
 
 
-CONTRIBUTION TO THE HOMEWORK:
+CONTRIBUTION TO THE HOMEWORK
 
-- Asma Bakhtiariazad has no commits to the repository. This is severe and could be taken as invalid contribution to the homework, since each team member is expected to commit. 
-
-- Francesco Fasan has few commits to the repository and they seem to be marginal. This is severe and could be taken as invalid contribution to the homework."
+- The Team Contribution section must be part of the homework (PDF file) and not a separate stand-alone txt document."
