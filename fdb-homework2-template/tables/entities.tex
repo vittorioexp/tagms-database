@@ -1,8 +1,8 @@
-\begin{longtable}{|p{.20\columnwidth}|p{.20\columnwidth} |p{.30\columnwidth}|p{.25\columnwidth} |} 
-\hline
-\textbf{Entity} & \textbf{Description} & \textbf{Attributes} & \textbf{Identifier}  \\\hline
+\begin{longtable}{|p{.20\columnwidth}|p{.20\columnwidth} |p{.30\columnwidth}|p{.25\columnwidth} |}
+    \hline
+    \textbf{Entity} & \textbf{Description} & \textbf{Attributes} & \textbf{Identifier}  \\\hline
 
-Employee & Represents data of an employee who works in the company and needs access to the system &
+    Employee & Represents data of an employee who works in the company and needs access to the system &
     \begin{itemize}
         \vspace{-1em}
         \item Badge\_number
@@ -14,27 +14,27 @@ Employee & Represents data of an employee who works in the company and needs acc
         \item ID\_role
         \item ID\_department
     \end{itemize}
-&  Badge\_number\\\hline
+    &  Badge\_number\\\hline
 
-Role & Represents data on the role of employees who work in the company &
+    Role & Represents data on the role of employees who work in the company &
     \begin{itemize}
         \vspace{-1em}
         \item ID\_role
         \item Name
         \item Description
     \end{itemize}
-&  ID\_role\\\hline
+    &  ID\_role\\\hline
 
-Department & Represents data on the departments in which employees work &
+    Department & Represents data on the departments in which employees work &
     \begin{itemize}
         \vspace{-1em}
         \item ID\_department
         \item Name
         \item Description
     \end{itemize}
-&  ID\_department\\\hline
+    &  ID\_department\\\hline
 
-Customer & Represents data about a customer of the company &
+    Customer & Represents data about a customer of the company &
     \begin{itemize}
         \vspace{-1em}
         \item ID\_customer
@@ -44,29 +44,57 @@ Customer & Represents data about a customer of the company &
         \item Email
         \item Address
     \end{itemize}
-&  ID\_customer\\\hline
+    &  ID\_customer\\\hline
 
-Contract & Represents data about a contract stipulated between a supplier and a manager for the supply of items &
+    Contract & Represents data about a contract stipulated between a supplier and a manager for the supply of items &
     \begin{itemize}
         \vspace{-1em}
         \item ID\_contract
         \item aaa
     \end{itemize}
-&  ID\_contract\\\hline
+    &  ID\_contract\\\hline
 
-Entity\_name & & \begin{itemize}
+    Order & Represents the order placed by the customer through the seller &
+    \begin{itemize}
         \vspace{-1em}
-        \item attribute 1
-        \item attribute 2
+        \item Date_order
+        \item ID_order
+        \item Sub_total
+        \item Product_name
+        \item Product_type
+        \item Product_quantity
     \end{itemize}
- &  identifying attribute(s)\\\hline
- 
- Entity\_name & & \begin{itemize}
+    &  ID_order\\\hline
+
+%I'm not sure wich are the attributes of the payment entity. Expecially the identifier
+    Payment & Represents the type of payment used by the customer to pay &
+    \begin{itemize}
         \vspace{-1em}
-        \item attribute 1
-        \item attribute 2
-        \item attribute 3
+        \item Method_payment
+        \item ID_payment
     \end{itemize}
- &  identifying attribute(s) \\\hline
+    &  ID_payment\\\hline
+
+    Inventory & Represents the inventory of the products that have been produced and ready to be sold &
+    \begin{itemize}
+        \vspace{-1em}
+        \item Element_quantity
+        \item Element_name
+        \item Element_type
+        \item ID_inventory
+    \end{itemize}
+    &  ID_inventory \\\hline
+
+%Item_list is a list of all item that are used to produce tehe product
+    Product & Represents the final product that is marketed &
+    \begin{itemize}
+        \vspace{-1em}
+        \item Product_type
+        \item Description
+        \item ID_product
+        \item Item_list
+    \end{itemize}
+    &  ID_product \\\hline
+
 
 \end{longtable}
