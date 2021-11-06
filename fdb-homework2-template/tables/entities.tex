@@ -96,5 +96,25 @@
     \end{itemize}
     &  ID\_product \\\hline
 
+    Item & Represents the raw material from which the final products will be produced &
+    \begin{itemize}
+        \vspace{-1em}
+        \item Item\_type
+        \item Description
+        \item ID\_item
+        \item Nutritional\_values
+    \end{itemize}
+    &  ID\_item \\\hline
 
+    %Include the product and its quantity within the invoice
+    Invoice & Represents the invoice associated with the order placed by the customer &
+        \begin{itemize}
+            \vspace{-1em}
+            \item Total\_amount
+            \item Product
+            \item Quantity
+            \item ID\_invoice
+            \item Nutritional\_values
+        \end{itemize}
+        &  ID\_invoice \\\hline
 \end{longtable}
