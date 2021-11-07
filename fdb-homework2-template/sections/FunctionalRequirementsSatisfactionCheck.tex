@@ -2,15 +2,15 @@
 
 The DBMS has to be able to:
 \begin{itemize}
-	\item \textbf{store all the details of the employees, customers and suppliers in the organization:} Entities Employee, Customer, Supplier store all this data.
-	\item \textbf{allow the employees to update their personal information:} Entity Employee store Username and Password which can be changed.
-	\item \textbf{store details of all on-hand products in the warehouse such as item code, item description, quantity and expiration date:} Entities Product and Item and the relationship Stocked store this info. 
-	\item \textbf{allow the employees to log into the system and enter the inbound items they received with information item code, item description, quantity, expiration date and supplier:}
+	\item \textbf{store all the details of the employees, customers and suppliers in the organization:} Entities Employee and Role store data related to the employees. Entity Customer has info about the customers and entity Supplier has data related to the Supplier.
+	\item \textbf{allow the employees to update their personal information:} Entity Employee has some attributes as Email, Password or Phone_Number which can be changed.
+	\item \textbf{store details of all on-hand products in the warehouse such as item code, item description, quantity and expiration date:} Entities Product, Item and Inventory and the relationship Stocked store this data. 
+	\item \textbf{allow the employees to log into the system and enter the inbound items they received with information item code, item description, quantity, expiration date and supplier:} With attributes Email and Password employees log in the application and insert this data in Entities Product,Item and Inventory.
 	\item \textbf{show and generate the list of inbound and outbound transactions:}
 	\item \textbf{allow the employees to log into the system and enter the outbound transaction needed for the issuance of the products in the production and shipment to the customers:}
     \item \textbf{inventory stocks will be automatically updated whenever there are inbound and outbound transactions:}
     \item \textbf{show and generate the current inventory balance or stock inquiries:}
-    \item \textbf{receive and process the Customersâ€™ order, specifying which products they want and respective quantity:}
+    \item \textbf{receive and process the Customers’ order, specifying which products they want and respective quantity:}
     \item \textbf{modification and cancellation of orders:}
     \item \textbf{allow users to view order and shipment status of finished products:}
     \item \textbf{generate invoice whenever payment has been made}
