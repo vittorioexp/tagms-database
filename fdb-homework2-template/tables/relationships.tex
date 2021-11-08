@@ -31,6 +31,7 @@ P\_belongs\_to\_c & Links product to the category  & \begin{itemize}
 	\item Product category (0,N)
 \end{itemize}
 &  None \\\hline
+
 I\_belongs\_to\_c & Links item to the category & \begin{itemize}
 	\vspace{-1em}
 	\item Item (0,1)
@@ -53,4 +54,12 @@ Agree & Represent the contract between the supplier and the company  & \begin{it
     \item (Contract  (1,1) (da vedere))
 	\end{itemize}
 &  ( date\_contract da vedere)\\\hline
+
+Ships & Relates the employee shipping the order with the order itself and the shipment details & \begin{itemize}
+	\vspace{-1em}
+	\item Employee (0,1)
+	\item Shipment (1,1)
+	\item Order (0,1)
+\end{itemize}
+&  None \\\hline
 \end{longtable}
