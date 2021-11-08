@@ -25,4 +25,32 @@ Stocked into & Specifies the items and product stocked in the inventory & \begin
 \end{itemize}
 &  None \\\hline
 
+P\_belongs\_to\_c & Links product to the category  & \begin{itemize}
+	\vspace{-1em}
+	\item Product (0,1)
+	\item Product category (0,N)
+\end{itemize}
+&  None \\\hline
+I\_belongs\_to\_c & Links item to the category & \begin{itemize}
+	\vspace{-1em}
+	\item Item (0,1)
+	\item Item category (0,N)
+\end{itemize}
+&  None \\\hline
+
+Made up of & Describes which items are involved into creation to the product & \begin{itemize}
+	\vspace{-1em}
+	\item Item (0,N)
+	\item Product (0,1)
+\end{itemize}
+&  None \\\hline
+
+Agree & Represent the contract between the supplier and the company  & \begin{itemize}
+	\vspace{-1em}
+	\item Supplier (0,1) 
+	\item Employee (0,N)
+	\item Item    (0,N)
+    \item (Contract  (1,1) (da vedere))
+	\end{itemize}
+&  ( date\_contract da vedere)\\\hline
 \end{longtable}
