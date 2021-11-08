@@ -79,20 +79,29 @@
     \begin{itemize}
         \vspace{-1em}
         \item Element\_quantity
-        \item Element\_name
-        \item Element\_type
+        \item ID\_storage
         \item ID\_inventory
+        \item ID\_product
     \end{itemize}
     &  ID\_inventory \\\hline
 
-%Item_list is a list of all item that are used to produce tehe product
+    Storage & Represents all the types of elements present in the inventory &
+        \begin{itemize}
+            \vspace{-1em}
+            \item ID\_storage
+            \item Name
+        \end{itemize}
+    &  ID\_storage \\\hline
+
+%Item_list is a list of all item that are used to produce that product
     Product & Represents the final product that is marketed &
     \begin{itemize}
         \vspace{-1em}
-        \item Product\_type
+        \item Product\_name
         \item Description
         \item ID\_product
         \item Item\_list
+        \item Product\_category
     \end{itemize}
     &  ID\_product \\\hline
 
