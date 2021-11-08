@@ -3,19 +3,26 @@
 \textbf{Relationship} & \textbf{Description} & \textbf{Component Entities} & \textbf{Attributes} \\\hline
 
 
-Relationship\_name & & \begin{itemize}
+Has & Relates each employee to a role & \begin{itemize}
         \vspace{-1em}
-        \item E1 (min, MAX)
-        \item E2 (min, MAX)
+        \item Employee (0,1)
+        \item Role (0,N)
     \end{itemize}
- &  --- \\\hline
+ &  None \\\hline
  
- Relationship\_name & & \begin{itemize}
+Belongs to & Assigns each employee to a department & \begin{itemize}
         \vspace{-1em}
-        \item E1 (min, MAX)
-        \item E2 (min, MAX)
-        \item E3 (min, MAX)
+        \item Employee (0,1)
+        \item Department (0,N)
     \end{itemize}
- &  Relation Attributes \\\hline
+ &  None \\\hline
+
+Stocked into & Specifies the items and product stocked in the inventory & \begin{itemize}
+	\vspace{-1em}
+	\item Item (0,1)
+	\item Product (0,1)
+	\item Inventory (0,N)
+\end{itemize}
+&  None \\\hline
 
 \end{longtable}
