@@ -97,23 +97,41 @@
     Product & Represents the final product that is marketed &
     \begin{itemize}
         \vspace{-1em}
+        \item ID\_product
         \item Product\_name
         \item Description
-        \item ID\_product
-        \item Item\_list
-        \item Product\_category
+        \item Item\_list    % TODO: fix this
+        \item ID_product\_category
     \end{itemize}
     &  ID\_product \\\hline
 
-    Item & Represents the raw material from which the final products will be produced &
+    Product_category & Represents the category of product ready to be sold &
     \begin{itemize}
         \vspace{-1em}
-        \item Item\_type
+        \item ID\_product_category
+        \item Name
         \item Description
+    \end{itemize}
+    &  ID\_product_category \\\hline
+
+    Item & Represents materials provided by suppliers from which the final products will be produced &
+    \begin{itemize}
+        \vspace{-1em}
         \item ID\_item
-        \item Nutritional\_values
+        \item Item\_category
+        \item Description
+        \item Nutritional\_values   %TODO: an Item can be packaging material, so NO nutritional values
     \end{itemize}
     &  ID\_item \\\hline
+
+    Item_category & Represents the category of material provided by suppliers &
+    \begin{itemize}
+        \vspace{-1em}
+        \item ID\_item_category
+        \item Name
+        \item Description
+    \end{itemize}
+    &  ID\_item_category \\\hline
 
     %Include the product and its quantity within the invoice
     Invoice & Represents the invoice associated with the order placed by the customer &
