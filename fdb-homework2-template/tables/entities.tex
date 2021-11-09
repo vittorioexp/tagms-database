@@ -71,7 +71,8 @@
     \begin{itemize}
         \vspace{-1em}
         \item ID
-        \item Method\_payment
+        \item Payment\_method
+        \item Payment\_status
     \end{itemize}
     &  ID\\\hline
 
@@ -116,7 +117,7 @@
     \end{itemize}
     &  ID \\\hline
 
-    %TODO: should we memorise the price of the item?
+    %TODO: should we memorise the price of the item? how about Supplier_ID ?
     Item & Represents materials provided by suppliers from which the final products will be produced &
     \begin{itemize}
         \vspace{-1em}
@@ -142,9 +143,8 @@
             \vspace{-1em}
             \item ID
             \item Total\_amount
-            \item Product
+            \item Product   %TODO: not sure about "Product" and "Quantity"
             \item Quantity
-            \item Nutritional\_values
             \item Payment\_ID
         \end{itemize}
         &  ID \\\hline
