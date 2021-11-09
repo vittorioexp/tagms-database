@@ -82,6 +82,8 @@
         \item ID\_storage
         \item ID\_inventory
         \item ID\_product
+        \item Expiration\_date
+        \item Price     %TODO: should we place the lot price or the product price?
     \end{itemize}
     &  ID\_inventory \\\hline
 
@@ -93,27 +95,27 @@
         \end{itemize}
     &  ID\_storage \\\hline
 
-%Item_list is a list of all item that are used to produce that product
     Product & Represents the final product that is marketed &
     \begin{itemize}
         \vspace{-1em}
         \item ID\_product
         \item Product\_name
         \item Description
-        \item Item\_list    % TODO: fix this
-        \item ID_product\_category
+        \item Item\_list    % TODO: fix this list of all item that are used to produce that product
+        \item ID\_product\_category
     \end{itemize}
     &  ID\_product \\\hline
 
-    Product_category & Represents the category of product ready to be sold &
+    Product\_category & Represents the category of product ready to be sold &
     \begin{itemize}
         \vspace{-1em}
-        \item ID\_product_category
+        \item ID\_product\_category
         \item Name
         \item Description
     \end{itemize}
-    &  ID\_product_category \\\hline
+    &  ID\_product\_category \\\hline
 
+    %TODO: should we memorise the price of the item?
     Item & Represents materials provided by suppliers from which the final products will be produced &
     \begin{itemize}
         \vspace{-1em}
@@ -124,14 +126,14 @@
     \end{itemize}
     &  ID\_item \\\hline
 
-    Item_category & Represents the category of material provided by suppliers &
+    Item\_category & Represents the category of material provided by suppliers &
     \begin{itemize}
         \vspace{-1em}
-        \item ID\_item_category
+        \item ID\_item\_category
         \item Name
         \item Description
     \end{itemize}
-    &  ID\_item_category \\\hline
+    &  ID\_item\_category \\\hline
 
     %Include the product and its quantity within the invoice
     Invoice & Represents the invoice associated with the order placed by the customer &
@@ -142,6 +144,7 @@
             \item Quantity
             \item ID\_invoice
             \item Nutritional\_values
+            \item ID\_payment
         \end{itemize}
         &  ID\_invoice \\\hline
 \end{longtable}
