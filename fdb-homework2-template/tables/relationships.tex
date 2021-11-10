@@ -19,30 +19,29 @@ Belongs to (1) & Assigns each employee to a department & \begin{itemize}
 
 Stocked into & Specifies the items and product stocked in the inventory & \begin{itemize}
 	\vspace{-1em}
-	\item Item (0,1)
-	\item Product (0,1)
-	\item Inventory (0,N)
+	\item Item (1,1)
+	\item Product (0,N)
 \end{itemize}
 &  None \\\hline
 
 Belongs to (3) & Links product to the category  & \begin{itemize}
 	\vspace{-1em}
 	\item Product (0,1)
-	\item Product category (0,N)
+	\item Category (0,N)
 \end{itemize}
 &  None \\\hline
 
 Belongs to (2) & Links item to the category & \begin{itemize}
 	\vspace{-1em}
 	\item Item (0,1)
-	\item Item category (0,N)
+	\item Category (0,N)
 \end{itemize}
 &  None \\\hline
 
 Made up of & Describes which items are involved into creation to the product & \begin{itemize}
 	\vspace{-1em}
 	\item Item (0,N)
-	\item Product (0,1)
+	\item Product (1,1)
 \end{itemize}
 &  None \\\hline
 
@@ -50,23 +49,21 @@ Stipulate & Represent the contract between the supplier and the company  & \begi
 	\vspace{-1em}
 	\item Supplier (0,1) 
 	\item Employee (0,N)
-	%\item Item    (0,N) 
     \item Contract  (1,1)
 	\end{itemize}
 &  None\\\hline
 
-Specify & Associated the contract and the items  & \begin{itemize}
+Specifies & Associated the contract and the items  & \begin{itemize}
 	\vspace{-1em}
-	\item Contract (0,1) (cardinality?) 
-	\item Item    (0,N)
+	\item Contract (0,N)
+	\item Item (0,N)
 	\end{itemize}
 &  None\\\hline
 
 
 Ships & Relates the employee shipping the order with the order itself and the shipment details & \begin{itemize}
 	\vspace{-1em}
-	\item Employee (0,1)
-	%\item Shipment (1,1)
+	\item Employee (0,N)
 	\item Order (0,1)
 \end{itemize}
 &  None \\\hline
