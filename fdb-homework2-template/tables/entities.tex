@@ -10,7 +10,6 @@
         \item Last\_name
         \item Phone\_number
         \item Email\_address
-        \item Password      %TODO: do we need a password?
         \item Gender
         \item Birth\_date
         \item Hiring\_date
@@ -43,9 +42,9 @@
         \item ID
         \item Customer\_name
         \item Phone\_number
-        \item Email\_address        %TODO: should the email be a PK? what if the customer changes email?
+        \item Email\_address
         \item Address
-        \item Registration\_date    %TODO: how can we call this?
+        \item Registration\_date
     \end{itemize}
     &  ID \\\hline
 
@@ -55,9 +54,21 @@
         \item ID
         \item Name
         \item Description
-        \item Agreement\_date       %TODO: rename this?
+        \item Contract\_date
         \item Supplier\_ID
-        \item Employee\_ID          %TODO: how to include more items and their quantities and prices?
+        \item Employee\_ID
+    \end{itemize}
+    &  ID \\\hline
+
+    Supplier & Represents data about a supplier of the company &
+    \begin{itemize}
+        \vspace{-1em}
+        \item ID
+        \item Supplier\_name
+        \item Phone\_number
+        \item Email\_address
+        \item Address
+        \item Registration\_date
     \end{itemize}
     &  ID \\\hline
 
@@ -67,81 +78,74 @@
         \item ID
         \item Order\_date
         \item Customer\_ID
-        \item Sub\_total            %TODO: how to include more products from INVENTORY (lots) and their quantities and prices?
-        \item Product\_name         %TODO: how to include one or more shipments?
-        \item Product\_type
+        \item Sub\_total            %tot = for each lot in the order ( production_price x qty of product x inflation / discount )
+    \end{itemize}
+    &  ID \\\hline
+
+    %Payment & Represents the payment made by the customer &
+    %\begin{itemize}
+    %    \vspace{-1em}
+    %    \item ID
+    %    \item Payment\_method
+    %    \item Payment\_status
+    %    \item Invoice\_ID
+    %    \item Order\_ID
+    %\end{itemize}
+    %&  ID \\\hline
+
+    Lot & Represents the inventory of the company, containing products and items &
+    \begin{itemize}
+        \vspace{-1em}
+        \item ID
+        \item Product\_ID
         \item Product\_quantity
+        \item Package\_ID
+        \item Package\_quantity
+        \item Expiration\_date
+        \item Discount      % (0, 1]. 1->fullprice
     \end{itemize}
     &  ID \\\hline
 
-    Payment & Represents the payment made by the customer &
-    \begin{itemize}
-        \vspace{-1em}
-        \item ID
-        \item Payment\_method
-        \item Payment\_status
-        \item Invoice\_ID
-        \item Order\_ID
-    \end{itemize}
-    &  ID \\\hline
-
-    Inventory & Represents the inventory of the company, containing products and items &
-    \begin{itemize}
-        \vspace{-1em}
-        \item ID
-        \item Element\_type         %TODO: can be ITEM or PRODUCT. if ITEM, the following is Item_ID. Ok?
-        \item Element\_ID
-        \item Element\_quantity
-        \item Storage\_ID
-        \item Expiration\_date      %TODO: expiration date of packaging?
-        \item Price                 %TODO: should we place the lot price or the product price?
-    \end{itemize}
-    &  ID \\\hline
-
-    Storage & Represents the physical storages that contain the elements present in the inventory &
-        \begin{itemize}
-            \vspace{-1em}
-            \item ID
-            \item Name
-            \item Location          %TODO: can a storage be elsewhere for reducing shipment times? if so, should we manage the shipment of inventory_elements from one place to another?
-        \end{itemize}
-    &  ID \\\hline
+    %Storage & Represents the physical storages that contain the elements present in the inventory &
+    %    \begin{itemize}
+    %        \vspace{-1em}
+    %        \item ID
+    %        \item Name
+    %        \item Location
+    %    \end{itemize}
+    %&  ID \\\hline
 
     Product & Represents the final product that is marketed &
     \begin{itemize}
         \vspace{-1em}
-        \item ID                    %TODO: price?
-        \item Serial\_number        %TODO: needed?
-        \item Name
-        \item Description
-        \item Item\_list            %TODO: fix this list of all item that are used to produce that product
-        \item Product\_category\_ID
-    \end{itemize}
-    &  ID \\\hline
-
-    Product\_category & Represents the category of product ready to be sold &
-    \begin{itemize}
-        \vspace{-1em}
         \item ID
         \item Name
         \item Description
+        \item Production\_cost      %Cost of the production for a product
+        \item Inflation             %Inflation i.e., price = inflation x production cost
+        \item Category\_ID
     \end{itemize}
     &  ID \\\hline
 
-    %TODO: should we memorise the price of the item?
     Item & Represents materials provided by suppliers from which the final products will be produced &
     \begin{itemize}
         \vspace{-1em}
         \item ID
         \item Description
-        \item Item\_category\_ID
-        \item Supplier\_ID           %TODO: should we memorise the supplier of an item? see CCC.txt
-        \item Nutritional\_values   %TODO: should we memorise nutritional values somewhere?
+        \item Category\_ID
     \end{itemize}
     &  ID \\\hline
 
-    %TODO: merge with Product_category? they have the same attributes
-    Item\_category & Represents the category of material provided by suppliers &
+    Package & Represents packaging of finished products which are made up of boxes, tapes, and other packaging materials &
+    \begin{itemize}
+        \vspace{-1em}
+        \item ID
+        \item Description
+        \item Category\_ID
+    \end{itemize}
+    &  ID \\\hline
+
+    Category & Represents the category of a product, an item or a package &
     \begin{itemize}
         \vspace{-1em}
         \item ID
@@ -150,14 +154,12 @@
     \end{itemize}
     &  ID \\\hline
 
-    %TODO: how to include more products and their quantities and prices?
     Invoice & Represents the invoice associated with the order of a customer &
-        \begin{itemize}
-            \vspace{-1em}
-            \item ID
-            \item Total\_amount     %TODO: derived attribute (remove?)
-            \item Product           %TODO: not sure about "Product" and "Quantity"
-            \item Quantity
-        \end{itemize}
-        &  ID \\\hline
+    \begin{itemize}
+        \vspace{-1em}
+        \item ID
+        \item Total\_amount     %TODO: same info is also inside ORDER
+        \item Order\_ID
+    \end{itemize}
+    &  ID \\\hline
 \end{longtable}
