@@ -102,7 +102,6 @@
         \item Package\_ID
         \item Package\_quantity
         \item Expiration\_date
-        \item Discount      % (0, 1]. 1->fullprice
     \end{itemize}
     &  ID \\\hline
 
@@ -120,7 +119,7 @@
         \vspace{-1em}
         \item ID
         \item Name
-        \item Description
+        \item Description           %Nutritional values
         \item Production\_cost      %Cost of the production for a product
         \item Inflation             %Inflation i.e., price = inflation x production cost
         \item Category\_ID
@@ -141,7 +140,7 @@
         \vspace{-1em}
         \item ID
         \item Description
-        \item Category\_ID
+        \item Category\_ID %Do we shoould also count the quantity of the items by which the package is made of?
     \end{itemize}
     &  ID \\\hline
 
@@ -161,5 +160,16 @@
         \item Total\_amount     %TODO: same info is also inside ORDER
         \item Order\_ID
     \end{itemize}
+    &  ID \\\hline
+
+    Location & Represents the location where the customer resides, or where the company is located &
+        \begin{itemize}
+            \vspace{-1em}
+            \item ID
+            \item City
+            \item Address
+            \item Postal code    %TODO: add the foreign key of the other 3 entities: employee, customer and supplier
+            \item Region
+        \end{itemize}
     &  ID \\\hline
 \end{longtable}
