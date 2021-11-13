@@ -3,47 +3,19 @@
 \textbf{Relationship} & \textbf{Description} & \textbf{Component Entities} & \textbf{Attributes} \\\hline
 
 
-Has & Relates each employee to a role & \begin{itemize}
+Have & Relates each employee to a role & \begin{itemize}
         \vspace{-1em}
         \item Employee (0,1)
         \item Role (0,N)
     \end{itemize}
  &  None \\\hline
  
-Belongs to (1) & Assigns each employee to a department & \begin{itemize}
+Work & Assigns each employee to a department & \begin{itemize}
         \vspace{-1em}
         \item Employee (0,1)
         \item Department (0,N)
     \end{itemize}
  &  None \\\hline
-
-Stocked into & Specifies the items and product stocked in the inventory & \begin{itemize}
-	\vspace{-1em}
-	\item Item (1,1)
-	\item Product (0,N)
-\end{itemize}
-&  None \\\hline
-
-Belongs to (3) & Links product to the category  & \begin{itemize}
-	\vspace{-1em}
-	\item Product (0,1)
-	\item Category (0,N)
-\end{itemize}
-&  None \\\hline
-
-Belongs to (2) & Links item to the category & \begin{itemize}
-	\vspace{-1em}
-	\item Item (0,1)
-	\item Category (0,N)
-\end{itemize}
-&  None \\\hline
-
-Made up of & Describes which items are involved into creation to the product & \begin{itemize}
-	\vspace{-1em}
-	\item Item (0,N)
-	\item Product (1,1)
-\end{itemize}
-&  None \\\hline
 
 Stipulate & Links the supplier with the company and the contract stipulated  & \begin{itemize}
 	\vspace{-1em}
@@ -53,12 +25,13 @@ Stipulate & Links the supplier with the company and the contract stipulated  & \
 	\end{itemize}
 &  None\\\hline
 
-Specifies & Describes which items are provided by a contract  & \begin{itemize}
+Place & Links the order made by the employee & \begin{itemize}
 	\vspace{-1em}
-	\item Contract (0,N)
-	\item Item (0,N)
-	\end{itemize}
-&  None\\\hline
+	\item Employee (0,N)
+	\item Order (1,1)
+	\item Customer (0,N)	
+\end{itemize}
+&  None \\\hline
 
 Ships & Relates the employee shipping the order with the order itself and the shipment details & \begin{itemize}
 	\vspace{-1em}
@@ -67,24 +40,63 @@ Ships & Relates the employee shipping the order with the order itself and the sh
 \end{itemize}
 &  Tracking number \\\hline
 
-Place & Links the order made by the employee & \begin{itemize}
+Specify & Describes which items are provided by a contract  & \begin{itemize}
 	\vspace{-1em}
-	\item Employee (0,N)
-	\item Order (1,1)
+	\item Contract (1,N)
+	\item Item (1,N)
+	\end{itemize}
+&  None\\\hline
+
+Belongs to (1) & Links item to the category  & \begin{itemize}
+	\vspace{-1em}
+	\item Item (1,1)
+	\item Item\_Category (0,N)
 \end{itemize}
 &  None \\\hline
 
-Associated & Associated the payement to the order & \begin{itemize}
+
+Belongs to (2) & Product item to the category & \begin{itemize}
 	\vspace{-1em}
-	\item Invoice (1,1)
-	\item Order (1,N)
+	\item Product (1,1)
+	\item Product\_Category (0,N)
 \end{itemize}
 &  None \\\hline
+
+Belongs to (3) & Package product to the category  & \begin{itemize}
+	\vspace{-1em}
+	\item Package (1,1)
+	\item Package\_Category (0,N)
+\end{itemize}
+&  None \\\hline
+
+Made up of (1) & Describes which items are involved into creation to the product & \begin{itemize}
+	\vspace{-1em}
+	\item Item (0,N)
+	\item Product (1,N)
+\end{itemize}
+&  None \\\hline
+
+Made up of (2) & Describes which items are involved into creation to the package & \begin{itemize}
+	\vspace{-1em}
+	\item Item (0,N)
+	\item Package (1,N)
+\end{itemize}
+&  None \\\hline
+
+
+Stocked  & Specifies the items and product stocked in the inventory & \begin{itemize}
+	\vspace{-1em}
+	\item Package (0,N)
+	\item Product (0,N)
+	\item Lot (1,N)
+\end{itemize}
+&  None \\\hline
+
 
 Draws from & Associates the order and the lot & \begin{itemize}
 	\vspace{-1em}
-	\item Order (1,N)
-	\item Lot (0,N)
+	\item Order (0,N)
+	\item Lot (0,1)
 \end{itemize}
 &  None \\\hline
 
