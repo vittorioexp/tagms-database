@@ -79,7 +79,7 @@
         \vspace{-1em}
         \item ID:   order ID, serial
         \item Order\_date:   date in which the order has been processed, datetime
-        \item Payment\_status:   status of the payment, boolean
+        \item Order\_paid:   status of the payment, boolean
         \item Net\_price:   total amount including discount(VAT excluded), float    %net_price = for each lot { lot_price * (1 - discount / 100) }
         \item Taxes:   total amount of taxes to be payed, float                     %taxes = for each lot { lot_price * (vat / 100) }
                                                                                     %Total_amount = net_price + taxes
