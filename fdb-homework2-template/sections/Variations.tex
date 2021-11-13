@@ -1,3 +1,20 @@
 \subsection{Variations to the Requirement Analysis}
 
 There are no relevant variations to Requirements Analysis.
+
+An employee must necessarily have one and only one role. A role is typically associated with multiple employees but may not have any. For example, the "intern" role is created but without having hired anyone in that position yet.
+
+An employee must work in at least one department. Each department can have multiple workers, but none if the department is new and newly created.
+
+A manager can stipulate one or more contracts with many suppliers. A supplier can stipulate many contracts with the manager as well, but a new supplier can also not have stipulated anything yet.
+
+Each contract specifies one or more items (e.g., ingredients, packaging materials, ...) and the respective quantity. An item can be specified in at least one contract, so it can be provided by many different suppliers. Each item belongs to only one item category, and to an item category can belong zero or many products.
+
+A product, which is a finished good ready to be sold, is made up of one or more items (e.g., one glass bottle, a hundred grams of sugar, a hundred milliliters of water, ...) with the respective quantities. Consequently, an item can be utilized in many products (also none if, for example, the item is brand new). Each product belongs to one and only one product category, that is used to distinguish them. To a product category can belong zero or many products.
+
+A package is composed by one or more packaging materials (i.e., an item used for packaging, such as a box, a meter of plastic tape, a kilogram of polystyrene, …) with the respective quantities. Consequently, an item (e.g., packaging material in this case) can be utilized in many packages (also none if, for example, the item is brand new). Each package belongs to one and only one package category, that is used to distinguish them. To a package category can belong zero or many packages.
+
+In a lot they can be stocked one or more products (i.e., only one type of product in a certain quantity) and one or more packages (i.e., only one type of package in a certain quantity). Each product can be stocked in many lots (in none if, for example, the product is brand new) and the same holds true for packages.
+
+The customer decides with the seller regarding the products to be bought. The salesman, then, after communicating the products (with respective quantity) to the warehouse worker, will place the order only when all lots are ready. A seller can place zero or many orders for a customer, so a customer can make many order (none if, for example, the customer is new). An order can be place by only one salesman for only one customer. An order includes one or more lots. Each lot can be included by only one order (none if the lot is produced in advanced and waiting to be ordered).
+When the order is ready, a worker will ship it: a worker can ship zero or many orders, and an order can be shipped by at most one worker (none if the order is waiting to be shipped).
