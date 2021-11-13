@@ -5,24 +5,24 @@
     Employee & Represents data of an employee who works in the company and needs access to the system &
     \begin{itemize}
         \vspace{-1em}
-        \item Badge\_number:   badge id of the employee, serial
+        \item TAX\_number:   TAX code of the employee as badge ID, text
         \item First\_name:   name of the employee, text
         \item Last\_name:   surname of the employee, text
         \item Phone\_number:   phone number of the employee, int
         \item Email\_address:   email address of the employee, text
-        \item Gender:   gender of the employee, bit
+        \item Gender:   gender of the employee, boolean
         \item Birth\_date:   birth date of the employee, datetime
         \item Hiring\_date:   hiring date of the employee, text
         \item Role\_ID:   role identifier, int
         \item Department\_ID:   department identifier, int
     \end{itemize}
-    &  Badge\_number \\\hline
+    &  TAX\_number \\\hline
 
     Role & Represents data on the role of employees who work in the company &
     \begin{itemize}
         \vspace{-1em}
         \item ID:   role ID of the employee, serial
-        \item Name:   name o the role, text
+        \item Name:   name of the role, text
         \item Description:   technical description of the role, text
     \end{itemize}
     &  ID \\\hline
@@ -39,137 +39,140 @@
     Customer & Represents data about a customer of the company &
     \begin{itemize}
         \vspace{-1em}
-        \item ID:   customer ID, serial       %TODO: should we use the email as primate key?
+        \item ID:   ID of the customer tat can be the TAX code or the VAT number, text
         \item Customer\_name:   name of the customer, text
         \item Phone\_number:   phone number of the customer, int
         \item Email\_address:   email address of the customer, text
-        \item Address:   %TODO: dobbiamo collegarlo all'entità location?
+        \item Address:   billing address of the customer, text
         \item Registration\_date:   customer registration date in the database, datetime
     \end{itemize}
     &  ID \\\hline
 
+    %TODO: Load analysis: quantity in the contract entity vs quantity in the item entity
     Contract & Represents data about a contract stipulated between a supplier and a manager for the supply of items &
     \begin{itemize}
         \vspace{-1em}
         \item ID:   contract ID, serial
-        \item Name:   name of the contract, text            %TODO: what do you mean with name?
+        \item Type:   type of the contract, text
         \item Description:   description of the contract, text
         \item Contract\_date:    date of signature of the contract with the supplier, datetime
-        \item Supplier\_ID:   supplier ID, serial
-        \item Employee\_ID:   employee ID, serial
+        \item Supplier\_ID:   VAT as supplier ID, int        % length=11
+        \item Employee\_ID:   employee ID, text
     \end{itemize}
     &  ID \\\hline
 
     Supplier & Represents data about a supplier of the company &
     \begin{itemize}
         \vspace{-1em}
-        \item ID:   supplier ID, serial
-        \item Supplier\_name:   name o the supplier company, text
+        \item ID:   VAT number as supplier ID, int
+        \item Supplier\_name:   name of the supplier company, text
         \item Phone\_number:   phone number of the supplier company, int
         \item Email\_address:   email address of the supplier company, text
-        \item Address: %TODO: should we use location entity?
+        \item Address:   address of the supplier company, text
         \item Registration\_date:   recording date of the supplier company, datetime
     \end{itemize}
     &  ID \\\hline
 
+    %External constraint: if we want we can do a load analysis
     Order & Represents the order placed by a salesman for a customer &
     \begin{itemize}
         \vspace{-1em}
         \item ID:   order ID, serial
         \item Order\_date:   date in which the order has been processed, datetime
-        \item Customer\_ID:   customer ID, serial
-        \item Sub\_total:   total amount of the order, float            %tot = for each lot in the order ( production_price x qty of product x inflation / discount )
+        \item Payment\_status:   status of the payment, boolean
+        \item Net\_price:   total amount including discount(VAT excluded), float    %net_price = for each lot { lot_price * (1 - discount / 100) }
+        \item Taxes:   total amount of taxes to be payed, float                     %taxes = for each lot { lot_price * (vat / 100) }
+                                                                                    %Total_amount = net_price + taxes
     \end{itemize}
     &  ID \\\hline
 
-    %Payment & Represents the payment made by the customer &
-    %\begin{itemize}
-    %    \vspace{-1em}
-    %    \item ID
-    %    \item Payment\_method
-    %    \item Payment\_status
-    %    \item Invoice\_ID
-    %    \item Order\_ID
-    %\end{itemize}
-    %&  ID \\\hline
-
+    %External constraints: discount[0-100] set by the company. VAT may vary over time. vat [0-100]
     Lot & Represents the inventory of the company, containing products and items &
     \begin{itemize}
         \vspace{-1em}
         \item ID:   lot ID, serial
+        \item Order\_ID:   order ID, serial     %TODO: is it correct?
         \item Product\_ID:   product ID, serial
         \item Product\_quantity:   quantity of the produced product, int
-        \item Package\_ID:   package ID related to rhe specific lot, serial
+        \item Package\_ID:   package ID related to the specific lot, serial
         \item Package\_quantity:   lot packaging quantity, int
         \item Expiration\_date:   expiration date of the specific product, datetime
+        \item Lot\_price:   lot price without the discount, float
+        \item Lot\_discount:   total discount of a specific lot, int
+        \item VAT:   value added tax at the time o sale, int
     \end{itemize}
     &  ID \\\hline
-
-    %Storage & Represents the physical storages that contain the elements present in the inventory &
-    %    \begin{itemize}
-    %        \vspace{-1em}
-    %        \item ID
-    %        \item Name
-    %        \item Location
-    %    \end{itemize}
-    %&  ID \\\hline
 
     Product & Represents the final product that is marketed &
     \begin{itemize}
         \vspace{-1em}
-        \item ID
-        \item Name
-        \item Description           %Nutritional values
-        \item Production\_cost      %Cost of the production for a product
-        \item Inflation             %Inflation i.e., price = inflation x production cost
-        \item Category\_ID
+        \item ID:   product ID, serial
+        \item Name:   name of the product, text
+        \item Energy:   energy nutritional value, float
+        \item Fat:   fat nutritional value, float
+        \item Saturated fatty acids:   saturated fatty acids nutritional value, float
+        \item Carbohydrates:   carbohydrates nutritional value, float
+        \item Sugar:   sugar nutritional value, float
+        \item Protein:   protein nutritional value, float
+        \item Salt:   salt nutritional value, float
+        \item Net\weight:   net weight of the product, float
+        \item Package\_weight:   gross weight of the product, float
+        \item Production\_cost:   cost of the production for a product, float
+        \item Inflation:   price increase factor, float                         %product_price = inflation x production_cost
+        \item Category\_ID:   category of the product, serial
     \end{itemize}
     &  ID \\\hline
 
+    % External constraint: There is no expiration date because we assume that item are used very fast. We take this into account in the expiration date of the product
     Item & Represents materials provided by suppliers from which the final products will be produced &
     \begin{itemize}
         \vspace{-1em}
-        \item ID
-        \item Description
-        \item Category\_ID
+        \item ID:   ID of the item, int
+        \item Description:   description of the item, text
+        \item Category\_ID:   ID of the category group, serial
+        \item Quantity:   quantity of the specific item, int
     \end{itemize}
     &  ID \\\hline
 
+    %External constraint: measure unite in cm and g
     Package & Represents packaging of finished products which are made up of boxes, tapes, and other packaging materials &
     \begin{itemize}
         \vspace{-1em}
-        \item ID
-        \item Description
-        \item Category\_ID %Do we shoould also count the quantity of the items by which the package is made of?
+        \item ID:   ID of the package, serial
+        \item Description:   description o the package, text
+        \item Weight:   weight dimension of the package, int
+        \item Height:   height dimension of the package, int
+        \item Width:   width dimension of the package, int
+        \item Depth:   depth dimension of the package, int
+        \item Package\_Category\_ID:   ID of the package category, serial
     \end{itemize}
     &  ID \\\hline
 
-    Category & Represents the category of a product, an item or a package &
-    \begin{itemize}
-        \vspace{-1em}
-        \item ID
-        \item Name
-        \item Description
-    \end{itemize}
-    &  ID \\\hline
-
-    Invoice & Represents the invoice associated with the order of a customer &
-    \begin{itemize}
-        \vspace{-1em}
-        \item ID
-        \item Total\_amount     %TODO: same info is also inside ORDER
-        \item Order\_ID
-    \end{itemize}
-    &  ID \\\hline
-
-    Location & Represents the location where the customer resides, or where the company is located &
+    Product\_Category & Represents the category of a product, an item or a package &
         \begin{itemize}
             \vspace{-1em}
-            \item ID
-            \item City
-            \item Address
-            \item Postal code    %TODO: add the foreign key of the other 3 entities: employee, customer and supplier
-            \item Region
+            \item ID:   ID of the product category, int
+            \item Name:   name of the product category, text
+            \item Description:   description of the product category, text
         \end{itemize}
     &  ID \\\hline
+
+    Item\_Category & Represents the category of a product, an item or a package &
+        \begin{itemize}
+            \vspace{-1em}
+            \item ID:   ID of the item category, int
+            \item Name:   name of the item category, text
+            \item Description:   description of the item category, text
+        \end{itemize}
+    &  ID \\\hline
+
+    Package\_Category & Represents the category of a product, an item or a package &
+        \begin{itemize}
+            \vspace{-1em}
+            \item ID:   ID of the package category, int
+            \item Name:   name of the package category, text
+            \item Description:   description of the package category, text
+        \end{itemize}
+    &  ID \\\hline
+
 \end{longtable}
