@@ -5,14 +5,14 @@
 
 Have & Relates each employee to a role & \begin{itemize}
         \vspace{-1em}
-        \item Employee (0,1)
+        \item Employee (1,1)
         \item Role (0,N)
     \end{itemize}
  &  None \\\hline
  
 Work & Assigns each employee to a department & \begin{itemize}
         \vspace{-1em}
-        \item Employee (0,1)
+        \item Employee (1,1)
         \item Department (0,N)
     \end{itemize}
  &  None \\\hline
@@ -49,7 +49,7 @@ Specify & Describes which items are provided by a contract  & \begin{itemize}
 
 Belongs to (1) & Links item to the category  & \begin{itemize}
 	\vspace{-1em}
-	\item Item (0,1)
+	\item Item (1,1)
 	\item Item\_Category (0,N)
 \end{itemize}
 &  None \\\hline
@@ -57,14 +57,14 @@ Belongs to (1) & Links item to the category  & \begin{itemize}
 
 Belongs to (2) & Product item to the category & \begin{itemize}
 	\vspace{-1em}
-	\item Product (0,1)
+	\item Product (1,1)
 	\item Product\_Category (0,N)
 \end{itemize}
 &  None \\\hline
 
 Belongs to (3) & Package product to the category  & \begin{itemize}
 	\vspace{-1em}
-	\item Package (0,1)
+	\item Package (1,1)
 	\item Package\_Category (0,N)
 \end{itemize}
 &  None \\\hline
