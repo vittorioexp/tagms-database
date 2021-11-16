@@ -52,7 +52,6 @@
     \begin{itemize}
         \vspace{-1em}
         \item ID:   contract ID, serial
-        \item Type:   type of the contract, text
         \item Description:   description of the contract, text
         \item Contract\_date:    date of signature of the contract with the supplier, datetime
         \item Expiration\_date:    expiration date of the contract with the supplier, datetime
@@ -71,7 +70,7 @@
         \item Address:   address of the supplier company, text
         \item Registration\_date:   recording date of the supplier company, datetime
     \end{itemize}
-    &  Emai\_address \\\hline
+    &  VAT\_number \\\hline
 
     %External constraint: if we want we can do a load analysis
     Order & Represents the order placed by a salesman for a customer &
@@ -108,6 +107,7 @@
         \vspace{-1em}
         \item ID:   product ID, serial
         \item Name:   name of the product, text
+        \item Description:   description of the product, text
         \item Energy:   energy nutritional value, float
         \item Fat:   fat nutritional value, float
         \item Saturated fatty acids:   saturated fatty acids nutritional value, float
@@ -128,6 +128,7 @@
     \begin{itemize}
         \vspace{-1em}
         \item ID:   ID of the item, int
+        \item Name:   name of the item, text
         \item Description:   description of the item, text
         \item Category\_ID:   ID of the category group, serial
         \item Quantity:   quantity of the specific item, int
@@ -139,7 +140,8 @@
     \begin{itemize}
         \vspace{-1em}
         \item ID:   ID of the package, serial
-        \item Description:   description o the package, text
+        \item Name:   name of the package, text
+        \item Description:   description of the package, text
         \item Weight:   weight dimension of the package, int
         \item Height:   height dimension of the package, int
         \item Width:   width dimension of the package, int

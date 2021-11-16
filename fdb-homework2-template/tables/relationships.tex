@@ -33,12 +33,19 @@ Place & Links the order made by the employee & \begin{itemize}
 \end{itemize}
 &  None \\\hline
 
-Ships & Relates the employee shipping the order with the order itself and the shipment details & \begin{itemize}
+Ships & Relates the employee shipping the order with the order itself and the shipment details &
+\begin{itemize}
 	\vspace{-1em}
 	\item Employee (0,N)
 	\item Order (0,1)
 \end{itemize}
-&  Tracking number \\\hline
+&
+ \begin{itemize}
+ 	\vspace{-1em}
+ 	\item Track\_num
+ 	\item Shipping\_date
+ \end{itemize}
+ \\\hline
 
 Specify & Describes which items are provided by a contract  & \begin{itemize}
 	\vspace{-1em}
