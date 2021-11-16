@@ -72,7 +72,7 @@
     \end{itemize}
     &  VAT\_number \\\hline
 
-    %External constraint: if we want we can do a load analysis
+    %TODO:Load analysis: if we want we can do a load analysis
     Order & Represents the order placed by a salesman for a customer &
     \begin{itemize}
         \vspace{-1em}
@@ -85,7 +85,7 @@
     \end{itemize}
     &  ID \\\hline
 
-    %External constraints: discount[0-100] set by the company. VAT may vary over time. vat [0-100]
+
     Lot & Represents the inventory of the company, containing products and items &
     \begin{itemize}
         \vspace{-1em}
@@ -124,7 +124,6 @@
     \end{itemize}
     &  ID \\\hline
 
-    % External constraint: There is no expiration date because we assume that item are used very fast. We take this into account in the expiration date of the product
     Item & Represents materials provided by suppliers from which the final products will be produced &
     \begin{itemize}
         \vspace{-1em}
@@ -136,7 +135,6 @@
     \end{itemize}
     &  ID \\\hline
 
-    %External constraint: measure units in cm and g
     Package & Represents packaging of finished products which are made up of boxes, tapes, and other packaging materials &
     \begin{itemize}
         \vspace{-1em}
