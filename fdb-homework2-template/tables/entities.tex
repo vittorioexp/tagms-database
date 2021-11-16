@@ -5,14 +5,14 @@
     Employee & Represents data of an employee who works in the company and needs access to the system &
     \begin{itemize}
         \vspace{-1em}
-        \item TAX\_number:   TAX code of the employee as badge ID, text
+        \item TAX\_number:   TAX code of the employee, text
         \item First\_name:   name of the employee, text
         \item Last\_name:   surname of the employee, text
-        \item Phone\_number:   phone number of the employee, int
+        \item Phone\_number:   phone number (prefix included) of the employee, text
         \item Email\_address:   email address of the employee, text
-        \item Birth\_date:   birth date of the employee, datetime
+        \item Birth\_date:   birthdate of the employee, datetime
         \item Hiring\_date:   hiring date of the employee, datetime
-        \item Still\_working: To know if employee is still working for the company, boolean
+        \item Still\_working: flag used to know if employee is still working for the company, boolean
         \item Role\_ID:   role identifier, int
         \item Department\_ID:   department identifier, int
     \end{itemize}
@@ -21,7 +21,7 @@
     Role & Represents data on the role of employees who work in the company &
     \begin{itemize}
         \vspace{-1em}
-        \item ID:   role ID of the employee, serial
+        \item ID:   role identifier, serial
         \item Name:   name of the role, text
         \item Description:   technical description of the role, text
     \end{itemize}
@@ -30,7 +30,7 @@
     Department & Represents data on the departments in which employees work &
     \begin{itemize}
         \vspace{-1em}
-        \item ID:   department ID of the company, serial
+        \item ID:   department identifier of the company, serial
         \item Name:   name of the department, text
         \item Description:   description of the department's function, text
     \end{itemize}
@@ -39,9 +39,9 @@
     Customer & Represents data about a customer of the company &
     \begin{itemize}
         \vspace{-1em}
-        \item Customer\_name:   name of the customer, text
-        \item Phone\_number:   phone number of the customer, int
         \item Email\_address:   email address of the customer, text
+        \item Customer\_name:   name of the customer, text
+        \item Phone\_number:   phone number (prefix included) of the customer, text
         \item Address:   billing address of the customer, text
         \item Registration\_date:   customer registration date in the database, datetime
     \end{itemize}
@@ -51,21 +51,21 @@
     Contract & Represents data about a contract stipulated between a supplier and a manager for the supply of items &
     \begin{itemize}
         \vspace{-1em}
-        \item ID:   contract ID, serial
+        \item ID:   contract identifier, serial
         \item Description:   description of the contract, text
         \item Contract\_date:    date of signature of the contract with the supplier, datetime
         \item Expiration\_date:    expiration date of the contract with the supplier, datetime
-        \item Supplier\_ID:   VAT as supplier ID, int        % length=11
-        \item Employee\_ID:   employee ID, text
+        \item Supplier\_ID:   supplier identifier, int        % length=11
+        \item Employee\_ID:   employee identifier, text
     \end{itemize}
     &  ID \\\hline
 
     Supplier & Represents data about a supplier of the company &
     \begin{itemize}
         \vspace{-1em}
-        \item VAT\_number:   VAT number of supplier, int
+        \item VAT\_number:   VAT number of the supplier company, int
         \item Supplier\_name:   name of the supplier company, text
-        \item Phone\_number:   phone number of the supplier company, int
+        \item Phone\_number:   phone number (prefix included) of the supplier company, text
         \item Email\_address:   email address of the supplier company, text
         \item Address:   address of the supplier company, text
         \item Registration\_date:   recording date of the supplier company, datetime
@@ -76,10 +76,10 @@
     Order & Represents the order placed by a salesman for a customer &
     \begin{itemize}
         \vspace{-1em}
-        \item ID:   order ID, serial
+        \item ID:   order identifier, serial
         \item Order\_date:   date in which the order has been processed, datetime
         \item Order\_paid:   status of the payment, boolean
-        \item Net\_price:   total amount including discount(VAT excluded), float    %net_price = for each lot { lot_price * (1 - discount / 100) }
+        \item Net\_price:   total net amount including discount (VAT excluded), float    %net_price = for each lot { lot_price * (1 - discount / 100) }
         \item Taxes:   total amount of taxes to be payed, float                     %taxes = for each lot { lot_price * (vat / 100) }
                                                                                     %Total_amount = net_price + taxes
     \end{itemize}
@@ -89,37 +89,38 @@
     Lot & Represents the inventory of the company, containing products and items &
     \begin{itemize}
         \vspace{-1em}
-        \item ID:   lot ID, serial
-        \item Order\_ID:   order ID, serial     %TODO: is it correct?
-        \item Product\_ID:   product ID, serial
-        \item Product\_quantity:   quantity of the produced product, int
-        \item Package\_ID:   package ID related to the specific lot, serial
+        \item ID:   lot identifier, serial
+        \item Order\_ID:   identifier of the associated order, serial     %TODO: is it correct?
+        \item Product\_ID:   identifier of the included product, serial
+        \item Product\_quantity:   quantity of the included product, int
+        \item Package\_ID:   package identifier related to the specific lot, serial
         \item Package\_quantity:   lot packaging quantity, int
-        \item Expiration\_date:   expiration date of the specific product, datetime
-        \item Lot\_price:   lot price without the discount, float
-        \item Lot\_discount:   total discount of a specific lot, int
-        \item VAT:   value added tax at the time of sale, int
+        \item Expiration\_date:   expiration date of the included products, datetime
+        \item Lot\_price:   lot price (without the discount) at the time of sale, float
+        \item Lot\_discount:   percentage of discount of a lot, int
+        \item VAT:   value added tax (percentage) at the time of sale, int
     \end{itemize}
     &  ID \\\hline
 
     Product & Represents the final product that is marketed &
     \begin{itemize}
         \vspace{-1em}
-        \item ID:   product ID, serial
+        \item ID:   product identifier, serial
         \item Name:   name of the product, text
         \item Description:   description of the product, text
-        \item Energy:   energy nutritional value, float
-        \item Fat:   fat nutritional value, float
-        \item Saturated fatty acids:   saturated fatty acids nutritional value, float
-        \item Carbohydrates:   carbohydrates nutritional value, float
-        \item Sugar:   sugar nutritional value, float
-        \item Protein:   protein nutritional value, float
-        \item Salt:   salt nutritional value, float
-        \item Net\_weight:   net weight of the product, float
-        \item Package\_weight:   gross weight of the product, float
+        \item Energy:   energy nutritional value (kJ per 100ml), float
+        \item Fat:   fat nutritional value (grams per 100ml), float
+        \item Saturated fatty acids:   saturated fatty acids nutritional value (grams per 100ml), float
+        \item Carbohydrates:   carbohydrates nutritional value (grams per 100ml), float
+        \item Sugar:   sugar nutritional value (grams per 100ml), float
+        \item Protein:   protein nutritional value (grams per 100ml), float
+        \item Salt:   salt nutritional value (grams per 100ml), float
+        \item Volume:   volume of the product in milliliters, int
+        \item Net\_weight:   net weight of the product in grams, int
+        \item Package\_weight:   package weight of the product in grams, int
         \item Production\_cost:   cost of the production for a product, float
         \item Inflation:   price increase factor, float                         %product_price = inflation x production_cost
-        \item Product\Category\_ID:   ID of the product category, int
+        \item Product\_Category\_ID:   identifier of the product category, int
     \end{itemize}
     &  ID \\\hline
 
@@ -127,11 +128,11 @@
     Item & Represents materials provided by suppliers from which the final products will be produced &
     \begin{itemize}
         \vspace{-1em}
-        \item ID:   ID of the item, int
+        \item ID:   identifier of the item, serial
         \item Name:   name of the item, text
         \item Description:   description of the item, text
-        \item Item\Category\_ID:   ID of the item category, int
-        \item Quantity:   quantity of the specific item, int
+        \item Quantity:   stock quantity of the item (automatically updates), int
+        \item Item\_Category\_ID:   identifier of the item category, int
     \end{itemize}
     &  ID \\\hline
 
@@ -139,39 +140,39 @@
     Package & Represents packaging of finished products which are made up of boxes, tapes, and other packaging materials &
     \begin{itemize}
         \vspace{-1em}
-        \item ID:   ID of the package, serial
+        \item ID:   identifier of the package, serial
         \item Name:   name of the package, text
         \item Description:   description of the package, text
-        \item Weight:   weight dimension of the package, int
-        \item Height:   height dimension of the package, int
-        \item Width:   width dimension of the package, int
-        \item Depth:   depth dimension of the package, int
-        \item Package\_Category\_ID:   ID of the package category, int
+        \item Weight:   weight dimension of the package in grams, int
+        \item Height:   height dimension of the package in centimeters, int
+        \item Width:   width dimension of the package in centimeters, int
+        \item Depth:   depth dimension of the package in centimeters, int
+        \item Package\_Category\_ID:   identifier of the package category, int
     \end{itemize}
     &  ID \\\hline
 
     Product\_Category & Represents the category of a product, an item or a package &
         \begin{itemize}
             \vspace{-1em}
-            \item ID:   ID of the product category, int
+            \item ID:   identifier of the product category, serial
             \item Name:   name of the product category, text
             \item Description:   description of the product category, text
         \end{itemize}
     &  ID \\\hline
 
-    Item\_Category & Represents the category of a product, an item or a package &
+    Item\_Category & Represents the category of an item &
         \begin{itemize}
             \vspace{-1em}
-            \item ID:   ID of the item category, int
+            \item ID:   identifier of the item category, serial
             \item Name:   name of the item category, text
             \item Description:   description of the item category, text
         \end{itemize}
     &  ID \\\hline
 
-    Package\_Category & Represents the category of a product, an item or a package &
+    Package\_Category & Represents the category of a package &
         \begin{itemize}
             \vspace{-1em}
-            \item ID:   ID of the package category, int
+            \item ID:   identifier of the package category, serial
             \item Name:   name of the package category, text
             \item Description:   description of the package category, text
         \end{itemize}
