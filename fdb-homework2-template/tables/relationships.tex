@@ -54,7 +54,7 @@ Specify & Describes which items are provided by a contract  & \begin{itemize}
 	\end{itemize}
 &  None\\\hline
 
-Belongs to (1) & Links item to the category  & \begin{itemize}
+Belong (1) & Links items to the category  & \begin{itemize}
 	\vspace{-1em}
 	\item Item (1,1)
 	\item Item\_Category (0,N)
@@ -62,28 +62,28 @@ Belongs to (1) & Links item to the category  & \begin{itemize}
 &  None \\\hline
 
 
-Belongs to (2) & Product item to the category & \begin{itemize}
+Belong (2) & Links products to the category & \begin{itemize}
 	\vspace{-1em}
 	\item Product (1,1)
 	\item Product\_Category (0,N)
 \end{itemize}
 &  None \\\hline
 
-Belongs to (3) & Package product to the category  & \begin{itemize}
+Belong (3) & Links packages to the category  & \begin{itemize}
 	\vspace{-1em}
 	\item Package (1,1)
 	\item Package\_Category (0,N)
 \end{itemize}
 &  None \\\hline
 
-Made up of (1) & Describes which items are involved into creation to the product & \begin{itemize}
+Made up of (1) & Describes what items are involved in creating the product & \begin{itemize}
 	\vspace{-1em}
 	\item Item (0,N)
 	\item Product (1,N)
 \end{itemize}
 &  None \\\hline
 
-Made up of (2) & Describes which items are involved into creation to the package & \begin{itemize}
+Made up of (2) & Describes what items are involved in creating the package & \begin{itemize}
 	\vspace{-1em}
 	\item Item (0,N)
 	\item Package (1,N)
@@ -91,7 +91,7 @@ Made up of (2) & Describes which items are involved into creation to the package
 &  None \\\hline
 
 
-Stocked  & Specifies the items and product stocked in the inventory & \begin{itemize}
+Stocked  & Specifies the products and packages stocked in the lots & \begin{itemize}
 	\vspace{-1em}
 	\item Package (0,N)
 	\item Product (0,N)
@@ -100,7 +100,7 @@ Stocked  & Specifies the items and product stocked in the inventory & \begin{ite
 &  None \\\hline
 
 
-Draws from & Associates the order and the lot & \begin{itemize}
+Draws from & Associates the lots to an order & \begin{itemize}
 	\vspace{-1em}
 	\item Order (1,N)
 	\item Lot (0,1)
