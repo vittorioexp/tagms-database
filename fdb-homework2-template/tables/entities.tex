@@ -98,7 +98,7 @@
         \item Expiration\_date:   expiration date of the specific product, datetime
         \item Lot\_price:   lot price without the discount, float
         \item Lot\_discount:   total discount of a specific lot, int
-        \item VAT:   value added tax at the time o sale, int
+        \item VAT:   value added tax at the time of sale, int
     \end{itemize}
     &  ID \\\hline
 
@@ -119,7 +119,7 @@
         \item Package\_weight:   gross weight of the product, float
         \item Production\_cost:   cost of the production for a product, float
         \item Inflation:   price increase factor, float                         %product_price = inflation x production_cost
-        \item Category\_ID:   category of the product, serial
+        \item Product\Category\_ID:   ID of the product category, int
     \end{itemize}
     &  ID \\\hline
 
@@ -130,7 +130,7 @@
         \item ID:   ID of the item, int
         \item Name:   name of the item, text
         \item Description:   description of the item, text
-        \item Category\_ID:   ID of the category group, serial
+        \item Item\Category\_ID:   ID of the item category, int
         \item Quantity:   quantity of the specific item, int
     \end{itemize}
     &  ID \\\hline
@@ -146,7 +146,7 @@
         \item Height:   height dimension of the package, int
         \item Width:   width dimension of the package, int
         \item Depth:   depth dimension of the package, int
-        \item Package\_Category\_ID:   ID of the package category, serial
+        \item Package\_Category\_ID:   ID of the package category, int
     \end{itemize}
     &  ID \\\hline
 
