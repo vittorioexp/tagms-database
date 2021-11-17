@@ -4,11 +4,8 @@
 \item The units of measure used by the company are specified in detail in the entity table.
 \item Employees can only operate in their own department of competence with the role that belongs to them.
 \item Sellers create a profile for new customers. They can also keep track of the order status on their own, also updating the payment status once the bill is settled.
-\item Employees can only ship orders once payment of Customer has been confirmed
-\item Products and Items belong in a specific category and must be added correctly by the Employees
-\item Items must be issued following the First In, First Out Policy
-\item Unit of Measurement are in grams and centimetes
-\item Discount of 0 to 100 depends by the company's capability and Valued Added Tax (VAT) varies overtime
-\item Each lot can have 25, 50, 100 products. So, a customer can make an order of a quantity of products that can be obtained adding lots of these amounts. f.e A customer will not be able to buy 70 unit of a products, he must buy 75 units of a products (A lot of 25 and a lot of 50).
-\item Email Address is considered as the Primary Key of the Customers. With this, email addresses provided can not be changed.
+\item Only the Manager can insert new contracts, so the Employee who takes part in the "stipulate" relationship must have the role equal to "Manager". Only the Salesman can insert new orders, so the Employee who takes part in the "place" relationship must have the role equal to "Seller". Only the Worker can ship orders, so the Employee who takes part in the "ship" relationship must have the role equal to "Worker".
+\item A product must consist of one or more items all having as Item_Category "ingredient" or "container". A package must consist of one or more items all having as Item_Category "box", "plastic tape", "polystyrene", or "other packaging material". %TODO: container is correct?
+\item The quantities of products contained in a lot belong to a finite set (e.g. 25, 50, 100), so the customer cannot order an arbitrary quantity of products.
+\item The email addresses provided by customers cannot be changed as they are primary keys.
 \end{itemize}
