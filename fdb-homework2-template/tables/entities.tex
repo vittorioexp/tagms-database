@@ -13,8 +13,6 @@
         \item Birth\_date:   birthdate of the employee, datetime
         \item Hiring\_date:   hiring date of the employee, datetime
         \item Still\_working: flag used to know if employee is still working for the company, boolean
-        \item Role\_ID:   role identifier, serial
-        \item Department\_ID:   department identifier, serial
     \end{itemize}
     &  TAX\_number \\\hline
 
@@ -55,8 +53,6 @@
         \item Description:   description of the contract, text
         \item Contract\_date:    date of signature of the contract with the supplier, datetime
         \item Expiration\_date:    expiration date of the contract with the supplier, datetime
-        \item Supplier\_ID:   supplier identifier, serial        % length=11
-        \item Employee\_ID:   employee identifier, text
     \end{itemize}
     &  ID \\\hline
 
@@ -90,10 +86,7 @@
     \begin{itemize}
         \vspace{-1em}
         \item ID:   lot identifier, serial
-        \item Order\_ID:   identifier of the associated order, serial     %TODO: is it correct?
-        \item Product\_ID:   identifier of the included product, serial
         \item Product\_quantity:   quantity of the included product, int
-        \item Package\_ID:   package identifier related to the specific lot, serial
         \item Package\_quantity:   lot packaging quantity, int
         \item Expiration\_date:   expiration date of the included products, datetime
         \item Lot\_price:   lot price (without the discount) at the time of sale, float
@@ -122,7 +115,6 @@
         \item Package\_weight:   package weight of the product in grams, int
         \item Production\_cost:   cost of the production for a product, float
         \item Inflation:   price increase factor, float                         %product_price = inflation x production_cost
-        \item Product\_Category\_ID:   identifier of the product category, serial
     \end{itemize}
     &  ID \\\hline
 
@@ -133,7 +125,6 @@
         \item Name:   name of the item, text
         \item Description:   description of the item, text
         \item Quantity:   stock quantity of the item (automatically updates), int
-        \item Item\_Category\_ID:   identifier of the item category, serial
     \end{itemize}
     &  ID \\\hline
 
@@ -147,7 +138,6 @@
         \item Height:   height dimension of the package in centimeters, int
         \item Width:   width dimension of the package in centimeters, int
         \item Depth:   depth dimension of the package in centimeters, int
-        \item Package\_Category\_ID:   identifier of the package category, serial
     \end{itemize}
     &  ID \\\hline
 
