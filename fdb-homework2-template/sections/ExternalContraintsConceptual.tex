@@ -7,6 +7,5 @@
 \item Only the Manager can insert new contracts, so the Employee who takes part in the "stipulate" relationship must have the role equal to "Manager". Only the Salesman can insert new orders, so the Employee who takes part in the "place" relationship must have the role equal to "Seller". Only the Worker can ship orders, so the Employee who takes part in the "ship" relationship must have the role equal to "Worker".
 \item A product must consist of one or more items all having as Item\_Category "ingredient" or "container". A package must consist of one or more items all having as Item\_Category "box", "plastic tape", "polystyrene", or "other packaging material". %TODO: container is correct?
 \item The quantities of products contained in a lot belong to a finite set (e.g. 25, 50, 100), so the customer cannot order an arbitrary quantity of products.
-\item The email addresses provided by customers cannot be changed as they are primary keys.
 \item Only Items ordered and specified in the Contract for the month will be accepted during delivery. Items not ordered will be rejected by the Employees
 \end{itemize}
