@@ -2,13 +2,22 @@
 \hline
 \textbf{Relation} & \textbf{Attribute} & \textbf{Description} & \textbf{Domain} & \textbf{Constraints} \\\hline
 
+\multirow{3}{*}{Made up of (1)} & Quantity & Amount of each item in a product & Int &  \\\cline{2-5}
+& ID & Identifier of a product & Serial & \\\cline{2-5}
+& ID & Identifier of an item & Serial & \\\hline
 
-\multirow{4}{*}{Relation 1} & & & & \\\cline{2-5}
-& & & & \\\cline{2-5}
-& & & & \\\cline{2-5}
-& & & & \\\hline
+\multirow{3}{*}{Made up of (2)} & Quantity & Amount of each item in a package & Int &  \\\cline{2-5}
+& ID & Identifier of a package & Serial & \\\cline{2-5}
+& ID & Identifier of an item & Serial & \\\hline
 
-\multirow{2}{*}{Relation 1} & & & & \\\cline{2-5}
-& & & & \\\hline
+
+\multirow{2}{*}{Belong (1)} & ID & Identifier of an item & Serial & \\\cline{2-5}
+& ID & Identifier of an Item Category & Serial & \\\hline
+
+\multirow{2}{*}{Belong (2)} & ID & Identifier of a product & Serial & \\\cline{2-5}
+& ID & Identifier of a Product Category & Serial & \\\hline
+
+\multirow{2}{*}{Belong (3)} & ID & Identifier of a package & Serial & \\\cline{2-5}
+& ID & Identifier of a Package Category & Serial & \\\hline
 
 \end{longtable}
