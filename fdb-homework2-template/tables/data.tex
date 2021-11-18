@@ -2,27 +2,40 @@
 \hline
 \textbf{Relation} & \textbf{Attribute} & \textbf{Description} & \textbf{Domain} & \textbf{Constraints} \\\hline
 
-\multirow{9}{*}{Product} & ID & Identifier of a product & Serial &  \\\cline{2-5}
-& Name & Name of a product & Text & \\\cline{2-5}
-& Description & Description of a product  & Text & \\\cline{2-5} 
-& Production\_Cost & Cost  of  producing a product & Float & \\\cline{2-5} 
-& Inflation & Price increase factor of a product & Float & \\\cline{2-5} 
-& Volume & Volume of a product in milliliters  & Int & \\\cline{2-5} 
-& Net\_Weight & Net weight of a the product in grams & Int & \\\cline{2-5} 
-& Package\_weight & Package weight of a the product in grams & Int  & \\\cline{2-5} 
-& Nutritional Facts & Description of nutritional facts of a product & Text & \\\hline
+\multirow{9}{*}{Product} & ID & Identifier of a product & Serial &  PRIMARY KEY\\\cline{2-5}
+& Name & Name of a product & Text & NOT NULL \\\cline{2-5}
+& Description & Description of a product  & Text & NOT NULL \\\cline{2-5} 
+& Production\_Cost & Cost  of  producing a product & Float & NOT NULL \\\cline{2-5} 
+& Inflation & Price increase factor of a product & Float & NOT NULL \\\cline{2-5} 
+& Volume & Volume of a product in milliliters  & Int & NOT NULL \\\cline{2-5} 
+& Net\_Weight & Net weight of a the product in grams & Int & NOT NULL \\\cline{2-5} 
+& Package\_weight & Package weight of a the product in grams & Int  & NOT NULL \\\cline{2-5} 
+& Nutritional Facts & Description of nutritional facts of a product & Text & NOT NULL \\\hline
 
-\multirow{3}{*}{Product\_Category} & ID & Identifier of a Product Category & Serial &  \\\cline{2-5}
-& Name & Name of a Product Category & Text & \\\cline{2-5}
-& Description & Description of a Product Category & Text & \\\hline
+\multirow{3}{*}{Product\_Category} & ID & Identifier of a Product Category & Serial & PRIMARY KEY \\\cline{2-5}
+& Name & Name of a Product Category & Text & NOT NULL \\\cline{2-5}
+& Description & Description of a Product Category & Text & NOT NULL \\\hline
 
-\multirow{3}{*}{Item\_Category} & ID & Identifier of an Item Category & Serial &  \\\cline{2-5}
-& Name & Name of an Item Category & Text & \\\cline{2-5}
-& Description & Description of an Item Category & Text & \\\hline
+\multirow{4}{*}{Item} & ID & Identifier of an item  & Serial & PRIMARY KEY \\\cline{2-5}
+& Name & Name of an item & Text & NOT NULL\\\cline{2-5}
+& Description & Description of an item & Text & NOT NULL \\\cline{2-5}
+& Quantity & Stock quantity of an item & Int & NOT NULL \\\hline
 
-\multirow{3}{*}{Package\_Category} & ID & Identifier of a Package Category & Serial &  \\\cline{2-5}
-& Name & Name of a Package Category & Text & \\\cline{2-5}
-& Description & Description of a Package Category & Text & \\\hline
+\multirow{3}{*}{Item\_Category} & ID & Identifier of an Item Category & Serial & PRIMARY KEY \\\cline{2-5}
+& Name & Name of an Item Category & Text & NOT NULL\\\cline{2-5}
+& Description & Description of an Item Category & Text & NOT NULL \\\hline
+
+\multirow{7}{*}{Package} & ID & Identifier of a package & Serial & PRIMARY KEY \\\cline{2-5}
+& Name & Name of a package & Text & NOT NULL \\\cline{2-5}
+& Description & Description of a package & Text & NOT NULL \\\cline{2-5}
+& Weight & Weight of a package in grams & Int & NOT NULL \\\cline{2-5}
+& Height & Height of a package in centimeters & Int & NOT NULL \\\cline{2-5}
+& Width & Width of a package in centimeters & Int & NOT NULL \\\cline{2-5}
+& Depth & Depth of a package in centimeters & Int & NOT NULL \\\hline
+
+\multirow{3}{*}{Package\_Category} & ID & Identifier of a Package Category & Serial & PRIMARY KEY \\\cline{2-5}
+& Name & Name of a Package Category & Text & NOT NULL \\\cline{2-5}
+& Description & Description of a Package Category & Text & NOT NULL \\\hline
 
 \multirow{3}{*}{Made up of (1)} & Quantity & Amount of each item in a product & Int &  \\\cline{2-5}
 & ID & Identifier of a product & Serial & \\\cline{2-5}
