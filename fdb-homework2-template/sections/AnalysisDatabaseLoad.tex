@@ -1,5 +1,6 @@
 \subsection{Analysis of Database Load}
-The load analysis is divided in two parts: the first, to decide whether to store ``lot\_price'' into the ``Lot'' entity, or computing it when necessary via the relationship ``Stocked''; the second,  .
+The load analysis is divided in two parts: the first, to decide whether to store ``lot\_price'' into the ``Lot'' entity, or computing it when necessary via the relationship ``Stocked''; the second, to decide whether to store ``quantity'' into the ``Made up of (2)'' relationship, or computing it when necessary via the relationship ``Made up of (2)''. The second part of the analysis is done also for the other relationship ``Made up of (1)'' and leads to the same results.
+
 \begin{center}
 	\begin{tabular}[!h]{ | c | c | c | c | }
 		\hline
@@ -68,6 +69,7 @@ We can see that $ \textrm{O}_\textrm{1} $, with or without redundancy, necessita
 		\end{tabular}
 	\end{center}
 \end{table}
+\newpage
 \begin{table}[!h]\caption{With redundancy O3}
 	\begin{center}
 		\begin{tabular}{| c | c | c | c | c |}
@@ -100,3 +102,4 @@ We can see that $ \textrm{O}_\textrm{1} $, with or without redundancy, necessita
 		\end{tabular}
 	\end{center}
 \end{table}
+We can see that $ \textrm{O}_\textrm{3} $, with or without redundancy, necessitate the same amount of operations, while from $ \textrm{O}_\textrm{4} $ we can assess that the number of operations without redundancy is tripled with respect to the case with redundancy, as well. Hence, the attribute ``quantity'' of the relationship ``made up of (2)'' should to be kept.
