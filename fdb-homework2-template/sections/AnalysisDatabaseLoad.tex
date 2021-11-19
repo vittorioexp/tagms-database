@@ -1,12 +1,14 @@
 \subsection{Analysis of Database Load}
-The load analysis is divided in two parts: the first, regarding whether to use ``inflation'' and ``production\_cost'' and calculating the final product price on-demand; the second, to decide whether to store ``lot\_price'' into the ``Lot'' entity, or computing it when necessary via the relationship ``Stocked''.
+The load analysis is divided in two parts: the first, regarding whether to use ``inflation'' and ``production\_cost'' and calculating the final product price on-demand (O3/O4); the second, to decide whether to store ``lot\_price'' into the ``Lot'' entity, or computing it when necessary via the relationship ``Stocked'' (O1/02).
 
 \begin{center}
 	\begin{tabular}[!h]{ | c | c | c | c | }
 		\hline
 		\textbf{Operation} & \textbf{Description} & \textbf{Frequency} & \textbf{Type} \\ \hline
 		$ \textrm{O}_\textrm{1} $ : Insert new lot & Store data about a newly packaged lot. & 25/week & Online \\ \hline
-		$ \textrm{O}_\textrm{2} $ : Compute order price &  &  & Online \\\hline
+		$ \textrm{O}_\textrm{2} $ : Compute order price  & Compute order price from lot price & 25/week & Online \\\hline
+		$ \textrm{O}_\textrm{3} $ : Create new package & Create new package from items & 100/week & Batch \\\hline
+		$ \textrm{O}_\textrm{4} $ : Compute the quantity & Compute the item quantity needed for creating the package & 7/week & Batch \\\hline
 	\end{tabular}
 \end{center}
 
@@ -28,12 +30,59 @@ The load analysis is divided in two parts: the first, regarding whether to use `
 		\begin{tabular}{| c | c | c | c | c |}
 			\hline
 			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
-			Product & Entity & 1 & R & 1 x 25 x 1 = 25 \\ \hline
 			Lot & Entity & 1 & W & 1 x 25 x 2 = 25 \\ \hline
-			Stocked & Relationship & 1 & W & 1 x 25 x 2 = 25 \\ \hline
-			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{75}} \\ \hline
+			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{25}} \\ \hline
 		\end{tabular}
 	\end{center}
 \end{table}
 
-read product (compute price), write lot, write stocked
+
+
+\begin{table}[!h]\caption{Without redundancy O3}
+	\begin{center}
+		\begin{tabular}{| c | c | c | c | c |}
+			\hline
+			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
+			Package & Entity & 1 & W & 1 x 100 x 2 = 200 \\ \hline
+			Made up of (2) & Relationship & 1 & W & 1 x 100 x 2 = 200 \\ \hline		Item & Entity & 1 & R & 1 x 100 x 1 = 100 \\ \hline		
+			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{300}} \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\begin{table}[!h]\caption{With redundancy O3}
+	\begin{center}
+		\begin{tabular}{| c | c | c | c | c |}
+			\hline
+			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
+			Package & Entity & 1 & W & 1 x 100 x 2 = 200 \\ \hline
+			Made up of (2) & Relationship & 1 & W & 1 x 100 x 2 = 200 \\ \hline		Item & Entity & 1 & R & 1 x 100 x 1 = 100 \\ \hline		
+			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{300}} \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\begin{table}[!h]\caption{Without redundancy O4}
+	\begin{center}
+		\begin{tabular}{| c | c | c | c | c |}
+			\hline
+			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
+			Package & Entity & 1 & R & 1 x 7 x 1 = 7 \\ \hline
+			Made up of (2) & Relationship & 1 & R & 1 x 7 x 1 = 7 \\ \hline		Item & Entity & 1 & R & 1 x 7 x 1 = 7 \\ \hline		
+			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{21}} \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+
+
+\begin{table}[!h]\caption{With redundancy O4}
+	\begin{center}
+		\begin{tabular}{| c | c | c | c | c |}
+			\hline
+			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
+			Made up of (2) & Relationship & 1 & R & 1 x 7 x 1 = 7 \\ \hline	
+			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{7}} \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}
