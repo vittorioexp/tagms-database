@@ -55,4 +55,13 @@
 \multirow{2}{*}{Belong (3)} & ID & Identifier of a package & Serial & \\\cline{2-5}
 & ID & Identifier of a Package Category & Serial & \\\hline
 
+\multirow{8}{*}{Employee} & TAX\_number & TAX code of the employee & Text &  PRIMARY KEY\\\cline{2-5}
+& First\_name & name of the employee & Text & NOT NULL \\\cline{2-5}
+& Last\_name & surname of the employee  & Text & NOT NULL \\\cline{2-5} 
+& Phone\_number & phone number (prefix included) of the employee & Text & NOT NULL \\\cline{2-5} 
+& Email\_address & email address of the employee & Text & NOT NULL \\\cline{2-5} 
+& Birth\_date & birthdate of the employee  & Datetime & NOT NULL \\\cline{2-5} 
+& Hiring\_date & hiring date of the employee & Datetime & NOT NULL \\\cline{2-5} 
+& Still\_working & flag used to know if employee is still working for the company & Boolean & NOT NULL \\\hline
+
 \end{longtable}
