@@ -1,8 +1,8 @@
-\begin{longtable}{|p{.15\columnwidth}|p{.15\columnwidth} |p{.30\columnwidth}|p{.10\columnwidth}|p{.20\columnwidth} |} 
+\begin{longtable}{|p{.15\columnwidth}|p{.20\columnwidth} |p{.30\columnwidth}|p{.10\columnwidth}|p{.20\columnwidth} |} 
 \hline
 \textbf{Relation} & \textbf{Attribute} & \textbf{Description} & \textbf{Domain} & \textbf{Constraints} \\\hline
 
-\multirow{9}{*}{Product} & ID & Identifier of a product & Serial &  PRIMARY KEY\\\cline{2-5}
+\multirow{10}{*}{Product} & ID & Identifier of a product & Serial &  PRIMARY KEY\\\cline{2-5}
 & Name & Name of a product & Text & NOT NULL \\\cline{2-5}
 & Description & Description of a product  & Text & NOT NULL \\\cline{2-5} 
 & Production\_Cost & Cost  of  producing a product & Float & NOT NULL \\\cline{2-5} 
@@ -10,16 +10,19 @@
 & Volume & Volume of a product in milliliters  & Int & NOT NULL \\\cline{2-5} 
 & Net\_Weight & Net weight of a the product in grams & Int & NOT NULL \\\cline{2-5} 
 & Package\_weight & Package weight of a the product in grams & Int  & NOT NULL \\\cline{2-5} 
-& Nutritional Facts & Description of nutritional facts of a product & Text & NOT NULL \\\hline
+& Nutritional Facts & Description of nutritional facts of a product & Text & NOT NULL \\\cline{2-5}
+& Product\_Category\_ID & Identifier of a Product Category & Serial  & Foreign Key that refers to ID of Product\_Category \\\hline
 
 \multirow{3}{*}{Product\_Category} & ID & Identifier of a Product Category & Serial & PRIMARY KEY \\\cline{2-5}
 & Name & Name of a Product Category & Text & NOT NULL \\\cline{2-5}
 & Description & Description of a Product Category & Text & NOT NULL \\\hline
 
-\multirow{4}{*}{Item} & ID & Identifier of an item  & Serial & PRIMARY KEY \\\cline{2-5}
+\multirow{5}{*}{Item} & ID & Identifier of an item  & Serial & PRIMARY KEY \\\cline{2-5}
 & Name & Name of an item & Text & NOT NULL\\\cline{2-5}
 & Description & Description of an item & Text & NOT NULL \\\cline{2-5}
-& Quantity & Stock quantity of an item & Int & NOT NULL \\\hline
+& Quantity & Stock quantity of an item & Int & NOT NULL \\\cline{2-5}
+& Item\_Category\_ID & Identifier of an Item Category & Serial  & Foreign Key that refers to ID of Item\_Category \\\hline
+
 
 \multirow{3}{*}{Item\_Category} & ID & Identifier of an Item Category & Serial & PRIMARY KEY \\\cline{2-5}
 & Name & Name of an Item Category & Text & NOT NULL\\\cline{2-5}
@@ -31,11 +34,30 @@
 & Weight & Weight of a package in grams & Int & NOT NULL \\\cline{2-5}
 & Height & Height of a package in centimeters & Int & NOT NULL \\\cline{2-5}
 & Width & Width of a package in centimeters & Int & NOT NULL \\\cline{2-5}
-& Depth & Depth of a package in centimeters & Int & NOT NULL \\\hline
+& Depth & Depth of a package in centimeters & Int & NOT NULL \\\cline{2-5} 
+& Package\_Category\_ID & Identifier of a Package Category & Serial  & Foreign Key that refers to ID of Package\_Category \\\hline
 
 \multirow{3}{*}{Package\_Category} & ID & Identifier of a Package Category & Serial & PRIMARY KEY \\\cline{2-5}
 & Name & Name of a Package Category & Text & NOT NULL \\\cline{2-5}
 & Description & Description of a Package Category & Text & NOT NULL \\\hline
+
+\multirow{7}{*}{Lot} & ID & Identifier of a lot & Serial & PRIMARY KEY \\\cline{2-5}
+& Expiration\_date & Expiration date of the included products & Datetime & NOT NULL \\\cline{2-5}
+& Product\_quantity & Amount of a product in each lot & Int & NOT NULL \\\cline{2-5}
+& Package\_quantity & Amount of a package in each lot & Int & NOT NULL \\\cline{2-5}
+& Lot\_Discount & Percentage of discount of a lot & Int & NOT NULL \\\cline{2-5}
+& VAT & Value added tax (percentage) at the time of sale & Int & NOT NULL \\\cline{2-5}
+& Lot\_price & Lot price without discount & Float & NOT NULL \\\hline
+
+
+
+\multirow{5}{*}{Order} & ID & Identifier of an order & Serial & PRIMARY KEY \\\cline{2-5}
+& Net\_price &  Total net amount including discount (VAT excluded) & Float & NOT NULL \\\cline{2-5}
+& Taxes & Amount of taxes to be paid & Float & NOT NULL \\\cline{2-5}
+& Order\_date & Date in which the order has been processed & Datetime & NOT NULL \\\cline{2-5}
+& Order\_paid & Status of the order payment & Boolean & NOT NULL \\\hline
+
+
 
 \multirow{3}{*}{Made up of (1)} & Quantity & Amount of each item in a product & Int &  \\\cline{2-5}
 & ID & Identifier of a product & Serial & \\\cline{2-5}
@@ -55,19 +77,15 @@
 \multirow{2}{*}{Belong (3)} & ID & Identifier of a package & Serial & \\\cline{2-5}
 & ID & Identifier of a Package Category & Serial & \\\hline
 
-\multirow{7}{*}{Lot} & ID & Identifier of a lot & Serial & PRIMARY KEY \\\cline{2-5}
-& Expiration\_date & Expiration date of the included products & Datetime & NOT NULL \\\cline{2-5}
-& Product\_quantity & Amount of a product in each lot & Int & NOT NULL \\\cline{2-5}
-& Package\_quantity & Amount of a package in each lot & Int & NOT NULL \\\cline{2-5}
-& Lot\_Discount & Percentage of discount of a lot & Int & NOT NULL \\\cline{2-5}
-& VAT & Value added tax (percentage) at the time of sale & Int & NOT NULL \\\cline{2-5}
-& Lot\_price & Lot price without discount & Float & NOT NULL \\\hline
+\multirow{2}{*}{Draws from} & ID & Identifier of a lot & Serial & \\\cline{2-5}
+& ID & Identifier of an order & Serial & \\\hline
 
-\multirow{5}{*}{Order} & ID & Identifier of an order & Serial & PRIMARY KEY \\\cline{2-5}
-& Net\_price &  Total net amount including discount (VAT excluded) & Float & NOT NULL \\\cline{2-5}
-& Taxes & Amount of taxes to be paid & Float & NOT NULL \\\cline{2-5}
-& Order\_date & Date in which the order has been processed & Datetime & NOT NULL \\\cline{2-5}
-& Order\_paid & Status of the order payment & Boolean & NOT NULL \\\hline
+\multirow{4}{*}{Ship} & ID & Identifier of a lot & Serial & \\\cline{2-5}
+& ID & Identifier of an order & Serial & \\\cline{2-5}
+& Shipping\_date & Identifier of an order & Datetime & \\\cline{2-5}
+& Track\_num & Identifier of an order & Int & \\\cline{2-5}
+
+
 
 \multirow{8}{*}{Employee} & TAX\_number & TAX code of the employee & Text & PRIMARY KEY\\\cline{2-5}
 & First\_name & name of the employee & Text & NOT NULL \\\cline{2-5}
