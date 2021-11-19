@@ -1,1 +1,39 @@
 \subsection{Analysis of Database Load}
+The load analysis is divided in two parts: the first, regarding whether to use ``inflation'' and ``production\_cost'' and calculating the final product price on-demand; the second, to decide whether to store ``lot\_price'' into the ``Lot'' entity, or computing it when necessary via the relationship ``Stocked''.
+
+\begin{center}
+	\begin{tabular}[!h]{ | c | c | c | c | }
+		\hline
+		\textbf{Operation} & \textbf{Description} & \textbf{Frequency} & \textbf{Type} \\ \hline
+		$ \textrm{O}_\textrm{1} $ : Insert new lot & Store data about a newly packaged lot. & 25/week & Online \\ \hline
+		$ \textrm{O}_\textrm{2} $ : Compute order price &  &  & Online \\\hline
+	\end{tabular}
+\end{center}
+
+\begin{table}[!h]\caption{Without redundancy}
+	\begin{center}
+		\begin{tabular}{| c | c | c | c | c |}
+			\hline
+			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
+			Product & Entity & 1 & R & 1 x 25 x 1 = 25 \\ \hline
+			Lot & Entity & 1 & W & 1 x 25 x 2 = 25 \\ \hline
+			Stocked & Relationship & 1 & W & 1 x 25 x 2 = 25 \\ \hline
+			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{75}} \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\begin{table}[!h]\caption{With redundancy}
+	\begin{center}
+		\begin{tabular}{| c | c | c | c | c |}
+			\hline
+			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
+			Product & Entity & 1 & R & 1 x 25 x 1 = 25 \\ \hline
+			Lot & Entity & 1 & W & 1 x 25 x 2 = 25 \\ \hline
+			Stocked & Relationship & 1 & W & 1 x 25 x 2 = 25 \\ \hline
+			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{75}} \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+read product (compute price), write lot, write stocked
