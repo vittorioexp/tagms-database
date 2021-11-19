@@ -1,6 +1,5 @@
 \subsection{Analysis of Database Load}
-The load analysis is divided in two parts: the first, regarding whether to use ``inflation'' and ``production\_cost'' and calculating the final product price on-demand (O3/O4); the second, to decide whether to store ``lot\_price'' into the ``Lot'' entity, or computing it when necessary via the relationship ``Stocked'' (O1/02).
-
+The load analysis is divided in two parts: the first, to decide whether to store ``lot\_price'' into the ``Lot'' entity, or computing it when necessary via the relationship ``Stocked''; the second,  .
 \begin{center}
 	\begin{tabular}[!h]{ | c | c | c | c | }
 		\hline
@@ -11,8 +10,8 @@ The load analysis is divided in two parts: the first, regarding whether to use `
 		$ \textrm{O}_\textrm{4} $ : Compute the quantity & Compute the item quantity needed for creating the package & 7/week & Batch \\\hline
 	\end{tabular}
 \end{center}
-
-\begin{table}[!h]\caption{Without redundancy}
+\newpage
+\begin{table}[!h]\caption{O1 Without redundancy}
 	\begin{center}
 		\begin{tabular}{| c | c | c | c | c |}
 			\hline
@@ -24,8 +23,30 @@ The load analysis is divided in two parts: the first, regarding whether to use `
 		\end{tabular}
 	\end{center}
 \end{table}
-
-\begin{table}[!h]\caption{With redundancy}
+\begin{table}[!h]\caption{O1 With redundancy}
+	\begin{center}
+		\begin{tabular}{| c | c | c | c | c |}
+			\hline
+			Product & Entity & 1 & R & 1 x 25 x 1 = 25 \\ \hline
+			Lot & Entity & 1 & W & 1 x 25 x 2 = 25 \\ \hline
+			Stocked & Relationship & 1 & W & 1 x 25 x 2 = 25 \\ \hline
+			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{75}} \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}
+\begin{table}[!h]\caption{O2 Without redundancy}
+	\begin{center}
+		\begin{tabular}{| c | c | c | c | c |}
+			\hline
+			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
+			Product & Entity & 1 & R & 1 x 25 x 1 = 25 \\ \hline
+			Lot & Entity & 1 & W & 1 x 25 x 2 = 25 \\ \hline
+			Stocked & Relationship & 1 & W & 1 x 25 x 2 = 25 \\ \hline
+			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{75}} \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}
+\begin{table}[!h]\caption{O2 With redundancy}
 	\begin{center}
 		\begin{tabular}{| c | c | c | c | c |}
 			\hline
@@ -35,9 +56,7 @@ The load analysis is divided in two parts: the first, regarding whether to use `
 		\end{tabular}
 	\end{center}
 \end{table}
-
-
-
+We can see that $ \textrm{O}_\textrm{1} $, with or without redundancy, necessitate the same amount of operations, while from $ \textrm{O}_\textrm{2} $ we can assess that the number of operations without redundancy is tripled with respect to the case with redundancy. Hence, the attribute ``lot\_price'' of the entity ``Lot'' should to be kept.
 \begin{table}[!h]\caption{Without redundancy O3}
 	\begin{center}
 		\begin{tabular}{| c | c | c | c | c |}
@@ -49,7 +68,6 @@ The load analysis is divided in two parts: the first, regarding whether to use `
 		\end{tabular}
 	\end{center}
 \end{table}
-
 \begin{table}[!h]\caption{With redundancy O3}
 	\begin{center}
 		\begin{tabular}{| c | c | c | c | c |}
@@ -61,7 +79,6 @@ The load analysis is divided in two parts: the first, regarding whether to use `
 		\end{tabular}
 	\end{center}
 \end{table}
-
 \begin{table}[!h]\caption{Without redundancy O4}
 	\begin{center}
 		\begin{tabular}{| c | c | c | c | c |}
@@ -73,9 +90,6 @@ The load analysis is divided in two parts: the first, regarding whether to use `
 		\end{tabular}
 	\end{center}
 \end{table}
-
-
-
 \begin{table}[!h]\caption{With redundancy O4}
 	\begin{center}
 		\begin{tabular}{| c | c | c | c | c |}
