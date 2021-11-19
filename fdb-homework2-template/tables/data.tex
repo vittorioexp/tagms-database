@@ -55,6 +55,20 @@
 \multirow{2}{*}{Belong (3)} & ID & Identifier of a package & Serial & \\\cline{2-5}
 & ID & Identifier of a Package Category & Serial & \\\hline
 
+\multirow{7}{*}{Lot} & ID & Identifier of a lot & Serial & PRIMARY KEY \\\cline{2-5}
+& Expiration\_date & Expiration date of the included products & Datetime & NOT NULL \\\cline{2-5}
+& Product\_quantity & Amount of a product in each lot & Int & NOT NULL \\\cline{2-5}
+& Package\_quantity & Amount of a package in each lot & Int & NOT NULL \\\cline{2-5}
+& Lot\_Discount & Percentage of discount of a lot & Int & NOT NULL \\\cline{2-5}
+& VAT & Value added tax (percentage) at the time of sale & Int & NOT NULL \\\cline{2-5}
+& Lot\_price & Lot price without discount & Float & NOT NULL \\\hline
+
+\multirow{5}{*}{Order} & ID & Identifier of an order & Serial & PRIMARY KEY \\\cline{2-5}
+& Net\_price &  Total net amount including discount (VAT excluded) & Float & NOT NULL \\\cline{2-5}
+& Taxes & Amount of taxes to be paid & Float & NOT NULL \\\cline{2-5}
+& Order\_date & Date in which the order has been processed & Datetime & NOT NULL \\\cline{2-5}
+& Order\_paid & Status of the order payment & Boolean & NOT NULL \\\hline
+
 \multirow{8}{*}{Employee} & TAX\_number & TAX code of the employee & Text & PRIMARY KEY\\\cline{2-5}
 & First\_name & name of the employee & Text & NOT NULL \\\cline{2-5}
 & Last\_name & surname of the employee  & Text & NOT NULL \\\cline{2-5} 
