@@ -47,15 +47,15 @@
 & Package\_quantity & Amount of a package in each lot & Int & NOT NULL \\\cline{2-5}
 & Lot\_Discount & Percentage of discount of a lot & Int & NOT NULL \\\cline{2-5}
 & VAT & Value added tax (percentage) at the time of sale & Int & NOT NULL \\\cline{2-5}
-& Lot\_price & Lot price without discount & Float & NOT NULL \\\hline
+& Lot\_price & Lot price without discount & Float & NOT NULL \\\cline{2-5}
 & Order\_ID & Identifier of an Order of the order payment & Serial & Foreign Key that refers to ID of Order \\\hline
 
 \multirow{6}{*}{Order} & ID & Identifier of an order & Serial & PRIMARY KEY \\\cline{2-5}
 & Net\_price &  Total net amount including discount (VAT excluded) & Float & NOT NULL \\\cline{2-5}
 & Taxes & Amount of taxes to be paid & Float & NOT NULL \\\cline{2-5}
 & Order\_date & Date in which the order has been processed & Datetime & NOT NULL \\\cline{2-5}
-& Order\_paid & Status of the order payment & Boolean & NOT NULL \\\hline
-& Employee\_ID & identifier of the employee that places the order & Serial & Foreign key that refers to VAT\_Number \\\hline
+& Order\_paid & Status of the order payment & Boolean & NOT NULL \\\cline{2-5}
+& Employee\_ID & identifier of the employee that places the order & Text & Foreign key that refers to VAT\_Number \\\hline
 
 
 
@@ -66,9 +66,6 @@
 \multirow{3}{*}{Made up of (2)} & Quantity & Amount of each item in a package & Int &  \\\cline{2-5}
 & ID & Identifier of a package & Serial & \\\cline{2-5}
 & ID & Identifier of an item & Serial & \\\hline
-
-\multirow{2}{*}{Draws from} & ID & Identifier of a lot & Serial & \\\cline{2-5}
-& ID & Identifier of an order & Serial & \\\hline
 
 \multirow{4}{*}{Ship} & ID & Identifier of a lot & Serial & \\\cline{2-5}
 & ID & Identifier of an order & Serial & \\\cline{2-5}
@@ -84,7 +81,8 @@
 & Email\_address & email address of the employee & Text & NOT NULL \\\cline{2-5} 
 & Birth\_date & birthdate of the employee  & Datetime & NOT NULL \\\cline{2-5} 
 & Hiring\_date & hiring date of the employee & Datetime & NOT NULL \\\cline{2-5} 
-& Still\_working & flag used to know if employee is still working for the company & Boolean & NOT NULL \\\hline
+& Still\_working & flag used to know if employee is still working for the company & Boolean & NOT NULL \\\cline{2-5}
+& Role\_ID & Identifier of the role that an employee has & Serial & Foreign Key that refers to Id of Role \\\hline
 
 \multirow{3}{*}{Role} & ID & role identifier & Serial & PRIMARY KEY\\\cline{2-5}
 & Name & name of the role & Text & NOT NULL \\\cline{2-5}
