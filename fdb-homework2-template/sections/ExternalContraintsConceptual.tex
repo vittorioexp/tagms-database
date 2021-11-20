@@ -1,16 +1,15 @@
 \subsection{External Constraints}
 \begin{itemize}
 \item The company decides the total discount to apply to a specific lot. This discount expresses a percentage and is a number between 0 and 100. Furthermore, the company is able to take into account changes in VAT.
-\item The company decides the value of the price increase according to company policies. This increase must take on a value greater than or equal to 1. The price of a product is calculated as a multiplication between the cost of production and the price increase.
+\item The company decides the value of the price increase according to company policies. This increase ("Price\_increase") must take on a value greater than or equal to 1. The price of a product is calculated as a multiplication between the cost of production and the price increase.
 \item The price of a specific lot ("Lot\_price") is calculated as the multiplication of the price of the product (stored in the lot) multiplied by its quantity.
 \item The total net amount of the order ("Net\_price") must be calculated as the sum, for each lot i included, of the Lot\_price\_i * (1 - Lot\_discount\_i / 100). The total taxes are calculated as the sum, for each lot i, of the Lot\_price\_i * VAT\_i / 100.
 \item The units of measure used by the company are specified in detail in the entity table.
-\item Employees can only operate in their own department of competence with the role that belongs to them.
-\item Sellers create a profile for new customers. They can also keep track of the order status on their own, also updating the payment status once the bill is settled.
-\item Only the Manager can insert new contracts, so the Employee who takes part in the "stipulate" relationship must have the role equal to "Manager". Only the Salesman can insert new orders, so the Employee who takes part in the "place" relationship must have the role equal to "Seller". Only the Worker can ship orders, so the Employee who takes part in the "ship" relationship must have the role equal to "Worker".
-\item A product must consist of one or more items all having as Item\_Category "ingredient" or "container". A package must consist of one or more items all having as Item\_Category "box", "plastic tape", "polystyrene", or "other packaging material". %TODO: container is correct?
-\item The quantities of products contained in a lot belong to a finite set (e.g. 25, 50, 100), so the customer cannot order an arbitrary quantity of products.
-\item Only Items ordered and specified in the Contract for the month will be accepted during delivery. Items not ordered will be rejected by the Employees
+\item Sellers can keep track of the order status on their own, also updating the payment status once the bill is settled. By default, the boolean "Order\_paid" is false. 
+\item Only the Manager can insert new contracts, so the Employee who takes part in the "stipulate" relationship must have the role equal to "Manager". 
+\item Only the Salesman can insert new orders, so the Employee who takes part in the "place" relationship must have the role equal to "Salesman". 
+\item Only the Worker can ship orders, so the Employee who takes part in the "ship" relationship must have the role equal to "Worker".
+\item A product must consist of one or more items having a certain Item\_Category (e.g., "ingredient" or "glass bottle"). A package must consist of one or more items having a certain Item\_Category (e.g., "box", "plastic tape" or "polystyrene"). 
+\item The quantities of products contained in a lot belong to a finite set (e.g. 25, 50, 100), so the customer cannot order a lot with an arbitrary quantity of products.
+\item An expired lot cannot be sold.
 \end{itemize}
-
-price increase >=1
