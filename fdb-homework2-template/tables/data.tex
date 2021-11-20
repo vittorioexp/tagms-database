@@ -28,6 +28,14 @@
 & Name & Name of an Item Category & Text & NOT NULL\\\cline{2-5}
 & Description & Description of an Item Category & Text & NOT NULL \\\hline
 
+\multirow{7}{*}{Contract} & ID & Identifier of a contract & Serial & PRIMARY KEY \\\cline{2-5}
+& Description & Description of a contract & Text & NOT NULL\\\cline{2-5}
+& Contract\_date & Date of signature of a contract with the supplier & Datetime & NOT NULL \\\cline{2-5}
+& Delivery\_date & Expected date of delivery of the goods & Datetime & NOT NULL \\\cline{2-5}
+& Expiration\_date & Expiration date of a contract & Datetime & NOT NULL \\\cline{2-5}
+& Supplier\_ID & Identifier of a supplier & Int  & Foreign Key that refers to VAT\_number of Supplier \\\cline{2-5}
+& Employee\_ID & Identifier of an employee & Text & Foreign Key that refers to TAX\_number of Employee \\\hline
+
 \multirow{7}{*}{Package} & ID & Identifier of a package & Serial & PRIMARY KEY \\\cline{2-5}
 & Name & Name of a package & Text & NOT NULL \\\cline{2-5}
 & Description & Description of a package & Text & NOT NULL \\\cline{2-5}
