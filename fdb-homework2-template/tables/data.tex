@@ -57,15 +57,13 @@
 & Order\_paid & Status of the order payment & Boolean & NOT NULL \\\cline{2-5}
 & Employee\_ID & identifier of the employee that places the order & Text & Foreign key that refers to VAT\_Number \\\hline
 
+\multirow{3}{*}{Made up of (1)} & Product\_ID & Identifier of a product & Serial & Foreign key that refers to ID of Product, Primary key with Item\_Id \\\cline{2-5}
+& Item\_ID & Identifier of an item & Serial &  Foreign key that refers to ID of Item, Primary key with Product\_Id\\\cline{2-5}
+& Quantity & Amount of each item in a product & Int & NOT NULL  \\\hline
 
-
-\multirow{3}{*}{Made up of (1)} & Quantity & Amount of each item in a product & Int &  \\\cline{2-5}
-& ID & Identifier of a product & Serial & \\\cline{2-5}
-& ID & Identifier of an item & Serial & \\\hline
-
-\multirow{3}{*}{Made up of (2)} & Quantity & Amount of each item in a package & Int &  \\\cline{2-5}
-& ID & Identifier of a package & Serial & \\\cline{2-5}
-& ID & Identifier of an item & Serial & \\\hline
+\multirow{3}{*}{Made up of (2)} & Package\_ID & Identifier of a package & Serial & Foreign key that refers to ID of Package, Primary key with Item\_Id \\\cline{2-5}
+& Item\_ID & Identifier of an item & Serial &  Foreign key that refers to ID of Item, Primary key with Package\_Id\\\cline{2-5}
+& Quantity & Amount of each item in a package & Int & NOT NULL  \\\hline
 
 \multirow{4}{*}{Ship} & ID & Identifier of a lot & Serial & \\\cline{2-5}
 & ID & Identifier of an order & Serial & \\\cline{2-5}
@@ -87,6 +85,9 @@
 \multirow{3}{*}{Role} & ID & role identifier & Serial & PRIMARY KEY\\\cline{2-5}
 & Name & name of the role & Text & NOT NULL \\\cline{2-5}
 & Description & technical description of the role & Text & NOT NULL \\\hline
+
+\multirow{2}{*}{Work} & Department\_ID & Identifier of a department & Serial & Foreign key that refers to ID of Department, Primary key with Employee\_ID \\\cline{2-5}
+& Employee\_ID & Identifier of an employee & Text & Foreign key that refers to TAX\_Number of Employee, Primary key with Department\_ID \\\hline
 
 \multirow{3}{*}{Department} & ID & department identifier of the company & Serial & PRIMARY KEY\\\cline{2-5}
 & Name & name of the department & Text & NOT NULL \\\cline{2-5}
