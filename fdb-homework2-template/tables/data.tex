@@ -28,6 +28,10 @@
 & Name & Name of an Item Category & Text & NOT NULL\\\cline{2-5}
 & Description & Description of an Item Category & Text & NOT NULL \\\hline
 
+\multirow{3}{*}{Specify} & Item\_ID & Identifier of an item & Serial & Foreign key that refers to ID of Item, Primary key with Contract\_ID \\\cline{2-5}
+& Contract\_ID & Identifier of a contract & Serial &  Foreign key that refers to ID of Contract, Primary key with Item\_ID\\\cline{2-5}
+& Purchased\_Quantity & Amount of each item which is purchased  & Int & NOT NULL  \\\hline
+
 \multirow{7}{*}{Contract} & ID & Identifier of a contract & Serial & PRIMARY KEY \\\cline{2-5}
 & Description & Description of a contract & Text & NOT NULL\\\cline{2-5}
 & Contract\_date & Date of signature of a contract with the supplier & Datetime & NOT NULL \\\cline{2-5}
