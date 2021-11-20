@@ -77,10 +77,10 @@
 & Item\_ID & Identifier of an item & Serial &  Foreign key that refers to ID of Item, Primary key with Package\_Id\\\cline{2-5}
 & Quantity & Amount of each item in a package & Int & NOT NULL  \\\hline
 
-\multirow{4}{*}{Ship} & ID & Identifier of a lot & Serial & \\\cline{2-5}
-& ID & Identifier of an order & Serial & \\\cline{2-5}
-& Shipping\_date & Identifier of an order & Datetime & \\\cline{2-5}
-& Track\_num & Identifier of an order & Int & \\\hline
+\multirow{4}{*}{Ship} & Employee\_ID & Identifier of employee that ships the order & Serial &  Foreign key to Employee, Primary key with Order\_ID \\\cline{2-5}
+& Order\_ID & Identifier of the shipping order & Serial & Foreign key to Order, Primary key with Employee\_ID \\\cline{2-5}
+& Shipping\_date & date of when the order leaves to be shipped & Datetime & NOT NULL \\\cline{2-5}
+& Track\_num & shipment code given by the third-party shipping company & Text & \\\hline
 
 
 
