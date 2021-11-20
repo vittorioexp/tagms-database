@@ -92,7 +92,7 @@
 & Birth\_date & birthdate of the employee  & Datetime & NOT NULL \\\cline{2-5} 
 & Hiring\_date & hiring date of the employee & Datetime & NOT NULL \\\cline{2-5} 
 & Still\_working & flag used to know if employee is still working for the company & Boolean & NOT NULL \\\cline{2-5}
-& Role\_ID & Identifier of the role that an employee has & Serial & Foreign Key that refers to Id of Role \\\hline
+& Role\_ID & Identifier of the role that an employee has & Enumeration & Foreign Key to Role, enumeration in {Manager, Salesman, Worker, Data Analyst}\\\hline
 
 \multirow{3}{*}{Role} & ID & role identifier & Serial & PRIMARY KEY\\\cline{2-5}
 & Name & name of the role & Text & NOT NULL \\\cline{2-5}
