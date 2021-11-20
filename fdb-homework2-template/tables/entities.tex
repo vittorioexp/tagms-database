@@ -52,6 +52,7 @@
         \item ID:   contract identifier, serial
         \item Description:   description of the contract, text
         \item Contract\_date:    date of signature of the contract with the supplier, datetime
+        \item Delivery\_date:    expected date of delivery of the goods, datetime
         \item Expiration\_date:    expiration date of the contract with the supplier, datetime
     \end{itemize}
     &  ID \\\hline
@@ -82,26 +83,18 @@
     &  ID \\\hline
 
 
-    Lot & Represents the inventory of the company, containing products and items &
+    Lot & Represents a lot in the inventory of the company, containing final products and packaging &
     \begin{itemize}
         \vspace{-1em}
         \item ID:   lot identifier, serial
-        \item Product\_quantity:   quantity of the included product, int
-        \item Package\_quantity:   lot packaging quantity, int
+        \item Product\_quantity:   quantity of the included product, int	%TODO
+        \item Package\_quantity:   lot packaging quantity, int			%TODO
         \item Expiration\_date:   expiration date of the included products, datetime
         \item Lot\_price:   lot price (without the discount) at the time of sale, float
         \item Lot\_discount:   percentage of discount of a lot, int
         \item VAT:   value added tax (percentage) at the time of sale, int
     \end{itemize}
     &  ID \\\hline
-
-        %\item Energy:   energy nutritional value (kJ per 100ml), float
-        %\item Fat:   fat nutritional value (grams per 100ml), float
-        %\item Saturated fatty acids:   saturated fatty acids nutritional value (grams per 100ml), float
-        %\item Carbohydrates:   carbohydrates nutritional value (grams per 100ml), float
-        %\item Sugar:   sugar nutritional value (grams per 100ml), float
-        %\item Protein:   protein nutritional value (grams per 100ml), float
-        %\item Salt:   salt nutritional value (grams per 100ml), float
 
     Product & Represents the final product that is marketed &
     \begin{itemize}
@@ -118,7 +111,7 @@
     \end{itemize}
     &  ID \\\hline
 
-    Item & Represents materials provided by suppliers from which the final products will be produced &
+    Item & Represents materials provided by suppliers &
     \begin{itemize}
         \vspace{-1em}
         \item ID:   identifier of the item, serial
@@ -141,7 +134,7 @@
     \end{itemize}
     &  ID \\\hline
 
-    Product\_Category & Represents the category of a product, an item or a package &
+    Product\_Category & Represents the category of a product &
         \begin{itemize}
             \vspace{-1em}
             \item ID:   identifier of the product category, serial
