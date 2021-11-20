@@ -10,8 +10,8 @@
         \item Last\_name:   surname of the employee, text
         \item Phone\_number:   phone number (prefix included) of the employee, text
         \item Email\_address:   email address of the employee, text
-        \item Birth\_date:   birthdate of the employee, datetime
-        \item Hiring\_date:   hiring date of the employee, datetime
+        \item Birth\_date:   birthdate of the employee, Datetime
+        \item Hiring\_date:   hiring date of the employee, Datetime
         \item Still\_working: flag used to know if employee is still working for the company, boolean
     \end{itemize}
     &  TAX\_number \\\hline
@@ -41,7 +41,7 @@
         \item Customer\_name:   name of the customer, text
         \item Phone\_number:   phone number (prefix included) of the customer, text
         \item Address:   billing address of the customer, text
-        \item Registration\_date:   customer registration date in the database, datetime
+        \item Registration\_date:   customer registration date in the database, Datetime
     \end{itemize}
     &  VAT\_number \\\hline
 
@@ -51,9 +51,9 @@
         \vspace{-1em}
         \item ID:   contract identifier, serial
         \item Description:   description of the contract, text
-        \item Contract\_date:    date of signature of the contract with the supplier, datetime
-        \item Delivery\_date:    expected date of delivery of the goods, datetime
-        \item Expiration\_date:    expiration date of the contract with the supplier, datetime
+        \item Contract\_date:    date of signature of the contract with the supplier, Datetime
+        \item Delivery\_date:    expected date of delivery of the goods, Datetime
+        \item Expiration\_date:    expiration date of the contract with the supplier, Datetime
     \end{itemize}
     &  ID \\\hline
 
@@ -65,7 +65,7 @@
         \item Phone\_number:   phone number (prefix included) of the supplier company, text
         \item Email\_address:   email address of the supplier company, text
         \item Address:   address of the supplier company, text
-        \item Registration\_date:   recording date of the supplier company, datetime
+        \item Registration\_date:   recording date of the supplier company, Datetime
     \end{itemize}
     &  VAT\_number \\\hline
 
@@ -74,7 +74,7 @@
     \begin{itemize}
         \vspace{-1em}
         \item ID:   order identifier, serial
-        \item Order\_date:   date in which the order has been processed, datetime
+        \item Order\_date:   date in which the order has been processed, Datetime
         \item Order\_paid:   status of the payment, boolean
         \item Net\_price:   total net amount including discount (VAT excluded), float    %net_price = for each lot { lot_price * (1 - discount / 100) }
         \item Taxes:   total amount of taxes to be payed, float                     %taxes = for each lot { lot_price * (vat / 100) }
@@ -87,7 +87,7 @@
     \begin{itemize}
         \vspace{-1em}
         \item ID:   lot identifier, serial
-        \item Expiration\_date:   expiration date of the included products, datetime
+        \item Expiration\_date:   expiration date of the included products, Datetime
         \item Lot\_price:   lot price (without the discount) at the time of sale, float
         \item Lot\_discount:   percentage of discount of a lot, int
         \item VAT:   value added tax (percentage) at the time of sale, int

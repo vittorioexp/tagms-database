@@ -42,8 +42,8 @@ Ships & Relates the employee shipping the order with the order itself and the sh
 &
  \begin{itemize}
  	\vspace{-1em}
- 	\item Track\_num
- 	\item Shipping\_date
+ 	\item Track\_num:   tracking code of the shipment provided by the external shipment service, int
+ 	\item Shipping\_date:   date on which the company ships the goods, Datetime
  \end{itemize}
  \\\hline
 
@@ -54,7 +54,7 @@ Specify & Describes which items are provided by a contract  & \begin{itemize}
 	\end{itemize}
 &  \begin{itemize}
       	    \vspace{-1em}
-       	\item Purchased\_quantity
+       	\item Purchased\_quantity:   the quantity of items which are purchased, int
       \end{itemize}\\\hline
 
 Belong (1) & Links items to the category  & \begin{itemize}
@@ -87,7 +87,7 @@ Made up of (1) & Describes what items are involved in creating the product &
 \end{itemize}
 &  \begin{itemize}
    	    \vspace{-1em}
-    	\item Quantity
+    	\item Quantity:   the quantity of items composing a specific product
    \end{itemize} \\\hline
 
 Made up of (2) & Describes what items are involved in creating the package & \begin{itemize}
@@ -97,7 +97,7 @@ Made up of (2) & Describes what items are involved in creating the package & \be
 \end{itemize}
 &  \begin{itemize}
       	\vspace{-1em}
-       	\item Quantity
+       	\item Quantity:   the quantity of items composing a specific package
    \end{itemize} \\\hline
 
 
@@ -107,7 +107,11 @@ Stocked  & Specifies the products and packages stocked in the lots & \begin{item
 	\item Product (0,N)
 	\item Lot (1,N)
 \end{itemize}
-&  None \\\hline
+&  \begin{itemize}
+         	\vspace{-1em}
+          	\item Product\_quantity:   quantity of the included product, int
+            \item Package\_quantity:   lot packaging quantity, int
+      \end{itemize} \\\hline
 
 
 Draws from & Associates the lots to an order & \begin{itemize}
