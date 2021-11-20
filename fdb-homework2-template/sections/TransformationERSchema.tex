@@ -2,20 +2,31 @@
 
 \subsubsection{Redundancy Analysis}
 
+
 The Employee and Order entities, related to each other through the relationships Place and Ship, do not form a cycle because:
-- Only the Employee with the Salesman role can place the order;
-- Only the Employee with the Worker role can ship the order.
-- Eliminating the Place or Ship relationship implies a violation of functional requirements and a loss of information (e.g., who is the seller who places the order or who is the worker who ships it).
+\begin{itemize}
+        \vspace{-1em}
+        \item Only the Employee with the Salesman role can place the order;
+        \item Only the Employee with the Worker role can ship the order;
+        \item Eliminating the Place or Ship relationship implies a violation of functional requirements and a loss of information (e.g., who is the seller who places the order or who is the worker who ships it).
+\end{itemize}
 
 The Lot, Product, Package, and Item entities do not form a loop because:
-- Eliminating a "Made up of" relationship implies a violation of functional requirements and a loss of information (eg, from which items, and in what quantity, a product or package is composed);
-- Eliminating the "Stocked" relationship implies a violation of functional requirements and a loss of information (e.g., it is not possible to know which products and packages are contained in a lot)
+\begin{itemize}
+        \vspace{-1em}
+        \item Eliminating a "Made up of" relationship implies a violation of functional requirements and a loss of information (eg, from which items, and in what quantity, a product or package is composed);
+        \item Eliminating the "Stocked" relationship implies a violation of functional requirements and a loss of information (e.g., it is not possible to know which products and packages are contained in a lot).
+\end{itemize}
+
 
 The ER schema presents the derivate attributes:
-- "Quantity" (of Item): used to keep in memory the current quantity of items.
-- "Lot_price" (of Lot): used to keep in memory the price of the lot at the moment of preparation.
-- "Net_price" (of Order): used to keep in memory the total net price of an order.
-- "Taxes" (of Order): used to keep in memory the total taxes of an order.
+\begin{itemize}
+        \vspace{-1em}
+        \item "Quantity" (of Item): used to keep in memory the current quantity of items;
+        \item "Lot_price" (of Lot): used to keep in memory the price of the lot at the moment of preparation;
+        \item "Net_price" (of Order): used to keep in memory the total net price of an order;
+        \item "Taxes" (of Order): used to keep in memory the total taxes of an order.
+\end{itemize}
 
 We report below the analysis of the database load to check whether keeping these attributes or not.
 
