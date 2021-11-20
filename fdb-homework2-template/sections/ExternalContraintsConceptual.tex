@@ -2,8 +2,8 @@
 \begin{itemize}
 \item The company decides the total discount to apply to a specific lot. This discount expresses a percentage and is a number between 0 and 100. Furthermore, the company is able to take into account changes in VAT.
 \item The company decides the value of the price increase according to company policies. This increase must take on a value greater than or equal to 1. The price of a product is calculated as a multiplication between the cost of production and the price increase.
-\item The price of a specific lot ("Lot_price") is calculated as the multiplication of the price of the product (stored in the lot) multiplied by its quantity.
-\item The total net amount of the order ("Net_price") must be calculated as the sum, for each lot i included, of the Lot\_price\_i * (1 - Lot\_discount\_i / 100). The total taxes are calculated as the sum, for each lot i, of the Lot\_price\_i * VAT\_i / 100.
+\item The price of a specific lot ("Lot\_price") is calculated as the multiplication of the price of the product (stored in the lot) multiplied by its quantity.
+\item The total net amount of the order ("Net\_price") must be calculated as the sum, for each lot i included, of the Lot\_price\_i * (1 - Lot\_discount\_i / 100). The total taxes are calculated as the sum, for each lot i, of the Lot\_price\_i * VAT\_i / 100.
 \item The units of measure used by the company are specified in detail in the entity table.
 \item Employees can only operate in their own department of competence with the role that belongs to them.
 \item Sellers create a profile for new customers. They can also keep track of the order status on their own, also updating the payment status once the bill is settled.
