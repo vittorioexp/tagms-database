@@ -10,6 +10,7 @@
 \item Only the Manager can insert new contracts, so the Employee who takes part in the "stipulate" relationship must have the role equal to "Manager". 
 \item Only the Salesman can insert new orders, so the Employee who takes part in the "place" relationship must have the role equal to "Salesman". 
 \item Only the Worker can ship orders, so the Employee who takes part in the "ship" relationship must have the role equal to "Worker".
+\itemm Only employees that have True as value of the Still_working attribute can access to the database.
 \item A product must consist of one or more items having a certain Item\_Category (e.g., "ingredient" or "glass bottle"). A package must consist of one or more items having a certain Item\_Category (e.g., "box", "plastic tape" or "polystyrene"). 
 \item The quantities of products contained in a lot belong to a finite set (e.g. 25, 50, 100), so the customer cannot order a lot with an arbitrary quantity of products.
 \item An expired lot cannot be sold.
