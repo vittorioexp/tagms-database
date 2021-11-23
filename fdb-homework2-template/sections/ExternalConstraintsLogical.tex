@@ -1,6 +1,7 @@
 \subsection{External Constraints}
 \begin{itemize}
 \item An Employee that stores information about a lot must insert the value decided by the company for the Lot\_discount attribute of Lot Relation. This discount expresses a percentage and is a number between 0 and 100. Analogously for the value of the VAT attribute of Lot Relations, it must be the one decided by the company.
+\item An Employee that stores information about a product must insert the value decided by the company for the attribute Price\_increase of the Product Relation, according to company policies. Such value must be greater than or equal to 1. The price of a product is calculated as a multiplication between the values of Production\_Cost and Price\_Increase.
 \item Only the Manager can insert new contracts, so the Employee\_ID of the Contract relation must have the role equal to "Manager". 
 \item Only the Salesman can insert new orders, so the Employee\_ID in the Order relation must have the role equal to "Salesman". 
 \item Only the Worker can ship orders, so the Employee\_ID in the Ship relation must have the role equal to "Worker".
