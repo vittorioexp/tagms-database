@@ -7,8 +7,8 @@ The load analysis is divided in two parts: the first, to decide whether to store
 		\textbf{Operation} & \textbf{Description} & \textbf{Frequency} & \textbf{Type} \\ \hline
 		$ \textrm{O}_\textrm{1} $ : Insert new lot & Store data about a newly packaged lot. & 25/week & Online \\ \hline
 		$ \textrm{O}_\textrm{2} $ : Compute order price  & Compute order price from lot price & 25/week & Online \\\hline
-		$ \textrm{O}_\textrm{3} $ : Create new package & Create new package from items & 100/week & Batch \\\hline
-		$ \textrm{O}_\textrm{4} $ : Compute the quantity & Compute the item quantity needed for creating the package & 7/week & Batch \\\hline
+		$ \textrm{O}_\textrm{3} $ : Create new order & Create new package from items & 100/week & Online \\\hline
+		$ \textrm{O}_\textrm{4} $ : Compute order price & Compute the price of the order, which is composed of several lots & 7/week & Online \\\hline
 	\end{tabular}
 \end{center}
 \begin{table}[!h]\caption{	$ \textrm{O}_\textrm{1} $ Without redundancy}
@@ -63,43 +63,12 @@ We can see that $ \textrm{O}_\textrm{1} $, with or without redundancy, necessita
 		\begin{tabular}{| c | c | c | c | c |}
 			\hline
 			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
-			Package & Entity & 1 & W & 1 x 100 x 2 = 200 \\ \hline
-			Made up of (2) & Relationship & 1 & W & 1 x 100 x 2 = 200 \\ \hline		Item & Entity & 1 & R & 1 x 100 x 1 = 100 \\ \hline		
+			Order & Entity & 1 & R & 1 x 100 x 1 = 100 \\ \hline
+			Draws from & Relationship & 1 & R & 1 x 100 x 1 = 100 \\ \hline
+			Lot & Entity & 1 & R & 1 x 100 x 1 = 100 \\ \hline
 			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{300}} \\ \hline
 		\end{tabular}
 	\end{center}
 \end{table}
 \newpage
-\begin{table}[!h]\caption{	$ \textrm{O}_\textrm{3} $ With redundancy}
-	\begin{center}
-		\begin{tabular}{| c | c | c | c | c |}
-			\hline
-			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
-			Package & Entity & 1 & W & 1 x 100 x 2 = 200 \\ \hline
-			Made up of (2) & Relationship & 1 & W & 1 x 100 x 2 = 200 \\ \hline		Item & Entity & 1 & R & 1 x 100 x 1 = 100 \\ \hline		
-			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{300}} \\ \hline
-		\end{tabular}
-	\end{center}
-\end{table}
-\begin{table}[!h]\caption{	$ \textrm{O}_\textrm{4} $ Without redundancy }
-	\begin{center}
-		\begin{tabular}{| c | c | c | c | c |}
-			\hline
-			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
-			Package & Entity & 1 & R & 1 x 7 x 1 = 7 \\ \hline
-			Made up of (2) & Relationship & 1 & R & 1 x 7 x 1 = 7 \\ \hline		Item & Entity & 1 & R & 1 x 7 x 1 = 7 \\ \hline		
-			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{21}} \\ \hline
-		\end{tabular}
-	\end{center}
-\end{table}
-\begin{table}[!h]\caption{	$ \textrm{O}_\textrm{4} $ With redundancy}
-	\begin{center}
-		\begin{tabular}{| c | c | c | c | c |}
-			\hline
-			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
-			Made up of (2) & Relationship & 1 & R & 1 x 7 x 1 = 7 \\ \hline	
-			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{7}} \\ \hline
-		\end{tabular}
-	\end{center}
-\end{table}
 We can see that $ \textrm{O}_\textrm{3} $, with or without redundancy, necessitate the same amount of operations, while from $ \textrm{O}_\textrm{4} $ we can assess that the number of operations without redundancy is tripled with respect to the case with redundancy, as well. Hence, the attribute ``quantity'' of the relationship ``made up of (2)'' should to be kept.
