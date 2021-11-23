@@ -27,7 +27,7 @@
 & Name & Name of an Item Category & Text & NOT NULL\\\cline{2-5}
 & Description & Description of an Item Category & Text & \\\hline
 
-\multirow{3}{*}{Specify} & Item\_ID & Identifier of an item & Foreign Key to Item, Primary key with Contract\_ID \\\cline{2-5}
+\multirow{3}{*}{Specify} & Item\_ID & Identifier of an item & Serial & Foreign Key to Item, Primary key with Contract\_ID\\\cline{2-5}
 & Contract\_ID & Identifier of a contract & Serial &  Foreign Key to Contract, Primary key with Item\_ID\\\cline{2-5}
 & Purchased\_Quantity & Amount of each item which is purchased  & Int & NOT NULL  \\\hline
 
@@ -36,8 +36,8 @@
 & Contract\_date & Date of signature of a contract with the supplier & Datetime & NOT NULL \\\cline{2-5}
 & Delivery\_date & Expected date of delivery of the goods & Datetime & NOT NULL \\\cline{2-5}
 & Expiration\_date & Expiration date of a contract & Datetime & NOT NULL \\\cline{2-5}
-& Supplier\_ID & Identifier of a supplier & Int  & Foreign Key to Supplier \\\cline{2-5}
-& Employee\_ID & Identifier of an employee & Text & Foreign Key to Employee \\\hline
+& Supplier\_ID & Identifier of a supplier & Int  & NOT NULL, Foreign Key to Supplier \\\cline{2-5}
+& Employee\_ID & Identifier of an employee & Text & NOT NULL, Foreign Key to Employee \\\hline
 
 \multirow{7}{*}{Package} & ID & Identifier of a package & Serial & PRIMARY KEY \\\cline{2-5}
 & Name & Name of a package & Text & NOT NULL \\\cline{2-5}
@@ -46,7 +46,7 @@
 & Height & Height of a package in centimeters & Int & NOT NULL \\\cline{2-5}
 & Width & Width of a package in centimeters & Int & NOT NULL \\\cline{2-5}
 & Depth & Depth of a package in centimeters & Int & NOT NULL \\\cline{2-5}
-& Package\_Category\_ID & Identifier of a Package Category & Serial  & Foreign Key to Package\_Category \\\hline
+& Package\_Category\_ID & Identifier of a Package Category & Serial  & NOT NULL, Foreign Key to Package\_Category \\\hline
 
 \multirow{3}{*}{Package\_Category} & ID & Identifier of a Package Category & Serial & PRIMARY KEY \\\cline{2-5}
 & Name & Name of a Package Category & Text & NOT NULL \\\cline{2-5}
@@ -57,28 +57,27 @@
 & Product\_Quantity & Amount of a product in each lot & Int & NOT NULL \\\cline{2-5}
 & Package\_Quantity & Amount of a package in each lot & Int & NOT NULL \\\cline{2-5}
 & Lot\_Discount & Percentage of discount of a lot & Int & NOT NULL \\\cline{2-5}
-& VAT & Value added tax (percentage) & NOT NULL \\\cline{2-5}
+& VAT & Value added tax (percentage) & Int & NOT NULL \\\cline{2-5}
 & Lot\_price & Lot price without discount & Float & NOT NULL \\\cline{2-5}
-& Package\_ID & Identifier of a package in each lot & Serial & Foreign Key to Package \\\cline{2-5}
-& Product\_ID &  Identifier of a product in each lot & Serial & Foreign Key to Product \\\hline
+& Package\_ID & Identifier of a package in each lot & Serial & NOT NULL, Foreign Key to Package \\\cline{2-5}
+& Product\_ID &  Identifier of a product in each lot & Serial & NOT NULL, Foreign Key to Product \\\hline
 
 \multirow{6}{*}{Order} & ID & Identifier of an order & Serial & PRIMARY KEY \\\cline{2-5}
 & Net\_price &  Total net amount including discount (VAT excluded) & Float & NOT NULL \\\cline{2-5}
 & Taxes & Amount of taxes to be paid & Float & NOT NULL \\\cline{2-5}
 & Order\_date & Date in which the order has been processed & Datetime & NOT NULL \\\cline{2-5}
 & Order\_paid & Status of the order payment & Boolean & NOT NULL \\\cline{2-5}
-& Employee\_ID & Identifier of the employee that places the order & Text & Foreign key to Employee \\\cline{2-5}
-& Customer\_ID & Identifier of the customer that places the order & Int & Foreign key to Customer \\\hline
+& Employee\_ID & Identifier of the employee that places the order & Text & NOT NULL, Foreign key to Employee \\\cline{2-5}
+& Costumer\_ID & Identifier of the customer that places the order & Int & NOT NULL, Foreign key to Customer \\\hline
 
-\multirow{3}{*}{Made\_Up\_Of (1)} & Product\_ID & Identifier of a product & Serial & Foreign key to Product, Primary key with Item\_Id \\\cline{2-5}
 \multirow{8}{*}{Customer} & VAT\_number & VAT\_number of the customer & Text & PRIMARY KEY\\\cline{2-5}
 & Customer\_name & Name of the customer & Text & NOT NULL \\\cline{2-5}
 & Phone\_number & Phone number (prefix included) of the customer & Text & NOT NULL \\\cline{2-5}
 & Address & Billing address of the customer & Text & NOT NULL \\\cline{2-5}
 & Registration\_date\_ID & Customer registration date & Datetime & NOT NULL\\\hline
 
-\multirow{3}{*}{Draws\_from} & Lot\_ID & Identifier of a lot & Serial & Foreign Key to Lot\\\cline{2-5}
-& Order\_ID & Identifier of an order & Serial & Foreign Key to Order \\\hline
+\multirow{3}{*}{Draws\_from} & Lot\_ID & Identifier of a lot & Serial & Foreign Key to Lot, Primary key to Lot\\\cline{2-5}
+& Order\_ID & Identifier of an order & Serial & NOT NULL, Foreign Key to Order \\\hline
 
 \multirow{3}{*}{Made\_Up\_Of (1)} & Product\_ID & Identifier of a product & Serial & Foreign key to Product, Primary key with Item\_Id \\\cline{2-5}
 & Item\_ID & Identifier of an item & Serial &  Foreign key to Item, Primary key with Product\_Id\\\cline{2-5}
@@ -89,7 +88,7 @@
 & Quantity & Amount of each item in a package & Int & NOT NULL  \\\hline
 
 \multirow{4}{*}{Ship} & Order\_ID & Identifier of the shipped order & Serial & Foreign key to Order, Primary key with Employee\_ID \\\cline{2-5}
-& Employee\_ID & Identifier of employee that ships the order & Serial &  Foreign key to Employee \\\cline{2-5}
+& Employee\_ID & Identifier of employee that ships the order & Serial &  NOT NULL, Foreign key to Employee \\\cline{2-5}
 & Shipping\_date & Date of when the order leaves to be shipped & Datetime & NOT NULL \\\cline{2-5}
 & Track\_num & Shipment code given by the third-party shipping company & Text & \\\hline %TODO: NOT NULL necessary?
 
@@ -102,7 +101,7 @@
 & Birth\_date & Birthdate of the employee  & Datetime & \\\cline{2-5}
 & Hiring\_date & Hiring date of the employee & Datetime & NOT NULL \\\cline{2-5}
 & Still\_working & Flag used to know if employee is still working for the company & Boolean & NOT NULL \\\cline{2-5}
-& Role\_ID & Identifier of the role that an employee has & Serial & Foreign Key to Role\\\hline
+& Role\_ID & Identifier of the role that an employee has & Serial & NOT NULL, Foreign Key to Role\\\hline
 
 \multirow{3}{*}{Role} & ID & Role identifier & Serial & PRIMARY KEY\\\cline{2-5}
 & Name & Name of the role & Text & NOT NULL \\\cline{2-5}
@@ -112,7 +111,7 @@
 & Employee\_ID & Identifier of an employee & Text & Foreign key to Employee, Primary key with Department\_ID \\\hline
 
 \multirow{3}{*}{Department} & ID & Department identifier of the company & Serial & PRIMARY KEY\\\cline{2-5}
-& Name & Name of the department & Text & NOT NULL \\\cline{2-5}
+& Name & Name of the department & Text & N{DraOT NULL \\\cline{2-5}
 & Description & Description of the department's function & Text & \\\hline
 
 \multirow{6}{*}{Supplier} & VAT\_number & VAT number of the supplier company & Int & PRIMARY KEY\\\cline{2-5}
