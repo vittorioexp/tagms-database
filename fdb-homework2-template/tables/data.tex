@@ -23,7 +23,6 @@
 & Quantity & Stock quantity of an item & Int & NOT NULL \\\cline{2-5}
 & Item\_Category\_ID & Identifier of an Item Category & Serial  & NOT NULL, Foreign Key to Item\_Category\\\hline
 
-
 \multirow{3}{*}{Item\_Category} & ID & Identifier of an Item Category & Serial & PRIMARY KEY \\\cline{2-5}
 & Name & Name of an Item Category & Text & NOT NULL\\\cline{2-5}
 & Description & Description of an Item Category & Text & \\\hline
@@ -60,7 +59,7 @@
 & Lot\_Discount & Percentage of discount of a lot & Int & NOT NULL \\\cline{2-5}
 & VAT & Value added tax (percentage) & NOT NULL \\\cline{2-5}
 & Lot\_price & Lot price without discount & Float & NOT NULL \\\cline{2-5}
-& Package\_ID & Identifier of a package in each lot & Serial & Foreign Key to Package \\\hline
+& Package\_ID & Identifier of a package in each lot & Serial & Foreign Key to Package \\\cline{2-5}
 & Product\_ID &  Identifier of a product in each lot & Serial & Foreign Key to Product \\\hline
 
 \multirow{6}{*}{Order} & ID & Identifier of an order & Serial & PRIMARY KEY \\\cline{2-5}
@@ -68,10 +67,23 @@
 & Taxes & Amount of taxes to be paid & Float & NOT NULL \\\cline{2-5}
 & Order\_date & Date in which the order has been processed & Datetime & NOT NULL \\\cline{2-5}
 & Order\_paid & Status of the order payment & Boolean & NOT NULL \\\cline{2-5}
-& Employee\_ID & Identifier of the employee that places the order & Text & Foreign key to Employee \\\hline
+& Employee\_ID & Identifier of the employee that places the order & Text & Foreign key to Employee \\\cline{2-5}
 & Costumer\_ID & Identifier of the customer that places the order & Int & Foreign key to Customer \\\hline
 
+<<<<<<< HEAD
 \multirow{3}{*}{Made\_Up\_Of (1)} & Product\_ID & Identifier of a product & Serial & Foreign key to Product, Primary key with Item\_Id \\\cline{2-5}
+=======
+\multirow{8}{*}{Customer} & VAT_number & VAT_number of the customer & Text & PRIMARY KEY\\\cline{2-5}
+& Customer\_name & Name of the customer & Text & NOT NULL \\\cline{2-5}
+& Phone\_number & Phone number (prefix included) of the customer & Text & NOT NULL \\\cline{2-5}
+& Address & Billing address of the customer & Text & NOT NULL \\\cline{2-5}
+& Registration\_date\_ID & Customer registration date & Datetime & NOT NULL\\\hline
+
+\multirow{3}{*}{Draws\_from} & Lot\_ID & Identifier of a lot & Serial & Foreign Key to Lot\\\cline{2-5}
+& Order\_ID & Identifier of an order & Serial & Foreign Key to Order \\\hline
+
+\multirow{3}{*}{Made_Up_Of (1)} & Product\_ID & Identifier of a product & Serial & Foreign key to Product, Primary key with Item\_Id \\\cline{2-5}
+>>>>>>> cc7d77adf8960dac97eaa2e3a6973fa5b20fd960
 & Item\_ID & Identifier of an item & Serial &  Foreign key to Item, Primary key with Product\_Id\\\cline{2-5}
 & Quantity & Amount of each item in a product & Int & NOT NULL  \\\hline
 
