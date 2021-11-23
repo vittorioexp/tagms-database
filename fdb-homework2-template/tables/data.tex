@@ -68,7 +68,7 @@
 & Order\_date & Date in which the order has been processed & Datetime & NOT NULL \\\cline{2-5}
 & Order\_paid & Status of the order payment & Boolean & NOT NULL \\\cline{2-5}
 & Employee\_ID & Identifier of the employee that places the order & Text & Foreign key to Employee \\\cline{2-5}
-& Costumer\_ID & Identifier of the customer that places the order & Int & Foreign key to Customer \\\hline
+& Customer\_ID & Identifier of the customer that places the order & Int & Foreign key to Customer \\\hline
 
 \multirow{3}{*}{Made\_Up\_Of (1)} & Product\_ID & Identifier of a product & Serial & Foreign key to Product, Primary key with Item\_Id \\\cline{2-5}
 \multirow{8}{*}{Customer} & VAT\_number & VAT\_number of the customer & Text & PRIMARY KEY\\\cline{2-5}
