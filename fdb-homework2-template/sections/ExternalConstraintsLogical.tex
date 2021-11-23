@@ -4,6 +4,6 @@
 \item Only the Salesman can insert new orders, so the Employee\_ID in the Order relation must have the role equal to "Salesman". 
 \item Only the Worker can ship orders, so the Employee\_ID in the Ship relation must have the role equal to "Worker".
 \item A product must consist of one or more items having a certain Item\_Category (e.g., "ingredient" or "glass bottle"). A package must consist of one or more items having a certain Item\_Category (e.g., "box", "plastic tape" or "polystyrene"). 
-\item The quantities of products contained in a lot belong to a finite set (e.g. 25, 50, 100), so the customer cannot order a lot with an arbitrary quantity of products. The Product\_Quantity in Lot Relation must be a value of enumeration  {25,50,100}.
+\item The quantities of products contained in a lot belong to a finite set (e.g. 25, 50, 100), so the customer cannot order a lot with an arbitrary quantity of products. The Product\_Quantity in Lot Relation must be a value of between 25,50,100.
 \item An expired lot cannot be sold. If Expiration\_date of a lot in  Lot relation is earlier than the current date, and this lot is not found in Draws\_from relation, it mustn't be  inserted in Draws\_from.
 \end{itemize}
