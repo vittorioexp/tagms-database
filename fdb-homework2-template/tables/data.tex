@@ -88,7 +88,7 @@
 & Quantity & Amount of each item in a package & Int & NOT NULL  \\\hline
 
 \multirow{4}{*}{Ship} & Order\_ID & Identifier of the shipped order & Serial & Foreign key to Order, Primary key with Employee\_ID \\\cline{2-5}
-& Employee\_ID & Identifier of employee that ships the order & Serial &  Foreign key to Employee \\\cline{2-5}
+& Employee\_ID & Identifier of employee that ships the order & Serial &  NOT NULL, Foreign key to Employee \\\cline{2-5}
 & Shipping\_date & Date of when the order leaves to be shipped & Datetime & NOT NULL \\\cline{2-5}
 & Track\_num & Shipment code given by the third-party shipping company & Text & \\\hline %TODO: NOT NULL necessary?
 
@@ -101,7 +101,7 @@
 & Birth\_date & Birthdate of the employee  & Datetime & \\\cline{2-5}
 & Hiring\_date & Hiring date of the employee & Datetime & NOT NULL \\\cline{2-5}
 & Still\_working & Flag used to know if employee is still working for the company & Boolean & NOT NULL \\\cline{2-5}
-& Role\_ID & Identifier of the role that an employee has & Serial & Foreign Key to Role\\\hline
+& Role\_ID & Identifier of the role that an employee has & Serial & NOT NULL, Foreign Key to Role\\\hline
 
 \multirow{3}{*}{Role} & ID & Role identifier & Serial & PRIMARY KEY\\\cline{2-5}
 & Name & Name of the role & Text & NOT NULL \\\cline{2-5}
