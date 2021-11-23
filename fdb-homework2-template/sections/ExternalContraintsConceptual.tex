@@ -5,12 +5,11 @@
 \item The price of a specific lot ("Lot\_price") is calculated as the multiplication of the price of the product (stored in the lot) multiplied by its quantity. It is important to underline that the "Lot\_price" attribute cannot be derived through an online operation as the fields on which it depends ("Production\_Cost" and "Price\_increase") can be modified over time and therefore give discordant results at different times.
 \item The total net amount of the order ("Net\_price") must be calculated as the sum, for each lot i included, of the Lot\_price\_i * (1 - Lot\_discount\_i / 100). The total taxes are calculated as the sum, for each lot i, of the Lot\_price\_i * VAT\_i / 100.
 \item The units of measure used by the company are specified in detail in the entity table.
-\item Only employees that are sill working in the company can access the DBMS.
+\item Only employees that are sill working (i.e. those who have the "Still_working" attribute set to "True") in the company can access the system.
 \item Sellers can keep track of the order status on their own, also updating the payment status once the bill is settled. By default, the boolean "Order\_paid" is false. 
 \item Only the Manager can insert new contracts, so the Employee who takes part in the "stipulate" relationship must have the role equal to "Manager". 
 \item Only the Salesman can insert new orders, so the Employee who takes part in the "place" relationship must have the role equal to "Salesman". 
 \item Only the Worker can ship orders, so the Employee who takes part in the "ship" relationship must have the role equal to "Worker".
-\itemm Only employees that have True as value of the Still_working attribute can access to the database.
 \item A product must consist of one or more items having a certain Item\_Category (e.g., "ingredient" or "glass bottle"). A package must consist of one or more items having a certain Item\_Category (e.g., "box", "plastic tape" or "polystyrene"). 
 \item The quantities of products contained in a lot belong to a finite set (e.g. 25, 50, 100), so the customer cannot order a lot with an arbitrary quantity of products.
 \item An expired lot cannot be sold.
