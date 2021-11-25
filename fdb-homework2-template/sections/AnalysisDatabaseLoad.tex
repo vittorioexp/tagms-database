@@ -1,3 +1,4 @@
+\newpage
 \subsection{Analysis of Database Load}
 The load analysis is divided in two parts: the first, to decide whether to store ``lot\_price'' into the ``Lot'' entity, or computing it when necessary via the relationship ``Stocked''; the second, to decide whether to store ``quantity'' into the ``Made up of (2)'' relationship, or computing it when necessary via the relationship ``Made up of (2)''. The second part of the analysis is done also for the other relationship ``Made up of (1)'' and leads to the same results.
 \begin{table}[!h]
@@ -13,7 +14,6 @@ The load analysis is divided in two parts: the first, to decide whether to store
 		\end{tabular}
 	\end{center}
 \end{table}
-\newpage
 \begin{table}[!h]\caption{	$ \textrm{O}_\textrm{1} $ Without redundancy}
 	\begin{center}
 		\begin{tabular}{| c | c | c | c | c |}
@@ -137,5 +137,5 @@ We can see that $ \textrm{O}_\textrm{3} $, with or without redundancy, necessita
 		\end{tabular}
 	\end{center}
 \end{table}
-
+\newpage
 With redundancy, to know if there are enough items to create the requested product, we just have to read the ``quantity'' attribute of the ``Item'' entity to know if there are enough of them for the requested product; then, we create a new entry in ``Product'', ``Belong (2)'', and ``Made\_up\_of (1). Without redundancy, we would have computed the quantity of each item, necessary to make the requested product, in advance. We have assumed that a product is made up of ten items on average, hence the average reads would have been 10 instead of 1, with redundancy. So, the attribute ``quantity'' should be kept.
