@@ -1,17 +1,18 @@
 \subsection{Analysis of Database Load}
 The load analysis is divided in two parts: the first, to decide whether to store ``lot\_price'' into the ``Lot'' entity, or computing it when necessary via the relationship ``Stocked''; the second, to decide whether to store ``quantity'' into the ``Made up of (2)'' relationship, or computing it when necessary via the relationship ``Made up of (2)''. The second part of the analysis is done also for the other relationship ``Made up of (1)'' and leads to the same results.
-\begin{center}
-	\begin{tabular}[!h]{ | c | c | c | c | }
-		\hline
-		\textbf{Operation} & \textbf{Description} & \textbf{Frequency} & \textbf{Type} \\ \hline
-		$ \textrm{O}_\textrm{1} $ : Insert new lot & Store data about a newly packaged lot. & 25/week & Online \\ \hline
-		$ \textrm{O}_\textrm{2} $ : Compute order price  & Compute order price from lot price & 25/week & Online \\\hline
-		$ \textrm{O}_\textrm{3} $ : Create new order & Create new package from items & 100/week & Online \\\hline
-		$ \textrm{O}_\textrm{4} $ : Compute order price & Compute the price of the order, which is composed of several lots & 100/week & Online \\\hline
-		$ \textrm{O}_\textrm{5} $ : Create new product & Create new product from items & 500/week & Online \\\hline
-		$ \textrm{O}_\textrm{6} $ : Compute item quantity & Compute the quantity of items, which is composed of the pruduct & 500/week & Online \\\hline
-	\end{tabular}
-\end{center}
+\begin{table}[!h]
+	\begin{center}
+		\begin{tabular}{ | c | c | c | c | }
+			\hline
+			\textbf{Operation} & \textbf{Description} & \textbf{Frequency} & \textbf{Type} \\ \hline
+			$ \textrm{O}_\textrm{1} $ : Insert new lot & Store data about a newly packaged lot. & 25/week & Online \\ \hline
+			$ \textrm{O}_\textrm{2} $ : Compute order price  & Compute order price from lot price & 25/week & Online \\\hline
+			$ \textrm{O}_\textrm{3} $ : Create new order & Create new package from items & 100/week & Online \\\hline
+			$ \textrm{O}_\textrm{4} $ : Compute order price & Compute the price of the order, which is composed of several lots & 100/week & Online \\\hline
+			$ \textrm{O}_\textrm{5} $ : Create new product & Create new product after checking sufficient item quantity & 500/week & Online \\\hline
+		\end{tabular}
+	\end{center}
+\end{table}
 \newpage
 \begin{table}[!h]\caption{	$ \textrm{O}_\textrm{1} $ Without redundancy}
 	\begin{center}
@@ -59,7 +60,7 @@ The load analysis is divided in two parts: the first, to decide whether to store
 		\end{tabular}
 	\end{center}
 \end{table}
-We can see that $ \textrm{O}_\textrm{1} $, with or without redundancy, necessitate the same amount of operations, while from $ \textrm{O}_\textrm{2} $ we can assess that the number of operations without redundancy is tripled with respect to the case with redundancy. Hence, the attribute ``lot\_price'' of the entity ``Lot'' should to be kept.
+We can see that $ \textrm{O}_\textrm{1} $, with or without redundancy, necessitate the same amount of operations, while from $ \textrm{O}_\textrm{2} $ we can assert that the number of operations without redundancy is tripled with respect to the case with redundancy. Hence, the attribute ``lot\_price'' of the entity ``Lot'' should to be kept.
 \begin{table}[!h]\caption{	$ \textrm{O}_\textrm{3} $ Without redundancy }
 	\begin{center}
 		\begin{tabular}{| c | c | c | c | c |}
@@ -107,20 +108,18 @@ We can see that $ \textrm{O}_\textrm{1} $, with or without redundancy, necessita
 	\end{center}
 \end{table}
 \newpage
-We can see that $ \textrm{O}_\textrm{3} $, with or without redundancy, necessitate the same amount of operations, while from $ \textrm{O}_\textrm{4} $ we can assess that the number of operations without redundancy is tripled with respect to the case with redundancy, as well. Hence, the attribute ``Net\_price'' of the entity ``Order'' should to be kept.
-
-
-
-
+We can see that $ \textrm{O}_\textrm{3} $, with or without redundancy, necessitate the same amount of operations, while from $ \textrm{O}_\textrm{4} $ we can assert that the number of operations without redundancy is tripled with respect to the case with redundancy, as well. Hence, the attribute ``Net\_price'' of the entity ``Order'' should to be kept.
 \begin{table}[!h]\caption{	$ \textrm{O}_\textrm{5} $ Without redundancy }
 	\begin{center}
 		\begin{tabular}{| c | c | c | c | c |}
 			\hline
 			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
-			Item & Entity & 1 & R & 1 x 500 x 1 = 500 \\ \hline
-			Made up of (1) & Relationship & 1 & W & 1 x 500 x 2 = 1000 \\ \hline
 			Product & Entity & 1 & W & 1 x 500 x 2 = 1000 \\ \hline
-			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{2500}} \\ \hline
+			Belong (2) & Relationship & 1 & W & 1 x 500 x 2 = 1000 \\ \hline
+			Product Category & Entity & 1 & R & 1x 500 x 1 = 500 \\ \hline
+			Made\_up\_of (1) & Relationship & 1 & W & 1 x 500 x 2 = 1000 \\ \hline
+			Item & Entity & 10 & R & 10 x 500 x 2 = 10000 \\ \hline
+			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{13500}} \\ \hline
 		\end{tabular}
 	\end{center}
 \end{table}
@@ -130,9 +129,13 @@ We can see that $ \textrm{O}_\textrm{3} $, with or without redundancy, necessita
 			\hline
 			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
 			Item & Entity & 1 & R & 1 x 500 x 1 = 500 \\ \hline
-			Made up of (1) & Relationship & 1 & W & 1 x 500 x 2 = 1000 \\ \hline
 			Product & Entity & 1 & W & 1 x 500 x 2 = 1000 \\ \hline
-			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{2500}} \\ \hline
+			Belong (2) & Relationship & 1 & W & 1 x 500 x 2 = 1000 \\ \hline
+			Product Category & Entity & 1 & R & 1x 500 x 1 = 500 \\ \hline
+			Made\_up\_of (1) & Relationship & 1 & W & 1 x 500 x 1 = 1000 \\ \hline
+			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{4000}} \\ \hline
 		\end{tabular}
 	\end{center}
 \end{table}
+
+With redundancy, to know if there are enough items to create the requested product, we just have to read the ``quantity'' attribute of the ``Item'' entity to know if there are enough of them for the requested product; then, we create a new entry in ``Product'', ``Belong (2)'', and ``Made\_up\_of (1). Without redundancy, we would have computed the quantity of each item, necessary to make the requested product, in advance. We have assumed that a product is made up of ten items on average, hence the average reads would have been 10 instead of 1, with redundancy. So, the attribute ``quantity'' should be kept.
