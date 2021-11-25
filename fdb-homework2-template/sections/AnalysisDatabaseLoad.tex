@@ -8,6 +8,8 @@ The load analysis is divided in two parts: the first, to decide whether to store
 		$ \textrm{O}_\textrm{2} $ : Compute order price  & Compute order price from lot price & 25/week & Online \\\hline
 		$ \textrm{O}_\textrm{3} $ : Create new order & Create new package from items & 100/week & Online \\\hline
 		$ \textrm{O}_\textrm{4} $ : Compute order price & Compute the price of the order, which is composed of several lots & 100/week & Online \\\hline
+		$ \textrm{O}_\textrm{5} $ : Create new product & Create new product from items & 500/week & Online \\\hline
+		$ \textrm{O}_\textrm{6} $ : Compute item quantity & Compute the quantity of items, which is composed of the pruduct & 500/week & Online \\\hline
 	\end{tabular}
 \end{center}
 \newpage
@@ -106,3 +108,31 @@ We can see that $ \textrm{O}_\textrm{1} $, with or without redundancy, necessita
 \end{table}
 \newpage
 We can see that $ \textrm{O}_\textrm{3} $, with or without redundancy, necessitate the same amount of operations, while from $ \textrm{O}_\textrm{4} $ we can assess that the number of operations without redundancy is tripled with respect to the case with redundancy, as well. Hence, the attribute ``Net\_price'' of the entity ``Order'' should to be kept.
+
+
+
+
+\begin{table}[!h]\caption{	$ \textrm{O}_\textrm{5} $ Without redundancy }
+	\begin{center}
+		\begin{tabular}{| c | c | c | c | c |}
+			\hline
+			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
+			Item & Entity & 1 & R & 1 x 500 x 1 = 500 \\ \hline
+			Made up of (1) & Relationship & 1 & W & 1 x 500 x 2 = 1000 \\ \hline
+			Product & Entity & 1 & W & 1 x 500 x 2 = 1000 \\ \hline
+			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{2500}} \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}
+\begin{table}[!h]\caption{	$ \textrm{O}_\textrm{5} $ With redundancy }
+	\begin{center}
+		\begin{tabular}{| c | c | c | c | c |}
+			\hline
+			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
+			Item & Entity & 1 & R & 1 x 500 x 1 = 500 \\ \hline
+			Made up of (1) & Relationship & 1 & W & 1 x 500 x 2 = 1000 \\ \hline
+			Product & Entity & 1 & W & 1 x 500 x 2 = 1000 \\ \hline
+			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{2500}} \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}
