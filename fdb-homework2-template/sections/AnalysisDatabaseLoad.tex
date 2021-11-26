@@ -1,9 +1,7 @@
-%TODO: update introduction and reasoning below operations tables
 \newpage
 \subsection{Analysis of Database Load}
 The load analysis is divided in two parts: the first, to show that storing the stock quantity of items in the Quantity attribute of Item requests less operations than computing it when needed; the second, to show that storing the net price and taxes of an order is more convenient than computing them when needed.
 The operations $ \textrm{O}_\textrm{1} $, $ \textrm{O}_\textrm{2} $ and $ \textrm{O}_\textrm{3} $ are used to describe the first part, while the operation $ \textrm{O}_\textrm{4} $ is about the second part.
-
 \begin{table}[!h]
 	\begin{center}
 		\begin{tabular}{ | c | c | c | c | }
@@ -14,14 +12,9 @@ The operations $ \textrm{O}_\textrm{1} $, $ \textrm{O}_\textrm{2} $ and $ \textr
 			$ \textrm{O}_\textrm{3} $ : Get item quantity  & Get quantity for one type of item & 25/week & Online \\\hline
 			$ \textrm{O}_\textrm{3} $ : Insert new order  & Create a new order, which is made of several lots & 25/week & Online \\\hline
 			$ \textrm{O}_\textrm{4} $ : Get net sales  & Get revenues for one year & 1/year & Batch \\\hline
-%			$ \textrm{O}_\textrm{2} $ : Compute order price  & Compute order price from lot price & 25/week & Online \\\hline
-%			$ \textrm{O}_\textrm{3} $ : Create new order & Create new package from items & 100/week & Online \\\hline
-%			$ \textrm{O}_\textrm{4} $ : Compute order price & Compute the price of the order, which is composed of several lots & 100/week & Online \\\hline
-%			$ \textrm{O}_\textrm{5} $ : Create new product & Create new product after checking sufficient item quantity & 500/week & Online \\\hline
 		\end{tabular}
 	\end{center}
 \end{table}
-
 
 To solve the first part, it is necessary to calculate the cost of entering the contract plus the cost of entering the lot plus the cost of obtaining the quantity of an item. The calculation must be done in two cases: in the first case (redundant) the Quantity in Item attribute is present, while in the second case (not redundant) the attribute is not present.
 
@@ -39,17 +32,17 @@ During the insertion of the lot, one write operation in Lot and one in Stocked a
 
 To obtain the quantity in stock of an item, two operations are necessary: the first allows to trace the total quantity purchased of a specific item. The second instead allows you to calculate the quantity of the item that was used for the production of the lots.
 
-To trace the total purchased quantity of an Item, you need to access all instances of the relationship Specify to understand in which contracts the Item was purchased. Then, for each Specify instance, the Contract entity is accessed to verify that the contract has "Delivery\_date" prior to today's date. In this case the Item has been delivered and the purchased quantity "Purchased\_quantity" in Specify is taken into account.
+To trace the total purchased quantity of an Item, you need to access all instances of the relationship Specify to understand in which contracts the Item was purchased. Then, for each Specify instance, the Contract entity is accessed to verify that the contract has ``Delivery\_date'' prior to today's date. In this case the Item has been delivered and the purchased quantity ``Purchased\_quantity'' in Specify is taken into account.
 
-To calculate the quantity of Item that has been used for the production of the lots, it is necessary to access the relationship Stocked to understand which products and packages (with relative quantities) a lot is made up of. For each instance of Stocked, the Product\_ID is used to check (through Made\_up\_of (1)) the composition of the product and Package\_ID to check (through Made\_up\_of (2)) the composition of the package. Then, for each instance of Stocked, an access is made to the relationship Made\_up\_of (1) and, if the Product consists of the Item of interest, the product between "Quantity" in Made\_up\_of (1) and "Product\_quantity" is taken into account in Stocked. Furthermore, for each Stocked instance, an access is made to the relationship Made\_up\_of (2) and, if the Package consists of the Item of interest, the product between "Quantity" in Made\_up\_of (2) and "Package\_quantity" is taken into account in Stocked.
+To calculate the quantity of Item that has been used for the production of the lots, it is necessary to access the relationship Stocked to understand which products and packages (with relative quantities) a lot is made up of. For each instance of Stocked, the Product\_ID is used to check (through Made\_up\_of (1)) the composition of the product and Package\_ID to check (through Made\_up\_of (2)) the composition of the package. Then, for each instance of Stocked, an access is made to the relationship Made\_up\_of (1) and, if the Product consists of the Item of interest, the product between ``Quantity'' in Made\_up\_of (1) and ``Product\_quantity'' is taken into account in Stocked. Furthermore, for each Stocked instance, an access is made to the relationship Made\_up\_of (2) and, if the Package consists of the Item of interest, the product between ``Quantity'' in Made\_up\_of (2) and ``Package\_quantity'' is taken into account in Stocked.
 
 As for the second part (show that storing the net price and taxes of an order is more convenient than computing them when needed) proceed as follows.
 In both cases, redundant or otherwise, as soon as the order is placed it is necessary to calculate both the net price and taxes so that they can be viewed by the customer.
 The necessary operation is to show the net sales and the total taxes between two time periods.
 
-In the non-redundant case, the "Net\_price" and "Taxes" attributes are not available in the Order entity. It is necessary, for each instance of the Order entity, to access the relationship Draws\_from to understand which lots the order is made up of. For each lot, and therefore for each instance of Draws\_from, the entity Lot is accessed to obtain the price and any discount, but also the taxes.
+In the non-redundant case, the ``Net\_price'' and ``Taxes'' attributes are not available in the Order entity. It is necessary, for each instance of the Order entity, to access the relationship Draws\_from to understand which lots the order is made up of. For each lot, and therefore for each instance of Draws\_from, the entity Lot is accessed to obtain the price and any discount, but also the taxes.
 
-In the redundant case, you have the "Net\_price" and "Taxes" attributes in the Order entity. When the order is placed, these attributes are calculated as follows. Having the Order\_ID, you need to access the relationship Draws\_from to understand which lots the order is made up of. For each lot, and therefore for each instance of Draws\_from, the entity Lot is accessed to obtain the price and any discount, but also the taxes. To perform the desired operation, for each Order instance, simply access the attributes described above.
+In the redundant case, you have the ``Net\_price'' and ``Taxes'' attributes in the Order entity. When the order is placed, these attributes are calculated as follows. Having the Order\_ID, you need to access the relationship Draws\_from to understand which lots the order is made up of. For each lot, and therefore for each instance of Draws\_from, the entity Lot is accessed to obtain the price and any discount, but also the taxes. To perform the desired operation, for each Order instance, simply access the attributes described above.
 \begin{table}[!h]\caption{	$ \textrm{O}_\textrm{1} $ Without redundancy}
 	\begin{center}
 		\begin{tabular}{| c | c | c | c | c |}
