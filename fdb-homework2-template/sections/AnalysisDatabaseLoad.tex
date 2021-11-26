@@ -10,7 +10,7 @@ The operations $ \textrm{O}_\textrm{1} $, $ \textrm{O}_\textrm{2} $, and $ \text
 			$ \textrm{O}_\textrm{1} $ : Insert contract & Store data about a new contract. & 1/week & Online \\ \hline
 			$ \textrm{O}_\textrm{2} $ : Insert new lot & Store data about a newly packaged lot. & 25/week & Online \\ \hline
 			$ \textrm{O}_\textrm{3} $ : Get item quantity  & Get quantity for one type of item & 25/week & Online \\\hline
-			$ \textrm{O}_\textrm{4} $ : Insert new order  & Create a new order, which is made of several lots & 5/week & Online \\\hline
+			$ \textrm{O}_\textrm{4} $ : Insert new order  & Create an order without computing net price and taxes  & 5/week & Online \\\hline
 			$ \textrm{O}_\textrm{5} $ : Get order price  & Get the price for one order & 5/week & Online \\\hline
 		\end{tabular}
 	\end{center}
@@ -102,6 +102,9 @@ Where the access value ("2") in "Specify" and in "Item" is the average number of
 		\end{tabular}
 	\end{center}
 \end{table}
+
+Where the access value ("300") in "Made\_up\_of(1)" is the estimated number of instances of Made\_up\_of(1), while the access value ("10") in "Item" is the average number of items per Product. Furthermore, the access value ("100") in "Made\_up\_of (2)" is the estimated number of instances of Made\_up\_of(2), while the access value ("3") in "Item" is the average number of items per Package.
+
 \begin{table}[!h]\caption{	$ \textrm{O}_\textrm{3} $ Without redundancy }
 	\begin{center}
 		\begin{tabular}{| c | c | c | c | c |}
@@ -116,6 +119,9 @@ Where the access value ("2") in "Specify" and in "Item" is the average number of
 		\end{tabular}
 	\end{center}
 \end{table}
+
+Where the access value ("200") in "Specify" is the average number of instances of "Specify", while the access value ("5") is the estimated total number of times that an Item is purchased. Furthermore, the access value ("300") in "Stocked" is the estimated number of instances of "Stocked", while the access value ("300") in "Made\_up\_of (1)" is the estimated number of instances of Made\_up\_of(1). Moreover the access value ("100") in "Made\_up\_of (2)" is the estimated number of instances of Made\_up\_of(2).
+
 \begin{table}[!h]\caption{	$ \textrm{O}_\textrm{3} $ With redundancy }
 	\begin{center}
 		\begin{tabular}{| c | c | c | c | c |}
@@ -131,41 +137,50 @@ Where the access value ("2") in "Specify" and in "Item" is the average number of
 		\begin{tabular}{| c | c | c | c | c |}
 			\hline
 			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
-			Draws from & Relationship & 5 & W & 5 x 25 x 2 = 250 \\ \hline
-			Order & Entity & 1 & W & 1 x 100 x 2 = 200 \\ \hline
-			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{450}} \\ \hline
+			Draws\_from & Relationship & 5 & W & 5 x 5 x 2 = 50 \\ \hline
+			Order & Entity & 1 & W & 1 x 5 x 2 = 10 \\ \hline
+			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{60}} \\ \hline
 		\end{tabular}
 	\end{center}
 \end{table}
+
+Where the access value ("5") in "Draws\_from" is the average number of lots per Order.
+
 \begin{table}[!h]\caption{	$ \textrm{O}_\textrm{4} $ With redundancy }
 	\begin{center}
 		\begin{tabular}{| c | c | c | c | c |}
 			\hline
 			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
-			Draws from & Relationship & 5 & W & 5 x 25 x 2 = 250 \\ \hline
-			Order & Entity & 1 & W & 1 x 100 x 2 = 200 \\ \hline
-			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{450}} \\ \hline
+			Draws\_from & Relationship & 5 & W & 5 x 5 x 2 = 50 \\ \hline
+			Order & Entity & 1 & W & 1 x 5 x 2 = 10 \\ \hline
+			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{60}} \\ \hline
 		\end{tabular}
 	\end{center}
 \end{table}
+
+Where the access value ("5") in "Draws\_from" is the average number of lots per Order.
+
 \begin{table}[!h]\caption{	$ \textrm{O}_\textrm{5} $ Without redundancy }
 	\begin{center}
 		\begin{tabular}{| c | c | c | c | c |}
 			\hline
 			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
-			Draws\_from & Relationship & 10000 & R & 10000 x 1 x 1 = 10000 \\ \hline
-			Lot & Entity &  5 & R & 5 x 1 x 1 = 5 \\ \hline
-			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{10005}} \\ \hline
+			Draws\_from & Relationship & 500 & R & 500 x 5 x 1 = 2500 \\ \hline
+			Lot & Entity &  5 & R & 5 x 5 x 1 = 25 \\ \hline
+			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{2525}} \\ \hline
 		\end{tabular}
 	\end{center}
 \end{table}
+
+Where the access value ("500") in "Draws\_from" is the estimated number of instances of Draws\_from, while the access value ("5") in "Lot" is the average number of lots per Order.
+
 \begin{table}[!h]\caption{	$ \textrm{O}_\textrm{5} $ With redundancy }
 	\begin{center}
 		\begin{tabular}{| c | c | c | c | c |}
 			\hline
 			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
-			Order & Entity & 1 & R & 1 x 25 x 1 = 1 \\ \hline
-			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{25}} \\ \hline
+			Order & Entity & 1 & R & 1 x 5 x 1 = 5 \\ \hline
+			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{5}} \\ \hline
 		\end{tabular}
 	\end{center}
 \end{table}
@@ -186,9 +201,9 @@ Where the access value ("2") in "Specify" and in "Item" is the average number of
 		\begin{tabular}{ | c | c | c | }
 			\hline
 			\textbf{Operation} & \textbf{With Redundancy} & \textbf{Without Redundancy} \\ \hline
-			$ \textrm{O}_\textrm{4} $ & 450 & 450\\ \hline
-			$ \textrm{O}_\textrm{5} $ & 25 & 10005 \\ \hline
-			\textbf{Total access/week } & 	\textbf{475} &	\textbf{10455} \\\hline
+			$ \textrm{O}_\textrm{4} $ & 60 & 60\\ \hline
+			$ \textrm{O}_\textrm{5} $ & 5 & 2525 \\ \hline
+			\textbf{Total access/week } & 	\textbf{65} &	\textbf{2585} \\\hline
 		\end{tabular}
 	\end{center}
 \end{table}
