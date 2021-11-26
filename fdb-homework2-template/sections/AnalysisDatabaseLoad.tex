@@ -84,11 +84,11 @@ In the redundant case, you have the ``Net\_price'' and ``Taxes'' attributes in t
 			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
 			Lot & Entity & 1 & W & 1 x 25 x 2 = 50 \\ \hline
 			Stocked & Relationship & 1 & W & 1 x 25 x 2 = 50 \\ \hline
-			Made\_up\_of (1) & Relationship & 10 & R & 10 x 25 x 1 = 250 \\ \hline
+			Made\_up\_of (1) & Relationship & 300 & R & 300 x 25 x 1 = 7500 \\ \hline
 			Item & Entity & 10 & W & 10 x 25 x 2 = 500 \\ \hline
-			Made\_up\_of (2) & Relationship & 3 & R & 3 x 25 x 1 = 75 \\ \hline
+			Made\_up\_of (2) & Relationship & 100 & R & 100 x 25 x 1 = 2500 \\ \hline
 			Item & Entity & 3 & W & 3 x 25 x 2 = 150 \\ \hline
-			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{1075}} \\ \hline
+			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{10750}} \\ \hline
 		\end{tabular}
 	\end{center}
 \end{table}
@@ -97,12 +97,12 @@ In the redundant case, you have the ``Net\_price'' and ``Taxes'' attributes in t
 		\begin{tabular}{| c | c | c | c | c |}
 			\hline
 			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
-			Specify & Relationship & 10 & R & 10 x 25 x 1 = 250 \\ \hline
-			Contract & Entity & 10 & R & 10 x 25 x 1 = 250 \\ \hline
+			Specify & Relationship & 200 & R & 200 x 25 x 1 = 5000 \\ \hline
+			Contract & Entity & 5 & R & 5 x 25 x 1 = 125 \\ \hline
 			Stocked & Relationship & 300 & R & 300 x 25 x 1 = 7500 \\ \hline
             Made\_up\_of (1) & Relationship & 300 & R & 300 x 25 x 1 = 7500 \\ \hline
-            Made\_up\_of (2) & Relationship & 300 & R & 300 x 25 x 1 = 7500 \\ \hline
-			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{23000}} \\ \hline
+            Made\_up\_of (2) & Relationship & 100 & R & 100 x 25 x 1 = 2500 \\ \hline
+			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{22625}} \\ \hline
 		\end{tabular}
 	\end{center}
 \end{table}
@@ -165,8 +165,8 @@ In the redundant case, you have the ``Net\_price'' and ``Taxes'' attributes in t
 			\hline
 			\textbf{Operation} & \textbf{With Redundancy} & \textbf{Without Redundancy} \\ \hline
 			$ \textrm{O}_\textrm{1} $ & 10 & 6\\ \hline
-			$ \textrm{O}_\textrm{2} $ & 1075 & 100 \\ \hline
-			$ \textrm{O}_\textrm{3} $ & 25 & 23000 \\\hline
+			$ \textrm{O}_\textrm{2} $ & 10750 & 100 \\ \hline
+			$ \textrm{O}_\textrm{3} $ & 25 & 22625 \\\hline
 			\textbf{Total access/week } & 	\textbf{1105} &	\textbf{23106} \\\hline
 		\end{tabular}
 	\end{center}
