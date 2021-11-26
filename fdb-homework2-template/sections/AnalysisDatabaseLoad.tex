@@ -1,3 +1,4 @@
+%TODO: update introduction and reasoning below operations tables
 \newpage
 \subsection{Analysis of Database Load}
 The load analysis is divided in two parts: the first, to decide whether to store ``lot\_price'' into the ``Lot'' entity, or computing it when necessary via the relationship ``Stocked''; the second, to decide whether to store ``quantity'' into the ``Made up of (2)'' relationship, or computing it when necessary via the relationship ``Made up of (2)''. The second part of the analysis is done also for the other relationship ``Made up of (1)'' and leads to the same results.
@@ -6,11 +7,14 @@ The load analysis is divided in two parts: the first, to decide whether to store
 		\begin{tabular}{ | c | c | c | c | }
 			\hline
 			\textbf{Operation} & \textbf{Description} & \textbf{Frequency} & \textbf{Type} \\ \hline
-			$ \textrm{O}_\textrm{1} $ : Insert new lot & Store data about a newly packaged lot. & 25/week & Online \\ \hline
-			$ \textrm{O}_\textrm{2} $ : Compute order price  & Compute order price from lot price & 25/week & Online \\\hline
-			$ \textrm{O}_\textrm{3} $ : Create new order & Create new package from items & 100/week & Online \\\hline
-			$ \textrm{O}_\textrm{4} $ : Compute order price & Compute the price of the order, which is composed of several lots & 100/week & Online \\\hline
-			$ \textrm{O}_\textrm{5} $ : Create new product & Create new product after checking sufficient item quantity & 500/week & Online \\\hline
+			$ \textrm{O}_\textrm{1} $ : Insert contract & Store data about a new contract. & 25/week & Online \\ \hline
+			$ \textrm{O}_\textrm{2} $ : Insert new lot & Store data about a newly packaged lot. & 25/week & Online \\ \hline
+			$ \textrm{O}_\textrm{3} $ : Get item quantity  & Get quantity for one type of item & 25/week & Online \\\hline
+			$ \textrm{O}_\textrm{4} $ : Get net sales  & Get revenues for one year & 1/year & Online \\\hline
+%			$ \textrm{O}_\textrm{2} $ : Compute order price  & Compute order price from lot price & 25/week & Online \\\hline
+%			$ \textrm{O}_\textrm{3} $ : Create new order & Create new package from items & 100/week & Online \\\hline
+%			$ \textrm{O}_\textrm{4} $ : Compute order price & Compute the price of the order, which is composed of several lots & 100/week & Online \\\hline
+%			$ \textrm{O}_\textrm{5} $ : Create new product & Create new product after checking sufficient item quantity & 500/week & Online \\\hline
 		\end{tabular}
 	\end{center}
 \end{table}
@@ -19,10 +23,9 @@ The load analysis is divided in two parts: the first, to decide whether to store
 		\begin{tabular}{| c | c | c | c | c |}
 			\hline
 			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
-			Product & Entity & 1 & R & 1 x 25 x 1 = 25 \\ \hline
-			Lot & Entity & 1 & W & 1 x 25 x 2 = 25 \\ \hline
-			Stocked & Relationship & 1 & W & 1 x 25 x 2 = 25 \\ \hline
-			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{75}} \\ \hline
+			Contract & Entity & 1 & W & 1 x 1 x 2 = 2 \\ \hline
+			Specify & Relationship & 2 & W & 2 x 1 x 2 = 4 \\ \hline
+			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{6}} \\ \hline
 		\end{tabular}
 	\end{center}
 \end{table}
@@ -31,10 +34,10 @@ The load analysis is divided in two parts: the first, to decide whether to store
 		\begin{tabular}{| c | c | c | c | c |}
 			\hline
 			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
-			Product & Entity & 1 & R & 1 x 25 x 1 = 25 \\ \hline
-			Lot & Entity & 1 & W & 1 x 25 x 2 = 25 \\ \hline
-			Stocked & Relationship & 1 & W & 1 x 25 x 2 = 25 \\ \hline
-			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{75}} \\ \hline
+			Contract & Entity & 1 & W & 1 x 1 x 2 = 2 \\ \hline
+			Specify & Relationship & 2 & W & 2 x 1 x 2 = 4 \\ \hline
+			Item & Entity & 2 & W & 2 x 1 x 2 = 4 \\ \hline
+			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{10}} \\ \hline
 		\end{tabular}
 	\end{center}
 \end{table}
@@ -43,10 +46,9 @@ The load analysis is divided in two parts: the first, to decide whether to store
 		\begin{tabular}{| c | c | c | c | c |}
 			\hline
 			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
-			Product & Entity & 1 & R & 1 x 25 x 1 = 25 \\ \hline
-			Lot & Entity & 1 & W & 1 x 25 x 2 = 25 \\ \hline
-			Stocked & Relationship & 1 & W & 1 x 25 x 2 = 25 \\ \hline
-			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{75}} \\ \hline
+			Lot & Entity & 1 & W & 1 x 25 x 2 = 50 \\ \hline
+			Stocked & Relationship & 1 & W & 1 x 25 x 2 = 50 \\ \hline
+			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{100}} \\ \hline
 		\end{tabular}
 	\end{center}
 \end{table}
@@ -55,21 +57,30 @@ The load analysis is divided in two parts: the first, to decide whether to store
 		\begin{tabular}{| c | c | c | c | c |}
 			\hline
 			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
-			Lot & Entity & 1 & W & 1 x 25 x 2 = 25 \\ \hline
-			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{25}} \\ \hline
+			Lot & Entity & 1 & W & 1 x 25 x 2 = 50 \\ \hline
+			Stocked & Relationship & 1 & W & 1 x 25 x 2 = 50 \\ \hline
+			Made\_up\_of (1) & Relationship & 10 & R & 10 x 25 x 1 = 250 \\ \hline
+			Item & Entity & 10 & W & 10 x 25 x 2 = 500 \\ \hline
+			Made\_up\_of (2) & Relationship & 3 & R & 3 x 25 x 1 = 75 \\ \hline
+			Item & Entity & 3 & W & 3 x 25 x 2 = 150 \\ \hline
+			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{1075}} \\ \hline
 		\end{tabular}
 	\end{center}
 \end{table}
+
 We can see that $ \textrm{O}_\textrm{1} $, with or without redundancy, necessitate the same amount of operations, while from $ \textrm{O}_\textrm{2} $ we can assert that the number of operations without redundancy is tripled with respect to the case with redundancy. Hence, the attribute ``lot\_price'' of the entity ``Lot'' should to be kept.
+
 \begin{table}[!h]\caption{	$ \textrm{O}_\textrm{3} $ Without redundancy }
 	\begin{center}
 		\begin{tabular}{| c | c | c | c | c |}
 			\hline
 			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
-			Lot & Entity & 1 & R & 1 x 100 x 1 = 100 \\ \hline
-			Draws from & Relationship & 1 & W & 1 x 100 x 2 = 200 \\ \hline
-			Order & Entity & 1 & W & 1 x 100 x 2 = 200 \\ \hline
-			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{500}} \\ \hline
+			Stocked & Entity & 300 & R & 300 x 25 x 1 = 7500 \\ \hline
+			Made\_up\_of (1) & Relationship & 300 & R & 1 x 25 x 1 = 7500 \\ \hline
+			Made\_up\_of (2) & Relationship & 300 & R & 1 x 25 x 1 = 7500 \\ \hline
+			Specify & Relationship & 10 & R & 10 x 25 x 1 = 250 \\ \hline
+			Contract & Entity & 10 & R & 10 x 25 x 1 = 250 \\ \hline
+			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{23000}} \\ \hline
 		\end{tabular}
 	\end{center}
 \end{table}
@@ -78,22 +89,21 @@ We can see that $ \textrm{O}_\textrm{1} $, with or without redundancy, necessita
 		\begin{tabular}{| c | c | c | c | c |}
 			\hline
 			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
-			Lot & Entity & 1 & R & 1 x 100 x 1 = 100 \\ \hline
-			Draws from & Relationship & 1 & W & 1 x 100 x 2 = 200 \\ \hline
-			Order & Entity & 1 & W & 1 x 100 x 2 = 200 \\ \hline
-			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{500}} \\ \hline
+			Item & Entity & 1 & R & 1 x 25 x 1 = 25 \\ \hline
+			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{25}} \\ \hline
 		\end{tabular}
 	\end{center}
 \end{table}
+
 \begin{table}[!h]\caption{	$ \textrm{O}_\textrm{4} $ Without redundancy }
 	\begin{center}
 		\begin{tabular}{| c | c | c | c | c |}
 			\hline
 			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
-			Order & Entity & 1 & R & 1 x 100 x 1 = 100 \\ \hline
-			Draws from & Relationship & 1 & R & 1 x 100 x 1 = 100 \\ \hline
-			Lot & Entity & 1 & R & 1 x 100 x 1 = 100 \\ \hline
-			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{300}} \\ \hline
+			Order & Entity & 250 & R & 250 x 1 x 1 = 250 \\ \hline
+			Draws from & Relationship & 1250 & R & 1250 x 1 x 1 = 1250 \\ \hline
+			Lot & Entity & 1250 & R & 1250 x 1 x 1 = 1250 \\ \hline
+			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{2750}} \\ \hline
 		\end{tabular}
 	\end{center}
 \end{table}
@@ -102,41 +112,63 @@ We can see that $ \textrm{O}_\textrm{1} $, with or without redundancy, necessita
 		\begin{tabular}{| c | c | c | c | c |}
 			\hline
 			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
-			Order & Entity & 1 & R & 1 x 100 x 1 = 100 \\ \hline
-			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{100}} \\ \hline
+			Order & Entity & 250 & R & 250 x 1 x 1 = 250 \\ \hline
+			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{250}} \\ \hline
 		\end{tabular}
 	\end{center}
 \end{table}
-\newpage
-We can see that $ \textrm{O}_\textrm{3} $, with or without redundancy, necessitate the same amount of operations, while from $ \textrm{O}_\textrm{4} $ we can assert that the number of operations without redundancy is tripled with respect to the case with redundancy, as well. Hence, the attribute ``Net\_price'' of the entity ``Order'' should to be kept.
-\begin{table}[!h]\caption{	$ \textrm{O}_\textrm{5} $ Without redundancy }
-	\begin{center}
-		\begin{tabular}{| c | c | c | c | c |}
-			\hline
-			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
-			Item & Entity & 10 & R & 10 x 500 x 2 = 10000 \\ \hline
-			Made\_up\_of (1) & Relationship & 1 & W & 1 x 500 x 2 = 1000 \\ \hline
-			Product Category & Entity & 1 & R & 1x 500 x 1 = 500 \\ \hline
-			Belong (2) & Relationship & 1 & W & 1 x 500 x 2 = 1000 \\ \hline
-			Product & Entity & 1 & W & 1 x 500 x 2 = 1000 \\ \hline
-
-			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{13500}} \\ \hline
-		\end{tabular}
-	\end{center}
-\end{table}
-\begin{table}[!h]\caption{	$ \textrm{O}_\textrm{5} $ With redundancy }
-	\begin{center}
-		\begin{tabular}{| c | c | c | c | c |}
-			\hline
-			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
-			Item & Entity & 1 & R & 1 x 500 x 1 = 500 \\ \hline
-			Made\_up\_of (1) & Relationship & 1 & W & 1 x 500 x 1 = 1000 \\ \hline
-			Product Category & Entity & 1 & R & 1x 500 x 1 = 500 \\ \hline
-			Belong (2) & Relationship & 1 & W & 1 x 500 x 2 = 1000 \\ \hline
-			Product & Entity & 1 & W & 1 x 500 x 2 = 1000 \\ \hline
-			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{4000}} \\ \hline
-		\end{tabular}
-	\end{center}
-\end{table}
-\newpage
+%\begin{table}[!h]\caption{	$ \textrm{O}_\textrm{4} $ Without redundancy }
+%	\begin{center}
+%		\begin{tabular}{| c | c | c | c | c |}
+%			\hline
+%			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
+%			Order & Entity & 1 & R & 1 x 100 x 1 = 100 \\ \hline
+%			Draws from & Relationship & 1 & R & 1 x 100 x 1 = 100 \\ \hline
+%			Lot & Entity & 1 & R & 1 x 100 x 1 = 100 \\ \hline
+%			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{300}} \\ \hline
+%		\end{tabular}
+%	\end{center}
+%\end{table}
+%\begin{table}[!h]\caption{	$ \textrm{O}_\textrm{4} $ With redundancy }
+%	\begin{center}
+%		\begin{tabular}{| c | c | c | c | c |}
+%			\hline
+%			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
+%			Order & Entity & 1 & R & 1 x 100 x 1 = 100 \\ \hline
+%			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{100}} \\ \hline
+%		\end{tabular}
+%	\end{center}
+%\end{table}
+%\newpage
+%We can see that $ \textrm{O}_\textrm{3} $, with or without redundancy, necessitate the same amount of operations, while from $ \textrm{O}_\textrm{4} $ we can assert that the number of operations without redundancy is tripled with respect to the case with redundancy, as well. Hence, the attribute ``Net\_price'' of the entity ``Order'' should to be kept.
+%\begin{table}[!h]\caption{	$ \textrm{O}_\textrm{5} $ Without redundancy }
+%	\begin{center}
+%		\begin{tabular}{| c | c | c | c | c |}
+%			\hline
+%			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
+%			Item & Entity & 10 & R & 10 x 500 x 2 = 10000 \\ \hline
+%			Made\_up\_of (1) & Relationship & 1 & W & 1 x 500 x 2 = 1000 \\ \hline
+%			Product Category & Entity & 1 & R & 1x 500 x 1 = 500 \\ \hline
+%			Belong (2) & Relationship & 1 & W & 1 x 500 x 2 = 1000 \\ \hline
+%			Product & Entity & 1 & W & 1 x 500 x 2 = 1000 \\ \hline
+%
+%			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{13500}} \\ \hline
+%		\end{tabular}
+%	\end{center}
+%\end{table}
+%\begin{table}[!h]\caption{	$ \textrm{O}_\textrm{5} $ With redundancy }
+%	\begin{center}
+%		\begin{tabular}{| c | c | c | c | c |}
+%			\hline
+%			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
+%			Item & Entity & 1 & R & 1 x 500 x 1 = 500 \\ \hline
+%			Made\_up\_of (1) & Relationship & 1 & W & 1 x 500 x 1 = 1000 \\ \hline
+%			Product Category & Entity & 1 & R & 1x 500 x 1 = 500 \\ \hline
+%			Belong (2) & Relationship & 1 & W & 1 x 500 x 2 = 1000 \\ \hline
+%			Product & Entity & 1 & W & 1 x 500 x 2 = 1000 \\ \hline
+%			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{4000}} \\ \hline
+%		\end{tabular}
+%	\end{center}
+%\end{table}
+%\newpage
 With redundancy, to know if there are enough items to create the requested product, we just have to read the ``quantity'' attribute of the ``Item'' entity to know if there are enough of them for the requested product; then, we create a new entry in ``Product'', ``Belong (2)'', and ``Made\_up\_of (1). Without redundancy, we would have computed the quantity of each item, necessary to make the requested product, in advance. We have assumed that a product is made up of ten items on average, hence the average reads would have been 10 instead of 1, with redundancy. So, the attribute ``quantity'' should be kept.
