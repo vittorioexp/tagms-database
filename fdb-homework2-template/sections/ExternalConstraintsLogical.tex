@@ -4,4 +4,7 @@
 \item Only the salesman can insert new orders, so the Employee\_ID in the Order relation must have the role equal to ``Salesman''. Only the salesman can update the order status.
 \item Only the manager can insert new contracts, so the Employee\_ID of the Contract relation must have the role equal to ``Manager''.
 \item Only the Worker can ship orders, so the Employee\_ID in the Ship relation must have the role equal to ``Worker''.
+\item An instance of Made\_up\_of(1) with PK Product\_ID must have the correspondent Item\_ID hat belongs to an item that has a certain subset of values for the Item\_Category attribute. An instance of Made\_up\_of(2) with PK Package\_ID must have the correspondent Item\_ID that belongs to an item that has a certain subset of values for the Item\_Category attribute.
+\item When a new entry of the Draws from relation is created, the value of Lot\_ID must be associated to a lot whose value of the Expiration\_date attribute is greater or equal than the current date plus 6 months.
+\item All the units of measure used by the company are fixed. Furthermore, for sake of simplicity, they are reported in detail in the entity table. All the attributes of the relations in the system follow these conventions.
 \end{itemize}
