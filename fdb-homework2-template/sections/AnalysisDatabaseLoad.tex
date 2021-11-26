@@ -1,7 +1,8 @@
 %TODO: update introduction and reasoning below operations tables
 \newpage
 \subsection{Analysis of Database Load}
-The load analysis is divided in two parts: the first, to decide whether to store ``lot\_price'' into the ``Lot'' entity, or computing it when necessary via the relationship ``Stocked''; the second, to decide whether to store ``quantity'' into the ``Made up of (2)'' relationship, or computing it when necessary via the relationship ``Made up of (2)''. The second part of the analysis is done also for the other relationship ``Made up of (1)'' and leads to the same results.
+The load analysis is divided in two parts: the first, to show that storing the stock quantity of items in the Quantity attribute of Item requests less operations than computing it when needed; the second, to show that storing the net price and taxes of an order is more convenient than computing them when needed.
+The operations $ \textrm{O}_\textrm{1} $, $ \textrm{O}_\textrm{2} $ and $ \textrm{O}_\textrm{3} $ are used to describe the first part, while the operation $ \textrm{O}_\textrm{4} $ is about the second part.
 \begin{table}[!h]
 	\begin{center}
 		\begin{tabular}{ | c | c | c | c | }
