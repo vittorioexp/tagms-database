@@ -19,7 +19,7 @@
     Role & Represents data on the role of employees who work in the company &
     \begin{itemize}
         \vspace{-1em}
-        \item ID:   role identifier, serial
+        \item Role\_ID:   role identifier, serial
         \item Name:   name of the role, text
         \item Description:   technical description of the role, text
     \end{itemize}
@@ -28,7 +28,7 @@
     Department & Represents data on the departments in which employees work &
     \begin{itemize}
         \vspace{-1em}
-        \item ID:   department identifier of the company, serial
+        \item Department\_ID:   department identifier of the company, serial
         \item Name:   name of the department, text
         \item Description:   description of the department's function, text
     \end{itemize}
@@ -50,7 +50,7 @@
     Contract & Represents data about a contract stipulated between a supplier and a manager for the supply of items &
     \begin{itemize}
         \vspace{-1em}
-        \item ID:   contract identifier, serial
+        \item Contract\_ID:   contract identifier, serial
         \item Description:   description of the contract, text
         \item Contract\_date:    date of signature of the contract with the supplier, Datetime
         \item Delivery\_date:    expected date of delivery of the goods, Datetime
@@ -74,7 +74,7 @@
     Order & Represents the order placed by a salesman for a customer &
     \begin{itemize}
         \vspace{-1em}
-        \item ID:   order identifier, serial
+        \item Order\_ID:   order identifier, serial
         \item Order\_date:   date in which the order has been processed, Datetime
         \item Order\_paid:   status of the payment, boolean
         \item Net\_price:   total net amount including discount (VAT excluded), float    %net_price = for each lot { lot_price * (1 - discount / 100) }
@@ -87,7 +87,7 @@
     Lot & Represents a lot in the inventory of the company, containing final products and packaging &
     \begin{itemize}
         \vspace{-1em}
-        \item ID:   lot identifier, serial
+        \item Lot\_ID:   lot identifier, serial
         \item Expiration\_date:   expiration date of the included products, Datetime
         \item Lot\_price:   lot price (without the discount) at the time of sale, float
         \item Lot\_discount:   percentage of discount of a lot, int
@@ -98,7 +98,7 @@
     Product & Represents the final product that is marketed &
     \begin{itemize}
         \vspace{-1em}
-        \item ID:   product identifier, serial
+        \item Product\_ID:   product identifier, serial
         \item Name:   name of the product, text
         \item Description:   description of the product, text
         \item Nutritional\_Facts: description of nutritional facts of the specific product, text
@@ -113,7 +113,7 @@
     Item & Represents materials provided by suppliers &
     \begin{itemize}
         \vspace{-1em}
-        \item ID:   identifier of the item, serial
+        \item Item\_ID:   identifier of the item, serial
         \item Name:   name of the item, text
         \item Description:   description of the item, text
         \item Quantity:   stock quantity of the item (automatically updates), int
@@ -124,7 +124,7 @@
     Package & Represents packaging of finished products which are made up of boxes, tapes, and other packaging materials &
     \begin{itemize}
         \vspace{-1em}
-        \item ID:   identifier of the package, serial
+        \item Package\_ID:   identifier of the package, serial
         \item Name:   name of the package, text
         \item Description:   description of the package, text
         \item Weight:   weight dimension of the package in grams, int
@@ -137,7 +137,7 @@
     Product\_Category & Represents the category of a product &
         \begin{itemize}
             \vspace{-1em}
-            \item ID:   identifier of the product category, serial
+            \item Product\_Category\_ID:   identifier of the product category, serial
             \item Name:   name of the product category, text
             \item Description:   description of the product category, text
         \end{itemize}
@@ -146,7 +146,7 @@
     Item\_Category & Represents the category of an item &
         \begin{itemize}
             \vspace{-1em}
-            \item ID:   identifier of the item category, serial
+            \item Item\_Category\_ID:   identifier of the item category, serial
             \item Name:   name of the item category, text
             \item Description:   description of the item category, text
         \end{itemize}
@@ -155,7 +155,7 @@
     Package\_Category & Represents the category of a package &
         \begin{itemize}
             \vspace{-1em}
-            \item ID:   identifier of the package category, serial
+            \item Package\_Category\_ID:   identifier of the package category, serial
             \item Name:   name of the package category, text
             \item Description:   description of the package category, text
         \end{itemize}

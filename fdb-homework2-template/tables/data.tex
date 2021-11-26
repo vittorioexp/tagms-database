@@ -2,7 +2,7 @@
 \hline
 \textbf{Relation} & \textbf{Attribute} & \textbf{Description} & \textbf{Domain} & \textbf{Constraints} \\\hline
 
-\multirow{10}{*}{Product} & ID & Identifier of a product & Serial &  PRIMARY KEY\\\cline{2-5}
+\multirow{10}{*}{Product} & Product\_ID & Identifier of a product & Serial &  PRIMARY KEY\\\cline{2-5}
 & Name & Name of a product & Text & NOT NULL \\\cline{2-5}
 & Description & Description of a product  & Text &  \\\cline{2-5}
 & Production\_Cost & Production cost of a product & Float & NOT NULL \\\cline{2-5}
@@ -13,18 +13,18 @@
 & Nutritional\_Facts & Description of nutritional facts of a product & Text & NOT NULL \\\cline{2-5}
 & Product\_Category\_ID & Identifier of a Product Category & Serial  & NOT NULL, Foreign Key to Product\_Category \\\hline
 
-\multirow{3}{*}{Product\_Category} & ID & Identifier of a Product Category & Serial & PRIMARY KEY \\\cline{2-5}
+\multirow{3}{*}{Product\_Category} & Product\_Category\_ID & Identifier of a Product Category & Serial & PRIMARY KEY \\\cline{2-5}
 & Name & Name of a Product Category & Text & NOT NULL \\\cline{2-5}
 & Description & Description of a Product Category & Text & \\\hline
 
-\multirow{5}{*}{Item} & ID & Identifier of an item  & Serial & PRIMARY KEY \\\cline{2-5}
+\multirow{5}{*}{Item} & Item\_ID & Identifier of an item  & Serial & PRIMARY KEY \\\cline{2-5}
 & Name & Name of an item & Text & NOT NULL\\\cline{2-5}
 & Description & Description of an item & Text & \\\cline{2-5}
 & Quantity & Stock quantity of an item & Int & NOT NULL \\\cline{2-5}
 & Minimum\_quantity & Minimum stock quantity of the item & Int & NOT NULL \\\cline{2-5}
 & Item\_Category\_ID & Identifier of an Item Category & Serial  & NOT NULL, Foreign Key to Item\_Category\\\hline
 
-\multirow{3}{*}{Item\_Category} & ID & Identifier of an Item Category & Serial & PRIMARY KEY \\\cline{2-5}
+\multirow{3}{*}{Item\_Category} & Item\_Category\_ID & Identifier of an Item Category & Serial & PRIMARY KEY \\\cline{2-5}
 & Name & Name of an Item Category & Text & NOT NULL\\\cline{2-5}
 & Description & Description of an Item Category & Text & \\\hline
 
@@ -33,7 +33,7 @@
 & Price &  The price of the amount of items which are purchased  & Float &  NOT NULL\\\cline{2-5}
 & Purchased\_Quantity & Amount of each item which is purchased  & Int & NOT NULL  \\\hline
 
-\multirow{7}{*}{Contract} & ID & Identifier of a contract & Serial & PRIMARY KEY \\\cline{2-5}
+\multirow{7}{*}{Contract} & Contract\_ID & Identifier of a contract & Serial & PRIMARY KEY \\\cline{2-5}
 & Description & Description of a contract & Text & \\\cline{2-5}
 & Contract\_date & Date of signature of a contract with the supplier & Datetime & NOT NULL \\\cline{2-5}
 & Delivery\_date & Expected date of delivery of the goods & Datetime & NOT NULL \\\cline{2-5}
@@ -41,7 +41,7 @@
 & Supplier\_ID & Identifier of a supplier & Int  & NOT NULL, Foreign Key to Supplier \\\cline{2-5}
 & Employee\_ID & Identifier of an employee & Text & NOT NULL, Foreign Key to Employee \\\hline
 
-\multirow{7}{*}{Package} & ID & Identifier of a package & Serial & PRIMARY KEY \\\cline{2-5}
+\multirow{7}{*}{Package} & Package\_ID & Identifier of a package & Serial & PRIMARY KEY \\\cline{2-5}
 & Name & Name of a package & Text & NOT NULL \\\cline{2-5}
 & Description & Description of a package & Text &  \\\cline{2-5}
 & Weight & Weight of a package in grams & Int & NOT NULL \\\cline{2-5}
@@ -50,11 +50,11 @@
 & Depth & Depth of a package in centimeters & Int & NOT NULL \\\cline{2-5}
 & Package\_Category\_ID & Identifier of a Package Category & Serial  & NOT NULL, Foreign Key to Package\_Category \\\hline
 
-\multirow{3}{*}{Package\_Category} & ID & Identifier of a Package Category & Serial & PRIMARY KEY \\\cline{2-5}
+\multirow{3}{*}{Package\_Category} & Package\_Category\_ID & Identifier of a Package Category & Serial & PRIMARY KEY \\\cline{2-5}
 & Name & Name of a Package Category & Text & NOT NULL \\\cline{2-5}
 & Description & Description of a Package Category & Text & \\\hline
 
-\multirow{8}{*}{Lot} & ID & Identifier of a lot & Serial & PRIMARY KEY \\\cline{2-5}
+\multirow{8}{*}{Lot} & Lot\_ID & Identifier of a lot & Serial & PRIMARY KEY \\\cline{2-5}
 & Expiration\_date & Expiration date of the included products & Datetime & NOT NULL \\\cline{2-5}
 & Product\_Quantity & Amount of a product in each lot & Int & NOT NULL \\\cline{2-5}
 & Package\_Quantity & Amount of a package in each lot & Int & NOT NULL \\\cline{2-5}
@@ -64,14 +64,14 @@
 & Package\_ID & Identifier of a package in each lot & Serial & NOT NULL, Foreign Key to Package \\\cline{2-5}
 & Product\_ID &  Identifier of a product in each lot & Serial & NOT NULL, Foreign Key to Product \\\hline
 
-\multirow{6}{*}{Order} & ID & Identifier of an order & Serial & PRIMARY KEY \\\cline{2-5}
+\multirow{6}{*}{Order} & Order\_ID & Identifier of an order & Serial & PRIMARY KEY \\\cline{2-5}
 & Net\_price &  Total net amount including discount (VAT excluded) & Float & NOT NULL \\\cline{2-5}
 & Taxes & Amount of taxes to be paid & Float & NOT NULL \\\cline{2-5}
 & Order\_date & Date in which the order has been processed & Datetime & NOT NULL \\\cline{2-5}
 & Order\_paid & Status of the order payment & Boolean & NOT NULL \\\cline{2-5}
 & Employee\_ID & Identifier of the employee that places the order & Text & NOT NULL, Foreign key to Employee \\\cline{2-5}
 & Costumer\_ID & Identifier of the customer that places the order & Int & NOT NULL, Foreign key to Customer \\\hline
-
+\newpage
 \multirow{8}{*}{Customer} & VAT\_number & VAT\_number of the customer & Text & PRIMARY KEY\\\cline{2-5}
 & Customer\_name & Name of the customer & Text & NOT NULL \\\cline{2-5}
 & Phone\_number & Phone number (prefix included) of the customer & Text & NOT NULL \\\cline{2-5}
@@ -106,14 +106,14 @@
 & Still\_working & Flag used to know if employee is still working for the company & Boolean & NOT NULL \\\cline{2-5}
 & Role\_ID & Identifier of the role that an employee has & Serial & NOT NULL, Foreign Key to Role\\\hline
 
-\multirow{3}{*}{Role} & ID & Role identifier & Serial & PRIMARY KEY\\\cline{2-5}
+\multirow{3}{*}{Role} & Role\_ID & Role identifier & Serial & PRIMARY KEY\\\cline{2-5}
 & Name & Name of the role & Text & NOT NULL \\\cline{2-5}
 & Description & Technical description of the role & Text &  \\\hline
 
 \multirow{2}{*}{Work} & Department\_ID & Identifier of a department & Serial & Foreign key to Department, Primary key with Employee\_ID \\\cline{2-5}
 & Employee\_ID & Identifier of an employee & Text & Foreign key to Employee, Primary key with Department\_ID \\\hline
 
-\multirow{3}{*}{Department} & ID & Department identifier of the company & Serial & PRIMARY KEY\\\cline{2-5}
+\multirow{3}{*}{Department} & Department\_ID & Department identifier of the company & Serial & PRIMARY KEY\\\cline{2-5}
 & Name & Name of the department & Text & NOT NULL \\\cline{2-5}
 & Description & Description of the department's function & Text & \\\hline
 
