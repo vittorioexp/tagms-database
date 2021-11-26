@@ -46,19 +46,6 @@ In the non-redundant case, the "Net_price" and "Taxes" attributes are not availa
 
 In the redundant case, you have the "Net_price" and "Taxes" attributes in the Order entity. When the order is placed, these attributes are calculated as follows. Having the Order_ID, you need to access the relationship Draws_from to understand which lots the order is made up of. For each lot, and therefore for each instance of Draws_from, the entity Lot is accessed to obtain the price and any discount, but also the taxes. To perform the desired operation, for each Order instance, simply access the attributes described above.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 \begin{table}[!h]\caption{	$ \textrm{O}_\textrm{1} $ Without redundancy}
 	\begin{center}
 		\begin{tabular}{| c | c | c | c | c |}
@@ -70,6 +57,9 @@ In the redundant case, you have the "Net_price" and "Taxes" attributes in the Or
 		\end{tabular}
 	\end{center}
 \end{table}
+
+Where the access value ("2") in "Specify" is the average number of (different) items in each contract.
+
 \begin{table}[!h]\caption{	$ \textrm{O}_\textrm{1} $ With redundancy}
 	\begin{center}
 		\begin{tabular}{| c | c | c | c | c |}
@@ -82,6 +72,9 @@ In the redundant case, you have the "Net_price" and "Taxes" attributes in the Or
 		\end{tabular}
 	\end{center}
 \end{table}
+
+Where the access value ("2") in "Specify" and in "Item" is the average number of (different) items in each contract.
+
 \begin{table}[!h]\caption{	$ \textrm{O}_\textrm{2} $ Without redundancy}
 	\begin{center}
 		\begin{tabular}{| c | c | c | c | c |}
@@ -93,6 +86,9 @@ In the redundant case, you have the "Net_price" and "Taxes" attributes in the Or
 		\end{tabular}
 	\end{center}
 \end{table}
+
+
+
 \begin{table}[!h]\caption{	$ \textrm{O}_\textrm{2} $ With redundancy}
 	\begin{center}
 		\begin{tabular}{| c | c | c | c | c |}
@@ -108,6 +104,9 @@ In the redundant case, you have the "Net_price" and "Taxes" attributes in the Or
 		\end{tabular}
 	\end{center}
 \end{table}
+
+Where the access value ("10") in "Made\_up\_of (1)" and in "Item" is the average number of items per product while the access value ("3") in "Made\_up\_of (2)" and in "Item" is the average number of items per package.
+
 \begin{table}[!h]\caption{	$ \textrm{O}_\textrm{3} $ Without redundancy }
 	\begin{center}
 		\begin{tabular}{| c | c | c | c | c |}
@@ -122,6 +121,9 @@ In the redundant case, you have the "Net_price" and "Taxes" attributes in the Or
 		\end{tabular}
 	\end{center}
 \end{table}
+
+Where the access value ("10") in "Specify" and in "Contract" is the average number of time than an item have been bought while the access value ("300") is the estimated number of instances of stocked.
+
 \begin{table}[!h]\caption{	$ \textrm{O}_\textrm{3} $ With redundancy }
 	\begin{center}
 		\begin{tabular}{| c | c | c | c | c |}
@@ -132,6 +134,8 @@ In the redundant case, you have the "Net_price" and "Taxes" attributes in the Or
 		\end{tabular}
 	\end{center}
 \end{table}
+
+
 
 \begin{table}[!h]\caption{	$ \textrm{O}_\textrm{4} $ Without redundancy }
 	\begin{center}
@@ -145,6 +149,9 @@ In the redundant case, you have the "Net_price" and "Taxes" attributes in the Or
 		\end{tabular}
 	\end{center}
 \end{table}
+
+Where the access value ("250") in "Order" is the average number of orders per year while the access value ("5") in "Draws\_from" and in "Lot" (that multiplies 250) is the average number of lots in each order.
+
 \begin{table}[!h]\caption{	$ \textrm{O}_\textrm{4} $ With redundancy }
 	\begin{center}
 		\begin{tabular}{| c | c | c | c | c |}
@@ -156,6 +163,8 @@ In the redundant case, you have the "Net_price" and "Taxes" attributes in the Or
 	\end{center}
 \end{table}
 \newpage
+
+Where the access value ("250") in "Order" is the average number of orders per year.
 
 \begin{table}[!h]
 	\begin{center}
