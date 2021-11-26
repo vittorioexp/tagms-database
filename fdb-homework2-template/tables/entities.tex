@@ -23,7 +23,7 @@
         \item Name:   name of the role, text
         \item Description:   technical description of the role, text
     \end{itemize}
-    &  ID \\\hline
+    &  Role\_ID \\\hline
 
     Department & Represents data on the departments in which employees work &
     \begin{itemize}
@@ -32,7 +32,7 @@
         \item Name:   name of the department, text
         \item Description:   description of the department's function, text
     \end{itemize}
-    &  ID \\\hline
+    &  Department\_ID \\\hline
 
     Customer & Represents data about a customer of the company &
     \begin{itemize}
@@ -56,7 +56,7 @@
         \item Delivery\_date:    expected date of delivery of the goods, Datetime
         \item Expiration\_date:    expiration date of the contract with the supplier, Datetime
     \end{itemize}
-    &  ID \\\hline
+    &  Contract\_ID \\\hline
 
     Supplier & Represents data about a supplier of the company &
     \begin{itemize}
@@ -81,7 +81,7 @@
         \item Taxes:   total amount of taxes to be payed, float                     %taxes = for each lot { lot_price * (vat / 100) }
                                                                                     %Total_amount = net_price + taxes
     \end{itemize}
-    &  ID \\\hline
+    &  Order\_ID \\\hline
 
 
     Lot & Represents a lot in the inventory of the company, containing final products and packaging &
@@ -93,7 +93,7 @@
         \item Lot\_discount:   percentage of discount of a lot, int
         \item VAT:   value added tax (percentage) at the time of sale, int
     \end{itemize}
-    &  ID \\\hline
+    &  Lot\_ID \\\hline
 
     Product & Represents the final product that is marketed &
     \begin{itemize}
@@ -108,7 +108,7 @@
         \item Production\_cost:   cost of the production for a product, float
         \item Price\_increase:   price increase factor, float                         %product_price = inflation x production_cost
     \end{itemize}
-    &  ID \\\hline
+    &  Product\_ID \\\hline
 
     Item & Represents materials provided by suppliers &
     \begin{itemize}
@@ -119,7 +119,7 @@
         \item Quantity:   stock quantity of the item (automatically updates), int
         \item Minimum\_quantity:   minimum stock quantity of the item, int
     \end{itemize}
-    &  ID \\\hline
+    &  Item\_ID \\\hline
 
     Package & Represents packaging of finished products which are made up of boxes, tapes, and other packaging materials &
     \begin{itemize}
@@ -132,7 +132,7 @@
         \item Width:   width dimension of the package in centimeters, int
         \item Depth:   depth dimension of the package in centimeters, int
     \end{itemize}
-    &  ID \\\hline
+    &  Package\_ID \\\hline
 
     Product\_Category & Represents the category of a product &
         \begin{itemize}
@@ -141,7 +141,7 @@
             \item Name:   name of the product category, text
             \item Description:   description of the product category, text
         \end{itemize}
-    &  ID \\\hline
+    &  Product\_Category\_ID \\\hline
 
     Item\_Category & Represents the category of an item &
         \begin{itemize}
@@ -150,7 +150,7 @@
             \item Name:   name of the item category, text
             \item Description:   description of the item category, text
         \end{itemize}
-    &  ID \\\hline
+    &  Item\_Category\_ID \\\hline
 
     Package\_Category & Represents the category of a package &
         \begin{itemize}
@@ -159,6 +159,6 @@
             \item Name:   name of the package category, text
             \item Description:   description of the package category, text
         \end{itemize}
-    &  ID \\\hline
+    &  Package\_Category\_ID \\\hline
 
 \end{longtable}
