@@ -8,14 +8,14 @@ The Employee and Order entities, related to each other through the relationships
 \end{itemize}
 The Lot, Product, Package, and Item entities do not form a loop because:
 \begin{itemize}
-        \item Eliminating a "Made up of" relationship implies a violation of functional requirements and a loss of information (eg, from which items, and in what quantity, a product or package is composed);
-        \item Eliminating the "Stocked" relationship implies a violation of functional requirements and a loss of information (e.g., it is not possible to know which products and packages are contained in a lot).
+        \item Eliminating a ``Made up of'' relationship implies a violation of functional requirements and a loss of information (eg, from which items, and in what quantity, a product or package is composed);
+        \item Eliminating the ``Stocked'' relationship implies a violation of functional requirements and a loss of information (e.g., it is not possible to know which products and packages are contained in a lot).
 \end{itemize}
 The ER schema presents the derivate attributes:
 \begin{itemize}
-        \item "Quantity" (of Item): used to keep in memory the current quantity of items;
-        \item "Net\_price" (of Order): used to keep in memory the total net price of an order;
-        \item "Taxes" (of Order): used to keep in memory the total taxes of an order.
+        \item ``Quantity'' (of Item): used to keep in memory the current quantity of items;
+        \item ``Net\_price'' (of Order): used to keep in memory the total net price of an order;
+        \item ``Taxes'' (of Order): used to keep in memory the total taxes of an order.
 \end{itemize}
 \vspace{0.25em}
 We report below the analysis of the database load to check whether keeping these attributes or not.
