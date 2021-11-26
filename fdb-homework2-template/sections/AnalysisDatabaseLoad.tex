@@ -68,9 +68,6 @@ The operations $ \textrm{O}_\textrm{1} $, $ \textrm{O}_\textrm{2} $ and $ \textr
 		\end{tabular}
 	\end{center}
 \end{table}
-
-We can see that $ \textrm{O}_\textrm{1} $, with or without redundancy, necessitate the same amount of operations, while from $ \textrm{O}_\textrm{2} $ we can assert that the number of operations without redundancy is tripled with respect to the case with redundancy. Hence, the attribute ``lot\_price'' of the entity ``Lot'' should to be kept.
-
 \begin{table}[!h]\caption{	$ \textrm{O}_\textrm{3} $ Without redundancy }
 	\begin{center}
 		\begin{tabular}{| c | c | c | c | c |}
@@ -118,6 +115,9 @@ We can see that $ \textrm{O}_\textrm{1} $, with or without redundancy, necessita
 		\end{tabular}
 	\end{center}
 \end{table}
+\newpage
+We can see that from $ \textrm{O}_\textrm{1}$ and $ \textrm{O}_\textrm{2}$ the case with redundancy needs a litte more access than the case without. This additional cost is necessary to have a very efficient way to perform the $ \textrm{O}_\textrm{3}$ operation, indeed with the redundancy we have only 25 acces while without the total number of aceess is 23000. Also for the $\textrm{O}_\textrm{4}$ we have an additional benefit with the redundancy instead without. 
+Hence, the attribute ``Quantity'' of the entity ``Item'' should to be kept.
 %\begin{table}[!h]\caption{	$ \textrm{O}_\textrm{4} $ Without redundancy }
 %	\begin{center}
 %		\begin{tabular}{| c | c | c | c | c |}
@@ -172,4 +172,3 @@ We can see that $ \textrm{O}_\textrm{1} $, with or without redundancy, necessita
 %	\end{center}
 %\end{table}
 %\newpage
-With redundancy, to know if there are enough items to create the requested product, we just have to read the ``quantity'' attribute of the ``Item'' entity to know if there are enough of them for the requested product; then, we create a new entry in ``Product'', ``Belong (2)'', and ``Made\_up\_of (1). Without redundancy, we would have computed the quantity of each item, necessary to make the requested product, in advance. We have assumed that a product is made up of ten items on average, hence the average reads would have been 10 instead of 1, with redundancy. So, the attribute ``quantity'' should be kept.
