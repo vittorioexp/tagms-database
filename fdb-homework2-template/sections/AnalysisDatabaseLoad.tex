@@ -26,25 +26,37 @@ To solve the first part, it is necessary to calculate the cost of entering the c
 
 As regards the redundant case, it is necessary to take into account the updating of the attribute, the cost of entering the contract and the cost of entering the lot.
 During the insertion of the contract a write in Contract is made and then an access to insert different instances on Specify. For each instance of specify, a write access is made to the Item entity to increment the value of the Quantity attribute. Compared to the non-redundant case, the insertion of the contract is more expensive.
-During the insertion of the lot, one write in Lot and one in Stocked are carried out. We look for the product in Made_Up_Of (1) to understand which items it consists of. For each instance of Made_Up_Of (1), using the quantity specified in it, the Item is searched and its quantity is decremented. Similar procedure for packages with Made_Up_Of (2). Compared to the non-redundant case, lot insertion is more expensive.
+During the insertion of the lot, one write in Lot and one in Stocked are carried out. We look for the product in Made\_Up\_Of (1) to understand which items it consists of. For each instance of Made\_Up\_Of (1), using the quantity specified in it, the Item is searched and its quantity is decremented. Similar procedure for packages with Made\_Up\_Of (2). Compared to the non-redundant case, lot insertion is more expensive.
 To obtain the quantity in stock of an Item, it is necessary to perform only one read on the Item. Compared to the non-redundant case, this operation is much less expensive.
 
 As far as the non-redundant case is concerned, the updating of the attribute does not need to be taken into account. Furthermore, the cost of entering the contract and that of entering the lot are lower. The cost of obtaining the quantity of an item in stock is much higher.
 During the insertion of the contract a write in Contract is made and then an access to insert different instances on Specify. Compared to the previous case, it is not necessary to make one or more accesses to the Item entity. The insertion of the contract is therefore less expensive.
 During the insertion of the lot, one write in Lot and one in Stocked are carried out. Compared to the redundant case, lot insertion is less expensive.
 To obtain the quantity in stock of an Item, two operations are necessary: ​​the first allows to trace the total quantity purchased of a specific Item. The second instead allows you to calculate the quantity of Item that was used for the production of the lots.
-To trace the total purchased quantity of an Item, you need to access all instances of the relationship Specify to understand in which contracts the Item was purchased. Then, for each Specify instance, the Contract entity is accessed to verify that the contract has "Delivery_date" prior to today's date. In this case the Item has been delivered and the purchased quantity "Purchased_quantity" in Specify is taken into account.
-To calculate the quantity of Item that has been used for the production of the lots, it is necessary to access the relationship Stocked to understand which products and packages (with relative quantities) a lot is made up of. For each instance of Stocked, the Product_ID is used to check (through Made_Up_Of (1)) the composition of the product and Package_ID to check (through Made_Up_Of (2)) the composition of the package. Then, for each instance of Stocked, an access is made to the relationship Made_Up_Of (1) and, if the Product consists of the Item of interest, the product between "Quantity" in Made_Up_Of (1) and "Product_quantity" is taken into account in Stocked. Furthermore, for each Stocked instance, an access is made to the relationship Made_Up_Of (2) and, if the Package consists of the Item of interest, the product between "Quantity" in Made_Up_Of (2) and "Package_quantity" is taken into account in Stocked.
-
+To trace the total purchased quantity of an Item, you need to access all instances of the relationship Specify to understand in which contracts the Item was purchased. Then, for each Specify instance, the Contract entity is accessed to verify that the contract has "Delivery\_date" prior to today's date. In this case the Item has been delivered and the purchased quantity "Purchased\_quantity" in Specify is taken into account.
+To calculate the quantity of Item that has been used for the production of the lots, it is necessary to access the relationship Stocked to understand which products and packages (with relative quantities) a lot is made up of. For each instance of Stocked, the Product\_ID is used to check (through Made\_Up\_Of (1)) the composition of the product and Package\_ID to check (through Made\_Up\_Of (2)) the composition of the package. Then, for each instance of Stocked, an access is made to the relationship Made\_Up\_Of (1) and, if the Product consists of the Item of interest, the product between "Quantity" in Made\_Up\_Of (1) and "Product\_quantity" is taken into account in Stocked. Furthermore, for each Stocked instance, an access is made to the relationship Made\_Up\_Of (2) and, if the Package consists of the Item of interest, the product between "Quantity" in Made\_Up\_Of (2) and "Package\_quantity" is taken into account in Stocked.
 
 
 As for the second part (show that storing the net price and taxes of an order is more convenient than computing them when needed) proceed as follows.
 In both cases, redundant or otherwise, as soon as the order is placed it is necessary to calculate both the net price and taxes so that they can be viewed by the customer.
 The necessary operation is to show the net sales and the total taxes between two time periods.
 
-In the non-redundant case, the "Net_price" and "Taxes" attributes are not available in the Order entity. It is necessary, for each instance of the Order entity, to access the relationship Draws_from to understand which lots the order is made up of. For each lot, and therefore for each instance of Draws_from, the entity Lot is accessed to obtain the price and any discount, but also the taxes.
+In the non-redundant case, the "Net\_price" and "Taxes" attributes are not available in the Order entity. It is necessary, for each instance of the Order entity, to access the relationship Draws\_from to understand which lots the order is made up of. For each lot, and therefore for each instance of Draws\_from, the entity Lot is accessed to obtain the price and any discount, but also the taxes.
 
-In the redundant case, you have the "Net_price" and "Taxes" attributes in the Order entity. When the order is placed, these attributes are calculated as follows. Having the Order_ID, you need to access the relationship Draws_from to understand which lots the order is made up of. For each lot, and therefore for each instance of Draws_from, the entity Lot is accessed to obtain the price and any discount, but also the taxes. To perform the desired operation, for each Order instance, simply access the attributes described above.
+In the redundant case, you have the "Net\_price" and "Taxes" attributes in the Order entity. When the order is placed, these attributes are calculated as follows. Having the Order\_ID, you need to access the relationship Draws\_from to understand which lots the order is made up of. For each lot, and therefore for each instance of Draws\_from, the entity Lot is accessed to obtain the price and any discount, but also the taxes. To perform the desired operation, for each Order instance, simply access the attributes described above.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \begin{table}[!h]\caption{	$ \textrm{O}_\textrm{1} $ Without redundancy}
 	\begin{center}
@@ -57,9 +69,6 @@ In the redundant case, you have the "Net_price" and "Taxes" attributes in the Or
 		\end{tabular}
 	\end{center}
 \end{table}
-
-Where the access value ("2") in "Specify" is the average number of (different) items in each contract.
-
 \begin{table}[!h]\caption{	$ \textrm{O}_\textrm{1} $ With redundancy}
 	\begin{center}
 		\begin{tabular}{| c | c | c | c | c |}
@@ -72,9 +81,6 @@ Where the access value ("2") in "Specify" is the average number of (different) i
 		\end{tabular}
 	\end{center}
 \end{table}
-
-Where the access value ("2") in "Specify" and in "Item" is the average number of (different) items in each contract.
-
 \begin{table}[!h]\caption{	$ \textrm{O}_\textrm{2} $ Without redundancy}
 	\begin{center}
 		\begin{tabular}{| c | c | c | c | c |}
@@ -86,9 +92,6 @@ Where the access value ("2") in "Specify" and in "Item" is the average number of
 		\end{tabular}
 	\end{center}
 \end{table}
-
-
-
 \begin{table}[!h]\caption{	$ \textrm{O}_\textrm{2} $ With redundancy}
 	\begin{center}
 		\begin{tabular}{| c | c | c | c | c |}
@@ -104,9 +107,6 @@ Where the access value ("2") in "Specify" and in "Item" is the average number of
 		\end{tabular}
 	\end{center}
 \end{table}
-
-Where the access value ("10") in "Made\_up\_of (1)" and in "Item" is the average number of items per product while the access value ("3") in "Made\_up\_of (2)" and in "Item" is the average number of items per package.
-
 \begin{table}[!h]\caption{	$ \textrm{O}_\textrm{3} $ Without redundancy }
 	\begin{center}
 		\begin{tabular}{| c | c | c | c | c |}
@@ -121,9 +121,6 @@ Where the access value ("10") in "Made\_up\_of (1)" and in "Item" is the average
 		\end{tabular}
 	\end{center}
 \end{table}
-
-Where the access value ("10") in "Specify" and in "Contract" is the average number of time than an item have been bought while the access value ("300") is the estimated number of instances of stocked.
-
 \begin{table}[!h]\caption{	$ \textrm{O}_\textrm{3} $ With redundancy }
 	\begin{center}
 		\begin{tabular}{| c | c | c | c | c |}
@@ -134,8 +131,6 @@ Where the access value ("10") in "Specify" and in "Contract" is the average numb
 		\end{tabular}
 	\end{center}
 \end{table}
-
-
 
 \begin{table}[!h]\caption{	$ \textrm{O}_\textrm{4} $ Without redundancy }
 	\begin{center}
@@ -149,9 +144,6 @@ Where the access value ("10") in "Specify" and in "Contract" is the average numb
 		\end{tabular}
 	\end{center}
 \end{table}
-
-Where the access value ("250") in "Order" is the average number of orders per year while the access value ("5") in "Draws\_from" and in "Lot" (that multiplies 250) is the average number of lots in each order.
-
 \begin{table}[!h]\caption{	$ \textrm{O}_\textrm{4} $ With redundancy }
 	\begin{center}
 		\begin{tabular}{| c | c | c | c | c |}
@@ -164,8 +156,6 @@ Where the access value ("250") in "Order" is the average number of orders per ye
 \end{table}
 \newpage
 
-Where the access value ("250") in "Order" is the average number of orders per year.
-
 \begin{table}[!h]
 	\begin{center}
 		\begin{tabular}{ | c | c | c | c | }
@@ -174,7 +164,7 @@ Where the access value ("250") in "Order" is the average number of orders per ye
 			$ \textrm{O}_\textrm{1} $ & 10 & 6\\ \hline
 			$ \textrm{O}_\textrm{2} $ & 1075 & 100 \\ \hline
 			$ \textrm{O}_\textrm{3} $ & 25 & 23000 \\\hline
-			$ Total access/week $ & 1105 & 23106 \\\hline
+			\textbf{Total access/week } & 	\textbf{1105} &	\textbf{23106} \\\hline
 		\end{tabular}
 	\end{center}
 \end{table}
