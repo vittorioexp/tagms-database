@@ -3,12 +3,13 @@
 \subsection{Analysis of Database Load}
 The load analysis is divided in two parts: the first, to show that storing the stock quantity of items in the Quantity attribute of Item requests less operations than computing it when needed; the second, to show that storing the net price and taxes of an order is more convenient than computing them when needed.
 The operations $ \textrm{O}_\textrm{1} $, $ \textrm{O}_\textrm{2} $ and $ \textrm{O}_\textrm{3} $ are used to describe the first part, while the operation $ \textrm{O}_\textrm{4} $ is about the second part.
+
 \begin{table}[!h]
 	\begin{center}
 		\begin{tabular}{ | c | c | c | c | }
 			\hline
 			\textbf{Operation} & \textbf{Description} & \textbf{Frequency} & \textbf{Type} \\ \hline
-			$ \textrm{O}_\textrm{1} $ : Insert contract & Store data about a new contract. & 25/week & Online \\ \hline
+			$ \textrm{O}_\textrm{1} $ : Insert contract & Store data about a new contract. & 1/week & Online \\ \hline
 			$ \textrm{O}_\textrm{2} $ : Insert new lot & Store data about a newly packaged lot. & 25/week & Online \\ \hline
 			$ \textrm{O}_\textrm{3} $ : Get item quantity  & Get quantity for one type of item & 25/week & Online \\\hline
 			$ \textrm{O}_\textrm{4} $ : Get net sales  & Get revenues for one year & 1/year & Online \\\hline
@@ -19,6 +20,45 @@ The operations $ \textrm{O}_\textrm{1} $, $ \textrm{O}_\textrm{2} $ and $ \textr
 		\end{tabular}
 	\end{center}
 \end{table}
+
+
+To solve the first part, it is necessary to calculate the cost of entering the contract plus the cost of entering the lot plus the cost of obtaining the quantity of an item. The calculation must be done in two cases: in the first case (redundant) the Quantity in Item attribute is present, while in the second case (not redundant) the attribute is not present.
+
+As regards the redundant case, it is necessary to take into account the updating of the attribute, the cost of entering the contract and the cost of entering the lot.
+During the insertion of the contract a write in Contract is made and then an access to insert different instances on Specify. For each instance of specify, a write access is made to the Item entity to increment the value of the Quantity attribute. Compared to the non-redundant case, the insertion of the contract is more expensive.
+During the insertion of the lot, one write in Lot and one in Stocked are carried out. We look for the product in Made_Up_Of (1) to understand which items it consists of. For each instance of Made_Up_Of (1), using the quantity specified in it, the Item is searched and its quantity is decremented. Similar procedure for packages with Made_Up_Of (2). Compared to the non-redundant case, lot insertion is more expensive.
+To obtain the quantity in stock of an Item, it is necessary to perform only one read on the Item. Compared to the non-redundant case, this operation is much less expensive.
+
+As far as the non-redundant case is concerned, the updating of the attribute does not need to be taken into account. Furthermore, the cost of entering the contract and that of entering the lot are lower. The cost of obtaining the quantity of an item in stock is much higher.
+During the insertion of the contract a write in Contract is made and then an access to insert different instances on Specify. Compared to the previous case, it is not necessary to make one or more accesses to the Item entity. The insertion of the contract is therefore less expensive.
+During the insertion of the lot, one write in Lot and one in Stocked are carried out. Compared to the redundant case, lot insertion is less expensive.
+To obtain the quantity in stock of an Item, two operations are necessary: ​​the first allows to trace the total quantity purchased of a specific Item. The second instead allows you to calculate the quantity of Item that was used for the production of the lots.
+To trace the total purchased quantity of an Item, you need to access all instances of the relationship Specify to understand in which contracts the Item was purchased. Then, for each Specify instance, the Contract entity is accessed to verify that the contract has "Delivery_date" prior to today's date. In this case the Item has been delivered and the purchased quantity "Purchased_quantity" in Specify is taken into account.
+To calculate the quantity of Item that has been used for the production of the lots, it is necessary to access the relationship Stocked to understand which products and packages (with relative quantities) a lot is made up of. For each instance of Stocked, the Product_ID is used to check (through Made_Up_Of (1)) the composition of the product and Package_ID to check (through Made_Up_Of (2)) the composition of the package. Then, for each instance of Stocked, an access is made to the relationship Made_Up_Of (1) and, if the Product consists of the Item of interest, the product between "Quantity" in Made_Up_Of (1) and "Product_quantity" is taken into account in Stocked. Furthermore, for each Stocked instance, an access is made to the relationship Made_Up_Of (2) and, if the Package consists of the Item of interest, the product between "Quantity" in Made_Up_Of (2) and "Package_quantity" is taken into account in Stocked.
+
+
+
+As for the second part (show that storing the net price and taxes of an order is more convenient than computing them when needed) proceed as follows.
+In both cases, redundant or otherwise, as soon as the order is placed it is necessary to calculate both the net price and taxes so that they can be viewed by the customer.
+The necessary operation is to show the net sales and the total taxes between two time periods.
+
+In the non-redundant case, the "Net_price" and "Taxes" attributes are not available in the Order entity. It is necessary, for each instance of the Order entity, to access the relationship Draws_from to understand which lots the order is made up of. For each lot, and therefore for each instance of Draws_from, the entity Lot is accessed to obtain the price and any discount, but also the taxes.
+
+In the redundant case, you have the "Net_price" and "Taxes" attributes in the Order entity. When the order is placed, these attributes are calculated as follows. Having the Order_ID, you need to access the relationship Draws_from to understand which lots the order is made up of. For each lot, and therefore for each instance of Draws_from, the entity Lot is accessed to obtain the price and any discount, but also the taxes. To perform the desired operation, for each Order instance, simply access the attributes described above.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \begin{table}[!h]\caption{	$ \textrm{O}_\textrm{1} $ Without redundancy}
 	\begin{center}
 		\begin{tabular}{| c | c | c | c | c |}
@@ -73,11 +113,11 @@ The operations $ \textrm{O}_\textrm{1} $, $ \textrm{O}_\textrm{2} $ and $ \textr
 		\begin{tabular}{| c | c | c | c | c |}
 			\hline
 			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
-			Stocked & Entity & 300 & R & 300 x 25 x 1 = 7500 \\ \hline
-			Made\_up\_of (1) & Relationship & 300 & R & 1 x 25 x 1 = 7500 \\ \hline
-			Made\_up\_of (2) & Relationship & 300 & R & 1 x 25 x 1 = 7500 \\ \hline
 			Specify & Relationship & 10 & R & 10 x 25 x 1 = 250 \\ \hline
 			Contract & Entity & 10 & R & 10 x 25 x 1 = 250 \\ \hline
+			Stocked & Relationship & 300 & R & 300 x 25 x 1 = 7500 \\ \hline
+            Made\_up\_of (1) & Relationship & 300 & R & 300 x 25 x 1 = 7500 \\ \hline
+            Made\_up\_of (2) & Relationship & 300 & R & 300 x 25 x 1 = 7500 \\ \hline
 			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{23000}} \\ \hline
 		\end{tabular}
 	\end{center}
@@ -99,8 +139,8 @@ The operations $ \textrm{O}_\textrm{1} $, $ \textrm{O}_\textrm{2} $ and $ \textr
 			\hline
 			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
 			Order & Entity & 250 & R & 250 x 1 x 1 = 250 \\ \hline
-			Draws from & Relationship & 1250 & R & 1250 x 1 x 1 = 1250 \\ \hline
-			Lot & Entity & 1250 & R & 1250 x 1 x 1 = 1250 \\ \hline
+			Draws\_from & Relationship & 250 x 5 & R & 1250 x 1 x 1 = 1250 \\ \hline
+			Lot & Entity &  250 x 5 & R & 1250 x 1 x 1 = 1250 \\ \hline
 			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{2750}} \\ \hline
 		\end{tabular}
 	\end{center}
@@ -116,8 +156,21 @@ The operations $ \textrm{O}_\textrm{1} $, $ \textrm{O}_\textrm{2} $ and $ \textr
 	\end{center}
 \end{table}
 \newpage
-We can see that from $ \textrm{O}_\textrm{1}$ and $ \textrm{O}_\textrm{2}$ the case with redundancy needs a litte more access than the case without. This additional cost is necessary to have a very efficient way to perform the $ \textrm{O}_\textrm{3}$ operation, indeed with the redundancy we have only 25 acces while without the total number of aceess is 23000. Also for the $\textrm{O}_\textrm{4}$ we have an additional benefit with the redundancy instead without. 
-Hence, the attribute ``Quantity'' of the entity ``Item'' should to be kept.
+
+\begin{table}[!h]
+	\begin{center}
+		\begin{tabular}{ | c | c | c | c | }
+			\hline
+			\textbf{Operation} & \textbf{With Redundancy} & \textbf{Without Redundancy} \\ \hline
+			$ \textrm{O}_\textrm{1} $ & 10 & 6\\ \hline
+			$ \textrm{O}_\textrm{2} $ & 1075 & 100 \\ \hline
+			$ \textrm{O}_\textrm{3} $ & 25 & 23000 \\\hline
+			$ Total access/week $ & 1105 & 23106 \\\hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+We can see that, from the sum of $ \textrm{O}_\textrm{1}$, $ \textrm{O}_\textrm{2}$ and $ \textrm{O}_\textrm{3}$, the Quantity attribute of Item is required in order to perform fewer operations per week. Also for the $ \textrm{O}_\textrm{4}$ we have an additional benefit with the redundancy instead without.
 %\begin{table}[!h]\caption{	$ \textrm{O}_\textrm{4} $ Without redundancy }
 %	\begin{center}
 %		\begin{tabular}{| c | c | c | c | c |}
