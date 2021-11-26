@@ -10,8 +10,8 @@ The operations $ \textrm{O}_\textrm{1} $, $ \textrm{O}_\textrm{2} $ and $ \textr
 			$ \textrm{O}_\textrm{1} $ : Insert contract & Store data about a new contract. & 1/week & Online \\ \hline
 			$ \textrm{O}_\textrm{2} $ : Insert new lot & Store data about a newly packaged lot. & 25/week & Online \\ \hline
 			$ \textrm{O}_\textrm{3} $ : Get item quantity  & Get quantity for one type of item & 25/week & Online \\\hline
-			$ \textrm{O}_\textrm{3} $ : Insert new order  & Create a new order, which is made of several lots & 25/week & Online \\\hline
-			$ \textrm{O}_\textrm{4} $ : Get net sales  & Get revenues for one year & 1/year & Batch \\\hline
+			$ \textrm{O}_\textrm{4} $ : Insert new order  & Create a new order, which is made of several lots & 25/week & Online \\\hline
+			$ \textrm{O}_\textrm{5} $ : Get order price  & Get the price for one order & 25/week & Online \\\hline
 		\end{tabular}
 	\end{center}
 \end{table}
@@ -143,10 +143,9 @@ In the redundant case, you have the ``Net\_price'' and ``Taxes'' attributes in t
 		\begin{tabular}{| c | c | c | c | c |}
 			\hline
 			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
-			Order & Entity & 250 & R & 250 x 1 x 1 = 250 \\ \hline
-			Draws\_from & Relationship & 250 x 5 & R & 1250 x 1 x 1 = 1250 \\ \hline
-			Lot & Entity &  250 x 5 & R & 1250 x 1 x 1 = 1250 \\ \hline
-			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{2750}} \\ \hline
+			Draws\_from & Relationship & 10000 & R & 10000 x 1 x 1 = 10000 \\ \hline
+			Lot & Entity &  5 & R & 5 x 1 x 1 = 5 \\ \hline
+			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{10005}} \\ \hline
 		\end{tabular}
 	\end{center}
 \end{table}
@@ -155,12 +154,12 @@ In the redundant case, you have the ``Net\_price'' and ``Taxes'' attributes in t
 		\begin{tabular}{| c | c | c | c | c |}
 			\hline
 			\textbf{Concept} & \textbf{Construct} & \textbf{Access} & \textbf{Type} & \textbf{Average Access} \\ \hline
-			Order & Entity & 250 & R & 250 x 1 x 1 = 250 \\ \hline
-			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{250}} \\ \hline
+			Order & Entity & 1 & R & 1 x 25 x 1 = 1 \\ \hline
+			\multicolumn{3}{|c|}{\textbf{Total Access}} & \multicolumn{2}{|c|}{\textbf{25}} \\ \hline
 		\end{tabular}
 	\end{center}
 \end{table}
-\begin{table}[!h]
+\begin{table}[!h]\caption{ Comparison of item quantity w/ and w/o redundancy }
 	\begin{center}
 		\begin{tabular}{ | c | c | c | }
 			\hline
