@@ -1,11 +1,11 @@
 \subsection{External Constraints}
 \begin{itemize}
 \item The units of measure used by the company are specified in detail in the entity table.
-\item Only Employees that are sill working (i.e. those who have the "Still\_working" attribute set to "True") in the company can access the system.
-\item Only the Manager can insert new contracts, so the Employee who takes part in the "stipulate" relationship must have the role equal to "Manager". 
-\item Only the Salesman can insert new orders, so the Employee who takes part in the "place" relationship must have the role equal to "Salesman". Only the Salesman can update the order status by changing the attribute "Order\_paid" which by default is set to false.
-\item Only the Worker can ship orders, so the Employee who takes part in the "ship" relationship must have the role equal to "Worker".
-\item A Product is made up of one or more items taken from a given domain, i.e. having a certain Item\_Category (e.g., "ingredient" or "glass bottle"). A Package is made up of one or more items taken from a given domain, i.e. having a certain Item\_Category (e.g., "box", "plastic tape" or "polystyrene").
+\item Only employees that are sill working (i.e. those who have the ``Still\_working'' attribute set to ``True'') in the company can access the system.
+\item Only the manager can insert new contracts, so the employee who takes part in the ``stipulate'' relationship must have the role equal to ``Manager''. 
+\item Only the salesman can insert new orders, so the employee who takes part in the ``place'' relationship must have the role equal to ``Salesman''. Only the salesman can update the order status by changing the attribute "Order\_paid" which by default is set to false.
+\item Only the worker can ship orders, so the employee who takes part in the ``ship'' relationship must have the role equal to ``Worker''.
+\item A product is made up of one or more items taken from a given domain, i.e. having a certain ``Item\_Category'' (e.g., ``ingredient'' or ``glass bottle''). A package is made up of one or more items taken from a given domain, i.e. having a certain ``Item\_Category'' (e.g., ``box'', ``plastic tape'' or ``polystyrene'').
 \item The quantities of products contained in a lot belong to a finite set (e.g. 25, 50, 100).
 \item An expired lot cannot be sold.
 \end{itemize}
