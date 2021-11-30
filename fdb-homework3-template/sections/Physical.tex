@@ -1,2 +1,81 @@
 \section{Physical Schema}
 \textcolor{red}{[Report SQL statements for the database creation]}
+
+-- Database Creation
+CREATE DATABASE tagmsdb OWNER admin ENCODING = 'UTF8';
+
+-- Create new Schema (you can use the public schema without crating a new one, if you want)
+DROP SCHEMA IF EXISTS Tagms CASCADE;
+CREATE SCHEMA Tagms;
+
+-- Create new domains
+CREATE DOMAIN Tagms.emailaddress AS VARCHAR(254)
+CONSTRAINT properemail CHECK (((VALUE)::text ~* '^[A-Za-z0-9._%]+@[A-Za-z0-9.]+[.][A-Za-z]+$'::text));
+CREATE DOMAIN Tagms.vatnumber AS VARCHAR(15)
+CONSTRAINT properVAT CHECK (((VALUE)::text ~* '[A-Za-z0-9]{5,}'::text));
+CREATE DOMAIN Tagms.serial AS CHAR(10)
+CONSTRAINT properserial CHECK (((VALUE)::text ~* '[0-9]{10}'::text));
+
+-- Table Creation (create tables in the correct order, i.e. use FKeys only referring to already created tables)
+
+CREATE TABLE Tagms.product_category (
+product_category_id SERIAL PRIMARY KEY,
+name VARCHAR(32) NOT NULL,
+descrition VARCHAR(500),
+);
+
+CREATE TABLE Tagms.package_category (
+package_category_id SERIAL PRIMARY KEY,
+name VARCHAR(32) NOT NULL,
+descrition VARCHAR(500),
+);
+
+CREATE TABLE Tagms.item_category (
+item_category_id SERIAL PRIMARY KEY,
+name VARCHAR(32) NOT NULL,
+descrition VARCHAR(500),
+);
+
+CREATE TABLE Tagms.product (
+product_id SERIAL PRIMARY KEY,
+name VARCHAR(32) NOT NULL,
+descrition VARCHAR(500),
+production_cost DOUBLE PRECISION NOT NULL,
+price_increase DOUBLE PRECISION NOT NULL,
+volume INTEGER NOT NULL,
+net_weight INTEGER NOT NULL,
+package_weight INTEGER NOT NULL,
+nutritional_facts VARCHAR(500) NOT NULL,
+product_category_id INTEGER NOT NULL,
+FOREIGN KEY (product_category_id) REFERENCES Tagms.product_category(product_category_id),
+);
+
+CREATE TABLE Tagms.package (
+package_id SERIAL PRIMARY KEY,
+name VARCHAR(32) NOT NULL,
+descrition VARCHAR(500),
+weight INTEGER NOT NULL,
+height INTEGER NOT NULL,
+width INTEGER NOT NULL,
+depth INTEGER NOT NULL,
+package_category_id INTEGER NOT NULL,
+FOREIGN KEY (package_category_id) REFERENCES Tagms.package_category(package_category_id),
+);
+
+CREATE TABLE Tagms.item (
+item_id SERIAL PRIMARY KEY,
+name VARCHAR(32) NOT NULL,
+descrition VARCHAR(500),
+quantity INTEGER NOT NULL,
+minimum_quantity INTEGER NOT NULL,
+item_category_id INTEGER NOT NULL,
+FOREIGN KEY (item_category_id) REFERENCES Tagms.item_category(item_category_id),
+);
+
+CREATE TABLE Tagms.made_up_of_1 (
+product_id INTEGER,
+item_id INTEGER,
+FOREIGN KEY (product_id) REFERENCES Tagms.product(product_id),
+FOREIGN KEY (item_id) REFERENCES Tagms.item(item_id),
+PRIMARY KEY (product_id, item_id)
+);
