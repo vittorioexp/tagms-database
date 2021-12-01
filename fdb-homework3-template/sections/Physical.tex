@@ -2,6 +2,10 @@
 \textcolor{red}{[Report SQL statements for the database creation]}
 
 -- Database Creation
+\begin{lstlisting}[
+stringstyle=\color{grey},
+basicstyle=\ttfamily\footnotesize]
+
 CREATE DATABASE tagmsdb OWNER admin ENCODING = 'UTF8';
 
 -- Create new Schema (you can use the public schema without crating a new one, if you want)
@@ -79,3 +83,6 @@ FOREIGN KEY (product_id) REFERENCES Tagms.product(product_id),
 FOREIGN KEY (item_id) REFERENCES Tagms.item(item_id),
 PRIMARY KEY (product_id, item_id)
 );
+
+
+\end{lstlisting}

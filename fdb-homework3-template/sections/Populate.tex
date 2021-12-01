@@ -1,2 +1,105 @@
+
 \section{Populate the Database: Example}
 \textcolor{red}{[Report SQL statements for the database population: one row per table is enough for the HW, but we suggest to insert a sufficient amount of data in your DB to run queries]}
+
+
+\begin{lstlisting}[
+stringstyle=\color{grey},
+basicstyle=\ttfamily\footnotesize]
+
+
+
+-- Employee
+INSERT INTO Tagms.employee(TAX_numeber, First_name, Last_name, Phone_number, Email_address,
+Birth_date, Hiring_date, Still_working, Role_ID) VALUES
+('','','','','','','','','');
+
+-- Work
+INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES 
+('','');
+
+-- Departament
+INSERT INTO Tagms.departament(Department_ID, Name,Description) VALUES ('','','');
+
+-- Role
+INSERT INTO Tagms.role(Role_ID, Name,Description) VALUES 
+('','','');
+
+-- Ship
+INSERT INTO Tagms.ship(Order_ID, Employee_ID, Shipping_date,Track_num) VALUES 
+('','','','');
+
+-- Supplier
+INSERT INTO Tagms.supplier(VAT_numeber, Supplier_name, Phone_number, Address, Email_address,
+Registration_date) VALUES
+('','','','','','');
+
+-- Contract
+INSERT INTO Tagms.contract(Contract_ID, Description, Contract_date, Delivery_date,
+Expiration_date, Supplier_ID, Employee_ID) VALUES 
+('','','','','','','');
+
+
+-- Item
+INSERT INTO Tagms.item(Item_ID, Name, Description,
+Quantity, Item_Category_ID, Minimum_quantity) VALUES 
+('','','','','','');
+
+-- Item_Category
+INSERT INTO Tagms.item_Category(Item_Category_ID, Name, Description) VALUES
+('','','');
+
+-- Specify
+INSERT INTO Tagms.specify(Item_ID, Contract_ID, Purchase_Quantity, Price) VALUES
+('','','','');
+
+
+-- Product
+INSERT INTO Tagms.product(Product_ID, Name, Description, Product_cost, Price_increase,
+Volume, Net_weight, Nutritional_Facts, Product_Category_ID)  VALUES 
+('', '', '', '', '', '', '', '', '');
+
+-- Product_Category
+INSERT INTO Tagms.product_Category(Product_Category_ID, Name, Description) VALUES 
+('','','');
+
+-- Made_Up_Of_1
+INSERT INTO Tagms.Made_Up_Of(Product_ID, Item_ID,Quantity) VALUES
+('','','');
+
+
+-- Package
+INSERT INTO Tagms.package(Package_ID, Name, Description, Weight, Height, Width, Depth, 
+Package_Category_ID)VALUES
+('', '', '', '', '', '', '', '');
+
+-- Package_Category
+INSERT INTO Tagms.product_Category(Package_Category_ID, Name, Description) VALUES 
+('','','');
+
+-- Made_Up_Of_2
+INSERT INTO Tagms.Made_Up_Of(Package_ID, Item_ID,Quantity) VALUES
+('','','');
+
+
+
+-- Order
+INSERT INTO Tagms.order(Order_ID,Net_price, Taxes, Order_date, Order_paid, Employee_ID, 
+Customer_ID) VALUES 
+('','', '', '', '', '', '')
+
+-- Customer
+INSERT INTO Tagms.customer(VAT_numeber, Customer_name, Registration_date, Address, 
+Email_address, Phone_number) VALUES
+('', '', '', '','', '')
+
+-- Lot
+INSERT INTO Tagms.lot(Lot_ID, Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity, 
+Package_Quantity,Package_ID, Product_ID) VALUES 
+('', '','','', '', '', '','', '');
+
+-- Draws_from
+INSERT INTO Tagms.Made_Up_Of(Lot_ID, Order_ID) VALUES 
+('','');
+
+\end{lstlisting}
