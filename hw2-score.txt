@@ -1,0 +1,16 @@
+"SCORE: 6,5
+
+
+COMMENTS ABOUT THE HOMEWORK:
+
+ER Schema:
+
+- Clear and well done
+
+Load Analysis:
+
+- Well done
+
+Relational Schema:
+
+- Ok"
