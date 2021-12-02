@@ -173,12 +173,12 @@ FOREIGN KEY (item_id) REFERENCES Tagms.item(item_id),
 PRIMARY KEY (package_id, item_id)
 );
 
-%TODO: Fix track num
+% track_num as a NUMERIC(10) instread of a VARCHAR(10)
 CREATE TABLE Tagms.ship (
 order_id SERIAL PRIMARY KEY,
 employee_id tax NOT NULL,
 shipping_date TIMESTAMP WITH TIME ZONE NOT NULL,
-track_num VARCHAR(10)
+track_num NUMERIC(10) 
 );
 
 CREATE TABLE Tagms.employee (
