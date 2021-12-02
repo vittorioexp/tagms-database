@@ -200,9 +200,26 @@ description VARCHAR(256)
 );
 
 CREATE TABLE Tagms.work (
-role_id TINYINT SERIAL PRIMARY KEY,
+department_id TINYINT SERIAL,
+employee_id tax NOT NULL,
+FOREIGN KEY (department_id) REFERENCES Tagms.department(department_id)
+FOREIGN KEY (employee_id) REFERENCES Tagms.employee(employee_id)
+PRIMARY KEY (department_id, employee_id)
+);
+
+CREATE TABLE Tagms.department (
+department_id TINYINT SERIAL PRIMARY KEY,
 name VARCHAR(30) NOT NULL,
-description VARCHAR(256)
+description VARCHAR(100)
+);
+
+CREATE TABLE Tagms.supplier (
+vat_number
+supplier_name
+phone_number
+email_address
+address
+registration_date
 );
 
 \end{lstlisting}
