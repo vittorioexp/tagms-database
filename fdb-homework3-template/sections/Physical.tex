@@ -22,63 +22,108 @@ CREATE DOMAIN Tagms.serial AS CHAR(10)
 CONSTRAINT properserial CHECK (((VALUE)::text ~* '[0-9]{10}'::text));
 CREATE DOMAIN Tagms.phonenumber AS VARCHAR(17)
 CONSTRINT properphonenumber CHECK ( VALUE ~ ^(\((00|\+)39\)|(00|\+)39)?(38[890]|34[7-90]|36[680]|33[3-90]|32[89])\d{7}$ )
+CREATE DOMAIN Tagms.price AS MONEY
+CONSTRAINT price CHECK (VALUE > 0);
+CREATE DOMAIN Tagms.quantity AS INTEGER
+CONSTRAINT quantity CHECK (VALUE >= 1);
+CREATE DOMAIN Tagms.vat AS BIGINTEGER
+CONSTRAINT vat CHECK (VALUE < 100000000000 AND VALUE > 9999999999);
+CREATE DOMAIN Tagms.tax AS CHAR(16)
+CONSTRAINT tax CHECK (VALUE ~ ^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$ );
+CREATE DOMAIN Tagms.dimension AS INTEGER
+CONSTRAINT dimension CHECK (VALUE > 0);
 
 -- Table Creation (create tables in the correct order, i.e. use FKeys only referring to
 already created tables)
-
-CREATE TABLE Tagms.product_category (
-product_category_id SERIAL PRIMARY KEY,
-name VARCHAR(32) NOT NULL,
-description VARCHAR(500),
-);
-
-CREATE TABLE Tagms.package_category (
-package_category_id SERIAL PRIMARY KEY,
-name VARCHAR(32) NOT NULL,
-description VARCHAR(500),
-);
-
-CREATE TABLE Tagms.item_category (
-item_category_id SERIAL PRIMARY KEY,
-name VARCHAR(32) NOT NULL,
-description VARCHAR(500),
-);
 
 CREATE TABLE Tagms.product (
 product_id SERIAL PRIMARY KEY,
 name VARCHAR(32) NOT NULL,
 description VARCHAR(500),
-production_cost DOUBLE PRECISION NOT NULL,
-price_increase DOUBLE PRECISION NOT NULL,
-volume INTEGER NOT NULL,
+production_cost price NOT NULL,
+price_increase price NOT NULL,
+volume dimension NOT NULL,
 net_weight INTEGER NOT NULL,
 package_weight INTEGER NOT NULL,
 nutritional_facts VARCHAR(500) NOT NULL,
 product_category_id INTEGER NOT NULL,
-FOREIGN KEY (product_category_id) REFERENCES Tagms.product_category(product_category_id),
+FOREIGN KEY (product_category_id) REFERENCES Tagms.product_category(product_category_id)
 );
 
-CREATE TABLE Tagms.package (
-package_id SERIAL PRIMARY KEY,
+CREATE TABLE Tagms.product_category (
+product_category_id SERIAL PRIMARY KEY,
 name VARCHAR(32) NOT NULL,
-description VARCHAR(500),
-weight INTEGER NOT NULL,
-height INTEGER NOT NULL,
-width INTEGER NOT NULL,
-depth INTEGER NOT NULL,
-package_category_id INTEGER NOT NULL,
-FOREIGN KEY (package_category_id) REFERENCES Tagms.package_category(package_category_id),
+description VARCHAR(500)
 );
 
 CREATE TABLE Tagms.item (
 item_id SERIAL PRIMARY KEY,
 name VARCHAR(32) NOT NULL,
 description VARCHAR(500),
-quantity INTEGER NOT NULL,
-minimum_quantity INTEGER NOT NULL,
+quantity quantity NOT NULL,
+minimum_quantity quantity NOT NULL,
 item_category_id INTEGER NOT NULL,
-FOREIGN KEY (item_category_id) REFERENCES Tagms.item_category(item_category_id),
+FOREIGN KEY (item_category_id) REFERENCES Tagms.item_category(item_category_id)
 );
+
+CREATE TABLE Tagms.item_category (
+item_category_id SERIAL PRIMARY KEY,
+name VARCHAR(32) NOT NULL,
+description VARCHAR(500)
+);
+
+CREATE TABLE Tagms.specify (
+item_id SERIAL,
+contract_id SERIAL,
+price price NOT NULL,
+purchased_quantity quantity NOT NULL,
+FOREIGN KEY (item_id) REFERENCES Tagms.item(item_id),
+FOREIGN KEY (contract_id) REFERENCES Tagms.contract(contract_id),
+PRIMARY KEY (item_id, contract_id)
+);
+
+CREATE TABLE Tagms.contract (
+contract_id SERIAL PRIMARY KEY,
+description VARCHAR(500),
+contract_date TIMESTAMP WITH TIME ZONE NOT NULL,
+delivery_date TIMESTAMP WITH TIME ZONE NOT NULL,
+expiration_date TIMESTAMP WITH TIME ZONE NOT NULL,
+supplier_id vat NOT NULL,
+employee_id tax NOT NULL,
+FOREIGN KEY (supplier_id) REFERENCES Tagms.supplier(vat_number),
+FOREIGN KEY (employee_id) REFERENCES Tagms.employee(tax_number)
+);
+
+CREATE TABLE Tagms.package (
+package_id SERIAL PRIMARY KEY,
+name VARCHAR(32) NOT NULL,
+description VARCHAR(500),
+weight dimension NOT NULL,
+height dimension NOT NULL,
+width dimension NOT NULL,
+depth dimension NOT NULL,
+package_category_id INTEGER NOT NULL,
+FOREIGN KEY (package_category_id) REFERENCES Tagms.package_category(package_category_id)
+);
+
+CREATE TABLE Tagms.package_category (
+package_category_id SERIAL PRIMARY KEY,
+name VARCHAR(32) NOT NULL,
+description VARCHAR(500)
+);
+
+CREATE TABLE Tagms.lot (
+lot_id SERIAL PRIMARY KEY,
+expiration_date VARCHAR(32) NOT NULL,product VARCHAR(500)
+product_quantity
+package_quantity
+lot_discount
+vat
+lot_price
+package_id
+product_id
+);
+
 
 CREATE TABLE Tagms.made_up_of_1 (
 product_id INTEGER,
@@ -98,8 +143,8 @@ PRIMARY KEY (package_id, item_id)
 
 CREATE TABLE Tagms.role (
 role_id TINYINT SERIAL PRIMARY KEY,
-name varchar(30) NOT NULL,
-description varchar(256)
+name VARCHAR(30) NOT NULL,
+description VARCHAR(256)
 );
 
 CREATE TABLE Tagms.employee (
