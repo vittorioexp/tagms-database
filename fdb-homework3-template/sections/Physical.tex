@@ -148,10 +148,11 @@ address VARCHAR(30) NOT NULL,
 email_address emailaddress NOT NULL,
 registration_date TIMESTAMP WITH TIME ZONE NOT NULL
 );
-%TODO: Fix the keys
+
 CREATE TABLE Tagms.draws_from (
-lot_id SERIAL NOT NULL,
-order_id SERIAL
+lot_id SERIAL PRIMARY KEY,
+order_id SERIAL NOT NULL,
+FOREIGN KEY (lot_id) REFERENCES Tagms.lot(lot_id),
 );
 
 CREATE TABLE Tagms.made_up_of_1 (
