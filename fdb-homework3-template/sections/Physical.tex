@@ -148,16 +148,16 @@ address VARCHAR(30) NOT NULL,
 email_address emailaddress NOT NULL,
 registration_date TIMESTAMP WITH TIME ZONE NOT NULL
 );
-
+%TODO: Fix the keys
 CREATE TABLE Tagms.draws_from (
-lot_id INTEGER,
-order_id INTEGER,
-
+lot_id SERIAL NOT NULL,
+order_id SERIAL
 );
 
 CREATE TABLE Tagms.made_up_of_1 (
 product_id INTEGER,
 item_id INTEGER,
+quantity quantity NOT NULL,
 FOREIGN KEY (product_id) REFERENCES Tagms.product(product_id),
 FOREIGN KEY (item_id) REFERENCES Tagms.item(item_id),
 PRIMARY KEY (product_id, item_id)
@@ -166,9 +166,17 @@ PRIMARY KEY (product_id, item_id)
 CREATE TABLE Tagms.made_up_of_2 (
 package_id INTEGER,
 item_id INTEGER,
+quantity quantity NOT NULL,
 FOREIGN KEY (package_id) REFERENCES Tagms.package(package_id),
 FOREIGN KEY (item_id) REFERENCES Tagms.item(item_id),
 PRIMARY KEY (package_id, item_id)
+);
+
+CREATE TABLE Tagms.ship (
+order_id TINYINT SERIAL PRIMARY KEY,
+employee_id VARCHAR(30) NOT NULL,
+shipping_date VARCHAR(256)
+track_num
 );
 
 CREATE TABLE Tagms.role (
