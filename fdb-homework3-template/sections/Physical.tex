@@ -172,11 +172,25 @@ FOREIGN KEY (item_id) REFERENCES Tagms.item(item_id),
 PRIMARY KEY (package_id, item_id)
 );
 
+%TODO: Fix track num
 CREATE TABLE Tagms.ship (
-order_id TINYINT SERIAL PRIMARY KEY,
-employee_id VARCHAR(30) NOT NULL,
-shipping_date VARCHAR(256)
-track_num
+order_id SERIAL PRIMARY KEY,
+employee_id tax NOT NULL,
+shipping_date TIMESTAMP WITH TIME ZONE NOT NULL,
+track_num VARCHAR(10)
+);
+
+CREATE TABLE Tagms.employee (
+tax_number tax PRIMARY KEY,
+first_name VARCHAR(20) NOT NULL,
+last_name VARCHAR(20) NOT NULL,
+phone_number phonenumber NOT NULL,
+email_address emailaddress NOT NULL,
+birth_date DATE,
+hiring_date DATE NOT NULL,
+still_working BOOL NOT NULL,
+role_id TINYINT SERIAL NOT NULL,
+FOREIGN KEY (role_id) REFERENCES Tagms.role(role_id)
 );
 
 CREATE TABLE Tagms.role (
@@ -185,18 +199,10 @@ name VARCHAR(30) NOT NULL,
 description VARCHAR(256)
 );
 
-CREATE TABLE Tagms.employee (
-tax_number VARCHAR(17) PRIMARY KEY,
-first_name VARCHAR(20),
-last_name VARCHAR(20),
-phone_number phonenumber,
-email_address emailaddress,
-birth_date DATE,
-hiring_date DATE,
-still_working BOOL,
-role_id TINYINT,
-FOREIGN KEY (role_id) REFERENCES Tagms.role(role_id)
+CREATE TABLE Tagms.work (
+role_id TINYINT SERIAL PRIMARY KEY,
+name VARCHAR(30) NOT NULL,
+description VARCHAR(256)
 );
-
 
 \end{lstlisting}
