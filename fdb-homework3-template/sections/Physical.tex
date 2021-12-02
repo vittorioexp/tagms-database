@@ -26,11 +26,11 @@ CREATE DOMAIN Tagms.price AS MONEY
 CONSTRAINT price CHECK (VALUE > 0);
 CREATE DOMAIN Tagms.quantity AS INTEGER
 CONSTRAINT quantity CHECK (VALUE >= 1);
-CREATE DOMAIN Tagms.vat AS BIGINTEGER
-CONSTRAINT vat CHECK (VALUE < 100000000000 AND VALUE > 9999999999);
 CREATE DOMAIN Tagms.tax AS CHAR(16)
 CONSTRAINT tax CHECK (VALUE ~ ^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$ );
 CREATE DOMAIN Tagms.dimension AS INTEGER
+CONSTRAINT dimension CHECK (VALUE > 0);
+CREATE DOMAIN Tagms.discount AS INTEGER
 CONSTRAINT dimension CHECK (VALUE > 0);
 
 -- Table Creation (create tables in the correct order, i.e. use FKeys only referring to
@@ -88,7 +88,7 @@ description VARCHAR(500),
 contract_date TIMESTAMP WITH TIME ZONE NOT NULL,
 delivery_date TIMESTAMP WITH TIME ZONE NOT NULL,
 expiration_date TIMESTAMP WITH TIME ZONE NOT NULL,
-supplier_id vat NOT NULL,
+supplier_id vatnumber NOT NULL,
 employee_id tax NOT NULL,
 FOREIGN KEY (supplier_id) REFERENCES Tagms.supplier(vat_number),
 FOREIGN KEY (employee_id) REFERENCES Tagms.employee(tax_number)
@@ -112,18 +112,48 @@ name VARCHAR(32) NOT NULL,
 description VARCHAR(500)
 );
 
+%TODO: Create discount domain. Fix vat
 CREATE TABLE Tagms.lot (
 lot_id SERIAL PRIMARY KEY,
-expiration_date VARCHAR(32) NOT NULL,product VARCHAR(500)
-product_quantity
-package_quantity
-lot_discount
-vat
-lot_price
-package_id
-product_id
+expiration_date TIMESTAMP WITH TIME ZONE NOT NULL,
+product_quantity quantity NOT NULL,
+package_quantity quantity NOT NULL,
+lot_discount  NOT NULL,
+vat  NOT NULL,
+lot_price price NOT NULL,
+package_id SERIAL NOT NULL,
+product_id SERIAL NOT NULL,
+FOREIGN KEY (package_id) REFERENCES Tagms.package(package_id),
+FOREIGN KEY (product_id) REFERENCES Tagms.product(product_id)
 );
 
+%TODO: Fix taxes
+CREATE TABLE Tagms.order (
+order_id SERIAL PRIMARY KEY,
+net_price price NOT NULL,
+taxes NOT NULL,
+order_date TIMESTAMP WITH TIME ZONE NOT NULL,
+employee_id tax NOT NULL,
+customer_id vatnumber NOT NULL,
+FOREIGN KEY (employee_id) REFERENCES Tagms.employee(employee_id),
+FOREIGN KEY (customer_id) REFERENCES Tagms.customer(customer_id)
+);
+
+%Fixed registration_date_id in registration_date
+CREATE TABLE Tagms.customer (
+vat_number vatnumber PRIMARY KEY,
+customer_name VARCHAR(20) NOT NULL,
+phone_number phonenumber NOT NULL,
+address VARCHAR(30) NOT NULL,
+email_address emailaddress NOT NULL,
+registration_date TIMESTAMP WITH TIME ZONE NOT NULL
+);
+
+CREATE TABLE Tagms.draws_from (
+lot_id INTEGER,
+order_id INTEGER,
+
+);
 
 CREATE TABLE Tagms.made_up_of_1 (
 product_id INTEGER,
