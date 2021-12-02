@@ -127,11 +127,11 @@ FOREIGN KEY (package_id) REFERENCES Tagms.package(package_id),
 FOREIGN KEY (product_id) REFERENCES Tagms.product(product_id)
 );
 
-%TODO: Fix taxes
+
 CREATE TABLE Tagms.order (
 order_id SERIAL PRIMARY KEY,
 net_price price NOT NULL,
-taxes NOT NULL,
+taxes price NOT NULL,
 order_date TIMESTAMP WITH TIME ZONE NOT NULL,
 employee_id tax NOT NULL,
 customer_id vatnumber NOT NULL,
