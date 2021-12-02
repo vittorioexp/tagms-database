@@ -30,8 +30,8 @@ CREATE DOMAIN Tagms.tax AS CHAR(16)
 CONSTRAINT tax CHECK (VALUE ~ ^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$ );
 CREATE DOMAIN Tagms.dimension AS INTEGER
 CONSTRAINT dimension CHECK (VALUE > 0);
-CREATE DOMAIN Tagms.discount AS INTEGER
-CONSTRAINT dimension CHECK (VALUE > 0);
+CREATE DOMAIN Tagms.percentage AS DECIMAL(4,1)
+CONSTRAINT percentage CHECK (VALUE >= 0 and VALUE =< 100);
 
 -- Table Creation (create tables in the correct order, i.e. use FKeys only referring to
 already created tables)
@@ -112,14 +112,14 @@ name VARCHAR(32) NOT NULL,
 description VARCHAR(500)
 );
 
-%TODO: Create discount domain. Fix vat
+
 CREATE TABLE Tagms.lot (
 lot_id SERIAL PRIMARY KEY,
 expiration_date TIMESTAMP WITH TIME ZONE NOT NULL,
 product_quantity quantity NOT NULL,
 package_quantity quantity NOT NULL,
-lot_discount  NOT NULL,
-vat  NOT NULL,
+lot_discount percentage  NOT NULL,
+vat percentage NOT NULL,
 lot_price price NOT NULL,
 package_id SERIAL NOT NULL,
 product_id SERIAL NOT NULL,
