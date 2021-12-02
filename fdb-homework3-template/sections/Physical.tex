@@ -21,7 +21,7 @@ CONSTRAINT properVAT CHECK (((VALUE)::text ~* '[A-Za-z0-9]{5,}'::text));
 CREATE DOMAIN Tagms.serial AS CHAR(10)
 CONSTRAINT properserial CHECK (((VALUE)::text ~* '[0-9]{10}'::text));
 CREATE DOMAIN Tagms.phonenumber AS VARCHAR(17)
-CONSTRINT properphonenumber CHECK ( VALUE ~ ^(\((00|\+)39\)|(00|\+)39)?(38[890]|34[7-90]|36[680]|33[3-90]|32[89])\d{7}$ )
+CONSTRAINT properphonenumber CHECK ( VALUE ~ ^(\((00|\+)39\)|(00|\+)39)?(38[890]|34[7-90]|36[680]|33[3-90]|32[89])\d{7}$ )
 CREATE DOMAIN Tagms.price AS MONEY
 CONSTRAINT price CHECK (VALUE > 0);
 CREATE DOMAIN Tagms.quantity AS INTEGER
