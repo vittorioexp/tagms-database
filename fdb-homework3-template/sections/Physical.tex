@@ -6,9 +6,9 @@
 stringstyle=\color{grey},
 basicstyle=\ttfamily\footnotesize]
 
-CREATE DATABASE tagmsdb OWNER admin ENCODING = 'UTF8';
+CREATE DATABASE tagmsdb OWNER admin ENCODING = `UTF8';
 
--- Create new Schema (you can use the public schema without crating a new one, if you want)
+-- Create new Schema (you can use the public schema without creating a new one, if you want)
 DROP SCHEMA IF EXISTS Tagms CASCADE;
 CREATE SCHEMA Tagms;
 
@@ -19,31 +19,34 @@ CREATE DOMAIN Tagms.vatnumber AS VARCHAR(15)
 CONSTRAINT properVAT CHECK (((VALUE)::text ~* '[A-Za-z0-9]{5,}'::text));
 CREATE DOMAIN Tagms.serial AS CHAR(10)
 CONSTRAINT properserial CHECK (((VALUE)::text ~* '[0-9]{10}'::text));
+CREATE DOMAIN Tagms.phonenumber AS VARCHAR(17)
+CONSTRINT properphonenumber CHECK ( VALUE ~ ^(\((00|\+)39\)|(00|\+)39)?(38[890]|34[7-90]|36[680]|33[3-90]|32[89])\d{7}$ )
 
--- Table Creation (create tables in the correct order, i.e. use FKeys only referring to already created tables)
+-- Table Creation (create tables in the correct order, i.e. use FKeys only referring to
+already created tables)
 
 CREATE TABLE Tagms.product_category (
 product_category_id SERIAL PRIMARY KEY,
 name VARCHAR(32) NOT NULL,
-descrition VARCHAR(500),
+description VARCHAR(500),
 );
 
 CREATE TABLE Tagms.package_category (
 package_category_id SERIAL PRIMARY KEY,
 name VARCHAR(32) NOT NULL,
-descrition VARCHAR(500),
+description VARCHAR(500),
 );
 
 CREATE TABLE Tagms.item_category (
 item_category_id SERIAL PRIMARY KEY,
 name VARCHAR(32) NOT NULL,
-descrition VARCHAR(500),
+description VARCHAR(500),
 );
 
 CREATE TABLE Tagms.product (
 product_id SERIAL PRIMARY KEY,
 name VARCHAR(32) NOT NULL,
-descrition VARCHAR(500),
+description VARCHAR(500),
 production_cost DOUBLE PRECISION NOT NULL,
 price_increase DOUBLE PRECISION NOT NULL,
 volume INTEGER NOT NULL,
@@ -57,7 +60,7 @@ FOREIGN KEY (product_category_id) REFERENCES Tagms.product_category(product_cate
 CREATE TABLE Tagms.package (
 package_id SERIAL PRIMARY KEY,
 name VARCHAR(32) NOT NULL,
-descrition VARCHAR(500),
+description VARCHAR(500),
 weight INTEGER NOT NULL,
 height INTEGER NOT NULL,
 width INTEGER NOT NULL,
@@ -69,7 +72,7 @@ FOREIGN KEY (package_category_id) REFERENCES Tagms.package_category(package_cate
 CREATE TABLE Tagms.item (
 item_id SERIAL PRIMARY KEY,
 name VARCHAR(32) NOT NULL,
-descrition VARCHAR(500),
+description VARCHAR(500),
 quantity INTEGER NOT NULL,
 minimum_quantity INTEGER NOT NULL,
 item_category_id INTEGER NOT NULL,
@@ -82,6 +85,33 @@ item_id INTEGER,
 FOREIGN KEY (product_id) REFERENCES Tagms.product(product_id),
 FOREIGN KEY (item_id) REFERENCES Tagms.item(item_id),
 PRIMARY KEY (product_id, item_id)
+);
+
+CREATE TABLE Tagms.made_up_of_2 (
+package_id INTEGER,
+item_id INTEGER,
+FOREIGN KEY (package_id) REFERENCES Tagms.package(package_id),
+FOREIGN KEY (item_id) REFERENCES Tagms.item(item_id),
+PRIMARY KEY (package_id, item_id)
+);
+
+CREATE TABLE Tagms.role (
+role_id TINYINT SERIAL PRIMARY KEY,
+name varchar(30) NOT NULL,
+description varchar(256)
+);
+
+CREATE TABLE Tagms.employee (
+tax_number VARCHAR(17) PRIMARY KEY,
+first_name VARCHAR(20),
+last_name VARCHAR(20),
+phone_number phonenumber,
+email_address emailaddress,
+birth_date DATE,
+hiring_date DATE,
+still_working BOOL,
+role_id TINYINT,
+FOREIGN KEY (role_id) REFERENCES Tagms.role(role_id)
 );
 
 
