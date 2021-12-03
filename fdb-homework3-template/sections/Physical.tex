@@ -52,7 +52,7 @@ product_id SERIAL PRIMARY KEY,
 name VARCHAR(30) NOT NULL,
 description VARCHAR(500),
 production_cost Tagms.price NOT NULL,
-price_increase Tagms.price NOT NULL,	%TODO: price_increase Numeric(5,2) or Double precision or Range or Tagms.price?
+price_increase Numeric(3, 1) NOT NULL CHECK (price_increase >= 1),
 volume Tagms.dimension NOT NULL,
 net_weight Tagms.dimension NOT NULL,
 package_weight Tagms.dimension NOT NULL,
@@ -138,7 +138,6 @@ FOREIGN KEY (package_id) REFERENCES Tagms.package(package_id),
 FOREIGN KEY (product_id) REFERENCES Tagms.product(product_id)
 );
 
-
 CREATE TABLE Tagms.order (
 order_id SERIAL PRIMARY KEY,
 net_price Tagms.price NOT NULL,
@@ -146,8 +145,8 @@ taxes Tagms.price NOT NULL,
 order_date TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
 employee_id Tagms.taxnumber NOT NULL,
 customer_id Tagms.vatnumber NOT NULL,
-FOREIGN KEY (employee_id) REFERENCES Tagms.employee(employee_id),
-FOREIGN KEY (customer_id) REFERENCES Tagms.customer(customer_id)
+FOREIGN KEY (employee_id) REFERENCES Tagms.employee(tax_number),
+FOREIGN KEY (customer_id) REFERENCES Tagms.customer(vat_number)
 );
 
 CREATE TABLE Tagms.customer (
@@ -163,7 +162,7 @@ CREATE TABLE Tagms.draws_from (
 lot_id INTEGER PRIMARY KEY,
 order_id INTEGER NOT NULL,
 FOREIGN KEY (lot_id) REFERENCES Tagms.lot(lot_id),
-FOREIGN KEY (order_id) REFERENCES Tagms.lot(order_id),
+FOREIGN KEY (order_id) REFERENCES Tagms.order(order_id)
 );
 
 CREATE TABLE Tagms.made_up_of_1 (
@@ -190,7 +189,7 @@ employee_id Tagms.taxnumber NOT NULL,
 shipping_date TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
 track_num Tagms.tracknum,
 FOREIGN KEY (order_id) REFERENCES Tagms.order(order_id),
-FOREIGN KEY (employee_id) REFERENCES Tagms.employee(employee_id),
+FOREIGN KEY (employee_id) REFERENCES Tagms.employee(tax_number)
 );
 
 CREATE TABLE Tagms.employee (
@@ -215,8 +214,8 @@ description VARCHAR(500)
 CREATE TABLE Tagms.work (
 department_id SMALLINT,
 employee_id Tagms.taxnumber,
-FOREIGN KEY (department_id) REFERENCES Tagms.department(department_id)
-FOREIGN KEY (employee_id) REFERENCES Tagms.employee(employee_id)
+FOREIGN KEY (department_id) REFERENCES Tagms.department(department_id),
+FOREIGN KEY (employee_id) REFERENCES Tagms.employee(tax_number),
 PRIMARY KEY (department_id, employee_id)
 );
 
@@ -227,7 +226,7 @@ description VARCHAR(500)
 );
 
 CREATE TABLE Tagms.supplier (
-vat_number Tagms.vatnumber PRIMARY KEY
+vat_number Tagms.vatnumber PRIMARY KEY,
 supplier_name VARCHAR(50) NOT NULL,
 phone_number Tagms.phonenumber NOT NULL,
 email_address Tagms.emailaddress NOT NULL,
