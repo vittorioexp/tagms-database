@@ -188,7 +188,7 @@ CREATE TABLE Tagms.ship (
 order_id INTEGER PRIMARY KEY,
 employee_id Tagms.taxnumber NOT NULL,
 shipping_date TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
-track_num NUMERIC(10),
+track_num Tagms.tracknum,
 FOREIGN KEY (order_id) REFERENCES Tagms.order(order_id),
 FOREIGN KEY (employee_id) REFERENCES Tagms.employee(employee_id),
 );
