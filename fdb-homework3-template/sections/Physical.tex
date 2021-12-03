@@ -42,10 +42,25 @@ CONSTRAINT percentage CHECK (VALUE >= 0 and VALUE <= 100);
 CREATE DOMAIN Tagms.tracknum AS VARCHAR(30)
 CONSTRAINT propertracknum CHECK(VALUE ~ '[A-Za-z0-9]');
 
--- TODO: reorder create table
+-- Table Creation (create tables in the correct order, i.e. use FKeys only referring to already created tables)
 
--- Table Creation (create tables in the correct order, i.e. use FKeys only referring to
-already created tables)
+CREATE TABLE Tagms.product_category (
+product_category_id SMALLSERIAL PRIMARY KEY,
+name VARCHAR(30) NOT NULL,
+description VARCHAR(500)
+);
+
+CREATE TABLE Tagms.item_category (
+item_category_id SMALLSERIAL PRIMARY KEY,
+name VARCHAR(30) NOT NULL,
+description VARCHAR(500)
+);
+
+CREATE TABLE Tagms.package_category (
+package_category_id SMALLSERIAL PRIMARY KEY,
+name VARCHAR(30) NOT NULL,
+description VARCHAR(500)
+);
 
 CREATE TABLE Tagms.product (
 product_id SERIAL PRIMARY KEY,
@@ -61,12 +76,6 @@ product_category_id SMALLINT NOT NULL,
 FOREIGN KEY (product_category_id) REFERENCES Tagms.product_category(product_category_id)
 );
 
-CREATE TABLE Tagms.product_category (
-product_category_id SMALLSERIAL PRIMARY KEY,
-name VARCHAR(30) NOT NULL,
-description VARCHAR(500)
-);
-
 CREATE TABLE Tagms.item (
 item_id SERIAL PRIMARY KEY,
 name VARCHAR(30) NOT NULL,
@@ -75,34 +84,6 @@ quantity Tagms.quantity NOT NULL,
 minimum_quantity Tagms.quantity NOT NULL,
 item_category_id SMALLINT NOT NULL,
 FOREIGN KEY (item_category_id) REFERENCES Tagms.item_category(item_category_id)
-);
-
-CREATE TABLE Tagms.item_category (
-item_category_id SMALLSERIAL PRIMARY KEY,
-name VARCHAR(30) NOT NULL,
-description VARCHAR(500)
-);
-
-CREATE TABLE Tagms.specify (
-item_id INTEGER,
-contract_id INTEGER,
-price Tagms.price NOT NULL,
-purchased_quantity Tagms.quantity NOT NULL,
-FOREIGN KEY (item_id) REFERENCES Tagms.item(item_id),
-FOREIGN KEY (contract_id) REFERENCES Tagms.contract(contract_id),
-PRIMARY KEY (item_id, contract_id)
-);
-
-CREATE TABLE Tagms.contract (
-contract_id SERIAL PRIMARY KEY,
-description VARCHAR(500),
-contract_date TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
-delivery_date TIMESTAMP WITH TIME ZONE NOT NULL,
-expiration_date TIMESTAMP WITH TIME ZONE NOT NULL,
-supplier_id Tagms.vatnumber NOT NULL,
-employee_id Tagms.taxnumber NOT NULL,
-FOREIGN KEY (supplier_id) REFERENCES Tagms.supplier(vat_number),
-FOREIGN KEY (employee_id) REFERENCES Tagms.employee(tax_number)
 );
 
 CREATE TABLE Tagms.package (
@@ -117,13 +98,6 @@ package_category_id SMALLINT NOT NULL,
 FOREIGN KEY (package_category_id) REFERENCES Tagms.package_category(package_category_id)
 );
 
-CREATE TABLE Tagms.package_category (
-package_category_id SMALLSERIAL PRIMARY KEY,
-name VARCHAR(30) NOT NULL,
-description VARCHAR(500)
-);
-
-
 CREATE TABLE Tagms.lot (
 lot_id SERIAL PRIMARY KEY,
 expiration_date TIMESTAMP WITH TIME ZONE NOT NULL,
@@ -136,33 +110,6 @@ vat Tagms.percentage NOT NULL,
 lot_price Tagms.price NOT NULL,
 FOREIGN KEY (package_id) REFERENCES Tagms.package(package_id),
 FOREIGN KEY (product_id) REFERENCES Tagms.product(product_id)
-);
-
-CREATE TABLE Tagms.order (
-order_id SERIAL PRIMARY KEY,
-net_price Tagms.price NOT NULL,
-taxes Tagms.price NOT NULL,
-order_date TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
-employee_id Tagms.taxnumber NOT NULL,
-customer_id Tagms.vatnumber NOT NULL,
-FOREIGN KEY (employee_id) REFERENCES Tagms.employee(tax_number),
-FOREIGN KEY (customer_id) REFERENCES Tagms.customer(vat_number)
-);
-
-CREATE TABLE Tagms.customer (
-vat_number Tagms.vatnumber PRIMARY KEY,
-customer_name VARCHAR(50) NOT NULL,
-phone_number Tagms.phonenumber NOT NULL,
-address VARCHAR(100) NOT NULL,
-email_address Tagms.emailaddress NOT NULL,
-registration_date TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE TABLE Tagms.draws_from (
-lot_id INTEGER PRIMARY KEY,
-order_id INTEGER NOT NULL,
-FOREIGN KEY (lot_id) REFERENCES Tagms.lot(lot_id),
-FOREIGN KEY (order_id) REFERENCES Tagms.order(order_id)
 );
 
 CREATE TABLE Tagms.made_up_of_1 (
@@ -183,13 +130,19 @@ FOREIGN KEY (item_id) REFERENCES Tagms.item(item_id),
 PRIMARY KEY (package_id, item_id)
 );
 
-CREATE TABLE Tagms.ship (
-order_id INTEGER PRIMARY KEY,
-employee_id Tagms.taxnumber NOT NULL,
-shipping_date TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
-track_num Tagms.tracknum,
-FOREIGN KEY (order_id) REFERENCES Tagms.order(order_id),
-FOREIGN KEY (employee_id) REFERENCES Tagms.employee(tax_number)
+CREATE TABLE Tagms.customer (
+vat_number Tagms.vatnumber PRIMARY KEY,
+customer_name VARCHAR(50) NOT NULL,
+phone_number Tagms.phonenumber NOT NULL,
+address VARCHAR(100) NOT NULL,
+email_address Tagms.emailaddress NOT NULL,
+registration_date TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Tagms.role (
+role_id SMALLSERIAL PRIMARY KEY,
+name VARCHAR(30) NOT NULL,
+description VARCHAR(500)
 );
 
 CREATE TABLE Tagms.employee (
@@ -205,8 +158,8 @@ role_id SMALLINT NOT NULL,
 FOREIGN KEY (role_id) REFERENCES Tagms.role(role_id)
 );
 
-CREATE TABLE Tagms.role (
-role_id SMALLSERIAL PRIMARY KEY,
+CREATE TABLE Tagms.department (
+department_id SMALLSERIAL PRIMARY KEY,
 name VARCHAR(30) NOT NULL,
 description VARCHAR(500)
 );
@@ -219,12 +172,6 @@ FOREIGN KEY (employee_id) REFERENCES Tagms.employee(tax_number),
 PRIMARY KEY (department_id, employee_id)
 );
 
-CREATE TABLE Tagms.department (
-department_id SMALLSERIAL PRIMARY KEY,
-name VARCHAR(30) NOT NULL,
-description VARCHAR(500)
-);
-
 CREATE TABLE Tagms.supplier (
 vat_number Tagms.vatnumber PRIMARY KEY,
 supplier_name VARCHAR(50) NOT NULL,
@@ -232,6 +179,55 @@ phone_number Tagms.phonenumber NOT NULL,
 email_address Tagms.emailaddress NOT NULL,
 address VARCHAR(100) NOT NULL,
 registration_date DATE NOT NULL
+);
+
+CREATE TABLE Tagms.contract (
+contract_id SERIAL PRIMARY KEY,
+description VARCHAR(500),
+contract_date TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+delivery_date TIMESTAMP WITH TIME ZONE NOT NULL,
+expiration_date TIMESTAMP WITH TIME ZONE NOT NULL,
+supplier_id Tagms.vatnumber NOT NULL,
+employee_id Tagms.taxnumber NOT NULL,
+FOREIGN KEY (supplier_id) REFERENCES Tagms.supplier(vat_number),
+FOREIGN KEY (employee_id) REFERENCES Tagms.employee(tax_number)
+);
+
+CREATE TABLE Tagms.specify (
+item_id INTEGER,
+contract_id INTEGER,
+price Tagms.price NOT NULL,
+purchased_quantity Tagms.quantity NOT NULL,
+FOREIGN KEY (item_id) REFERENCES Tagms.item(item_id),
+FOREIGN KEY (contract_id) REFERENCES Tagms.contract(contract_id),
+PRIMARY KEY (item_id, contract_id)
+);
+
+CREATE TABLE Tagms.order (
+order_id SERIAL PRIMARY KEY,
+net_price Tagms.price NOT NULL,
+taxes Tagms.price NOT NULL,
+order_date TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+employee_id Tagms.taxnumber NOT NULL,
+customer_id Tagms.vatnumber NOT NULL,
+FOREIGN KEY (employee_id) REFERENCES Tagms.employee(tax_number),
+FOREIGN KEY (customer_id) REFERENCES Tagms.customer(vat_number)
+);
+
+CREATE TABLE Tagms.draws_from (
+lot_id INTEGER PRIMARY KEY,
+order_id INTEGER NOT NULL,
+FOREIGN KEY (lot_id) REFERENCES Tagms.lot(lot_id),
+FOREIGN KEY (order_id) REFERENCES Tagms.order(order_id)
+);
+
+CREATE TABLE Tagms.ship (
+order_id INTEGER PRIMARY KEY,
+employee_id Tagms.taxnumber NOT NULL,
+shipping_date TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+track_num Tagms.tracknum,
+FOREIGN KEY (order_id) REFERENCES Tagms.order(order_id),
+FOREIGN KEY (employee_id) REFERENCES Tagms.employee(tax_number)
 );
 
 \end{lstlisting}
