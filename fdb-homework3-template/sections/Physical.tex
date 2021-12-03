@@ -184,11 +184,11 @@ CREATE TABLE Tagms.employee (
 tax_number Tagms.taxnumber PRIMARY KEY,
 first_name VARCHAR(30) NOT NULL,
 last_name VARCHAR(30) NOT NULL,
-phone_number phonenumber NOT NULL,
-email_address emailaddress NOT NULL,
+phone_number Tagms.phonenumber NOT NULL,
+email_address Tagms.emailaddress NOT NULL,
 birth_date DATE,
 hiring_date DATE NOT NULL,
-still_working BOOL NOT NULL,
+still_working BOOLEAN NOT NULL,
 role_id SMALLINT NOT NULL,
 FOREIGN KEY (role_id) REFERENCES Tagms.role(role_id)
 );
@@ -201,7 +201,7 @@ description VARCHAR(500)
 
 CREATE TABLE Tagms.work (
 department_id SMALLINT,
-employee_id taxnumber,
+employee_id Tagms.taxnumber,
 FOREIGN KEY (department_id) REFERENCES Tagms.department(department_id)
 FOREIGN KEY (employee_id) REFERENCES Tagms.employee(employee_id)
 PRIMARY KEY (department_id, employee_id)
@@ -215,7 +215,7 @@ description VARCHAR(500)
 
 CREATE TABLE Tagms.supplier (
 vat_number Tagms.vatnumber PRIMARY KEY
-supplier_name VARCHAR(30) NOT NULL,
+supplier_name VARCHAR(50) NOT NULL,
 phone_number Tagms.phonenumber NOT NULL,
 email_address Tagms.emailaddress NOT NULL,
 address VARCHAR(100) NOT NULL,
