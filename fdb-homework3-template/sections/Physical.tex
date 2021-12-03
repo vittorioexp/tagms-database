@@ -42,7 +42,7 @@ CONSTRAINT percentage CHECK (VALUE >= 0 and VALUE <= 100);
 CREATE DOMAIN Tagms.tracknum AS VARCHAR(30)
 CONSTRAINT propertracknum CHECK(VALUE ~ '[A-Za-z0-9]');
 
-
+-- TODO: reorder create table
 
 -- Table Creation (create tables in the correct order, i.e. use FKeys only referring to
 already created tables)
