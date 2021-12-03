@@ -22,13 +22,13 @@ CREATE DOMAIN Tagms.phonenumber AS VARCHAR(17)
 CONSTRAINT properphonenumber CHECK (VALUE ~ '^(\((00|\+)39\)|(00|\+)39)?3\d{9}$');
 
 CREATE DOMAIN Tagms.vatnumber AS CHAR(11)
-CONSTRAINT properVAT CHECK (((VALUE)::text ~* ^[0-9]*$::text));
+CONSTRAINT properVAT CHECK (VALUE::text ~* '^[0-9]*$::text');
 
 CREATE DOMAIN Tagms.taxnumber AS CHAR(16)
-CONSTRAINT taxnumber CHECK (VALUE ~ ^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$ );
+CONSTRAINT taxnumber CHECK (VALUE ~ '^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$' );
 
 CREATE DOMAIN Tagms.price AS MONEY
-CONSTRAINT price CHECK (VALUE > 0);
+CONSTRAINT price CHECK (VALUE > '0'::float8::numeric::money);
 
 CREATE DOMAIN Tagms.quantity AS INTEGER
 CONSTRAINT quantity CHECK (VALUE >= 1);
@@ -37,7 +37,7 @@ CREATE DOMAIN Tagms.dimension AS INTEGER
 CONSTRAINT dimension CHECK (VALUE > 0);
 
 CREATE DOMAIN Tagms.percentage AS DECIMAL(4,1)
-CONSTRAINT percentage CHECK (VALUE >= 0 and VALUE =< 100);
+CONSTRAINT percentage CHECK (VALUE >= 0 and VALUE <= 100);
 
 CREATE DOMAIN Tagms.tracknum AS VARCHAR(30)
 CONSTRAINT propertracknum CHECK(VALUE ~ '[A-Za-z0-9]');
