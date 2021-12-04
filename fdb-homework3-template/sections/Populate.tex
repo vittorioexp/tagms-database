@@ -64,7 +64,7 @@ INSERT INTO Tagms.product_Category(Product_Category_ID, Name, Description) VALUE
 ('','','');
 
 -- Made_Up_Of_1
-INSERT INTO Tagms.Made_Up_Of(Product_ID, Item_ID,Quantity) VALUES
+INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
 ('','','');
 
 
@@ -74,12 +74,14 @@ Package_Category_ID)VALUES
 ('', '', '', '', '', '', '', '');
 
 -- Package_Category
-INSERT INTO Tagms.product_Category(Package_Category_ID, Name, Description) VALUES 
+INSERT INTO Tagms.package_Category(Package_Category_ID, Name, Description) VALUES 
 ('','','');
 
 -- Made_Up_Of_2
-INSERT INTO Tagms.Made_Up_Of(Package_ID, Item_ID,Quantity) VALUES
+INSERT INTO Tagms.made_Up_Of_2(Package_ID, Item_ID,Quantity) VALUES
 ('','','');
+
+
 
 
 
@@ -99,7 +101,7 @@ Package_Quantity,Package_ID, Product_ID) VALUES
 ('', '','','', '', '', '','', '');
 
 -- Draws_from
-INSERT INTO Tagms.Made_Up_Of(Lot_ID, Order_ID) VALUES 
+INSERT INTO Tagms.draws_from(Lot_ID, Order_ID) VALUES 
 ('','');
 
 \end{lstlisting}
