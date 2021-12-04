@@ -85,30 +85,31 @@ INSERT INTO Tagms.package_Category(Package_Category_ID, Name, Description) VALUE
 ('01','Cans','Aluminum cans 33cl');
 
 -- Made_Up_Of_2
-INSERT INTO Tagms.made_Up_Of_2(Package_ID, Item_ID,Quantity) VALUES
-('','','');
-
-
-
+INSERT INTO Tagms.made_Up_Of_2(Package_ID, Item_ID, Quantity) VALUES
+('454','15','4');
+('14','129','300');
 
 
 -- Order
 INSERT INTO Tagms.order(Order_ID,Net_price, Taxes, Order_date, Order_paid, Employee_ID, 
 Customer_ID) VALUES 
-('','', '', '', '', '', '')
+('25467','230.20', '23.02', '2021-12-04 17:30:00', 'true', 'MPHFLH77C48H362N', '86334519757')
+('30045','356.26', '13.59', '2021-12-04 12:00:22', 'true', 'CTXVNN28L17D605N', '86345837378')
 
 -- Customer
 INSERT INTO Tagms.customer(VAT_numeber, Customer_name, Registration_date, Address, 
 Email_address, Phone_number) VALUES
-('', '', '', '','', '')
+('23859476254', 'Mario Rossi', '2020-04-11 11:03:40','Via Milano 5 35121 Padova', 'mariorossi@gmail.com', '3342856738')
+('88756400811', 'Giovanni Bianchi', '2010-11-20 09:07:10','Via Milano 5 35131 Padova', 'giovanniverdi4@unipd.it', '3119385864')
 
 -- Lot
 INSERT INTO Tagms.lot(Lot_ID, Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity, 
 Package_Quantity,Package_ID, Product_ID) VALUES 
-('', '','','', '', '', '','', '');
+('3334', '2022-03-14','0.3','44576685449', '330.50', '50', '10','337', '13');
 
 -- Draws_from
 INSERT INTO Tagms.draws_from(Lot_ID, Order_ID) VALUES 
-('','');
+('22443','4445');
+('150','39');
 
 \end{lstlisting}
