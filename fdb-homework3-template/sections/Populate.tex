@@ -6,29 +6,33 @@
 \begin{lstlisting}[
 stringstyle=\color{grey},
 basicstyle=\ttfamily\footnotesize]
-
-
-
 -- Employee
 INSERT INTO Tagms.employee(TAX_number, First_name, Last_name, Phone_number, Email_address,
 Birth_date, Hiring_date, Still_working, Role_ID) VALUES
-(‘FGDVSF30C62D012T’,’John’,’Smith’,’3516921849’,’johnsmith@gmail.com’,’1995-30-12’,’2018-12-12,’true’,’01’);
+('FGDVSF30C62D012T','John','Smith','3516921849','johnsmith@gmail.com','1995-30-12',
+'2018-12-12','true','01');
 
 -- Work
 INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES 
 ('11','21123');
 
 -- Departament
-INSERT INTO Tagms.departament(Department_ID, Name,Description) VALUES (’11’,’Operations’,’responsible for converting raw materials and packaging materials into finished goods and work to improve the efficiency of the production’);
-
+INSERT INTO Tagms.departament(Department_ID, Name,Description) VALUES
+('11','Operations','responsible for converting raw materials and packaging materials into 
+finished
+goods and work to improve the efficiency of the production');
 
 -- Role
 INSERT INTO Tagms.role(Role_ID, Name,Description) VALUES 
-(’01’,’Manager’,’oversee the functioning and productivity of a company division. Responsibilities include recruiting and dismissing staff, establishing and working towards strategic goals and managing the production’);
+('01','Manager','oversee the functioning and productivity of a company division.
+Responsibilities include recruiting and dismissing staff, establishing and working towards 
+strategic goals and managing the production');
+
+
 
 -- Ship
 INSERT INTO Tagms.ship(Order_ID, Employee_ID, Shipping_date,Track_num) VALUES 
-(‘9123’,’21123’,'2022-27-11',''ZXU098123);
+('9123','21123','2022-27-11','ZXU098123');
 
 -- Supplier
 INSERT INTO Tagms.supplier(VAT_numeber, Supplier_name, Phone_number, Address, Email_address,
@@ -58,25 +62,27 @@ INSERT INTO Tagms.specify(Item_ID, Contract_ID, Purchase_Quantity, Price) VALUES
 -- Product
 INSERT INTO Tagms.product(Product_ID, Name, Description, Product_cost, Price_increase,
 Volume, Net_weight, Nutritional_Facts, Product_Category_ID)  VALUES 
-('', '', '', '', '', '', '', '', '');
+('1234', 'Blonde beer','Blonde beer', '1.00', '2','1', '1', 'Calories: 153, 
+Alcohol: 14 grams, Carbs: 13 grams,Protein: 2 grams, Fat: 0 grams.', 22);
 
 -- Product_Category
 INSERT INTO Tagms.product_Category(Product_Category_ID, Name, Description) VALUES 
-('','','');
+('22','Beer','An alcoholic beverage typically obtained 
+from the fermentation of wort based on barley malt');
 
 -- Made_Up_Of_1
 INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
-('','','');
+('1234','11','10'), ('1234','12','5'), ('1234','13','2');
 
 
 -- Package
 INSERT INTO Tagms.package(Package_ID, Name, Description, Weight, Height, Width, Depth, 
-Package_Category_ID)VALUES
-('', '', '', '', '', '', '', '');
+Package_Category_ID) VALUES
+('001', 'Aluminum cans', 'Aluminum cans', '2', '5', '3', '3', '01');
 
 -- Package_Category
 INSERT INTO Tagms.package_Category(Package_Category_ID, Name, Description) VALUES 
-('','','');
+('01','Cans','Aluminum cans 33cl');
 
 -- Made_Up_Of_2
 INSERT INTO Tagms.made_Up_Of_2(Package_ID, Item_ID,Quantity) VALUES
