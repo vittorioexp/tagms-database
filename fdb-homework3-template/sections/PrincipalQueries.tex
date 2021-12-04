@@ -1,7 +1,6 @@
 \section{Principal Queries}
 \textcolor{red}{[Write some of the queries to be performed to satisfy your functional requirements. 3-4 queries are enough, try to use the techniques seen at lecture (aggregate functions, group by, subqueries,…)]}
 
-
 \begin{lstlisting}[language=SQL,
 keywordstyle=\color{blue},
 stringstyle=\color{mauve},
@@ -11,5 +10,11 @@ SELECT t1.attr1
 FROM table1 as t1
     LEFT JOIN table2 as t2 ON t1.attr2=t2.attr1 
 WHERE t1.attr3=1
+
+-- list all contracts between a certain manager and a certain supplier
+select tagms.contract.* from tagms.contract inner join tagms.employee on
+tagms.contract.employee_id=tagms.employee.tax_number inner join tagms.supplier on
+tagms.contract.supplier_id=tagms.supplier.vat_number where tagms.employee.first_name='Luca' and
+tagms.supplier.supplier_name='supplier1';
 \end{lstlisting}
 

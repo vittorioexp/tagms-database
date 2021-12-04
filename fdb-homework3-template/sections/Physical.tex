@@ -3,11 +3,14 @@
 
 -- Database Creation
 \begin{lstlisting}[
-stringstyle=\color{grey},
+language=SQL,
+keywordstyle=\color{blue},
+stringstyle=\color{mauve},
+showstringspaces=false,
 basicstyle=\ttfamily\footnotesize]
 
 -- Database Creation
-CREATE DATABASE tagmsdb OWNER admin ENCODING = `UTF8';
+CREATE DATABASE tagmsdb OWNER admin ENCODING = 'UTF8';
 
 -- Create new Schema (you can use the public schema without creating a new one, if you want)
 DROP SCHEMA IF EXISTS Tagms CASCADE;
