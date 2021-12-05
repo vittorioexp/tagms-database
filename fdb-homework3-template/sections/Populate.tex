@@ -35,28 +35,24 @@ INSERT INTO Tagms.ship(Order_ID, Employee_ID, Shipping_date,Track_num) VALUES
 ('9123','21123','2022-27-11','ZXU098123');
 
 -- Supplier
-INSERT INTO Tagms.supplier(VAT_numeber, Supplier_name, Phone_number, Address, Email_address,
-Registration_date) VALUES
-('','','','','','');
+INSERT INTO Tagms.supplier(vat_number, supplier_name, phone_number, email_address, address, registration_date) VALUES
+('86334519757','Marco Manzoni','3794567845','marco.manzoni@gmail.com','Via Roma 4 35100 Padova','2021-12-04');
 
 -- Contract
-INSERT INTO Tagms.contract(Contract_ID, Description, Contract_date, Delivery_date,
-Expiration_date, Supplier_ID, Employee_ID) VALUES 
-('','','','','','','');
-
+INSERT INTO Tagms.contract(contract_id, description, contract_date, delivery_date, expiration_date, supplier_id, employee_id) VALUES 
+('52374','Worker','2021-12-05 12:30:00','2021-12-07 12:30:00','2021-12-09 12:30:00','741344296354','52741429635');
 
 -- Item
-INSERT INTO Tagms.item(Item_ID, Name, Description,
-Quantity, Item_Category_ID, Minimum_quantity) VALUES 
-('','','','','','');
+INSERT INTO Tagms.item(item_id, name, description, quantity, minimum_quantity, item_category_id) VALUES 
+('85234','Cola','Drink_Cola','100','10','48');
 
 -- Item_Category
-INSERT INTO Tagms.item_Category(Item_Category_ID, Name, Description) VALUES
-('','','');
+INSERT INTO Tagms.item_Category(item_category_id, name, description) VALUES
+('23','Drink','Drink_Category');
 
 -- Specify
-INSERT INTO Tagms.specify(Item_ID, Contract_ID, Purchase_Quantity, Price) VALUES
-('','','','');
+INSERT INTO Tagms.specify(item_id, contract_id, price, purchased_quantity) VALUES
+('45213','74125','14.50','100');
 
 
 -- Product
