@@ -35,7 +35,7 @@ CREATE DOMAIN Tagms.price AS NUMERIC(9, 3)
 CONSTRAINT properprice NOT NULL CHECK (VALUE > 0.0);
 
 CREATE DOMAIN Tagms.quantity AS INTEGER
-CONSTRAINT properquantity CHECK (VALUE >= 1);
+CONSTRAINT properquantity NOT NULL CHECK (VALUE >= 1);
 
 CREATE DOMAIN Tagms.dimension AS INTEGER
 CONSTRAINT properdimension NOT NULL CHECK (VALUE > 0);
@@ -84,8 +84,8 @@ CREATE TABLE Tagms.item (
 item_id SERIAL PRIMARY KEY,
 name VARCHAR(30) NOT NULL,
 description VARCHAR(500),
-quantity Tagms.quantity NOT NULL,
-minimum_quantity Tagms.quantity NOT NULL,
+quantity Tagms.quantity,
+minimum_quantity Tagms.quantity,
 item_category_id SMALLINT NOT NULL,
 FOREIGN KEY (item_category_id) REFERENCES Tagms.item_category(item_category_id)
 );
@@ -106,9 +106,9 @@ CREATE TABLE Tagms.lot (
 lot_id SERIAL PRIMARY KEY,
 expiration_date TIMESTAMP WITH TIME ZONE NOT NULL,
 product_id INTEGER NOT NULL,
-product_quantity Tagms.quantity NOT NULL,
+product_quantity Tagms.quantity,
 package_id INTEGER NOT NULL,
-package_quantity Tagms.quantity NOT NULL,
+package_quantity Tagms.quantity,
 lot_discount Tagms.percentage  NOT NULL,
 vat Tagms.percentage NOT NULL,
 lot_price Tagms.price,
@@ -119,7 +119,7 @@ FOREIGN KEY (product_id) REFERENCES Tagms.product(product_id)
 CREATE TABLE Tagms.made_up_of_1 (
 product_id INTEGER,
 item_id INTEGER,
-quantity Tagms.quantity NOT NULL,
+quantity Tagms.quantity,
 FOREIGN KEY (product_id) REFERENCES Tagms.product(product_id),
 FOREIGN KEY (item_id) REFERENCES Tagms.item(item_id),
 PRIMARY KEY (product_id, item_id)
@@ -128,7 +128,7 @@ PRIMARY KEY (product_id, item_id)
 CREATE TABLE Tagms.made_up_of_2 (
 package_id INTEGER,
 item_id INTEGER,
-quantity Tagms.quantity NOT NULL,
+quantity Tagms.quantity,
 FOREIGN KEY (package_id) REFERENCES Tagms.package(package_id),
 FOREIGN KEY (item_id) REFERENCES Tagms.item(item_id),
 PRIMARY KEY (package_id, item_id)
@@ -201,7 +201,7 @@ CREATE TABLE Tagms.specify (
 item_id INTEGER,
 contract_id INTEGER,
 price Tagms.price,
-purchased_quantity Tagms.quantity NOT NULL,
+purchased_quantity Tagms.quantity,
 FOREIGN KEY (item_id) REFERENCES Tagms.item(item_id),
 FOREIGN KEY (contract_id) REFERENCES Tagms.contract(contract_id),
 PRIMARY KEY (item_id, contract_id)
