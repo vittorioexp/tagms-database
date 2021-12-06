@@ -115,10 +115,39 @@ insert into tagms.contract (description,contract_date,delivery_date,expiration_d
 INSERT INTO Tagms.item_Category(name, description) VALUES
 ('Sugar','Soft sugar employed for producing juices and cokes');
 
+INSERT INTO Tagms.item_Category(name, description) VALUES
+('Coloring','Food coloring employed for producing juices, cokes, smoothies');
+
+INSERT INTO Tagms.item_Category(name, description) VALUES
+('Water','Water employed for producing all products');
+
+INSERT INTO Tagms.item_Category(name, description) VALUES
+('Tape','Tape employed for producing packages');
+
+INSERT INTO Tagms.item_Category(name, description) VALUES
+('Polystyrene','Polystyrene employed for producing packages');
+
 
 -- Item
-INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES 
+INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
 ('Sugar K','Sugar k employed for producing coke j and coke k','100','50','1');
+
+INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
+('Sugar S','Sugar k employed for producing coke s and coke k','120','20','1');
+
+INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
+('Water W','Distilled Water W employed for producing all products','1000','700','3');
+
+INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
+('Water L','Low mineral content water Water W employed for producing all products','1000','700','3');
+
+INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
+('Polystyrene P','Refined polystyrene P employed for producing fragile packages','600','250','5');
+
+INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
+('Colorant C','Coloring C (caramel) employed for producing coke j and coke k','800','150','2');
+
+
 
 
 -- Specify TODO: FIX THIS
