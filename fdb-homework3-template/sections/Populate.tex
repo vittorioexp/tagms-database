@@ -9,26 +9,44 @@ basicstyle=\ttfamily\footnotesize]
 
 -- Role
 
-INSERT INTO Tagms.role(Role_ID, Name,Description) VALUES 
-('01','Manager','oversee the functioning and productivity of a company division.
+INSERT INTO Tagms.role(Name,Description) VALUES 
+('Manager','oversee the functioning and productivity of a company division.
 Responsibilities include recruiting and dismissing staff, establishing and working towards 
 strategic goals and managing the production');
 
-INSERT INTO Tagms.role(Role_ID, Name,Description) VALUES 
-('02','Worker','INSERT DESCRIPTION HERE');
+INSERT INTO Tagms.role(Name,Description) VALUES 
+('Worker','INSERT DESCRIPTION HERE');
 
-INSERT INTO Tagms.role(Role_ID, Name,Description) VALUES 
-('03','Salesman','INSERT DESCRIPTION HERE');
+INSERT INTO Tagms.role(Name,Description) VALUES 
+('Salesman','INSERT DESCRIPTION HERE');
 
-INSERT INTO Tagms.role(Role_ID, Name,Description) VALUES 
-('04','Data Analyst','INSERT DESCRIPTION HERE');
+INSERT INTO Tagms.role(Name,Description) VALUES 
+('Data Analyst','INSERT DESCRIPTION HERE');
 
 
 -- Employee
+
 INSERT INTO Tagms.employee(TAX_number, First_name, Last_name, Phone_number, Email_address,
 Birth_date, Hiring_date, Still_working, Role_ID) VALUES
-('FGDVSF30C62D012T','John','Smith','3516921849','johnsmith@gmail.com','1995-30-12',
+('FGDVSF30C62D012T','John','Smith','3516921849','johnsmith@gmail.com','1995-12-30',
 '2018-12-12','true','01');
+
+INSERT INTO Tagms.employee(TAX_number, First_name, Last_name, Phone_number, Email_address,
+Birth_date, Hiring_date, Still_working, Role_ID) VALUES
+('FGDVSF40C62D012T','Adam','Willis','3516931849','adamwillis@gmail.com','1993-11-20',
+'2019-11-11','true','02');
+
+INSERT INTO Tagms.employee(TAX_number, First_name, Last_name, Phone_number, Email_address,
+Birth_date, Hiring_date, Still_working, Role_ID) VALUES
+('HGDVSF40C62D012T','Bruce','De Forest','3516931649','deforest@gmail.com','1992-11-20',
+'2012-11-11','true','03');
+
+INSERT INTO Tagms.employee(TAX_number, First_name, Last_name, Phone_number, Email_address,
+Birth_date, Hiring_date, Still_working, Role_ID) VALUES
+('HGSVSF40C62D012T','Elena','Zapi','3516931649','zapi@gmail.com','1998-11-20',
+'2012-11-11','true','04');
+
+
 
 -- Work
 INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES 
