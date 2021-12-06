@@ -25,9 +25,8 @@ INSERT INTO Tagms.employee(TAX_number, First_name, Last_name, Phone_number, Emai
 Birth_date, Hiring_date, Still_working, Role_ID) VALUES
 ('DKLERT23D96A316T','Mario','Rossi','00393316986532','mariorossi@gmail.com','1953-07-24','2017-09-14','true',1);
 
-
+-- TODO: Check if works
 -- Work
-
 INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES 
 ('1','FGDVSF30C62D012T');
 
@@ -136,10 +135,12 @@ INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Vo
 INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Volume, Net_weight, Package_weight, Nutritional_Facts, Product_Category_ID)  VALUES
 ('Juice','Juice', '1.00', '2.0', '1', '1', '1', 'Calories: 153, Alcohol: 0 grams, Carbs: 13 grams,Protein: 2 grams, Fat: 0 grams.', '3');
 
+-- TODO: Check if works
 -- Made_Up_Of_1
 INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
 ('1234','11','10'), ('1234','12','5'), ('1234','13','2');
 
+-- TODO: Check if works
 -- Package
 INSERT INTO Tagms.package(Package_ID, Name, Description, Weight, Height, Width, Depth, 
 Package_Category_ID) VALUES
@@ -149,12 +150,24 @@ Package_Category_ID) VALUES
 ('004', 'Bottle', 'Glass bottle 0.75L ', '3', '8', '3', '3', '03')
 ('004', 'Bottle', 'Glass bottle 1L ', '3', '10', '3', '3', '03');
 
+-- TODO: Check if works
 -- Package_Category
-INSERT INTO Tagms.package_Category(Package_Category_ID, Name, Description) VALUES 
-('01','Cans','Aluminum cans ')
-('02','Bottle','Plastic bottle')
-('03','Bottle','Glass bottle');
+INSERT INTO Tagms.package_Category(Name, Description) VALUES
+('BoxXS','Box XS');
 
+INSERT INTO Tagms.package_Category(Name, Description) VALUES
+('BoxS','Box S');
+
+INSERT INTO Tagms.package_Category(Name, Description) VALUES
+('BoxM','Box M');
+
+INSERT INTO Tagms.package_Category(Name, Description) VALUES
+('BoxL','Box L');
+
+INSERT INTO Tagms.package_Category(Name, Description) VALUES
+('BoxXL','Box XL');
+
+-- TODO: Check if works
 -- Made_Up_Of_2
 INSERT INTO Tagms.made_Up_Of_2(Package_ID, Item_ID, Quantity) VALUES
 ('454','15','4');
@@ -174,11 +187,13 @@ INSERT INTO Tagms.customer VALUES
 ('12564378963','Eurospin','+393346901723','Via 20 Settembre 21, Lecce','eurospin_lecce@mail.com',current_date),
 ('12564378963','PAM','+393315589636','Via Giappone 45, Taranto','pam_taranto@mail.com',current_date);
 
+-- TODO: Check if works
 -- Lot
 INSERT INTO Tagms.lot(Lot_ID, Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity, 
 Package_Quantity,Package_ID, Product_ID) VALUES 
 ('3334', '2022-03-14','0.3','44576685449', '330.50', '50', '10','337', '13');
 
+-- TODO: Check if works
 -- Draws_from
 INSERT INTO Tagms.draws_from(Lot_ID, Order_ID) VALUES 
 ('22443','4445');
