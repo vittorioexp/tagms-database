@@ -61,8 +61,10 @@ Birth_date, Hiring_date, Still_working, Role_ID) VALUES
 
 INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES 
 ('1','FGDVSF30C62D012T');
+
 INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES 
 ('1','FGDVSF40C62D012T');
+
 INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES 
 ('1','HGDVSF40C62D012T');
 
@@ -96,6 +98,12 @@ INSERT INTO Tagms.supplier(vat_number, supplier_name, phone_number, email_addres
  
 INSERT INTO Tagms.supplier(vat_number, supplier_name, phone_number, email_address, address, registration_date) VALUES  
 ('23232503889','EnergyFeed s.p.a.','3365447309','feed4life@gmail.com','Via Venezia 7 19100 Spezia','2021-04-08'); 
+
+INSERT INTO Tagms.supplier(vat_number, supplier_name, phone_number, email_address, address, registration_date) VALUES  
+('22134054695','ReSugar','3366244789','sugar@gmail.com','Via Marsalis 1 81290 Firenze','2021-01-02'); 
+ 
+INSERT INTO Tagms.supplier(vat_number, supplier_name, phone_number, email_address, address, registration_date) VALUES  
+('22134038695','MaterialPCK','3366244789','matforpack@gmail.com','Via Resto 1 23202 Rovigo','2021-02-011');
 
 -- Contract
 insert into tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) values ('contract with supplier 1','2020-01-18','2021-12-06','2023-12-31',16835498612,'DKLERT23D96A316T')
