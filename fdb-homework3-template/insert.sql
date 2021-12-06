@@ -96,10 +96,15 @@ INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES
 
 -- Departament
 
-INSERT INTO Tagms.department(Name,Description) VALUES
-('Operations','responsible for converting raw materials and packaging materials into finished goods and work to improve the efficiency of the production');
+INSERT INTO Tagms.department(Name, Description) VALUES ('Operations','Responsible for converting raw materials and packaging materials into finished goods and work to improve the efficiency of the production.');
 
+INSERT INTO Tagms.department(Name, Description) VALUES ('Sales','Responsible for the sale of lots.');
 
+INSERT INTO Tagms.department(Name, Description) VALUES ('Administration','Responsible for the administration of the accounting of employment contracts and management of personnel, customers and suppliers.');
+
+INSERT INTO Tagms.department(Name, Description) VALUES ('Maintenance','Department responsible for the management and maintenance of the different machinery used for production.');
+
+INSERT INTO Tagms.department(Name, Description) VALUES ('Shipping','Responsible for marking and shipping lots.');
 
 -- Ship
 
