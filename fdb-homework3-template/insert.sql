@@ -1,33 +1,9 @@
---Supplier
-insert into tagms.supplier values ('16835498612','supplier1','+393809746354','supplier1@gmail.com','Via delle Magnolie, 27, Udine',current_date);
-insert into tagms.supplier values ('3689941653','supplier2','+393669816258','supplier2@outlook.com','Via Roma, 18, Torino',current_date);
-insert into tagms.supplier values ('8893661287','supplier3','+393356931247','supplier3@mail.com','Corso Umberto, 49, Napoli',current_date);
 
 -- Employee
 insert into tagms.employee values ('DKLERT23D96A316T','Mario','Rossi','00393316986532','mariorossi@gmail.com','1953-07-24','2017-09-14','true',1);
 insert into tagms.employee values ('MHVHQK62H26L404I','Luca','Neri','(+39)3808743120','lucaneri@gmail.com','1959-01-15','2015-05-07','true',1);
 insert into tagms.employee values ('LGNLVT85M04C227R','Paolo','Verdi','(0039)3405561897','paoloverdi@gmail.com','1976-08-10','2019-06-20','true',4);
 
--- Contract
-insert into tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) values ('contract with supplier 1','2020-01-18','2021-12-06','2023-12-31',16835498612,'DKLERT23D96A316T');
-insert into tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) values ('contract with supplier 1','2021-02-01','2021-12-08','2024-12-31',16835498612,'MHVHQK62H26L404I');
-insert into tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) values ('contract with supplier 2','2019-01-25','2021-12-07','2022-12-31',16835498612,'MHVHQK62H26L404I');
-
-
--- Package
-INSERT INTO Tagms.package(Package_ID, Name, Description, Weight, Height, Width, Depth, 
-Package_Category_ID) VALUES
-('001', 'Aluminum cans', 'Aluminum cans 0.33L', '2', '5', '3', '3', '01');
-('002', 'Bottle', 'Plastic bottle 0,75L ', '3', '6', '3', '3', '02');
-('003', 'Bottle', 'Plastic bottle 0.5L ', '3', '6', '3', '3', '02');
-('004', 'Bottle', 'Glass bottle 0.75L ', '3', '8', '3', '3', '03');
-('004', 'Bottle', 'Glass bottle 1L ', '3', '10', '3', '3', '03');
-
--- Package_Category
-INSERT INTO Tagms.package_Category(Package_Category_ID, Name, Description) VALUES 
-('01','Cans','Aluminum cans ');
-('02','Bottle','Plastic bottle');
-('03','Bottle','Glass bottle');
 
 
 -- Role
@@ -85,10 +61,8 @@ Birth_date, Hiring_date, Still_working, Role_ID) VALUES
 
 INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES 
 ('1','FGDVSF30C62D012T');
-
 INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES 
 ('1','FGDVSF40C62D012T');
-
 INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES 
 ('1','HGDVSF40C62D012T');
 
@@ -113,13 +87,16 @@ INSERT INTO Tagms.ship(Order_ID, Employee_ID, Shipping_date,Track_num) VALUES
 
 
 
--- Supplier
-INSERT INTO Tagms.supplier(vat_number, supplier_name, phone_number, email_address, address, registration_date) VALUES
-('86334519757','Marco Manzoni','3794567845','marco.manzoni@gmail.com','Via Roma 4 35100 Padova','2021-12-04');
+--Supplier
+insert into tagms.supplier values ('16835498612','supplier1','+393809746354','supplier1@gmail.com','Via delle Magnolie, 27, Udine',current_date)
+insert into tagms.supplier values ('3689941653','supplier2','+393669816258','supplier2@outlook.com','Via Roma, 18, Torino',current_date)
+insert into tagms.supplier values ('8893661287','supplier3','+393356931247','supplier3@mail.com','Corso Umberto, 49, Napoli',current_date);
 
 -- Contract
-INSERT INTO Tagms.contract(contract_id, description, contract_date, delivery_date, expiration_date, supplier_id, employee_id) VALUES 
-('52374','Worker','2021-12-05 12:30:00','2021-12-07 12:30:00','2021-12-09 12:30:00','741344296354','52741429635');
+insert into tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) values ('contract with supplier 1','2020-01-18','2021-12-06','2023-12-31',16835498612,'DKLERT23D96A316T')
+insert into tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) values ('contract with supplier 1','2021-02-01','2021-12-08','2024-12-31',16835498612,'MHVHQK62H26L404I')
+insert into tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) values ('contract with supplier 2','2019-01-25','2021-12-07','2022-12-31',16835498612,'MHVHQK62H26L404I');
+
 
 -- Item
 INSERT INTO Tagms.item(item_id, name, description, quantity, minimum_quantity, item_category_id) VALUES 
@@ -137,12 +114,17 @@ INSERT INTO Tagms.specify(item_id, contract_id, price, purchased_quantity) VALUE
 INSERT INTO Tagms.product(Product_ID, Name, Description, Product_cost, Price_increase,
 Volume, Net_weight, Nutritional_Facts, Product_Category_ID)  VALUES 
 ('1234', 'Blonde beer','Blonde beer', '1.00', '2','1', '1', 'Calories: 153, 
-Alcohol: 14 grams, Carbs: 13 grams,Protein: 2 grams, Fat: 0 grams.', 22);
+Alcohol: 14 grams, Carbs: 13 grams,Protein: 2 grams, Fat: 0 grams.', 22)
+('1235', 'Coke','Coke', '0.50', '1','1', '1', 'Calories: 153, 
+Alcohol: 0 grams, Carbs: 13 grams,Protein: 2 grams, Fat: 0 grams.', 11)
+('1236', 'Juice','Juice', '1.50', '2','1', '1', 'Calories: 153, 
+Alcohol: 0 grams, Carbs: 13 grams,Protein: 2 grams, Fat: 0 grams.', 33);
 
 -- Product_Category
 INSERT INTO Tagms.product_Category(Product_Category_ID, Name, Description) VALUES 
-('22','Beer','An alcoholic beverage typically obtained 
-from the fermentation of wort based on barley malt');
+('22','Beer','An alcoholic beverage typically obtained from the fermentation of wort based on barley malt')
+('11','Coke','Coca-Cola, or Coke, is a carbonated soft drink')
+('33','Juice','Juice is a drink made from the extraction or pressing of the natural liquid contained in fruit and vegetables') ;
 
 -- Made_Up_Of_1
 INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
@@ -152,11 +134,17 @@ INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
 -- Package
 INSERT INTO Tagms.package(Package_ID, Name, Description, Weight, Height, Width, Depth, 
 Package_Category_ID) VALUES
-('001', 'Aluminum cans', 'Aluminum cans', '2', '5', '3', '3', '01');
+('001', 'Aluminum cans', 'Aluminum cans 0.33L', '2', '5', '3', '3', '01')
+('002', 'Bottle', 'Plastic bottle 0,75L ', '3', '6', '3', '3', '02')
+('003', 'Bottle', 'Plastic bottle 0.5L ', '3', '6', '3', '3', '02')
+('004', 'Bottle', 'Glass bottle 0.75L ', '3', '8', '3', '3', '03')
+('004', 'Bottle', 'Glass bottle 1L ', '3', '10', '3', '3', '03');
 
 -- Package_Category
 INSERT INTO Tagms.package_Category(Package_Category_ID, Name, Description) VALUES 
-('01','Cans','Aluminum cans 33cl');
+('01','Cans','Aluminum cans ')
+('02','Bottle','Plastic bottle')
+('03','Bottle','Glass bottle');
 
 -- Made_Up_Of_2
 INSERT INTO Tagms.made_Up_Of_2(Package_ID, Item_ID, Quantity) VALUES
