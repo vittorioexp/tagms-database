@@ -105,33 +105,40 @@ INSERT INTO Tagms.supplier(vat_number, supplier_name, phone_number, email_addres
 INSERT INTO Tagms.supplier(vat_number, supplier_name, phone_number, email_address, address, registration_date) VALUES  
 ('22134038695','MaterialPCK','3366244789','matforpack@gmail.com','Via Resto 1 23202 Rovigo','2021-02-011');
 
--- Contract
+-- Contract TODO: FIX THIS
 insert into tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) values ('contract with supplier 1','2020-01-18','2021-12-06','2023-12-31',16835498612,'DKLERT23D96A316T')
 insert into tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) values ('contract with supplier 1','2021-02-01','2021-12-08','2024-12-31',16835498612,'MHVHQK62H26L404I')
 insert into tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) values ('contract with supplier 2','2019-01-25','2021-12-07','2022-12-31',16835498612,'MHVHQK62H26L404I');
 
 
--- Item
-INSERT INTO Tagms.item(item_id, name, description, quantity, minimum_quantity, item_category_id) VALUES 
-('85234','Cola','Drink_Cola','100','10','48');
-
 -- Item_Category
-INSERT INTO Tagms.item_Category(item_category_id, name, description) VALUES
-('23','Drink','Drink_Category');
+INSERT INTO Tagms.item_Category(name, description) VALUES
+('Sugar','Soft sugar employed for producing juices and cokes');
 
--- Specify
+
+-- Item
+INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES 
+('Sugar K','Sugar k employed for producing coke j and coke k','100','50','1');
+
+
+-- Specify TODO: FIX THIS
 INSERT INTO Tagms.specify(item_id, contract_id, price, purchased_quantity) VALUES
 ('45213','74125','14.50','100');
 
+
+-- Product_Category
+INSERT INTO Tagms.product_Category(Name, Description) VALUES 
+('Beer','An alcoholic beverage typically obtained from the fermentation of wort based on barley malt'),
+('Coke','Coca-Cola, or Coke, is a carbonated soft drink'),
+('Juice','Juice is a drink made from the extraction or pressing of the natural liquid contained in fruit and vegetables') ;
+
 -- Product
-INSERT INTO Tagms.product(Product_ID, Name, Description, Product_cost, Price_increase,
-Volume, Net_weight, Nutritional_Facts, Product_Category_ID)  VALUES 
-('1234', 'Blonde beer','Blonde beer', '1.00', '2','1', '1', 'Calories: 153, 
-Alcohol: 14 grams, Carbs: 13 grams,Protein: 2 grams, Fat: 0 grams.', 22)
-('1235', 'Coke','Coke', '0.50', '1','1', '1', 'Calories: 153, 
-Alcohol: 0 grams, Carbs: 13 grams,Protein: 2 grams, Fat: 0 grams.', 11)
-('1236', 'Juice','Juice', '1.50', '2','1', '1', 'Calories: 153, 
-Alcohol: 0 grams, Carbs: 13 grams,Protein: 2 grams, Fat: 0 grams.', 33);
+INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Volume, Net_weight, Package_weight, Nutritional_Facts, Product_Category_ID)  VALUES 
+('Blonde beer','Blonde beer description', '1.00', '2.0', '1', '1', '1', 'Calories: 153, Alcohol: 14 grams, Carbs: 13 grams,Protein: 2 grams, Fat: 0 grams.', '1'),
+('Coke','Coke', '1.00', '2.0', '1', '1', '1', 'Calories: 153, Alcohol: 0 grams, Carbs: 13 grams,Protein: 2 grams, Fat: 0 grams.', '2'),
+('Juice','Juice', '1.00', '2.0', '1', '1', '1', 'Calories: 153, Alcohol: 0 grams, Carbs: 13 grams,Protein: 2 grams, Fat: 0 grams.', '3');
+
+
 
 -- Product_Category
 INSERT INTO Tagms.product_Category(Product_Category_ID, Name, Description) VALUES 
