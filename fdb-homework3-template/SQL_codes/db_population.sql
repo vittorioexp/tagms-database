@@ -88,9 +88,14 @@ INSERT INTO Tagms.ship(Order_ID, Employee_ID, Shipping_date,Track_num) VALUES
 
 
 --Supplier
-insert into tagms.supplier values ('16835498612','supplier1','+393809746354','supplier1@gmail.com','Via delle Magnolie, 27, Udine',current_date)
-insert into tagms.supplier values ('3689941653','supplier2','+393669816258','supplier2@outlook.com','Via Roma, 18, Torino',current_date)
-insert into tagms.supplier values ('8893661287','supplier3','+393356931247','supplier3@mail.com','Corso Umberto, 49, Napoli',current_date);
+INSERT INTO Tagms.supplier(vat_number, supplier_name, phone_number, email_address, address, registration_date) VALUES  
+('86334519757','Reg s.r.l.','3794567845','regsrl@gmail.com','Via Roma 4 35100 Padova','2021-12-04'); 
+ 
+INSERT INTO Tagms.supplier(vat_number, supplier_name, phone_number, email_address, address, registration_date) VALUES  
+('23932902833','VisumH2O','3396547835','vish2o@gmail.com','Via Trieste 4 31100 Treviso','2021-10-07'); 
+ 
+INSERT INTO Tagms.supplier(vat_number, supplier_name, phone_number, email_address, address, registration_date) VALUES  
+('23232503889','EnergyFeed s.p.a.','3365447309','feed4life@gmail.com','Via Venezia 7 19100 Spezia','2021-04-08'); 
 
 -- Contract
 insert into tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) values ('contract with supplier 1','2020-01-18','2021-12-06','2023-12-31',16835498612,'DKLERT23D96A316T')
