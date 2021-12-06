@@ -120,14 +120,20 @@ INSERT INTO Tagms.specify(item_id, contract_id, price, purchased_quantity) VALUE
 
 -- Product_Category
 INSERT INTO Tagms.product_Category(Name, Description) VALUES 
-('Beer','An alcoholic beverage typically obtained from the fermentation of wort based on barley malt'),
-('Coke','Coca-Cola, or Coke, is a carbonated soft drink'),
+('Beer','An alcoholic beverage typically obtained from the fermentation of wort based on barley malt');
+INSERT INTO Tagms.product_Category(Name, Description) VALUES
+('Coke','Coca-Cola, or Coke, is a carbonated soft drink');
+INSERT INTO Tagms.product_Category(Name, Description) VALUES
 ('Juice','Juice is a drink made from the extraction or pressing of the natural liquid contained in fruit and vegetables') ;
+INSERT INTO Tagms.product_Category(Name, Description) VALUES
+('Smoothie','Smoothie is a drink made by puréeing fruit and vegetables in a blender') ;
 
 -- Product
-INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Volume, Net_weight, Package_weight, Nutritional_Facts, Product_Category_ID)  VALUES 
-('Blonde beer','Blonde beer description', '1.00', '2.0', '1', '1', '1', 'Calories: 153, Alcohol: 14 grams, Carbs: 13 grams,Protein: 2 grams, Fat: 0 grams.', '1'),
-('Coke','Coke', '1.00', '2.0', '1', '1', '1', 'Calories: 153, Alcohol: 0 grams, Carbs: 13 grams,Protein: 2 grams, Fat: 0 grams.', '2'),
+INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Volume, Net_weight, Package_weight, Nutritional_Facts, Product_Category_ID)  VALUES
+('Blonde beer','Blonde beer description', '1.00', '2.0', '1', '1', '1', 'Calories: 153, Alcohol: 14 grams, Carbs: 13 grams,Protein: 2 grams, Fat: 0 grams.', '1');
+INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Volume, Net_weight, Package_weight, Nutritional_Facts, Product_Category_ID)  VALUES
+('Coke','Coke', '1.00', '2.0', '1', '1', '1', 'Calories: 153, Alcohol: 0 grams, Carbs: 13 grams,Protein: 2 grams, Fat: 0 grams.', '2');
+INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Volume, Net_weight, Package_weight, Nutritional_Facts, Product_Category_ID)  VALUES
 ('Juice','Juice', '1.00', '2.0', '1', '1', '1', 'Calories: 153, Alcohol: 0 grams, Carbs: 13 grams,Protein: 2 grams, Fat: 0 grams.', '3');
 
 -- Made_Up_Of_1
