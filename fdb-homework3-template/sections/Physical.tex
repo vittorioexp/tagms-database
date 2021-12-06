@@ -16,7 +16,6 @@ CREATE DATABASE tagmsdb OWNER admin ENCODING = 'UTF8';
 DROP SCHEMA IF EXISTS Tagms CASCADE;
 CREATE SCHEMA Tagms;
 
-%TODO: We can insert in the domain the NOT null constraint
 -- Create new domains
 CREATE DOMAIN Tagms.emailaddress AS VARCHAR(255)
 CONSTRAINT properemail CHECK (((VALUE)::text ~* '^[A-Za-z0-9._%]+@[A-Za-z0-9.]+[.][A-Za-z]+$'::text));
@@ -32,6 +31,7 @@ CREATE DOMAIN Tagms.taxnumber AS CHAR(16)
 CONSTRAINT propertaxnumber CHECK (VALUE ~ '^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$' );
 
 -- TODO: check price
+-- TODO: motivate the usage of numeric and not money in VARIATIONS
 CREATE DOMAIN Tagms.price AS NUMERIC(9, 3)
 CONSTRAINT properprice NOT NULL CHECK (VALUE > 0.0);
 
