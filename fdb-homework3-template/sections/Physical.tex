@@ -38,7 +38,7 @@ CREATE DOMAIN Tagms.quantity AS INTEGER
 CONSTRAINT properquantity CHECK (VALUE >= 1);
 
 CREATE DOMAIN Tagms.dimension AS INTEGER
-CONSTRAINT properdimension CHECK (VALUE > 0);
+CONSTRAINT properdimension NOT NULL CHECK (VALUE > 0);
 
 CREATE DOMAIN Tagms.percentage AS DECIMAL(4,1)
 CONSTRAINT properpercentage CHECK (VALUE >= 0 and VALUE <= 100);
@@ -72,9 +72,9 @@ name VARCHAR(30) NOT NULL,
 description VARCHAR(500),
 production_cost Tagms.price,
 price_increase Numeric(3, 1) NOT NULL CHECK (price_increase >= 1),
-volume Tagms.dimension NOT NULL,
-net_weight Tagms.dimension NOT NULL,
-package_weight Tagms.dimension NOT NULL,
+volume Tagms.dimension,
+net_weight Tagms.dimension,
+package_weight Tagms.dimension,
 nutritional_facts VARCHAR(500) NOT NULL,
 product_category_id SMALLINT NOT NULL,
 FOREIGN KEY (product_category_id) REFERENCES Tagms.product_category(product_category_id)
@@ -94,10 +94,10 @@ CREATE TABLE Tagms.package (
 package_id SMALLSERIAL PRIMARY KEY,
 name VARCHAR(30) NOT NULL,
 description VARCHAR(500),
-weight Tagms.dimension NOT NULL,
-height Tagms.dimension NOT NULL,
-width Tagms.dimension NOT NULL,
-depth Tagms.dimension NOT NULL,
+weight Tagms.dimension,
+height Tagms.dimension,
+width Tagms.dimension,
+depth Tagms.dimension,
 package_category_id SMALLINT NOT NULL,
 FOREIGN KEY (package_category_id) REFERENCES Tagms.package_category(package_category_id)
 );
