@@ -5,3 +5,5 @@ From the previous homework we have found some typos within the Data Dictionary s
 - In Employee the ``Registration\_date\_ID'' attribute has been renamed to ``Registration\_date''.
 - In Draws\_from, the description of the ``Lot\_ID" attribute is changed from ``Foreign Key to Lot, Primary key to Lot'' to ``Foreign Key to Lot, Primary key''
 - In Ship, the ``Employee\_ID'' attribute is not a serial but a text type. In particular, a new domain called ``taxnumber'' has been defined, to which the Employee entity ID is associated.
+
+Following are reported several clarifications of some choices made during the creation of the DB. The choice to use the data type "numeric" rather than "money" in the price domain is dictated by the company's need to use a more precise decimal notation. In fact, micro price variations may be necessary, which would not be allowed with the "money" type. The company is therefore able to specify a price up to 3 decimal digits.
