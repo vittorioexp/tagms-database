@@ -26,18 +26,6 @@ INSERT INTO Tagms.employee(TAX_number, First_name, Last_name, Phone_number, Emai
 Birth_date, Hiring_date, Still_working, Role_ID) VALUES
 ('DKLERT23D96A316T','Mario','Rossi','00393316986532','mariorossi@gmail.com','1953-07-24','2017-09-14','true',1);
 
--- TODO: Check if works
--- Work
-INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES 
-('1','FGDVSF30C62D012T');
-
-INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES 
-('1','FGDVSF40C62D012T');
-
-INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES 
-('1','HGDVSF40C62D012T');
-
-
 -- Departament
 
 INSERT INTO Tagms.department(Name, Description) VALUES ('Operations','Responsible for converting raw materials and packaging materials into finished goods and work to improve the efficiency of the production.');
@@ -49,6 +37,17 @@ INSERT INTO Tagms.department(Name, Description) VALUES ('Administration','Respon
 INSERT INTO Tagms.department(Name, Description) VALUES ('Maintenance','Department responsible for the management and maintenance of the different machinery used for production.');
 
 INSERT INTO Tagms.department(Name, Description) VALUES ('Shipping','Responsible for marking and shipping lots.');
+
+-- Before inserting in Work, we need to insert data in Department
+INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES 
+('1','FGDVSF30C62D012T');
+
+INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES 
+('2','FGDVSF30C62D012T');
+
+INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES 
+('1','HGDVSF40C62D012T');
+
 
 -- Ship
 
@@ -125,7 +124,7 @@ INSERT INTO Tagms.product_Category(Name, Description) VALUES
 INSERT INTO Tagms.product_Category(Name, Description) VALUES
 ('Juice','Juice is a drink made from the extraction or pressing of the natural liquid contained in fruit and vegetables') ;
 INSERT INTO Tagms.product_Category(Name, Description) VALUES
-('Smoothie','Smoothie is a drink made by purÃ©eing fruit and vegetables in a blender') ;
+('Smoothie','Smoothie is a drink made by puréeing fruit and vegetables in a blender') ;
 
 -- Product
 INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Volume, Net_weight, Package_weight, Nutritional_Facts, Product_Category_ID)  VALUES
