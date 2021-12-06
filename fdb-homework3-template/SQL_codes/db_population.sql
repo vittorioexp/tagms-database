@@ -1,5 +1,6 @@
--- Role
+--TODO: Explain that we used different metods on purpose
 
+-- Role
 INSERT INTO Tagms.role(Name,Description) VALUES 
 ('Manager','The managers are in charge of interacting with suppliers and concluding contracts with them');
 
@@ -35,7 +36,6 @@ INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES
 
 INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES 
 ('1','HGDVSF40C62D012T');
-
 
 
 -- Departament
