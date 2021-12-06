@@ -1,11 +1,3 @@
-
--- Employee
-insert into tagms.employee values ('DKLERT23D96A316T','Mario','Rossi','00393316986532','mariorossi@gmail.com','1953-07-24','2017-09-14','true',1);
-insert into tagms.employee values ('MHVHQK62H26L404I','Luca','Neri','(+39)3808743120','lucaneri@gmail.com','1959-01-15','2015-05-07','true',1);
-insert into tagms.employee values ('LGNLVT85M04C227R','Paolo','Verdi','(0039)3405561897','paoloverdi@gmail.com','1976-08-10','2019-06-20','true',4);
-
-
-
 -- Role
 
 INSERT INTO Tagms.role(Name,Description) VALUES 
@@ -20,37 +12,14 @@ INSERT INTO Tagms.role(Name,Description) VALUES
 INSERT INTO Tagms.role(Name,Description) VALUES 
 ('Data Analyst','The data analyst has access to the acquired data for inventory, cost and profit analysis');
 
-
-
 -- Employee
-
-INSERT INTO Tagms.employee(TAX_number, First_name, Last_name, Phone_number, Email_address,
-Birth_date, Hiring_date, Still_working, Role_ID) VALUES
-('FGDVSF30C62D012T','John','Smith','3516921849','johnsmith@gmail.com','1995-12-30',
-'2018-12-12','true','01');
-
-INSERT INTO Tagms.employee(TAX_number, First_name, Last_name, Phone_number, Email_address,
-Birth_date, Hiring_date, Still_working, Role_ID) VALUES
-('FGDVSF40C62D012T','Adam','Willis','3516931849','adamwillis@gmail.com','1993-11-20',
-'2019-11-11','true','02');
-
-INSERT INTO Tagms.employee(TAX_number, First_name, Last_name, Phone_number, Email_address,
-Birth_date, Hiring_date, Still_working, Role_ID) VALUES
-('HGDVSF40C62D012T','Bruce','De Forest','3516931649','deforest@gmail.com','1992-11-20',
-'2012-11-11','true','03');
-
-INSERT INTO Tagms.employee(TAX_number, First_name, Last_name, Phone_number, Email_address,
-Birth_date, Hiring_date, Still_working, Role_ID) VALUES
-('HGSVSF40C62D012T','Elena','Zapi','3516931649','zapi@gmail.com','1998-11-20',
-'2012-11-11','true','04');
-
-INSERT INTO Tagms.employee(TAX_number, First_name, Last_name, Phone_number, Email_address,
-Birth_date, Hiring_date, Still_working, Role_ID) VALUES
-('DKLERT23D96A316T','Mario','Rossi','00393316986532','mariorossi@gmail.com','1953-07-24','2017-09-14','true',1);
-
-INSERT INTO Tagms.employee(TAX_number, First_name, Last_name, Phone_number, Email_address,
-Birth_date, Hiring_date, Still_working, Role_ID) VALUES
-('DKLERT23D96A316T','Mario','Rossi','00393316986532','mariorossi@gmail.com','1953-07-24','2017-09-14','true',1);
+INSERT INTO Tagms.employee VALUES
+('FGDVSF30C62D012T','John','Smith','3516235214','johnsmith@gmail.com','1995-12-30','2018-12-12','true',1),
+('BDBBHH72S22C841N','Adam','Willis','3516931849','adamwillis@gmail.com','1993-11-20','2019-11-11','true',2),
+('HGDVSF40C62D012T','Bruce','De Forest','3319856644','deforest@gmail.com','1992-11-20','2012-11-11','true',3),
+('QMUHFE38E25G815G','Ronald','Vickers','3352317485','rvickers@gmail.com','1998-07-11','2010-04-23','true',4),
+('DKLERT23D96A316T','Gurver','Maata','00393403631287','gmaata@gmail.com','1953-06-24','2017-09-14','true',1);
+('RNNZLB88S21B046D','Solomon','Ayala','00393666549821','sayala@gmail.com','1952-09-10','2016-10-22','true',1);
 
 INSERT INTO Tagms.employee(TAX_number, First_name, Last_name, Phone_number, Email_address,
 Birth_date, Hiring_date, Still_working, Role_ID) VALUES
@@ -110,7 +79,6 @@ insert into tagms.contract (description,contract_date,delivery_date,expiration_d
 insert into tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) values ('contract with supplier 1','2021-02-01','2021-12-08','2024-12-31',16835498612,'MHVHQK62H26L404I')
 insert into tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) values ('contract with supplier 2','2019-01-25','2021-12-07','2022-12-31',16835498612,'MHVHQK62H26L404I');
 
-
 -- Item_Category
 INSERT INTO Tagms.item_Category(name, description) VALUES
 ('Sugar','Soft sugar employed for producing juices and cokes');
@@ -126,7 +94,6 @@ INSERT INTO Tagms.item_Category(name, description) VALUES
 
 INSERT INTO Tagms.item_Category(name, description) VALUES
 ('Polystyrene','Polystyrene employed for producing packages');
-
 
 -- Item
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
@@ -147,13 +114,9 @@ INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_categ
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
 ('Colorant C','Coloring C (caramel) employed for producing coke j and coke k','800','150','2');
 
-
-
-
 -- Specify TODO: FIX THIS
 INSERT INTO Tagms.specify(item_id, contract_id, price, purchased_quantity) VALUES
 ('45213','74125','14.50','100');
-
 
 -- Product_Category
 INSERT INTO Tagms.product_Category(Name, Description) VALUES 
@@ -167,18 +130,9 @@ INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Vo
 ('Coke','Coke', '1.00', '2.0', '1', '1', '1', 'Calories: 153, Alcohol: 0 grams, Carbs: 13 grams,Protein: 2 grams, Fat: 0 grams.', '2'),
 ('Juice','Juice', '1.00', '2.0', '1', '1', '1', 'Calories: 153, Alcohol: 0 grams, Carbs: 13 grams,Protein: 2 grams, Fat: 0 grams.', '3');
 
-
-
--- Product_Category
-INSERT INTO Tagms.product_Category(Product_Category_ID, Name, Description) VALUES 
-('22','Beer','An alcoholic beverage typically obtained from the fermentation of wort based on barley malt')
-('11','Coke','Coca-Cola, or Coke, is a carbonated soft drink')
-('33','Juice','Juice is a drink made from the extraction or pressing of the natural liquid contained in fruit and vegetables') ;
-
 -- Made_Up_Of_1
 INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
 ('1234','11','10'), ('1234','12','5'), ('1234','13','2');
-
 
 -- Package
 INSERT INTO Tagms.package(Package_ID, Name, Description, Weight, Height, Width, Depth, 
@@ -200,7 +154,6 @@ INSERT INTO Tagms.made_Up_Of_2(Package_ID, Item_ID, Quantity) VALUES
 ('454','15','4');
 ('14','129','300');
 
-
 -- Order
 INSERT INTO Tagms.order(Order_ID,Net_price, Taxes, Order_date, Order_paid, Employee_ID, 
 Customer_ID) VALUES 
@@ -208,10 +161,12 @@ Customer_ID) VALUES
 ('30045','356.26', '13.59', '2021-12-04 12:00:22', 'true', 'CTXVNN28L17D605N', '86345837378')
 
 -- Customer
-INSERT INTO Tagms.customer(VAT_numeber, Customer_name, Registration_date, Address, 
-Email_address, Phone_number) VALUES
-('23859476254', 'Mario Rossi', '2020-04-11 11:03:40','Via Milano 5 35121 Padova', 'mariorossi@gmail.com', '3342856738')
-('88756400811', 'Giovanni Bianchi', '2010-11-20 09:07:10','Via Milano 5 35131 Padova', 'giovanniverdi4@unipd.it', '3119385864')
+INSERT INTO Tagms.customer VALUES
+('74853719034','Conad','+393895562233','Via Prato 25, Pordenone','conad_pordenone@mail.com',current_date),
+('56983717634','Coop','+393827762376','Via America 30, Belluno','coop_belluno@mail.com',current_date),
+('62347815297','Famila','+393336941253','Viale dei Mille 100, Parma','famila_parma@mail.com',current_date),
+('12564378963','Eurospin','+393346901723','Via 20 Settembre 21, Lecce','eurospin_lecce@mail.com',current_date),
+('12564378963','PAM','+393315589636','Via Giappone 45, Taranto','pam_taranto@mail.com',current_date);
 
 -- Lot
 INSERT INTO Tagms.lot(Lot_ID, Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity, 
