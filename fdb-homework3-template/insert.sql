@@ -22,3 +22,21 @@ INSERT INTO Tagms.role(Role_ID, Name,Description) VALUES
 ('03','Data analyst','The data analyst has access to the acquired data for inventory, cost and profit analysis');
 ('04','System administrator','The system administrator manages the access privileges for each user on the system');
 ('05','Worker','The workers take care of production and shipments');
+
+
+
+
+-- Package
+INSERT INTO Tagms.package(Package_ID, Name, Description, Weight, Height, Width, Depth, 
+Package_Category_ID) VALUES
+('001', 'Aluminum cans', 'Aluminum cans 0.33L', '2', '5', '3', '3', '01');
+('002', 'Bottle', 'Plastic bottle 0,75L ', '3', '6', '3', '3', '02');
+('003', 'Bottle', 'Plastic bottle 0.5L ', '3', '6', '3', '3', '02');
+('004', 'Bottle', 'Glass bottle 0.75L ', '3', '8', '3', '3', '03');
+('004', 'Bottle', 'Glass bottle 1L ', '3', '10', '3', '3', '03');
+
+-- Package_Category
+INSERT INTO Tagms.package_Category(Package_Category_ID, Name, Description) VALUES 
+('01','Cans','Aluminum cans ');
+('02','Bottle','Plastic bottle');
+('03','Bottle','Glass bottle');
