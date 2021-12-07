@@ -213,13 +213,28 @@ INSERT INTO Tagms.department(Name, Description) VALUES
 
 
 
---TODO: complete table, Martin
--- Insert in Work 
+
+-- Insert in Work
+-- Operations: 2 employees Sales: 2 employees Administration: 1 employee Maintenance: 1 employee Shipping: 2 employees
+
 INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES ('1','FGDVSF30C62D012T');
 
-INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES ('2','FGDVSF30C62D012T');
+INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES ('1','BDBBHH72S22C841N');
 
-INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES ('1','HGDVSF40C62D012T');
+INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES ('2','HGDVSF40C62D012T');
+
+INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES ('2','RNNZLB88S21B046D');
+
+INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES ('3','DKLERT23D96A316T');
+
+INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES ('4','QMUHFE38E25G815G');
+
+INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES ('5','QMUHFE38E25G815G');
+
+INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES ('5','RNNZLB88S21B046D');
+
+
+
 
 
 
