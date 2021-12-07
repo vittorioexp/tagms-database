@@ -41,7 +41,7 @@ INSERT INTO Tagms.item_Category(name, description) VALUES
 
 
 
--- TODO: Check if works
+
 -- Package_Category
 
 INSERT INTO Tagms.package_Category(Name, Description) VALUES ('Package XS','Extra small package');
@@ -57,7 +57,7 @@ INSERT INTO Tagms.package_Category(Name, Description) VALUES ('Package XL','Extr
 
 
 
--- TODO: ADD PRODUCTS
+-- TODO: ADD PRODUCTS, Marco
 -- Product
 INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Volume, Net_weight, Package_weight, Nutritional_Facts, Product_Category_ID)  VALUES
 ('Beer Atomic','An alcoholic beverage typically obtained from the fermentation of wort based on barley malt',
@@ -73,7 +73,7 @@ INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Vo
 
 
 
--- TODO: fix item_category_id
+-- TODO: fix item_category_id, Marco
 -- Inserting items, be sure that item_category_id exists in table item_category
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
@@ -113,7 +113,7 @@ INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_categ
 
 
 
--- TODO: fix description, for example 'Extra small package, type 1'
+-- TODO: fix description, for example 'Extra small package, type 1', Marco
 -- TODO: fix dimensions so that they have sense
 -- Package
 
@@ -132,7 +132,7 @@ Package_Category_ID) VALUES
 
 
 
--- TODO: add lots
+-- TODO: add lots, Martin
 -- Lot
 INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity, 
 Package_Quantity,Package_ID, Product_ID) VALUES 
@@ -141,14 +141,14 @@ Package_Quantity,Package_ID, Product_ID) VALUES
 
 
 
--- TODO: Add many IN A WAY THAT MAKES SENSE
+-- TODO: Add many IN A WAY THAT MAKES SENSE, Martin
 -- Made_Up_Of_1
 INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
 ('1','1','2');
 
 
 
--- TODO: Add many IN A WAY THAT MAKES SENSE
+-- TODO: Add many IN A WAY THAT MAKES SENSE, Martin
 -- Made_Up_Of_2
 INSERT INTO Tagms.made_Up_Of_2(Package_ID, Item_ID, Quantity) VALUES
 ('1','1','2');
@@ -164,7 +164,7 @@ INSERT INTO Tagms.customer VALUES
 
 
 
--- TODO: Insert many
+
 -- Insert Roles
 
 INSERT INTO Tagms.role(Name,Description) VALUES 
@@ -213,7 +213,7 @@ INSERT INTO Tagms.department(Name, Description) VALUES
 
 
 
-
+--TODO: complete table, Martin
 -- Insert in Work 
 INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES ('1','FGDVSF30C62D012T');
 
@@ -256,7 +256,7 @@ INSERT INTO tagms.contract (description,contract_date,delivery_date,expiration_d
 ('contract with supplier 2','2019-01-25','2021-12-07','2022-12-31','23932902833','FGDVSF30C62D012T');
 
 
--- TODO: Insert many
+-- TODO: Insert many, Amedeo
 -- Inserting rows in specify, be sure that item_id and contract_id exist in tables item and contract
 
 INSERT INTO Tagms.specify(item_id, contract_id, price, purchased_quantity) VALUES ('1','3','14.50','100');
@@ -265,7 +265,7 @@ INSERT INTO Tagms.specify(item_id, contract_id, price, purchased_quantity) VALUE
 
 
 
--- TODO: Insert many
+-- TODO: Insert many, Amedeo
 -- Insert orders 
 
 INSERT INTO Tagms.order(Net_price, Taxes, Order_date, Order_paid, Employee_ID, 
@@ -278,7 +278,7 @@ Customer_ID) VALUES
 
 
 
--- TODO: Insert many
+-- TODO: Insert many, Amdeo
 -- Draws_from
 INSERT INTO Tagms.draws_from(Lot_ID, Order_ID) VALUES 
 ('1','1');
@@ -286,7 +286,7 @@ INSERT INTO Tagms.draws_from(Lot_ID, Order_ID) VALUES
 
 
 
-
+-- TODO: insert many, Amedeo
 -- Inserting ships, be careful with the shipping_date and with the Order_ID that must be in the table order
 
 INSERT INTO Tagms.ship(Order_ID, Employee_ID, Shipping_date,Track_num) VALUES 
