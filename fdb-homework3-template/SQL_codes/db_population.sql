@@ -164,11 +164,63 @@ Package_Quantity,Package_ID, Product_ID) VALUES
 
 
 
--- TODO: Add many IN A WAY THAT MAKES SENSE, Martin
+
 -- Made_Up_Of_1
-INSERT INTO tagms.made_up_of_1 VALUES ('1','2','5'), ('1','3','10'), ('2', '2', '13');
+-- Beer Atomic
 
+--contains water and coloring 1R and 1B
+INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
+('1','4','4');
 
+INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
+('1','5','2');
+
+INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
+('1','7','330');
+
+-- Coke Mega 
+
+--contains Soft Sugar A, Soft Sugar B, Sugar K and low mineral water
+INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
+('2','1','3');
+
+INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
+('2','2','3');
+
+INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
+('2','3','3');
+
+INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
+('2','7','500');
+
+--contains coloring 1G and 1B
+INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
+('2','5','2');
+
+INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
+('2','6','4');
+
+-- Juice
+
+--contains Soft Sugar A, Soft Sugar B, Sugar K and low mineral water
+INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
+('3','1','2');
+
+INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
+('3','2','2');
+
+INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
+('3','3','2');
+
+INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
+('3','7','1000');
+
+--contains coloring 1G,1R
+INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
+('2','4','3');
+
+INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
+('2','5','3');
 
 -- TODO: Add many IN A WAY THAT MAKES SENSE, Martin
 -- Made_Up_Of_2
