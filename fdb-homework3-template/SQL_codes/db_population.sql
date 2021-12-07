@@ -132,11 +132,34 @@ Package_Category_ID) VALUES
 
 
 
--- TODO: add lots, Martin
 -- Lot
+-- 50 beers, 100 beers of 0.33L price 1.5 without discount
 INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity, 
 Package_Quantity,Package_ID, Product_ID) VALUES 
-('2022-03-14','0.3','22', '330.50', '50', '10','1', '1');
+('2022-03-14','0.0','22.0', '75.00', '50', '50','1', '1');
+
+INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity, 
+Package_Quantity,Package_ID, Product_ID) VALUES 
+('2022-04-14','0.0','22.0', '150.00', '100', '100','1', '1');
+
+-- 50 cokes, 100 cokes of 0.5L price 1.6 without discount
+INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity, 
+Package_Quantity,Package_ID, Product_ID) VALUES 
+('2022-05-14','0.0','22', '80.00', '50', '50','3', '2');
+
+INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity, 
+Package_Quantity,Package_ID, Product_ID) VALUES 
+('2022-05-14','0.0','22', '160.00', '100', '100','3', '2');
+
+--50 juices price 1.4 
+INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity, 
+Package_Quantity,Package_ID, Product_ID) VALUES 
+('2022-05-14','0.0','22.0', '70.00', '50', '50','5', '3');
+
+--100 juices price 1.4 with 10% discount 
+INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity, 
+Package_Quantity,Package_ID, Product_ID) VALUES 
+('2022-04-14','10.0','22.0', '140.00', '100', '100','5', '3');
 
 
 
