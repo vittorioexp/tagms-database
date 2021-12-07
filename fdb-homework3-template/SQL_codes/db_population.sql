@@ -83,7 +83,7 @@ insert into tagms.contract (description,contract_date,delivery_date,expiration_d
 insert into tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) values ('contract with supplier 1','2021-02-01','2021-12-08','2024-12-31','86334519757','BDBBHH72S22C841N');
 insert into tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) values ('contract with supplier 2','2019-01-25','2021-12-07','2022-12-31','23932902833','FGDVSF30C62D012T');
 
--- Item_Category
+-- 10. Insert Item_Categorys
 INSERT INTO Tagms.item_Category(name, description) VALUES
 ('Sugar','Soft sugar employed for producing juices and cokes');
 
@@ -99,7 +99,7 @@ INSERT INTO Tagms.item_Category(name, description) VALUES
 INSERT INTO Tagms.item_Category(name, description) VALUES
 ('Polystyrene','Polystyrene employed for producing packages');
 
--- Item
+-- 11.Inserting items, be sure that item_category_id exists in table item_category
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
 ('Sugar K','Sugar k employed for producing coke j and coke k','100','50','1');
 
@@ -118,9 +118,9 @@ INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_categ
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
 ('Colorant C','Coloring C (caramel) employed for producing coke j and coke k','800','150','2');
 
--- Specify TODO: FIX THIS
+-- 12.Inserting rows in specify, be sure that item_id and contract_id exist in tables item and contract
 INSERT INTO Tagms.specify(item_id, contract_id, price, purchased_quantity) VALUES
-('45213','74125','14.50','100');
+('1','3','14.50','100');
 
 -- Product_Category
 INSERT INTO Tagms.product_Category(Name, Description) VALUES 
