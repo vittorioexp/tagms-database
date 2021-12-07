@@ -223,8 +223,21 @@ INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
 ('3','5','3');
 
 -- TODO: Add many IN A WAY THAT MAKES SENSE, Martin
--- Made_Up_Of_2
-INSERT INTO tagms.made_up_of_2 VALUES ('1','2','5'), ('1','3','10'), ('2', '2', '13');
+
+--Aluminum Cans 0.33
+INSERT INTO tagms.made_up_of_2(Package_ID,Item_ID,Quantity) VALUES 
+('1','8','2'), 
+('1','11','10'); 
+
+--Plastic bottle 0.5L
+INSERT INTO tagms.made_up_of_2(Package_ID,Item_ID,Quantity) VALUES 
+('1','9','2'), 
+('1','11','15');
+
+--Glass bottle 1L
+INSERT INTO tagms.made_up_of_2(Package_ID,Item_ID,Quantity) VALUES 
+('1','10','2'), 
+('1','11','20');
 
 
 -- Insert customers
