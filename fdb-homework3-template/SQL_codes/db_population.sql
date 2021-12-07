@@ -119,43 +119,42 @@ INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_categ
 
 INSERT INTO Tagms.package(Name, Description, Weight, Height, Width, Depth, 
 Package_Category_ID) VALUES
-('Package XS-1', 'Aluminum cans 0.33L', '2', '5', '3', '3', '01'),
-('Package XS-2', 'Plastic bottle 0,75L ', '3', '6', '3', '3', '02'),
-('Package S-1', 'Plastic bottle 0.5L ', '3', '6', '3', '3', '02'),
-('Package M-1', 'Glass bottle 0.75L ', '3', '8', '3', '3', '03'),
-('Package L-1', 'Glass bottle 1L ', '3', '10', '3', '3', '03'),
-('Package L-2', 'Glass bottle 1L ', '3', '10', '3', '3', '03'),
-('Package L-3', 'Glass bottle 1L ', '3', '10', '3', '3', '03'),
-('Package XL-1', 'Glass bottle 1L ', '3', '10', '3', '3', '03'),
-('Package XL-2', 'Glass bottle 1L ', '3', '10', '3', '3', '03');
+('Package XS-1', 'Aluminum cans 0.33L', '2', '5', '3', '3', '1'),
+('Package XS-2', 'Plastic bottle 0,75L ', '3', '6', '3', '3', '1'),
+('Package S-1', 'Plastic bottle 0.5L ', '3', '6', '3', '3', '2'),
+('Package M-1', 'Glass bottle 0.75L ', '3', '8', '3', '3', '3'),
+('Package L-1', 'Glass bottle 1L ', '3', '10', '3', '3', '4'),
+('Package L-2', 'Glass bottle 1L ', '3', '10', '3', '3', '4'),
+('Package L-3', 'Glass bottle 1L ', '3', '10', '3', '3', '4'),
+('Package XL-1', 'Glass bottle 1L ', '3', '10', '3', '3', '5'),
+('Package XL-2', 'Glass bottle 1L ', '3', '10', '3', '3', '5');
 
 
 
 
--- TODO: Check if works
+-- TODO: add lots
 -- Lot
 INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity, 
 Package_Quantity,Package_ID, Product_ID) VALUES 
-('2022-03-14','0.3','44576685449', '330.50', '50', '10','337', '13');
+('2022-03-14','0.3','22', '330.50', '50', '10','1', '1');
 
 
 
 
--- TODO: Check if works
+-- TODO: Add many IN A WAY THAT MAKES SENSE
 -- Made_Up_Of_1
 INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
-('1234','11','10'), ('1234','12','5'), ('1234','13','2');
+('1','1','2');
 
 
 
--- TODO: Check if works
+-- TODO: Add many IN A WAY THAT MAKES SENSE
 -- Made_Up_Of_2
 INSERT INTO Tagms.made_Up_Of_2(Package_ID, Item_ID, Quantity) VALUES
-('454','15','4');
-('14','129','300');
+('1','1','2');
 
 
--- 6.Insert customers
+-- Insert customers
 INSERT INTO Tagms.customer VALUES
 ('74853719034','Conad','+393895562233','Via Prato 25, Pordenone','conad_pordenone@mail.com',current_date),
 ('56983717634','Coop','+393827762376','Via America 30, Belluno','coop_belluno@mail.com',current_date),
@@ -165,8 +164,9 @@ INSERT INTO Tagms.customer VALUES
 
 
 
+-- TODO: Insert many
+-- Insert Roles
 
--- 1.Insert Roles
 INSERT INTO Tagms.role(Name,Description) VALUES 
 ('Manager','The managers are in charge of interacting with suppliers and concluding contracts with them');
 
@@ -182,7 +182,8 @@ INSERT INTO Tagms.role(Name,Description) VALUES
 
 
 
--- 2.Insert employees
+-- Insert employees
+
 INSERT INTO Tagms.employee VALUES
 ('FGDVSF30C62D012T','John','Smith','3516235214','johnsmith@gmail.com','1995-12-30','2018-12-12','true',1),
 ('BDBBHH72S22C841N','Adam','Willis','3516931849','adamwillis@gmail.com','1993-11-20','2019-11-11','true',2),
@@ -193,7 +194,7 @@ INSERT INTO Tagms.employee VALUES
 
 
 
--- 3.Insert departments
+-- Insert departments
 
 INSERT INTO Tagms.department(Name, Description) VALUES 
 ('Operations','Responsible for converting raw materials and packaging materials into finished goods and work to improve the efficiency of the production.');
@@ -213,7 +214,7 @@ INSERT INTO Tagms.department(Name, Description) VALUES
 
 
 
--- 4. Insert in Work 
+-- Insert in Work 
 INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES ('1','FGDVSF30C62D012T');
 
 INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES ('2','FGDVSF30C62D012T');
@@ -223,7 +224,7 @@ INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES ('1','HGDVSF40C62D012T
 
 
 
--- 5.Insert suppliers
+-- Insert suppliers
 
 INSERT INTO Tagms.supplier(vat_number, supplier_name, phone_number, email_address, address, registration_date) VALUES  
 ('86334519757','Reg s.r.l.','3794567845','regsrl@gmail.com','Via Roma 4 35100 Padova','2021-12-04'); 
@@ -243,7 +244,8 @@ INSERT INTO Tagms.supplier(vat_number, supplier_name, phone_number, email_addres
 
 
 
---9. Inserting contracts, be careful that the supplier_id and employee_id to be inserted already exist in tables supplier and employee
+-- Inserting contracts, be careful that the supplier_id and employee_id to be inserted already exist in tables supplier and employee
+
 INSERT INTO tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) VALUES 
 ('contract with supplier 1','2020-01-18','2021-12-06','2023-12-31','86334519757','FGDVSF30C62D012T');
 
@@ -254,16 +256,18 @@ INSERT INTO tagms.contract (description,contract_date,delivery_date,expiration_d
 ('contract with supplier 2','2019-01-25','2021-12-07','2022-12-31','23932902833','FGDVSF30C62D012T');
 
 
+-- TODO: Insert many
+-- Inserting rows in specify, be sure that item_id and contract_id exist in tables item and contract
 
--- 12.Inserting rows in specify, be sure that item_id and contract_id exist in tables item and contract
 INSERT INTO Tagms.specify(item_id, contract_id, price, purchased_quantity) VALUES ('1','3','14.50','100');
 
 
 
 
 
+-- TODO: Insert many
+-- Insert orders 
 
--- 7.Insert orders 
 INSERT INTO Tagms.order(Net_price, Taxes, Order_date, Order_paid, Employee_ID, 
 Customer_ID) VALUES 
 ('230.20', '23.02', '2021-12-04 17:30:00', 'true', 'FGDVSF30C62D012T', '74853719034'),
@@ -274,19 +278,19 @@ Customer_ID) VALUES
 
 
 
--- TODO: Check if works
+-- TODO: Insert many
 -- Draws_from
 INSERT INTO Tagms.draws_from(Lot_ID, Order_ID) VALUES 
-('22443','4445');
-('150','39');
+('1','1');
 
 
 
 
 
--- 8.Inserting ships, be careful with the shipping_date and with the Order_ID that must be in the table order
+-- Inserting ships, be careful with the shipping_date and with the Order_ID that must be in the table order
+
 INSERT INTO Tagms.ship(Order_ID, Employee_ID, Shipping_date,Track_num) VALUES 
-('5','FGDVSF30C62D012T', '2022-11-27 17:28:00','ZXU098123');
+('1','FGDVSF30C62D012T', '2022-11-27 17:28:00','ZXU098123');
 
 
 
