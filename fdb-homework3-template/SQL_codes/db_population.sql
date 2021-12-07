@@ -158,19 +158,19 @@ Package_Category_ID) VALUES
 -- TODO: Check if works
 -- Package_Category
 INSERT INTO Tagms.package_Category(Name, Description) VALUES
-('BoxXS','Box XS');
+('PCKXS','Package XS');
 
 INSERT INTO Tagms.package_Category(Name, Description) VALUES
-('BoxS','Box S');
+('PCKS','Package S');
 
 INSERT INTO Tagms.package_Category(Name, Description) VALUES
-('BoxM','Box M');
+('PCKM','Package M');
 
 INSERT INTO Tagms.package_Category(Name, Description) VALUES
-('BoxL','Box L');
+('PCKL','Package L');
 
 INSERT INTO Tagms.package_Category(Name, Description) VALUES
-('BoxXL','Box XL');
+('PCKXL','Package XL');
 
 -- TODO: Check if works
 -- Made_Up_Of_2
