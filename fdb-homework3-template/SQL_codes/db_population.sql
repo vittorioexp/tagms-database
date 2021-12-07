@@ -1,6 +1,5 @@
 --TODO: Explain that we used different metods on purpose
-
--- Role
+-- 1.Insert Roles
 INSERT INTO Tagms.role(Name,Description) VALUES 
 ('Manager','The managers are in charge of interacting with suppliers and concluding contracts with them');
 
@@ -13,7 +12,7 @@ INSERT INTO Tagms.role(Name,Description) VALUES
 INSERT INTO Tagms.role(Name,Description) VALUES 
 ('Data Analyst','The data analyst has access to the acquired data for inventory, cost and profit analysis');
 
--- Employee
+-- 2.Insert employees
 INSERT INTO Tagms.employee VALUES
 ('FGDVSF30C62D012T','John','Smith','3516235214','johnsmith@gmail.com','1995-12-30','2018-12-12','true',1),
 ('BDBBHH72S22C841N','Adam','Willis','3516931849','adamwillis@gmail.com','1993-11-20','2019-11-11','true',2),
@@ -22,11 +21,7 @@ INSERT INTO Tagms.employee VALUES
 ('DKLERT23D96A316T','Gurver','Maata','00393403631287','gmaata@gmail.com','1953-06-24','2017-09-14','true',1),
 ('RNNZLB88S21B046D','Solomon','Ayala','00393666549821','sayala@gmail.com','1952-09-10','2016-10-22','true',1);
 
-INSERT INTO Tagms.employee(TAX_number, First_name, Last_name, Phone_number, Email_address,
-Birth_date, Hiring_date, Still_working, Role_ID) VALUES
-('DKLERT23D96A316T','Mario','Rossi','00393316986532','mariorossi@gmail.com','1953-07-24','2017-09-14','true',1);
-
--- Departament
+-- 3.Insert departments
 
 INSERT INTO Tagms.department(Name, Description) VALUES ('Operations','Responsible for converting raw materials and packaging materials into finished goods and work to improve the efficiency of the production.');
 
@@ -38,7 +33,7 @@ INSERT INTO Tagms.department(Name, Description) VALUES ('Maintenance','Departmen
 
 INSERT INTO Tagms.department(Name, Description) VALUES ('Shipping','Responsible for marking and shipping lots.');
 
--- Before inserting in Work, we need to insert data in Department
+-- 4. Insert in Work 
 INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES 
 ('1','FGDVSF30C62D012T');
 
@@ -48,15 +43,8 @@ INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES
 INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES 
 ('1','HGDVSF40C62D012T');
 
+-- 5.Insert suppliers
 
--- Ship
-
-INSERT INTO Tagms.ship(Order_ID, Employee_ID, Shipping_date,Track_num) VALUES 
-('9123','21123','2022-27-11','ZXU098123');
-
-
-
---Supplier
 INSERT INTO Tagms.supplier(vat_number, supplier_name, phone_number, email_address, address, registration_date) VALUES  
 ('86334519757','Reg s.r.l.','3794567845','regsrl@gmail.com','Via Roma 4 35100 Padova','2021-12-04'); 
  
@@ -71,6 +59,24 @@ INSERT INTO Tagms.supplier(vat_number, supplier_name, phone_number, email_addres
  
 INSERT INTO Tagms.supplier(vat_number, supplier_name, phone_number, email_address, address, registration_date) VALUES  
 ('22134038695','MaterialPCK','3366244789','matforpack@gmail.com','Via Resto 1 23202 Rovigo','2021-02-011');
+
+-- 6.Insert customers
+INSERT INTO Tagms.customer VALUES
+('74853719034','Conad','+393895562233','Via Prato 25, Pordenone','conad_pordenone@mail.com',current_date),
+('56983717634','Coop','+393827762376','Via America 30, Belluno','coop_belluno@mail.com',current_date),
+('62347815297','Famila','+393336941253','Viale dei Mille 100, Parma','famila_parma@mail.com',current_date),
+('12564378963','Eurospin','+393346901723','Via 20 Settembre 21, Lecce','eurospin_lecce@mail.com',current_date),
+('12564378964','PAM','+393315589636','Via Giappone 45, Taranto','pam_taranto@mail.com',current_date);
+
+-- 7.Insert orders 
+INSERT INTO Tagms.order(Net_price, Taxes, Order_date, Order_paid, Employee_ID, 
+Customer_ID) VALUES 
+('230.20', '23.02', '2021-12-04 17:30:00', 'true', 'FGDVSF30C62D012T', '74853719034'),
+('356.26', '13.59', '2021-12-04 12:00:22', 'true', 'BDBBHH72S22C841N', '12564378964')
+
+-- 8.Inserting ships, careful with the shipping_date
+INSERT INTO Tagms.ship(Order_ID, Employee_ID, Shipping_date,Track_num) VALUES 
+('5','FGDVSF30C62D012T', '2022-11-27 17:28:00','ZXU098123');
 
 -- Contract TODO: FIX THIS
 insert into tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) values ('contract with supplier 1','2020-01-18','2021-12-06','2023-12-31',16835498612,'DKLERT23D96A316T')
@@ -124,7 +130,7 @@ INSERT INTO Tagms.product_Category(Name, Description) VALUES
 INSERT INTO Tagms.product_Category(Name, Description) VALUES
 ('Juice','Juice is a drink made from the extraction or pressing of the natural liquid contained in fruit and vegetables') ;
 INSERT INTO Tagms.product_Category(Name, Description) VALUES
-('Smoothie','Smoothie is a drink made by puréeing fruit and vegetables in a blender') ;
+('Smoothie','Smoothie is a drink made by purï¿½eing fruit and vegetables in a blender') ;
 
 -- Product
 INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Volume, Net_weight, Package_weight, Nutritional_Facts, Product_Category_ID)  VALUES
@@ -172,19 +178,6 @@ INSERT INTO Tagms.made_Up_Of_2(Package_ID, Item_ID, Quantity) VALUES
 ('454','15','4');
 ('14','129','300');
 
--- Order
-INSERT INTO Tagms.order(Order_ID,Net_price, Taxes, Order_date, Order_paid, Employee_ID, 
-Customer_ID) VALUES 
-('25467','230.20', '23.02', '2021-12-04 17:30:00', 'true', 'MPHFLH77C48H362N', '86334519757')
-('30045','356.26', '13.59', '2021-12-04 12:00:22', 'true', 'CTXVNN28L17D605N', '86345837378')
-
--- Customer
-INSERT INTO Tagms.customer VALUES
-('74853719034','Conad','+393895562233','Via Prato 25, Pordenone','conad_pordenone@mail.com',current_date),
-('56983717634','Coop','+393827762376','Via America 30, Belluno','coop_belluno@mail.com',current_date),
-('62347815297','Famila','+393336941253','Viale dei Mille 100, Parma','famila_parma@mail.com',current_date),
-('12564378963','Eurospin','+393346901723','Via 20 Settembre 21, Lecce','eurospin_lecce@mail.com',current_date),
-('12564378963','PAM','+393315589636','Via Giappone 45, Taranto','pam_taranto@mail.com',current_date);
 
 -- TODO: Check if works
 -- Lot
