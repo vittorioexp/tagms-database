@@ -43,7 +43,8 @@ WHERE tagms.lot.lot_id = '1';
 
 -- For each item returned by step 1, execute step 2.
 
--- Step 2: Given an Item_id and a Lot_id, calculate the decrease in quantity and actually decrease the quantity of the item
+-- Step 2: Given an Item_id and a Lot_id, calculate the decrease in quantity
+-- and actually decrease the quantity of the item
 
 UPDATE tagms.item
 SET quantity = quantity - (
@@ -53,6 +54,33 @@ SET quantity = quantity - (
     WHERE tagms.lot.lot_id = '1'
 )
 WHERE tagms.item.item_id=1;
+
+
+
+
+
+
+
+-- TODO: Vittorio WORK IN PROGRESS
+-- After inserting a new contract with identifier Contract_id,
+-- in the delivery date the quantities of items in stock must be incremented
+
+-- Step 1: list all the items, having Item_id, whose quantity must be incremented.
+
+-- query here
+
+
+-- For each item returned by step 1, execute step 2.
+
+-- Step 2: given an Item_ID and a Contract_id, get the increase in quantity
+-- and actually increase the quantity of the item
+
+-- query here
+
+
+
+
+
 
 
 -- Lists all available (unsold and that won't expire in 6 months) lots stocking
