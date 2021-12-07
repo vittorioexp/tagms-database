@@ -18,7 +18,7 @@ INSERT INTO Tagms.product_Category(Name, Description) VALUES
 
 
 
--- Insert Item_Categorys
+-- Insert Item_Category
 
 INSERT INTO Tagms.item_Category(name, description) VALUES
 ('Soft Sugar','Soft sugar');
@@ -211,6 +211,7 @@ INSERT INTO Tagms.employee VALUES
 ('FGDVSF30C62D012T','John','Smith','3516235214','johnsmith@gmail.com','1995-12-30','2018-12-12','true',1),
 ('BDBBHH72S22C841N','Adam','Willis','3516931849','adamwillis@gmail.com','1993-11-20','2019-11-11','true',2),
 ('HGDVSF40C62D012T','Bruce','De Forest','3319856644','deforest@gmail.com','1992-11-20','2012-11-11','true',3),
+('MGHRLQ80B49H779S','Lena','Choi','3358853696','deforest@gmail.com','1992-11-20','2014-05-23','true',3),
 ('QMUHFE38E25G815G','Ronald','Vickers','3352317485','rvickers@gmail.com','1998-07-11','2010-04-23','true',4),
 ('DKLERT23D96A316T','Gurver','Maata','00393403631287','gmaata@gmail.com','1953-06-24','2017-09-14','true',1),
 ('RNNZLB88S21B046D','Solomon','Ayala','00393666549821','sayala@gmail.com','1952-09-10','2016-10-22','true',1);
@@ -250,6 +251,8 @@ INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES ('2','RNNZLB88S21B046D
 
 INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES ('3','DKLERT23D96A316T');
 
+INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES ('2','MGHRLQ80B49H779S');
+
 INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES ('4','QMUHFE38E25G815G');
 
 INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES ('5','QMUHFE38E25G815G');
@@ -277,7 +280,7 @@ INSERT INTO Tagms.supplier(vat_number, supplier_name, phone_number, email_addres
 ('22134054695','ReSugar','3366244789','sugar@gmail.com','Via Marsalis 1 81290 Firenze','2021-01-02'); 
  
 INSERT INTO Tagms.supplier(vat_number, supplier_name, phone_number, email_address, address, registration_date) VALUES  
-('22134038695','MaterialPCK','3366244789','matforpack@gmail.com','Via Resto 1 23202 Rovigo','2021-02-011');
+('45288712635','MaterialPCK','3366244789','matforpack@gmail.com','Via Resto 1 23202 Rovigo','2021-02-011');
 
 
 
@@ -285,21 +288,27 @@ INSERT INTO Tagms.supplier(vat_number, supplier_name, phone_number, email_addres
 -- Inserting contracts, be careful that the supplier_id and employee_id to be inserted already exist in tables supplier and employee
 
 INSERT INTO tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) VALUES 
-('contract with supplier 1','2020-01-18','2021-12-06','2023-12-31','86334519757','FGDVSF30C62D012T');
+('contract with Reg s.r.l.','2020-01-18','2021-12-06','2023-12-31','86334519757','FGDVSF30C62D012T');
 
 INSERT INTO tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) VALUES 
-('contract with supplier 1','2021-02-01','2021-12-08','2024-12-31','86334519757','BDBBHH72S22C841N');
+('contract with Reg s.r.l.','2021-02-01','2021-12-08','2024-12-31','86334519757','DKLERT23D96A316T');
 
 INSERT INTO tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) VALUES 
-('contract with supplier 2','2019-01-25','2021-12-07','2022-12-31','23932902833','FGDVSF30C62D012T');
+('contract with VisumH2O','2019-01-25','2021-12-07','2022-12-31','23932902833','FGDVSF30C62D012T');
 
+INSERT INTO tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) VALUES 
+('contract with ReSugar','2017-06-11','2021-12-21','2025-04-01','22134054695','RNNZLB88S21B046D');
+
+INSERT INTO tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) VALUES 
+('contract with MaterialPCK','2021-01-17','2021-12-01','2023-05-22','45288712635','RNNZLB88S21B046D');
+
+INSERT INTO tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) VALUES 
+('contract with EnergyFeed s.p.a.','2018-02-07','2021-12-05','2022-03-14','45288712635','DKLERT23D96A316T');
 
 -- TODO: Insert many, Amedeo
 -- Inserting rows in specify, be sure that item_id and contract_id exist in tables item and contract
 
-INSERT INTO Tagms.specify(item_id, contract_id, price, purchased_quantity) VALUES ('1','3','14.50','100');
-
-
+INSERT INTO Tagms.specify(item_id, contract_id, price, purchased_quantity) VALUES
 
 
 
@@ -308,12 +317,11 @@ INSERT INTO Tagms.specify(item_id, contract_id, price, purchased_quantity) VALUE
 
 INSERT INTO Tagms.order(Net_price, Taxes, Order_date, Order_paid, Employee_ID, 
 Customer_ID) VALUES 
-('230.20', '23.02', '2021-12-04 17:30:00', 'true', 'FGDVSF30C62D012T', '74853719034'),
-('356.26', '13.59', '2021-12-04 12:00:22', 'true', 'BDBBHH72S22C841N', '12564378964')
-
-
-
-
+(150,22,'2021-04-25','HGDVSF40C62D012T',56983717634),
+(100,11,'2021-12-01','HGDVSF40C62D012T',12564378963),
+(150,11,'2021-04-25','MGHRLQ80B49H779S',86523149566),
+(200,22,current_date,'MGHRLQ80B49H779S',74853719034),
+(500,4,current_date,'MGHRLQ80B49H779S',62347815297);
 
 
 -- TODO: Insert many, Amdeo
@@ -326,9 +334,10 @@ INSERT INTO Tagms.draws_from(Lot_ID, Order_ID) VALUES
 
 -- TODO: insert many, Amedeo
 -- Inserting ships, be careful with the shipping_date and with the Order_ID that must be in the table order
-
-INSERT INTO Tagms.ship(Order_ID, Employee_ID, Shipping_date,Track_num) VALUES 
-('1','FGDVSF30C62D012T', '2022-11-27 17:28:00','ZXU098123');
+INSERT INTO Tagms.ship(Order_ID, Employee_ID, Shipping_date,Track_num) VALUES
+(2,'BDBBHH72S22C841N','2021-04-26','LM003926195IT'),
+(3,'BDBBHH72S22C841N','2021-12-03','SL690657695IT'),
+(4,'BDBBHH72S22C841N','2021-04-27','RT463451577IT');
 
 
 
