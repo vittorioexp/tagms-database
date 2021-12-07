@@ -217,10 +217,10 @@ INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
 
 --contains coloring 1G,1R
 INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
-('2','4','3');
+('3','4','3');
 
 INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
-('2','5','3');
+('3','5','3');
 
 -- TODO: Add many IN A WAY THAT MAKES SENSE, Martin
 -- Made_Up_Of_2
@@ -359,19 +359,22 @@ INSERT INTO tagms.contract (description,contract_date,delivery_date,expiration_d
 -- Inserting rows in specify, be sure that item_id and contract_id exist in tables item and contract
 
 INSERT INTO Tagms.specify(item_id, contract_id, price, purchased_quantity) VALUES
+(1, 1, '10', '100'),
+(3, 1, '20', '300'),
+(2, 2, '10', '100'),
+(3, 2, '10', '100'),
+(4, 2, '10', '100');
 
 
 
 -- TODO: Insert many, Amedeo
 -- Insert orders 
-
-INSERT INTO Tagms.order(Net_price, Taxes, Order_date, Order_paid, Employee_ID, 
-Customer_ID) VALUES 
-(150,22,'2021-04-25','HGDVSF40C62D012T',56983717634),
-(100,11,'2021-12-01','HGDVSF40C62D012T',12564378963),
-(150,11,'2021-04-25','MGHRLQ80B49H779S',86523149566),
-(200,22,current_date,'MGHRLQ80B49H779S',74853719034),
-(500,4,current_date,'MGHRLQ80B49H779S',62347815297);
+INSERT INTO Tagms.order(order_id, net_price, taxes, order_date, order_paid, employee_id, customer_id) VALUES 
+(100,22,4,'2021-04-25','true','HGDVSF40C62D012T',56983717634),
+(150,11,4,'2021-12-01','true','HGDVSF40C62D012T',12564378963),
+(160,11,4,'2021-04-25','true','MGHRLQ80B49H779S',56983717634),
+(200,22,4,current_date,'true','MGHRLQ80B49H779S',74853719034),
+(500,4,4,current_date,'true','MGHRLQ80B49H779S',62347815297);
 
 
 -- TODO: Insert many, Amdeo
