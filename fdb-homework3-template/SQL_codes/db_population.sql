@@ -74,14 +74,14 @@ Customer_ID) VALUES
 ('230.20', '23.02', '2021-12-04 17:30:00', 'true', 'FGDVSF30C62D012T', '74853719034'),
 ('356.26', '13.59', '2021-12-04 12:00:22', 'true', 'BDBBHH72S22C841N', '12564378964')
 
--- 8.Inserting ships, careful with the shipping_date
+-- 8.Inserting ships, be careful with the shipping_date and with the Order_ID that must be in the table order
 INSERT INTO Tagms.ship(Order_ID, Employee_ID, Shipping_date,Track_num) VALUES 
 ('5','FGDVSF30C62D012T', '2022-11-27 17:28:00','ZXU098123');
 
--- Contract TODO: FIX THIS
-insert into tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) values ('contract with supplier 1','2020-01-18','2021-12-06','2023-12-31',16835498612,'DKLERT23D96A316T')
-insert into tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) values ('contract with supplier 1','2021-02-01','2021-12-08','2024-12-31',16835498612,'MHVHQK62H26L404I')
-insert into tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) values ('contract with supplier 2','2019-01-25','2021-12-07','2022-12-31',16835498612,'MHVHQK62H26L404I');
+--9. Inserting contracts, be careful that the supplier_id and employee_id to be inserted already exist in tables supplier and employee
+insert into tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) values ('contract with supplier 1','2020-01-18','2021-12-06','2023-12-31','86334519757','FGDVSF30C62D012T');
+insert into tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) values ('contract with supplier 1','2021-02-01','2021-12-08','2024-12-31','86334519757','BDBBHH72S22C841N');
+insert into tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) values ('contract with supplier 2','2019-01-25','2021-12-07','2022-12-31','23932902833','FGDVSF30C62D012T');
 
 -- Item_Category
 INSERT INTO Tagms.item_Category(name, description) VALUES
