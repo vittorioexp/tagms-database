@@ -21,37 +21,22 @@ INSERT INTO Tagms.product_Category(Name, Description) VALUES
 -- Insert Item_Categorys
 
 INSERT INTO Tagms.item_Category(name, description) VALUES
-('Soft Sugar A','Soft sugar (Type A) with composition X, Y, and Z');
+('Soft Sugar','Soft sugar');
 
 INSERT INTO Tagms.item_Category(name, description) VALUES
-('Soft Sugar B','Soft sugar (Type A) with composition X, Y, and Z');
+('Sugar','Special sugar');
 
 INSERT INTO Tagms.item_Category(name, description) VALUES
-('Sugar K','Special sugar (Type K) with composition X, Y, and Z');
+('Coloring','Food coloring');
 
 INSERT INTO Tagms.item_Category(name, description) VALUES
-('Coloring 1R','Food coloring (type 1, red) with composition X, Y, and Z');
+('Water','Water');
 
 INSERT INTO Tagms.item_Category(name, description) VALUES
-('Coloring 1G','Food coloring (type 1, green) with composition X, Y, and Z');
+('Tape','Tape employed for packaging');
 
 INSERT INTO Tagms.item_Category(name, description) VALUES
-('Coloring 1B','Food coloring (type 1, blue) with composition X, Y, and Z');
-
-INSERT INTO Tagms.item_Category(name, description) VALUES
-('Water','Pure water');
-
-INSERT INTO Tagms.item_Category(name, description) VALUES
-('Tape 1M','Tape (type 1, medium) employed for packaging');
-
-INSERT INTO Tagms.item_Category(name, description) VALUES
-('Tape 1L','Tape (type 1, large) employed for packaging');
-
-INSERT INTO Tagms.item_Category(name, description) VALUES
-('Tape 1XL','Tape (type 1, extra large) employed for packaging');
-
-INSERT INTO Tagms.item_Category(name, description) VALUES
-('Polystyrene W','Polystyrene (type W) employed for packaging');
+('Polystyrene','Polystyrene employed for packaging');
 
 
 
@@ -88,26 +73,41 @@ INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Vo
 
 
 
-
+-- TODO: fix item_category_id
 -- Inserting items, be sure that item_category_id exists in table item_category
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-('Sugar K','Sugar k employed for producing coke j and coke k','100','50','1');
+('Soft Sugar A','Soft sugar (Type A) with composition X, Y, and Z','100','50','1');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-('Sugar S','Sugar k employed for producing coke s and coke k','120','20','1');
+('Soft Sugar B','Soft sugar (Type B) with composition X, Y, and Z','120','20','1');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-('Water W','Distilled Water W employed for producing all products','1000','700','3');
+('Sugar K','Special sugar (Type K) with composition X, Y, and Z','1000','700','3');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-('Water L','Low mineral content water Water W employed for producing all products','1000','700','3');
+('Coloring 1R','Food coloring (type 1, red) with composition X, Y, and Z','1000','700','3');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-('Polystyrene P','Refined polystyrene P employed for producing fragile packages','600','250','5');
+('Coloring 1G','Food coloring (type 1, green) with composition X, Y, and Z','1000','700','3');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-('Colorant C','Coloring C (caramel) employed for producing coke j and coke k','800','150','2');
+('Coloring 1B','Food coloring (type 1, blue) with composition X, Y, and Z','600','250','5');
+
+INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
+('Low mineral water','Low mineral content water employed for producing all products','800','150','2');
+
+INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
+('Tape 1M','Tape (type 1, medium) employed for packaging','800','150','2');
+
+INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
+('Tape 1L','Tape (type 1, large) employed for packaging','800','150','2');
+
+INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
+('Tape 1XL','Tape (type 1, extra large) employed for packaging','800','150','2');
+
+INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
+('Polystyrene W','Polystyrene (type W) employed for packaging','800','150','2');
 
 
 
