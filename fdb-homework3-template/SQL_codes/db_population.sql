@@ -396,10 +396,20 @@ INSERT INTO Tagms.order(net_price, taxes, order_date, order_paid, employee_id, c
 (500,200,current_date,'true','MGHRLQ80B49H779S',62347815297);
 
 
--- TODO: Insert many, Amdeo
+
 -- Draws_from
 INSERT INTO Tagms.draws_from(Lot_ID, Order_ID) VALUES 
 ('1','1');
+INSERT INTO Tagms.draws_from(Lot_ID, Order_ID) VALUES 
+('3','2');
+INSERT INTO Tagms.draws_from(Lot_ID, Order_ID) VALUES 
+('2','3');
+INSERT INTO Tagms.draws_from(Lot_ID, Order_ID) VALUES 
+('4','1');
+INSERT INTO Tagms.draws_from(Lot_ID, Order_ID) VALUES 
+('5','1');
+INSERT INTO Tagms.draws_from(Lot_ID, Order_ID) VALUES 
+('6','4');
 
 
 
