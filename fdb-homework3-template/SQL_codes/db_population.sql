@@ -36,6 +36,9 @@ INSERT INTO Tagms.item_Category(name, description) VALUES
 INSERT INTO Tagms.item_Category(name, description) VALUES
 ('Polystyrene','Polystyrene employed for packaging');
 
+INSERT INTO Tagms.item_Category(name, description) VALUES
+('Aluminum','Aluminum employed for packaging');
+
 
 
 -- Package_Category
@@ -127,8 +130,11 @@ INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_categ
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
 ('Pellets 4','Polystyrene (type 4) is an excellent pellet that ensures great resistance against shocks','800','150','6');
 
+INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
+('Pellets 4','Polystyrene (type 4) is an excellent pellet that ensures great resistance against shocks','800','150','6');
 
-
+INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
+('Aluminum','Aluminum with internal coating (coating) which aims to minimize the interaction between the beverage and aluminum','500','130','7');
 
 -- TODO: Check if works
 -- Package
@@ -144,8 +150,6 @@ Package_Category_ID) VALUES
 ('Package L-3', 'Large package, type 3', '19', '10', '10', '7', '4'),
 ('Package XL-1', 'Extra large package, type 1', '25', '13', '11', '8', '5'),
 ('Package XL-2', 'Extra large package, type 2', '29', '14', '15', '10', '5');
-
-
 
 
 -- Lot
@@ -185,6 +189,7 @@ Package_Quantity,Package_ID, Product_ID) VALUES
 
 -- Made_Up_Of_1
 -- TODO: Is it mandatory to specify what all the products are made of?
+-- TODO: Check if works
 
 -- Beer Atomic
 -- contains low mineral water, sugar w, coloring e100
@@ -239,11 +244,11 @@ INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
 
 
 
--- TODO: Add many IN A WAY THAT MAKES SENSE, Martin
+-- TODO: Check if works
 
 --Aluminum Cans 0.33
 INSERT INTO tagms.made_up_of_2(Package_ID,Item_ID,Quantity) VALUES 
-('1','8','2'), 
+('1','8',''),
 ('1','11','10'); 
 
 --Plastic bottle 0.5L
