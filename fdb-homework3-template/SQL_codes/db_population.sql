@@ -177,6 +177,10 @@ INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quant
 Package_Quantity,Package_ID, Product_ID) VALUES 
 ('2022-04-14','10.0','22.0', '140.00', '100', '100','5', '3');
 
+INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity,
+Package_Quantity,Package_ID, Product_ID) VALUES
+('2022-06-19','10.0','22.0', '1008.00', '100', '100','5', '7');
+
 
 
 
