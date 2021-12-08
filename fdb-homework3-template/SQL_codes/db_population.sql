@@ -65,19 +65,19 @@ INSERT INTO Tagms.package_Category(Name, Description) VALUES ('Package XL','Extr
 -- Same products can have different packages (diferent Package_weight)
 -- Product
 INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Volume, Net_weight, Package_weight, Nutritional_Facts, Product_Category_ID)  VALUES
-('Beer Atomic','An alcoholic beverage typically obtained from the fermentation of wort based on barley malt',
+('Beer Atomic in aluminum can','An alcoholic beverage typically obtained from the fermentation of wort based on barley malt',
 '2.00', '2.0', '450', '450', '15', 'Calories: 153, Alcohol: 14 grams, Carbs: 13 grams, Protein: 2 grams, Fat: 0 grams.', '1');
 
 INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Volume, Net_weight, Package_weight, Nutritional_Facts, Product_Category_ID)  VALUES
-('Beer Atomic','An alcoholic beverage typically obtained from the fermentation of wort based on barley malt',
+('Beer Atomic in glass bottle','An alcoholic beverage typically obtained from the fermentation of wort based on barley malt',
 '2.00', '2.0', '450', '450', '50', 'Calories: 153, Alcohol: 14 grams, Carbs: 13 grams, Protein: 2 grams, Fat: 0 grams.', '1');
 
 INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Volume, Net_weight, Package_weight, Nutritional_Facts, Product_Category_ID)  VALUES
-('Coke Mega','Coca Mega is a carbonated soft drink',
+('Coke Mega in aluminum can','Coca Mega is a carbonated soft drink',
 '1.5', '3', '300', '300', '30', 'Calories: 180, Alcohol: 0 grams, Carbs: 38 grams, Protein: 10 grams, Fat: 4 grams.', '2');
 
 INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Volume, Net_weight, Package_weight, Nutritional_Facts, Product_Category_ID)  VALUES
-('Coke Mega','Coca Mega is a carbonated soft drink',
+('Coke Mega in glass bottle','Coca Mega is a carbonated soft drink',
 '1.5', '3', '300', '300', '52', 'Calories: 180, Alcohol: 0 grams, Carbs: 38 grams, Protein: 10 grams, Fat: 4 grams.', '2');
 
 INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Volume, Net_weight, Package_weight, Nutritional_Facts, Product_Category_ID)  VALUES
@@ -137,7 +137,7 @@ INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_categ
 ('Pellets 4','Polystyrene (type 4) is an excellent pellet that ensures great resistance against shocks','800','150','6');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-('Pellets 4','Polystyrene (type 4) is an excellent pellet that ensures great resistance against shocks','800','150','6');
+('Pellets 5','Polystyrene (type 5) is an excellent pellet that ensures great resistance against shocks','800','160','6');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
 ('Aluminum can','Aluminum can with internal coating (coating) which aims to minimize the interaction between the beverage and aluminum','500','130','7');
@@ -200,9 +200,8 @@ Package_Quantity,Package_ID, Product_ID) VALUES
 ('2022-06-19','10.0','22.0', '1008.00', '100', '100','5', '7');
 
 
-
+-- For sake of simplicity, we inserted only few tuples in made_up_of 1 and 2
 -- Made_Up_Of_1
--- TODO: Is it mandatory to specify what all the products are made of?
 -- TODO: Check if works
 
 -- Beer Atomic
@@ -217,7 +216,7 @@ INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
 ('1','5','3');
 
 -- Coke Mega
--- contains sugar c, sugar w, low minearl water, coloring e150
+-- contains sugar c, sugar w, low mineral water, coloring e150
 INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
 ('2','1','3');
 
@@ -232,7 +231,7 @@ INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
 
 
 -- Juice
---contains sugar c, sugar w, coloring e101, low minearl water
+--contains sugar c, sugar w, coloring e101, low mineral water
 INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
 ('3','1','2');
 
@@ -246,7 +245,7 @@ INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
 ('3','4','600');
 
 -- Fanta
---contains sugar c, coloring e100, low minearl water
+--contains sugar c, coloring e100, low mineral water
 INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
 ('6','1','10');
 
