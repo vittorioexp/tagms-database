@@ -53,7 +53,7 @@ INSERT INTO Tagms.package_Category(Name, Description) VALUES ('Package XL','Extr
 
 
 -- TODO: Check if works
--- TODO: Same products can have different packages (diferent Package_weight)
+-- Same products can have different packages (diferent Package_weight)
 -- Product
 INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Volume, Net_weight, Package_weight, Nutritional_Facts, Product_Category_ID)  VALUES
 ('Beer Atomic','An alcoholic beverage typically obtained from the fermentation of wort based on barley malt',
@@ -90,7 +90,6 @@ INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Vo
 
 
 -- TODO: Check if works
--- Inserting items, be sure that item_category_id exists in table item_category
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
 ('Sugar C','Raw cane sugar is a less caloric and healthier sugar','300','100','1');
@@ -131,21 +130,20 @@ INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_categ
 
 
 
--- TODO: fix description, for example 'Extra small package, type 1', Marco
--- TODO: fix dimensions so that they have sense
+-- TODO: Check if works
 -- Package
 
-INSERT INTO Tagms.package(Name, Description, Weight, Height, Width, Depth, 
+INSERT INTO Tagms.package(Name, Description, Weight, Height, Width, Depth,
 Package_Category_ID) VALUES
-('Package XS-1', 'Aluminum cans 0.33L', '2', '5', '3', '3', '1'),
-('Package XS-2', 'Plastic bottle 0,75L ', '3', '6', '3', '3', '1'),
-('Package S-1', 'Plastic bottle 0.5L ', '3', '6', '3', '3', '2'),
-('Package M-1', 'Glass bottle 0.75L ', '3', '8', '3', '3', '3'),
-('Package L-1', 'Glass bottle 1L ', '3', '10', '3', '3', '4'),
-('Package L-2', 'Glass bottle 1L ', '3', '10', '3', '3', '4'),
-('Package L-3', 'Glass bottle 1L ', '3', '10', '3', '3', '4'),
-('Package XL-1', 'Glass bottle 1L ', '3', '10', '3', '3', '5'),
-('Package XL-2', 'Glass bottle 1L ', '3', '10', '3', '3', '5');
+('Package XS-1', 'Extra small package, type 1', '10', '3', '5', '2', '1'),
+('Package XS-2', 'Extra small package, type 2', '13', '3', '6', '3', '1'),
+('Package S-1', 'Small package, type 1', '13', '6', '6', '5', '2'),
+('Package M-1', 'Medium package, type 1', '16', '8', '7', '6', '3'),
+('Package L-1', 'Large package, type 1', '17', '10', '7', '7', '4'),
+('Package L-2', 'Large package, type 2', '18', '12', '9', '7', '4'),
+('Package L-3', 'Large package, type 3', '19', '10', '10', '7', '4'),
+('Package XL-1', 'Extra large package, type 1', '25', '13', '11', '8', '5'),
+('Package XL-2', 'Extra large package, type 2', '29', '14', '15', '10', '5');
 
 
 
