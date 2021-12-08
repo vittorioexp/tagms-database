@@ -1,12 +1,11 @@
 
-
 -- Product_Category
 
 INSERT INTO Tagms.product_Category(Name, Description) VALUES 
 ('Beer','An alcoholic beverage typically obtained from the fermentation of wort based on barley malt');
 
 INSERT INTO Tagms.product_Category(Name, Description) VALUES
-('Coke','Coke is a carbonated soft drink');
+('Soft Drink','Soft Dirnk is a sparkling flavored drink');
 
 INSERT INTO Tagms.product_Category(Name, Description) VALUES
 ('Juice Pineapple','Juice Pineapple is a drink made from the extraction or pressing of the natural liquid contained in fruit and vegetables') ;
@@ -39,8 +38,6 @@ INSERT INTO Tagms.item_Category(name, description) VALUES
 
 
 
-
-
 -- Package_Category
 
 INSERT INTO Tagms.package_Category(Name, Description) VALUES ('Package XS','Extra small package');
@@ -55,20 +52,40 @@ INSERT INTO Tagms.package_Category(Name, Description) VALUES ('Package XL','Extr
 
 
 
-
--- TODO: ADD PRODUCTS, Marco
+-- TODO: Check if works
+-- TODO: Same products can have different packages (diferent Package_weight)
 -- Product
 INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Volume, Net_weight, Package_weight, Nutritional_Facts, Product_Category_ID)  VALUES
 ('Beer Atomic','An alcoholic beverage typically obtained from the fermentation of wort based on barley malt',
-'1.00', '2.0', '1', '1', '1', 'Calories: 153, Alcohol: 14 grams, Carbs: 13 grams, Protein: 2 grams, Fat: 0 grams.', '1');
+'2.00', '2.0', '450', '450', '15', 'Calories: 153, Alcohol: 14 grams, Carbs: 13 grams, Protein: 2 grams, Fat: 0 grams.', '1');
+
+INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Volume, Net_weight, Package_weight, Nutritional_Facts, Product_Category_ID)  VALUES
+('Beer Atomic','An alcoholic beverage typically obtained from the fermentation of wort based on barley malt',
+'2.00', '2.0', '450', '450', '50', 'Calories: 153, Alcohol: 14 grams, Carbs: 13 grams, Protein: 2 grams, Fat: 0 grams.', '1');
 
 INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Volume, Net_weight, Package_weight, Nutritional_Facts, Product_Category_ID)  VALUES
 ('Coke Mega','Coca Mega is a carbonated soft drink',
-'1.00', '2.0', '1', '1', '1', 'Calories: 153, Alcohol: 0 grams, Carbs: 13 grams, Protein: 2 grams, Fat: 0 grams.', '2');
+'1.5', '3', '300', '300', '30', 'Calories: 180, Alcohol: 0 grams, Carbs: 38 grams, Protein: 10 grams, Fat: 4 grams.', '2');
+
+INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Volume, Net_weight, Package_weight, Nutritional_Facts, Product_Category_ID)  VALUES
+('Coke Mega','Coca Mega is a carbonated soft drink',
+'1.5', '3', '300', '300', '52', 'Calories: 180, Alcohol: 0 grams, Carbs: 38 grams, Protein: 10 grams, Fat: 4 grams.', '2');
 
 INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Volume, Net_weight, Package_weight, Nutritional_Facts, Product_Category_ID)  VALUES
 ('Juice Pineapple Turbo','Juice Pineapple Turbo is a drink made from the extraction or pressing of the natural liquid contained in fruit and vegetables',
-'1.00', '2.0', '1', '1', '1', 'Calories: 153, Alcohol: 0 grams, Carbs: 13 grams, Protein: 2 grams, Fat: 0 grams.', '3');
+'1.30', '3.5', '500', '520', '25', 'Calories: 9, Alcohol: 0 grams, Carbs: 2 grams, Protein: 32 grams, Fat: 8 grams.', '3');
+
+INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Volume, Net_weight, Package_weight, Nutritional_Facts, Product_Category_ID)  VALUES
+('Fanta explosive','Fanta explosive is a fruit-flavored carbonated soft drinks',
+'1.5', '2.5', '450', '480', '13', 'Calories: 212, Alcohol: 0 grams, Carbs: 12 grams, Protein: 35 grams, Fat: 120 grams.', '2');
+
+INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Volume, Net_weight, Package_weight, Nutritional_Facts, Product_Category_ID)  VALUES
+('Strawberry Smoothie','Strawberry Smoothie is a vegetable smoothie rich in vitamins',
+'3.60', '2.8', '300', '340', '28', 'Calories: 2, Alcohol: 0 grams, Carbs: 218 grams, Protein: 23 grams, Fat: 8 grams.', '3');
+
+INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Volume, Net_weight, Package_weight, Nutritional_Facts, Product_Category_ID)  VALUES
+('Sprite Refreshing','Sprite Refreshing is a colorless, lemon, lime-flavored and refreshing soft drink',
+'2.15', '2.3', '400', '417', '20', 'Calories: 234, Alcohol: 0 grams, Carbs: 80 grams, Protein: 21 grams, Fat: 48.', '2');
 
 
 
@@ -248,8 +265,6 @@ INSERT INTO Tagms.customer VALUES
 ('12564378964','PAM','+393315589636','Via Giappone 45, Taranto','pam_taranto@mail.com',current_date);
 
 
-
-
 -- Insert Roles
 
 INSERT INTO Tagms.role(Name,Description) VALUES 
@@ -264,9 +279,6 @@ INSERT INTO Tagms.role(Name,Description) VALUES
 INSERT INTO Tagms.role(Name,Description) VALUES 
 ('Data Analyst','The data analyst has access to the acquired data for inventory, cost and profit analysis');
 
-
-
-
 -- Insert employees
 
 INSERT INTO Tagms.employee VALUES
@@ -277,7 +289,6 @@ INSERT INTO Tagms.employee VALUES
 ('QMUHFE38E25G815G','Ronald','Vickers','3352317485','rvickers@gmail.com','1998-07-11','2010-04-23','true',4),
 ('DKLERT23D96A316T','Gurver','Maata','00393403631287','gmaata@gmail.com','1953-06-24','2017-09-14','true',1),
 ('RNNZLB88S21B046D','Solomon','Ayala','00393666549821','sayala@gmail.com','1952-09-10','2016-10-22','true',1);
-
 
 
 -- Insert departments
@@ -296,9 +307,6 @@ INSERT INTO Tagms.department(Name, Description) VALUES
 
 INSERT INTO Tagms.department(Name, Description) VALUES 
 ('Shipping','Responsible for marking and shipping lots.');
-
-
-
 
 -- Insert in Work
 -- Operations: 2 employees Sales: 2 employees Administration: 1 employee Maintenance: 1 employee Shipping: 2 employees
@@ -320,11 +328,6 @@ INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES ('4','QMUHFE38E25G815G
 INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES ('5','QMUHFE38E25G815G');
 
 INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES ('5','RNNZLB88S21B046D');
-
-
-
-
-
 
 
 -- Insert suppliers
