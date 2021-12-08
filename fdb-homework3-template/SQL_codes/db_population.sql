@@ -140,13 +140,15 @@ INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_categ
 ('Pellets 4','Polystyrene (type 4) is an excellent pellet that ensures great resistance against shocks','800','150','6');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-('Aluminum 1','Aluminum (type 1) with internal coating (coating) which aims to minimize the interaction between the beverage and aluminum','500','130','7');
+('Aluminum can','Aluminum can with internal coating (coating) which aims to minimize the interaction between the beverage and aluminum','500','130','7');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
 ('Platic Bottle 1','Plastic bottle (type 1) with heat-insulating','200','1100','8');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
 ('Glass Bottle 1','Glass bottle (type 1) with heat-insulating','260','150','9');
+
+
 
 -- TODO: Check if works
 -- Package
@@ -260,18 +262,18 @@ INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
 
 --Aluminum Cans 0.33
 INSERT INTO tagms.made_up_of_2(Package_ID,Item_ID,Quantity) VALUES 
-('1','8',''),
-('1','11','10'); 
+('3','14','20'),
+('3','8','10');
 
 --Plastic bottle 0.5L
 INSERT INTO tagms.made_up_of_2(Package_ID,Item_ID,Quantity) VALUES 
-('2','9','2'), 
-('2','11','15');
+('5','15','30'),
+('5','9','15');
 
 --Glass bottle 1L
 INSERT INTO tagms.made_up_of_2(Package_ID,Item_ID,Quantity) VALUES 
-('3','10','2'), 
-('3','11','20');
+('7','16','20'),
+('7','10','42');
 
 
 -- Insert customers
