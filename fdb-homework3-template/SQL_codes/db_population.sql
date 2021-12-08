@@ -247,13 +247,13 @@ INSERT INTO tagms.made_up_of_2(Package_ID,Item_ID,Quantity) VALUES
 
 --Plastic bottle 0.5L
 INSERT INTO tagms.made_up_of_2(Package_ID,Item_ID,Quantity) VALUES 
-('1','9','2'), 
-('1','11','15');
+('2','9','2'), 
+('2','11','15');
 
 --Glass bottle 1L
 INSERT INTO tagms.made_up_of_2(Package_ID,Item_ID,Quantity) VALUES 
-('1','10','2'), 
-('1','11','20');
+('3','10','2'), 
+('3','11','20');
 
 
 -- Insert customers
