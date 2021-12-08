@@ -210,7 +210,7 @@ INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
 ('1','4','330');
 
 INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
-('1','2','15');
+('1','1','15');
 
 INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
 ('1','5','3');
