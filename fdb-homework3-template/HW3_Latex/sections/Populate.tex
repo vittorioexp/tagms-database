@@ -2,6 +2,7 @@
 \section{Populate the Database: Example}
 \textcolor{red}{[Report SQL statements for the database population: one row per table is enough for the HW, but we suggest to insert a sufficient amount of data in your DB to run queries]}
 
+Following are some examples of queries used to populate the database. The complete list of queries can be found inside the "db_population.sql" sql file. These queries have been written in different ways to show the various options addressed during the lectures.
 
 \begin{lstlisting}[
 language=SQL,
@@ -88,23 +89,23 @@ INSERT INTO Tagms.package_Category(Package_Category_ID, Name, Description) VALUE
 
 -- Made_Up_Of_2
 INSERT INTO Tagms.made_Up_Of_2(Package_ID, Item_ID, Quantity) VALUES
-('454','15','4');
+('454','15','4'),
 ('14','129','300');
 
 
 -- Order
 INSERT INTO Tagms.order(Order_ID,Net_price, Taxes, Order_date, Order_paid, Employee_ID, 
 Customer_ID) VALUES 
-('25467','230.20', '23.02', '2021-12-04 17:30:00', 'true', 'MPHFLH77C48H362N', '86334519757')
-('30045','356.26', '13.59', '2021-12-04 12:00:22', 'true', 'CTXVNN28L17D605N', '86345837378')
+('25467','230.20', '23.02', '2021-12-04 17:30:00', 'true', 'MPHFLH77C48H362N', '86334519757'),
+('30045','356.26', '13.59', '2021-12-04 12:00:22', 'true', 'CTXVNN28L17D605N', '86345837378');
 
 -- Customer
 INSERT INTO Tagms.customer(VAT_numeber, Customer_name, Registration_date, Address, 
 Email_address, Phone_number) VALUES
 ('23859476254', 'Mario Rossi', '2020-04-11 11:03:40','Via Milano 5 35121 Padova',
-'mariorossi@gmail.com', '3342856738')
+'mariorossi@gmail.com', '3342856738'),
 ('88756400811', 'Giovanni Bianchi', '2010-11-20 09:07:10','Via Milano 5 35131 Padova',
-'giovanniverdi4@unipd.it', '3119385864')
+'giovanniverdi4@unipd.it', '3119385864');
 
 -- Lot
 INSERT INTO Tagms.lot(Lot_ID, Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity, 
@@ -113,7 +114,7 @@ Package_Quantity,Package_ID, Product_ID) VALUES
 
 -- Draws_from
 INSERT INTO Tagms.draws_from(Lot_ID, Order_ID) VALUES 
-('22443','4445');
+('22443','4445'),
 ('150','39');
 
 \end{lstlisting}
