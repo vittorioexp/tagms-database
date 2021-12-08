@@ -101,49 +101,49 @@ INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Vo
 -- TODO: Check if works
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-('Sugar C','Raw cane sugar is a less caloric and healthier sugar','300','100','1');
+('Sugar C','Raw cane sugar is a less caloric and healthier sugar','3000000','100000','1');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-('Sugar W','White sugar for sweeter products','250','100','1');
+('Sugar W','White sugar for sweeter products','2500000','100000','1');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-('Sugar I','Brown sugar is rich in vitamins and minerals such as potassium, calcium and magnesium.','500','200','2');
+('Sugar I','Brown sugar is rich in vitamins and minerals such as potassium, calcium and magnesium.','500000','200000','2');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-('Low mineral water','Low mineral content water employed for producing all products','800','150','4');
+('Low mineral water','Low mineral content water employed for producing all products','800000','150000','4');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-('Coloring E100','Food yellow-orange coloring dye extracted from ground rhizomes of natural strains of Curcuma longa','1000','700','3');
+('Coloring E100','Food yellow-orange coloring dye extracted from ground rhizomes of natural strains of Curcuma longa','1000000','700000','3');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-('Coloring E101','Food yellow natural coloring present in milk, it is also present in many green vegetables,','130','35','3');
+('Coloring E101','Food yellow natural coloring present in milk, it is also present in many green vegetables,','130000','35000','3');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-('Coloring E150','Food caramel coloring and can also have the function of amalgamating and protecting against oxidation caused by light','200','120','3');
+('Coloring E150','Food caramel coloring and can also have the function of amalgamating and protecting against oxidation caused by light','2000000','120000','3');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-('Tape P','Packing tape to ensure a good seal ','220','75','5');
+('Tape P','Packing tape to ensure a good seal ','220000','75000','5');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-('Tape T','Transparent adhesive tape available in both silent and noisy unwinding','110','50','5');
+('Tape T','Transparent adhesive tape available in both silent and noisy unwinding','110000','50000','5');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-('Tape C','Canvas tape equipped with a dense weave that allows the orker to repair, bind and bead','300','80','5');
+('Tape C','Canvas tape equipped with a dense weave that allows the orker to repair, bind and bead','300000','80000','5');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-('Polystyrene I','Polystyrene (type I) is an excellent technical insulator','800','150','6');
+('Polystyrene I','Polystyrene (type I) is an excellent technical insulator','80000','15000','6');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-('Pellets 4','Polystyrene (type 4) is an excellent pellet that ensures great resistance against shocks','800','150','6');
+('Pallet 4','Pallet (type 4) is an excellent pellet that ensures great resistance against shocks','8','6','6');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-('Pellets 5','Polystyrene (type 5) is an excellent pellet that ensures great resistance against shocks','800','160','6');
+('Pallet 5','Pallet (type 5) is an excellent pellet that ensures great resistance against shocks','9','5','6');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
 ('Aluminum can','Aluminum can with internal coating (coating) which aims to minimize the interaction between the beverage and aluminum','500','130','7');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-('Platic Bottle 1','Plastic bottle (type 1) with heat-insulating','200','1100','8');
+('Plastic Bottle 1','Plastic bottle (type 1) with heat-insulating','200','1100','8');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
 ('Glass Bottle 1','Glass bottle (type 1) with heat-insulating','260','150','9');
