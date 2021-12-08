@@ -183,24 +183,21 @@ Package_Quantity,Package_ID, Product_ID) VALUES
 
 
 
-
-
 -- Made_Up_Of_1
+
 -- Beer Atomic
-
---contains water and coloring 1R and 1B
+-- contains low mineral water, sugar w, coloring e100
 INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
-('1','4','4');
-
-INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
-('1','5','2');
+('1','4','330');
 
 INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
-('1','7','330');
+('1','2','15');
 
--- Coke Mega 
+INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
+('1','5','3');
 
---contains Soft Sugar A, Soft Sugar B, Sugar K and low mineral water
+-- Coke Mega
+-- contains sugar c, sugar w, low minearl water, coloring e150
 INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
 ('2','1','3');
 
@@ -208,39 +205,38 @@ INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
 ('2','2','3');
 
 INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
-('2','3','3');
+('2','4','500');
 
 INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
-('2','7','500');
+('2','7','4');
 
---contains coloring 1G and 1B
-INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
-('2','5','2');
-
-INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
-('2','6','4');
 
 -- Juice
-
---contains Soft Sugar A, Soft Sugar B, Sugar K and low mineral water
+--contains sugar c, sugar w, coloring e101, low minearl water
 INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
 ('3','1','2');
 
 INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
-('3','2','2');
+('3','2','4');
 
 INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
-('3','3','2');
+('3','6','2');
 
 INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
-('3','7','1000');
+('3','4','600');
 
---contains coloring 1G,1R
+-- Fanta
+--contains sugar c, coloring e100, low minearl water
 INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
-('3','4','3');
+('6','1','10');
 
 INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
-('3','5','3');
+('6','5','20');
+
+INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
+('6','4','550');
+
+
 
 -- TODO: Add many IN A WAY THAT MAKES SENSE, Martin
 
