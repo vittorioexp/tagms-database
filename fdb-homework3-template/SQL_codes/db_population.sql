@@ -393,9 +393,9 @@ INSERT INTO tagms.contract (description,contract_date,delivery_date,expiration_d
 -- Inserting rows in specify, be sure that item_id and contract_id exist in tables item and contract
 
 INSERT INTO tagms.specify VALUES
-(1,4,10,75),
-(2,4,10,100),
-(3,4,10,50),
+(1,4,10,7500),
+(2,4,10,1000),
+(3,4,10,5000),
 (8,5,5,200),
 (9,5,5,150),
 (10,5,5,50),
