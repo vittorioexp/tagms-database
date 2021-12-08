@@ -389,7 +389,7 @@ INSERT INTO tagms.contract (description,contract_date,delivery_date,expiration_d
 INSERT INTO tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) VALUES 
 ('contract with EnergyFeed s.p.a.','2018-02-07','2021-12-05','2022-03-14','45288712635','DKLERT23D96A316T');
 
--- TODO: Insert many, Amedeo
+
 -- Inserting rows in specify, be sure that item_id and contract_id exist in tables item and contract
 
 INSERT INTO tagms.specify VALUES
@@ -402,16 +402,13 @@ INSERT INTO tagms.specify VALUES
 (11,5,2,200);
 
 
-
--- TODO: Insert many, Amedeo
 -- Insert orders 
 INSERT INTO Tagms.order(net_price, taxes, order_date, order_paid, employee_id, customer_id) VALUES 
-(100,50,'2021-04-25','true','HGDVSF40C62D012T',56983717634),
-(150,75,'2021-12-01','true','HGDVSF40C62D012T',12564378963),
-(160,20,'2021-04-25','true','MGHRLQ80B49H779S',56983717634),
-(200,40,current_date,'true','MGHRLQ80B49H779S',74853719034),
-(500,200,current_date,'true','MGHRLQ80B49H779S',62347815297);
-
+(100,50,'2021-04-25','true','HGDVSF40C62D012T','56983717634'),
+(150,75,'2021-12-01','true','HGDVSF40C62D012T','12564378963'),
+(160,20,'2021-04-25','true','MGHRLQ80B49H779S','56983717634'),
+(200,40,current_date,'true','MGHRLQ80B49H779S','74853719034'),
+(500,200,current_date,'true','MGHRLQ80B49H779S','62347815297');
 
 
 -- Draws_from
@@ -429,14 +426,11 @@ INSERT INTO Tagms.draws_from(Lot_ID, Order_ID) VALUES
 ('6','4');
 
 
-
-
--- TODO: insert many, Amedeo
 -- Inserting ships, be careful with the shipping_date and with the Order_ID that must be in the table order
 INSERT INTO Tagms.ship(Order_ID, Employee_ID, Shipping_date,Track_num) VALUES
-(2,'BDBBHH72S22C841N','2021-04-26','LM003926195IT'),
-(3,'BDBBHH72S22C841N','2021-12-03','SL690657695IT'),
-(4,'BDBBHH72S22C841N','2021-04-27','RT463451577IT');
+(1,'BDBBHH72S22C841N','2021-04-27','LM003926195IT'),
+(2,'BDBBHH72S22C841N','2021-12-03','SL690657695IT'),
+(3,'BDBBHH72S22C841N','2021-04-27','RT463451577IT');
 
 
 
