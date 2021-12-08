@@ -184,6 +184,7 @@ Package_Quantity,Package_ID, Product_ID) VALUES
 
 
 -- Made_Up_Of_1
+-- TODO: Is it mandatory to specify what all the products are made of?
 
 -- Beer Atomic
 -- contains low mineral water, sugar w, coloring e100
