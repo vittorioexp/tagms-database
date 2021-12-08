@@ -33,30 +33,19 @@ select tagms.customer.* from tagms.customer;
 
 
 
---After inserting a new lot with identifier Lot_id (see the previous chapter), execute step 1
+-- After inserting a new lot with identifier Lot_id (see the previous chapter)
+-- decrease the quantity of the items involved in a product of a lot
 
--- Step 1: Get the list of items to be decremented given a Lot_id.
-SELECT tagms.made_up_of_1.item_id FROM tagms.lot
-                                           JOIN tagms.made_up_of_1 ON
-    (tagms.lot.product_id = tagms.made_up_of_1.product_id)
-WHERE tagms.lot.lot_id = '1';
-
--- For each item returned by step 1, execute step 2.
-
--- Step 2: Given an Item_id and a Lot_id, calculate the decrease in quantity
--- and actually decrease the quantity of the item
-
-UPDATE tagms.item
-SET quantity = quantity - (
-    SELECT tagms.lot.product_quantity * tagms.made_up_of_1.quantity AS decrement_qty FROM tagms.lot
-        JOIN tagms.made_up_of_1 ON
-            (tagms.lot.product_id = tagms.made_up_of_1.product_id AND tagms.made_up_of_1.item_id = '1')
-    WHERE tagms.lot.lot_id = '1'
-)
-WHERE tagms.item.item_id=1;
-
-
-
+UPDATE tagms.item AS i SET
+    quantity = c.quantity
+FROM (
+    SELECT i.item_id, i.quantity - l.product_quantity * m1.quantity AS quantity FROM tagms.lot AS l
+        INNER JOIN tagms.made_up_of_1 AS m1 ON l.product_id = m1.product_id
+        INNER JOIN tagms.item AS i ON m1.item_id = i.item_id
+    WHERE l.lot_id = '1'
+     )
+    AS c(item_id, quantity)
+WHERE c.item_id = i.item_id;
 
 
 
@@ -64,31 +53,16 @@ WHERE tagms.item.item_id=1;
 -- After inserting a new contract with identifier Contract_id,
 -- in the delivery date the quantities of items in stock must be incremented
 
--- Step 1: list all the items, having Item_id, whose quantity must be incremented.
-
-SELECT tagms.specify.item_id FROM tagms.contract
-    JOIN tagms.specify ON tagms.contract.contract_id = tagms.specify.contract_id
-    WHERE tagms.contract.contract_id = '3';
-
--- For each item returned by step 1, execute step 2.
-
--- Step 2: given an Item_ID and a Contract_id, get the increase in quantity
--- and actually increase the quantity of the item
-
-UPDATE tagms.item
-SET quantity = quantity + (
-    SELECT tagms.specify.purchased_quantity AS increment_qty FROM tagms.contract
-        JOIN tagms.specify ON
-        (tagms.contract.contract_id = tagms.specify.contract_id
-             AND tagms.specify.item_id = '1')
-        WHERE tagms.contract.contract_id = '3'
-)
-WHERE tagms.item.item_id='1';
-
-
-
-
-
+UPDATE tagms.item AS i SET
+    quantity = c.quantity
+FROM (
+    SELECT i.item_id, i.quantity + s.purchased_quantity AS quantity FROM tagms.contract AS c
+        INNER JOIN tagms.specify AS s ON c.contract_id = s.contract_id
+        INNER JOIN tagms.item AS i ON s.item_id = i.item_id
+    WHERE c.contract_id = '4'
+     )
+     AS c(item_id, quantity)
+WHERE c.item_id = i.item_id;
 
 
 
