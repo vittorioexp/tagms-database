@@ -35,7 +35,7 @@ select tagms.customer.* from tagms.customer;
 
 -- After inserting a new lot with identifier Lot_id (see the previous chapter)
 -- decrease the quantity of the items involved in a product of a lot
-
+-- TODO: do this also for package
 UPDATE tagms.item AS i SET
     quantity = c.quantity
 FROM (
@@ -71,15 +71,13 @@ WHERE c.item_id = i.item_id;
 -- a particular product with Product_id identifier,
 -- sorted by expiration date (oldest lots must be sold first).
 
-SELECT * FROM tagms.lot WHERE
-        tagms.lot.product_id = '1'
-            AND
-        (SELECT COUNT(Tagms.draws_from.lot_id)
-            FROM tagms.draws_from
-            WHERE tagms.draws_from.lot_id = '1'
-            ) = 1
-            AND
-        tagms.lot.expiration_date > (current_date + interval '6 months')
-    ORDER BY tagms.lot.expiration_date ASC;
+-- TODO: inserire piu lotti non venduti
 
+SELECT l.lot_id, l.expiration_date, l.product_id, l.product_quantity, l.lot_price * (1 + l.vat/100) * (1 - l.lot_discount/100) AS price  FROM tagms.lot AS l
+    LEFT OUTER JOIN tagms.draws_from AS df ON l.lot_id = df.lot_id
+WHERE l.product_id = '7'
+  AND l.expiration_date > (current_date + interval '6 months')
+ORDER BY l.expiration_date ASC;
 
+-- Lot pricei * (1 - Lot discounti / 100). The total taxes are
+-- calculated as the sum, for each lot i , of the Lot pricei * VATi / 100
