@@ -89,42 +89,44 @@ INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Vo
 
 
 
--- TODO: fix item_category_id, Marco
+-- TODO: Check if works
 -- Inserting items, be sure that item_category_id exists in table item_category
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-('Soft Sugar A','Soft sugar (Type A) with composition X, Y, and Z','100','50','1');
+('Sugar C','Raw cane sugar is a less caloric and healthier sugar','300','100','1');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-('Soft Sugar B','Soft sugar (Type B) with composition X, Y, and Z','120','20','1');
+('Sugar W','White sugar for sweeter products','250','100','1');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-('Sugar K','Special sugar (Type K) with composition X, Y, and Z','1000','700','3');
+('Sugar I','Brown sugar is rich in vitamins and minerals such as potassium, calcium and magnesium.','500','200','2');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-('Coloring 1R','Food coloring (type 1, red) with composition X, Y, and Z','1000','700','3');
+('Low mineral water','Low mineral content water employed for producing all products','800','150','4');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-('Coloring 1G','Food coloring (type 1, green) with composition X, Y, and Z','1000','700','3');
+('Coloring E100','Food yellow-orange coloring dye extracted from ground rhizomes of natural strains of Curcuma longa','1000','700','3');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-('Coloring 1B','Food coloring (type 1, blue) with composition X, Y, and Z','600','250','5');
+('Coloring E101','Food yellow natural coloring present in milk, it is also present in many green vegetables,','130','35','3');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-('Low mineral water','Low mineral content water employed for producing all products','800','150','2');
+('Coloring E150','Food caramel coloring and can also have the function of amalgamating and protecting against oxidation caused by light','200','120','3');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-('Tape 1M','Tape (type 1, medium) employed for packaging','800','150','2');
+('Tape P','Packing tape to ensure a good seal ','220','75','5');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-('Tape 1L','Tape (type 1, large) employed for packaging','800','150','2');
+('Tape T','Transparent adhesive tape available in both silent and noisy unwinding','110','50','5');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-('Tape 1XL','Tape (type 1, extra large) employed for packaging','800','150','2');
+('Tape C','Canvas tape equipped with a dense weave that allows the orker to repair, bind and bead','300','80','5');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-('Polystyrene W','Polystyrene (type W) employed for packaging','800','150','2');
+('Polystyrene I','Polystyrene (type I) is an excellent technical insulator','800','150','6');
 
+INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
+('Pellets 4','Polystyrene (type 4) is an excellent pellet that ensures great resistance against shocks','800','150','6');
 
 
 
