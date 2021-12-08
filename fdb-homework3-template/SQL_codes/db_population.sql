@@ -371,23 +371,25 @@ INSERT INTO tagms.contract (description,contract_date,delivery_date,expiration_d
 -- TODO: Insert many, Amedeo
 -- Inserting rows in specify, be sure that item_id and contract_id exist in tables item and contract
 
-INSERT INTO Tagms.specify(item_id, contract_id, price, purchased_quantity) VALUES
-(1, 1, '10', '100'),
-(3, 1, '20', '300'),
-(2, 2, '10', '100'),
-(3, 2, '10', '100'),
-(4, 2, '10', '100');
+INSERT INTO tagms.specify VALUES
+(1,4,10,75),
+(2,4,10,100),
+(3,4,10,50),
+(8,5,5,200),
+(9,5,5,150),
+(10,5,5,50),
+(11,5,2,200);
 
 
 
 -- TODO: Insert many, Amedeo
 -- Insert orders 
-INSERT INTO Tagms.order(order_id, net_price, taxes, order_date, order_paid, employee_id, customer_id) VALUES 
-(100,22,4,'2021-04-25','true','HGDVSF40C62D012T',56983717634),
-(150,11,4,'2021-12-01','true','HGDVSF40C62D012T',12564378963),
-(160,11,4,'2021-04-25','true','MGHRLQ80B49H779S',56983717634),
-(200,22,4,current_date,'true','MGHRLQ80B49H779S',74853719034),
-(500,4,4,current_date,'true','MGHRLQ80B49H779S',62347815297);
+INSERT INTO Tagms.order(net_price, taxes, order_date, order_paid, employee_id, customer_id) VALUES 
+(100,50,'2021-04-25','true','HGDVSF40C62D012T',56983717634),
+(150,75,'2021-12-01','true','HGDVSF40C62D012T',12564378963),
+(160,20,'2021-04-25','true','MGHRLQ80B49H779S',56983717634),
+(200,40,current_date,'true','MGHRLQ80B49H779S',74853719034),
+(500,200,current_date,'true','MGHRLQ80B49H779S',62347815297);
 
 
 -- TODO: Insert many, Amdeo
