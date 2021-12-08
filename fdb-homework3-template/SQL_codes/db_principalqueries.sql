@@ -61,21 +61,31 @@ WHERE tagms.item.item_id=1;
 
 
 
--- TODO: Vittorio WORK IN PROGRESS
 -- After inserting a new contract with identifier Contract_id,
 -- in the delivery date the quantities of items in stock must be incremented
 
 -- Step 1: list all the items, having Item_id, whose quantity must be incremented.
 
--- query here
-
+SELECT tagms.specify.item_id FROM tagms.contract
+    JOIN tagms.specify ON tagms.contract.contract_id = tagms.specify.contract_id
+    WHERE tagms.contract.contract_id = '3';
 
 -- For each item returned by step 1, execute step 2.
 
 -- Step 2: given an Item_ID and a Contract_id, get the increase in quantity
 -- and actually increase the quantity of the item
 
--- query here
+UPDATE tagms.item
+SET quantity = quantity + (
+    SELECT tagms.specify.purchased_quantity AS increment_qty FROM tagms.contract
+        JOIN tagms.specify ON
+        (tagms.contract.contract_id = tagms.specify.contract_id
+             AND tagms.specify.item_id = '1')
+        WHERE tagms.contract.contract_id = '3'
+)
+WHERE tagms.item.item_id='1';
+
+
 
 
 
