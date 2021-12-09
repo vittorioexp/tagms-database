@@ -413,7 +413,7 @@ INSERT INTO Tagms.order(net_price, taxes, order_date, order_paid, employee_id, c
     (150,75,'2021-12-01','true','HGDVSF40C62D012T','12564378963'),
     (160,20,'2021-04-25','true','MGHRLQ80B49H779S','56983717634'),
     (200,40,current_date,'true','MGHRLQ80B49H779S','74853719034'),
-    (500,200,current_date,'true','MGHRLQ80B49H779S','62347815297');
+    (500,200,current_date,'false','MGHRLQ80B49H779S','62347815297');
 
 
 -- Draws_from
