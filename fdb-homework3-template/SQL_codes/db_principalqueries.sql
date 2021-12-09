@@ -104,11 +104,19 @@ WHERE l.product_id = '7'
 ORDER BY l.expiration_date ASC;
 
 
+TODO: order paid
 -- Get the net sales and taxes paid
 SELECT SUM(o.net_price) AS net_sales, SUM(o.taxes) AS taxes FROM tagms.order AS o
     WHERE DATE(o.order_date) >= '2021-01-01' AND DATE(o.order_date) <= '2021-12-31';
 
 -- Get the cost of material
-SELECT * FROM tagms.specify AS sp
+SELECT SUM(sp.price) AS cost_of_material FROM tagms.specify as sp
     INNER JOIN tagms.contract AS c ON c.contract_id = sp.contract_id
 WHERE DATE(c.contract_date) >= '2017-01-01' AND DATE(c.contract_date) <= '2017-12-31';
+
+-- Get the production cost
+SELECT SUM(p.production_cost * l.product_quantity) AS production_cost FROM tagms.lot AS l
+    JOIN tagms.product AS p ON l.product_id = p.product_id
+    JOIN tagms.draws_from AS df ON l.lot_id = df.lot_id
+    JOIN tagms.order AS o ON df.order_id = o.order_id
+WHERE DATE(o.order_date) >= '2021-01-01' AND DATE(o.order_date) <= '2021-12-31';
