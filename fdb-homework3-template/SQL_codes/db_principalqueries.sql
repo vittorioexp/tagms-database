@@ -81,7 +81,8 @@ FROM (
     WHERE c.contract_id = '4'
      )
      AS c(item_id, quantity)
-WHERE c.item_id = i.item_id;
+WHERE c.item_id = i.item_id
+RETURNING i.item_id, name, description, i.quantity, minimum_quantity, item_category_id;
 
 
 
