@@ -195,15 +195,15 @@ INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quant
 
 INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity,
                       Package_Quantity,Package_ID, Product_ID) VALUES
-    ('2022-11-19','10.0','22.0', '1008.00', '100', '3','5', '7');
+    ('2022-11-19','10.0','22.0', '1008.00', '100', '3','5', '6');
 
 INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity,
                       Package_Quantity,Package_ID, Product_ID) VALUES
-    ('2022-10-14','0.0','22.0', '165.00', '70', '6','3', '7');
+    ('2022-10-14','0.0','22.0', '165.00', '70', '6','3', '6');
 
 INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity,
                       Package_Quantity,Package_ID, Product_ID) VALUES
-    ('2022-12-23','5.0','22.0', '170.00', '50', '6','5', '7');
+    ('2022-06-19','10.0','22.0', '1008.00', '100', '100','5', '6');	
 
 
 
@@ -274,8 +274,8 @@ INSERT INTO tagms.made_up_of_2(Package_ID,Item_ID,Quantity) VALUES
 
 --Glass bottle 1L
 INSERT INTO tagms.made_up_of_2(Package_ID,Item_ID,Quantity) VALUES
-    ('7','16','20'),
-    ('7','10','42');
+    ('1','16','10'),														
+    ('1','10','10');
 
 
 -- Insert customers
