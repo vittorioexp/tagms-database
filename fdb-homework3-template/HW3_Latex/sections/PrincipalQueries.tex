@@ -41,7 +41,6 @@ FROM (
     SELECT i.item\_id, i.quantity - l.product\_quantity * m1.quantity AS quantity FROM tagms.lot AS l
         INNER JOIN tagms.made\_up\_of\_1 AS m1 ON l.product\_id = m1.product\_id
         INNER JOIN tagms.item AS i ON m1.item\_id = i.item\_id
-    WHERE l.lot\_id = '3'
     UNION
     SELECT i.item\_id, i.quantity - l.package\_quantity * m2.quantity AS quantity FROM tagms.lot AS l
         INNER JOIN tagms.made\_up\_of\_2 AS m2 ON l.package\_id = m2.package\_id
