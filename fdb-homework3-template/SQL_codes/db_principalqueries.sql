@@ -127,7 +127,8 @@ FROM (
 WHERE o.order_id = '2'
 RETURNING o.net_price, o.taxes;
 
-
+-- Given a lot with Lot_id, compute the lot price
+-- TODO
 
 
 -- Given an item having Item_id and a time interval (actually, two dates),
