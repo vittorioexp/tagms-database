@@ -409,7 +409,7 @@ INSERT INTO tagms.specify VALUES
 
 -- Insert orders
 INSERT INTO Tagms.order(net_price, taxes, order_date, order_paid, employee_id, customer_id) VALUES
-    (100,50,'2021-04-25','true','HGDVSF40C62D012T','56983717634'),
+    (100,50,'2020-04-25','true','HGDVSF40C62D012T','56983717634'),
     (150,75,'2021-12-01','true','HGDVSF40C62D012T','12564378963'),
     (160,20,'2021-04-25','true','MGHRLQ80B49H779S','56983717634'),
     (200,40,current_date,'true','MGHRLQ80B49H779S','74853719034'),
