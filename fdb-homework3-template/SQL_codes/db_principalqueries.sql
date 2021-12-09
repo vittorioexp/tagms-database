@@ -104,15 +104,18 @@ WHERE l.product_id = '7'
 ORDER BY l.expiration_date ASC;
 
 
-TODO: order paid
+
+-- TODO: We can put the results of these select inside a unice table and the make some operation between these 3 diferent rows
 -- Get the net sales and taxes paid
 SELECT SUM(o.net_price) AS net_sales, SUM(o.taxes) AS taxes FROM tagms.order AS o
-    WHERE DATE(o.order_date) >= '2021-01-01' AND DATE(o.order_date) <= '2021-12-31';
+    WHERE DATE(o.order_date) >= '2021-01-01' AND
+          DATE(o.order_date) <= '2021-12-31' AND
+          o.order_paid = TRUE;
 
--- Get the cost of material
+-- Get the cost of materials
 SELECT SUM(sp.price) AS cost_of_material FROM tagms.specify as sp
     INNER JOIN tagms.contract AS c ON c.contract_id = sp.contract_id
-WHERE DATE(c.contract_date) >= '2017-01-01' AND DATE(c.contract_date) <= '2017-12-31';
+WHERE DATE(c.contract_date) >= '2021-01-01' AND DATE(c.contract_date) <= '2021-12-31';
 
 -- Get the production cost
 SELECT SUM(p.production_cost * l.product_quantity) AS production_cost FROM tagms.lot AS l
