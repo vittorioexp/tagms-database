@@ -104,11 +104,12 @@ WHERE l.product_id = '7'
 ORDER BY l.expiration_date ASC;
 
 
--- Get the net sales and taxes paid
-SELECT SUM(o.net_price) AS net_sales, SUM(o.taxes) AS taxes FROM tagms.order AS o
-    WHERE DATE(o.order_date) >= '2021-01-01' AND DATE(o.order_date) <= '2021-12-31';
+-- List the profit of the company within last 12 months
 
--- Get the cost of material
-SELECT * FROM tagms.specify AS sp
-    INNER JOIN tagms.contract AS c ON c.contract_id = sp.contract_id
-WHERE DATE(c.contract_date) >= '2017-01-01' AND DATE(c.contract_date) <= '2017-12-31';
+
+SELECT o.order_id as id, o.net_price * (1 + o.taxes/100) as revenues, DATE(o.order_date) as order_date FROM tagms.order as o
+    WHERE order_date > (current_date - interval '12 months') AND order_date < (current_date)
+
+SELECT sp.price FROM tagms.specify as sp
+    INNER JOIN tagms.contract as c on c.contract_id = sp.contract_id
+    WHERE c.contract_date > (current_date - interval '12 months') AND c.contract_date < (current_date)
