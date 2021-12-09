@@ -133,19 +133,19 @@ INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_categ
     ('Polystyrene I','Polystyrene (type I) is an excellent technical insulator','80000','15000','6');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-    ('Pallet 4','Pallet (type 4) is an excellent pellet that ensures great resistance against shocks','8','6','6');
+    ('Pallet 4','Pallet (type 4) is an excellent pellet that ensures great resistance against shocks','80','6','6');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-    ('Pallet 5','Pallet (type 5) is an excellent pellet that ensures great resistance against shocks','9','5','6');
+    ('Pallet 5','Pallet (type 5) is an excellent pellet that ensures great resistance against shocks','90','5','6');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-    ('Aluminum can','Aluminum can with internal coating (coating) which aims to minimize the interaction between the beverage and aluminum','500','130','7');
+    ('Aluminum can','Aluminum can with internal coating (coating) which aims to minimize the interaction between the beverage and aluminum','5000','130','7');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-    ('Plastic Bottle 1','Plastic bottle (type 1) with heat-insulating','200','1100','8');
+    ('Plastic Bottle 1','Plastic bottle (type 1) with heat-insulating','20000','1100','8');
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-    ('Glass Bottle 1','Glass bottle (type 1) with heat-insulating','260','150','9');
+    ('Glass Bottle 1','Glass bottle (type 1) with heat-insulating','26000','150','9');
 
 
 
