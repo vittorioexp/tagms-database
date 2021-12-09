@@ -101,4 +101,15 @@ FROM tagms.lot AS l
     LEFT OUTER JOIN tagms.draws_from AS df ON l.lot_id = df.lot_id
 WHERE l.product_id = '7'
   AND l.expiration_date > (current_date + interval '6 months')
-ORDER BY l.expiration_date DESC;
+ORDER BY l.expiration_date ASC;
+
+
+-- List the profit of the company within last 12 months
+
+
+SELECT o.order_id as id, o.net_price * (1 + o.taxes/100) as revenues, DATE(o.order_date) as order_date FROM tagms.order as o
+    WHERE order_date > (current_date - interval '12 months') AND order_date < (current_date)
+
+SELECT sp.price FROM tagms.specify as sp
+    INNER JOIN tagms.contract as c on c.contract_id = sp.contract_id
+    WHERE c.contract_date > (current_date - interval '12 months') AND c.contract_date < (current_date)
