@@ -30,9 +30,6 @@ select tagms.employee.*, tagms.department.name from tagms.employee inner join ta
 
 
 
--- TODO: come evitare di ripetere due volte il lot_id = '3'?
-
-
 -- After inserting a new lot with identifier Lot_id (see the "populate" section)
 -- decrease the quantity of the items involved in the production of a lot
 -- Note: it is necessary to insert the Lot_id twice in the query
@@ -43,7 +40,6 @@ FROM (
     SELECT i.item_id, i.quantity - l.product_quantity * m1.quantity AS quantity FROM tagms.lot AS l
         INNER JOIN tagms.made_up_of_1 AS m1 ON l.product_id = m1.product_id
         INNER JOIN tagms.item AS i ON m1.item_id = i.item_id
-    WHERE l.lot_id = '3'
     UNION
     SELECT i.item_id, i.quantity - l.package_quantity * m2.quantity AS quantity FROM tagms.lot AS l
         INNER JOIN tagms.made_up_of_2 AS m2 ON l.package_id = m2.package_id
