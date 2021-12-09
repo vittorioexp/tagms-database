@@ -395,14 +395,16 @@ INSERT INTO tagms.contract (description,contract_date,delivery_date,expiration_d
 
 -- Inserting rows in specify, be sure that item_id and contract_id exist in tables item and contract
 
+-- Attributes order: item_id, contract_id, price, purchased_quantity
+
 INSERT INTO tagms.specify VALUES
-    (1,4,10,7500),
-    (2,4,10,1000),
-    (3,4,10,5000),
-    (8,5,5,200),
-    (9,5,5,150),
-    (10,5,5,50),
-    (11,5,2,200);
+    (1,4,10200,7500),
+    (2,4,12200,1000),
+    (3,4,10231,5000),
+    (8,5,331,400),
+    (9,5,671,222),
+    (10,5,349,380),
+    (11,5,293,200);
 
 
 -- Insert orders
