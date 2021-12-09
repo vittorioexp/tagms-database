@@ -71,13 +71,14 @@ WHERE c.item_id = i.item_id;
 -- a particular product with Product_id identifier,
 -- sorted by expiration date (oldest lots must be sold first).
 
--- TODO: inserire piu lotti non venduti
 
-SELECT l.lot_id, l.expiration_date, l.product_id, l.product_quantity, l.lot_price * (1 + l.vat/100) * (1 - l.lot_discount/100) AS price  FROM tagms.lot AS l
+SELECT l.lot_id,
+       DATE(l.expiration_date) AS expiration_date,
+       l.product_id,
+       l.product_quantity,
+       l.lot_price * (1 + l.vat/100) * (1 - l.lot_discount/100) AS gross_price
+FROM tagms.lot AS l
     LEFT OUTER JOIN tagms.draws_from AS df ON l.lot_id = df.lot_id
 WHERE l.product_id = '7'
   AND l.expiration_date > (current_date + interval '6 months')
-ORDER BY l.expiration_date ASC;
-
--- Lot pricei * (1 - Lot discounti / 100). The total taxes are
--- calculated as the sum, for each lot i , of the Lot pricei * VATi / 100
+ORDER BY l.expiration_date DESC;
