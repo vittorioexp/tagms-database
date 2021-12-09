@@ -429,6 +429,8 @@ INSERT INTO Tagms.draws_from(Lot_ID, Order_ID) VALUES
     ('5','1');
 INSERT INTO Tagms.draws_from(Lot_ID, Order_ID) VALUES
     ('6','4');
+INSERT INTO Tagms.draws_from(Lot_ID, Order_ID) VALUES
+    ('7','5');
 
 
 -- Inserting ships, be careful with the shipping_date and with the Order_ID that must be in the table order
