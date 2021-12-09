@@ -120,3 +120,6 @@ SELECT SUM(p.production_cost * l.product_quantity) AS production_cost FROM tagms
     JOIN tagms.draws_from AS df ON l.lot_id = df.lot_id
     JOIN tagms.order AS o ON df.order_id = o.order_id
 WHERE DATE(o.order_date) >= '2021-01-01' AND DATE(o.order_date) <= '2021-12-31';
+
+-- Compute order 1 price from lots bought
+select sum(l.lot_price) from tagms.draws_from as d inner join tagms.lot as l on d.lot_id=l.lot_id where d.order_id=1;
