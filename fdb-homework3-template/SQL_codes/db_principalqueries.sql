@@ -4,15 +4,11 @@ FROM table1 as t1
          LEFT JOIN table2 as t2 ON t1.attr2=t2.attr1
 WHERE t1.attr3=1*/
 
-
-
--- TODO: is this useful? 2 employee can have the same name by the way
 -- list all contracts between a certain manager and a certain supplier
 select tagms.contract.* from tagms.contract inner join tagms.employee on
         tagms.contract.employee_id=tagms.employee.tax_number inner join tagms.supplier on
         tagms.contract.supplier_id=tagms.supplier.vat_number where tagms.employee.tax_number='BDBBHH72S22C841N' and
         tagms.supplier.supplier_name='Reg s.r.l.';
-
 
 
 -- TODO: aren't the following 2 too simple?
