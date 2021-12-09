@@ -104,6 +104,8 @@ WHERE l.product_id = '7'
 ORDER BY l.expiration_date ASC;
 
 
+
+-- TODO: We can put the results of these select inside a unice table and the make some operation between these 3 diferent rows
 -- Get the net sales and taxes paid
 SELECT SUM(o.net_price) AS net_sales, SUM(o.taxes) AS taxes FROM tagms.order AS o
     WHERE DATE(o.order_date) >= '2021-01-01' AND
