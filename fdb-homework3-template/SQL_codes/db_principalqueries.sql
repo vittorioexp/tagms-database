@@ -31,22 +31,6 @@ select tagms.employee.*, tagms.department.name from tagms.employee inner join ta
 -- After inserting a new lot with identifier Lot_id (see the previous chapter)
 -- decrease the quantity of the items involved in a product of a lot
 
-/*
--- Old query: works only for products
-UPDATE tagms.item AS i SET
-    quantity = c.quantity
-FROM (
-    SELECT i.item_id, i.quantity - l.product_quantity * m1.quantity AS quantity FROM tagms.lot AS l
-        INNER JOIN tagms.made_up_of_1 AS m1 ON l.product_id = m1.product_id
-        INNER JOIN tagms.item AS i ON m1.item_id = i.item_id
-    WHERE l.lot_id = '1'
-     )
-    AS c(item_id, quantity)
-WHERE c.item_id = i.item_id;
-*/
-
--- TODO: this should work also for packages. MUST BE TESTED
-
 UPDATE tagms.item AS i SET
     quantity = c.quantity
 FROM (
@@ -91,7 +75,6 @@ RETURNING i.item_id, name, description, i.quantity, minimum_quantity, item_categ
 -- a particular product with Product_id identifier,
 -- sorted by expiration date (oldest lots must be sold first).
 
-
 SELECT l.lot_id,
        DATE(l.expiration_date) AS expiration_date,
        l.product_id,
@@ -125,15 +108,31 @@ SELECT SUM(p.production_cost * l.product_quantity) AS production_cost FROM tagms
 WHERE DATE(o.order_date) >= '2021-01-01' AND DATE(o.order_date) <= '2021-12-31';
 
 
+
+
 -- TODO: unica voce dell'elenco numerato dice "dopo l'inserimento del lotto eseguo questa query per aggiornare lot_price". Analogo per order_price e taxes
 -- Compute order 1 price from lots bought
-select sum(l.lot_price) from tagms.draws_from as d inner join tagms.lot as l on d.lot_id=l.lot_id where d.order_id=1;
+
+-- Given an order with Order_id, compute the order's net_price and total taxes
+-- TODO: fix this
+UPDATE tagms.order AS o
+SET net_price = tmp.net_price,
+    taxes = tmp.taxes
+FROM (
+         SELECT SUM(l.lot_price * (1 - l.lot_discount / 100)) AS net_price, SUM(l.lot_price * l.VAT/100) as taxes
+         FROM tagms.draws_from AS df
+                  INNER JOIN tagms.lot AS l ON df.lot_id = l.lot_id
+        WHERE df.order_id = '2'
+    ) AS tmp(net_price, taxes)
+WHERE o.order_id = '2'
+RETURNING o.net_price, o.taxes;
+
 
 
 
 -- Given an item having Item_id and a time interval (actually, two dates),
 -- find the quantity of that item that has been used for production / packaging
-/*
+
 SELECT SUM(l.product_quantity * m1.quantity) AS quantity FROM tagms.made_up_of_1 AS m1
     INNER JOIN tagms.lot AS l ON m1.product_id = l.product_id
     INNER JOIN tagms.draws_from AS df ON l.lot_id = df.lot_id
@@ -141,6 +140,27 @@ SELECT SUM(l.product_quantity * m1.quantity) AS quantity FROM tagms.made_up_of_1
 WHERE m1.item_id = '9'
   AND DATE(o.order_date) >= '2021-01-01'
   AND DATE(o.order_date) <= '2021-12-31';
-*/
--- TODO: query che ritorna gli items che sono sotto la soglia minima di giacenza
+
+
+
+/*
+SELECT SUM(l.product_quantity * m.quantity) AS quantity FROM
+    (
+            SELECT * FROM tagms.made_up_of_1 AS m1
+        UNION
+            SELECT * FROM tagms.made_up_of_2 AS m2
+    )
+    AS m(product_id, item_id, quantity)
+    INNER JOIN tagms.lot AS l ON m.product_id = l.product_id
+    INNER JOIN tagms.draws_from AS df ON l.lot_id = df.lot_id
+    INNER JOIN tagms.order AS o ON df.order_id = o.order_id
+WHERE m.item_id = '8'
+  AND DATE(o.order_date) >= '2021-01-01'
+  AND DATE(o.order_date) <= '2021-12-31';
+ */
+
+-- TODO: query che ritorna gli items che sono sotto la soglia minima di giacenza (troppo facile?)
+
+SELECT * FROM tagms.item AS i
+WHERE i.quantity < i.minimum_quantity;
 
