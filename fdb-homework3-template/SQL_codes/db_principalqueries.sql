@@ -124,5 +124,23 @@ SELECT SUM(p.production_cost * l.product_quantity) AS production_cost FROM tagms
     JOIN tagms.order AS o ON df.order_id = o.order_id
 WHERE DATE(o.order_date) >= '2021-01-01' AND DATE(o.order_date) <= '2021-12-31';
 
+
+-- TODO: unica voce dell'elenco numerato dice "dopo l'inserimento del lotto eseguo questa query per aggiornare lot_price". Analogo per order_price e taxes
 -- Compute order 1 price from lots bought
 select sum(l.lot_price) from tagms.draws_from as d inner join tagms.lot as l on d.lot_id=l.lot_id where d.order_id=1;
+
+
+
+-- Given an item having Item_id and a time interval (actually, two dates),
+-- find the quantity of that item that has been used for production / packaging
+/*
+SELECT SUM(l.product_quantity * m1.quantity) AS quantity FROM tagms.made_up_of_1 AS m1
+    INNER JOIN tagms.lot AS l ON m1.product_id = l.product_id
+    INNER JOIN tagms.draws_from AS df ON l.lot_id = df.lot_id
+    INNER JOIN tagms.order AS o ON df.order_id = o.order_id
+WHERE m1.item_id = '9'
+  AND DATE(o.order_date) >= '2021-01-01'
+  AND DATE(o.order_date) <= '2021-12-31';
+*/
+-- TODO: query che ritorna gli items che sono sotto la soglia minima di giacenza
+
