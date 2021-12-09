@@ -5,10 +5,11 @@ FROM table1 as t1
 WHERE t1.attr3=1*/
 
 -- list all contracts between a certain manager and a certain supplier
-select tagms.contract.* from tagms.contract inner join tagms.employee on
-        tagms.contract.employee_id=tagms.employee.tax_number inner join tagms.supplier on
-        tagms.contract.supplier_id=tagms.supplier.vat_number where tagms.employee.tax_number='BDBBHH72S22C841N' and
-        tagms.supplier.supplier_name='Reg s.r.l.';
+select c.description,c.contract_date,c.expiration_date,e.first_name as manager_name,e.last_name as manager_surname
+		from tagms.contract as c inner join tagms.employee as e on
+        c.employee_id=e.tax_number inner join tagms.supplier as s on
+        c.supplier_id=s.vat_number where e.tax_number='FGDVSF30C62D012T' and
+        s.supplier_name='Reg s.r.l.';
 
 
 -- TODO: aren't the following 2 too simple?
