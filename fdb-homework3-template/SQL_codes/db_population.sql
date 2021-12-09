@@ -264,18 +264,18 @@ INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
 
 --Aluminum Cans 0.33
 INSERT INTO tagms.made_up_of_2(Package_ID,Item_ID,Quantity) VALUES
-                                                                ('3','14','20'),
-                                                                ('3','8','10');
+    ('3','14','20'),
+    ('3','8','10');
 
 --Plastic bottle 0.5L
 INSERT INTO tagms.made_up_of_2(Package_ID,Item_ID,Quantity) VALUES
-                                                                ('5','15','30'),
-                                                                ('5','9','15');
+    ('5','15','30'),
+    ('5','9','15');
 
 --Glass bottle 1L
 INSERT INTO tagms.made_up_of_2(Package_ID,Item_ID,Quantity) VALUES
-                                                                ('7','16','20'),
-                                                                ('7','10','42');
+    ('7','16','20'),
+    ('7','10','42');
 
 
 -- Insert customers
