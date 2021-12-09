@@ -23,11 +23,6 @@ select tagms.employee.*, tagms.department.name from tagms.employee inner join ta
         tagms.employee.tax_number=tagms.work.employee_id inner join tagms.department on
         tagms.work.department_id=tagms.department.department_id where tagms.employee.still_working=TRUE;
 
-select tagms.supplier.* from tagms.supplier;
-
-select tagms.customer.* from tagms.customer;
-
-
 
 
 
@@ -35,7 +30,9 @@ select tagms.customer.* from tagms.customer;
 
 -- After inserting a new lot with identifier Lot_id (see the previous chapter)
 -- decrease the quantity of the items involved in a product of a lot
--- TODO: do this also for package
+
+/*
+-- Old query: works only for products
 UPDATE tagms.item AS i SET
     quantity = c.quantity
 FROM (
@@ -46,6 +43,28 @@ FROM (
      )
     AS c(item_id, quantity)
 WHERE c.item_id = i.item_id;
+*/
+
+-- TODO: this should work also for packages. MUST BE TESTED
+
+UPDATE tagms.item AS i SET
+    quantity = c.quantity
+FROM (
+    SELECT i.item_id, i.quantity - l.product_quantity * m1.quantity AS quantity FROM tagms.lot AS l
+        INNER JOIN tagms.made_up_of_1 AS m1 ON l.product_id = m1.product_id
+        INNER JOIN tagms.item AS i ON m1.item_id = i.item_id
+    WHERE l.lot_id = '3'
+    UNION
+    SELECT i.item_id, i.quantity - l.package_quantity * m2.quantity AS quantity FROM tagms.lot AS l
+        INNER JOIN tagms.made_up_of_2 AS m2 ON l.package_id = m2.package_id
+        INNER JOIN tagms.item AS i ON m2.item_id = i.item_id
+    WHERE l.lot_id = '3'
+    ORDER BY item_id ASC
+     )
+         AS c(item_id, quantity)
+WHERE c.item_id = i.item_id
+RETURNING i.item_id, name, description, i.quantity, minimum_quantity, item_category_id;
+
 
 
 
