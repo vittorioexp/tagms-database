@@ -7,7 +7,7 @@ WHERE t1.attr3=1*/
 -- list all contracts between a certain manager and a certain supplier
 select tagms.contract.* from tagms.contract inner join tagms.employee on
         tagms.contract.employee_id=tagms.employee.tax_number inner join tagms.supplier on
-        tagms.contract.supplier_id=tagms.supplier.vat_number where tagms.employee.first_name='Adam' and
+        tagms.contract.supplier_id=tagms.supplier.vat_number where tagms.employee.tax_number='BDBBHH72S22C841N' and
         tagms.supplier.supplier_name='Reg s.r.l.';
 
 
