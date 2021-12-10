@@ -11,12 +11,19 @@ FROM table1 as t1
     LEFT JOIN table2 as t2 ON t1.attr2=t2.attr1 
 WHERE t1.attr3=1
 
--- list all contracts between a certain manager and a certain supplier
-select c.description,c.contract\_date,c.expiration\_date,e.first\_name as manager\_name,e.last\_name as manager\_surname
-		from tagms.contract as c inner join tagms.employee as e on
-        c.employee\_id=e.tax\_number inner join tagms.supplier as s on
-        c.supplier\_id=s.vat\_number where e.tax\_number='FGDVSF30C62D012T' and
-        s.supplier\_name='Reg s.r.l.';
+List all contracts between a specific manager and a specific supplier.
+
+SELECT c.contract\_id,
+       c.description,
+       DATE(c.contract\_date) AS contract_date,
+       DATE(c.expiration\_date) AS expiration_date,
+       e.first\_name AS manager\_name,
+       e.last\_name AS manager\_surname
+		FROM tagms.contract AS c
+		    INNER JOIN tagms.employee AS e ON c.employee\_id = e.tax\_number
+		    INNER JOIN tagms.supplier AS s ON c.supplier\_id = s.vat\_number
+WHERE e.tax\_number='FGDVSF30C62D012T'
+  AND s.supplier\_name='Reg s.r.l.';
 
 -- list all outbound transactions sorted from most to least amount of money:
 select tagms.order.* from tagms.order order by tagms.order.net\_price DESC;

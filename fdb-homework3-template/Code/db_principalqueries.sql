@@ -1,5 +1,5 @@
 
--- list all contracts between a certain manager and a certain supplier
+-- List all contracts between a specific manager and a specific supplier.
 
 SELECT c.contract_id,
        c.description,
