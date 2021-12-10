@@ -149,10 +149,7 @@ Note: the given Order\_id must be written twice in the query
 
 
 
--- When inserting a lot, the operator can choose a custom price
--- or use the following query.
--- Given a lot with Lot\_id, compute the lot price
--- Note: the given Lot\_id must be written twice in the query
+When inserting a lot, the operator can choose a custom price or use the following query. Given a lot with Lot\_id, compute the lot price.
 
 UPDATE tagms.lot AS l
 SET lot\_price = tmp.lot\_price
@@ -165,10 +162,11 @@ FROM (
 WHERE l.lot\_id = '3'
 RETURNING *;
 
+Note: the given Lot\_id must be written twice in the query.
 
--- Given an item (which is used to create a product) having Item\_id as identifier
--- and a time interval (actually, two dates),
--- find the total quantity of that item that has been used for production or packaging during that time.
+
+
+Given an item (which is used to create a product) having Item\_id as identifier and a time interval (actually, two dates), find the total quantity of that item that has been used for production or packaging during that time.
 
 SELECT SUM(l.product\_quantity * m1.quantity) AS quantity FROM tagms.made\_up\_of\_1 AS m1
     INNER JOIN tagms.lot AS l ON m1.product\_id = l.product\_id
@@ -178,27 +176,28 @@ WHERE m1.item\_id = '9'
   AND DATE(o.order\_date) >= '2021-01-01'
   AND DATE(o.order\_date) <= '2021-12-31';
 
-/*
-SELECT SUM(l.product\_quantity * m.quantity) AS quantity FROM
-    (
-            SELECT * FROM tagms.made\_up\_of\_1 AS m1
-        UNION
-            SELECT * FROM tagms.made\_up\_of\_2 AS m2
-    )
-    AS m(product\_id, item\_id, quantity)
-    INNER JOIN tagms.lot AS l ON m.product\_id = l.product\_id
-    INNER JOIN tagms.draws\_from AS df ON l.lot\_id = df.lot\_id
-    INNER JOIN tagms.order AS o ON df.order\_id = o.order\_id
-WHERE m.item\_id = '8'
-  AND DATE(o.order\_date) >= '2021-01-01'
-  AND DATE(o.order\_date) <= '2021-12-31';
- */
+
+
+Return the list of items which have stock quantity lower than the minimum one.
 
 SELECT * FROM tagms.item AS i
 WHERE i.quantity < i.minimum\_quantity;
 
--- Return the list of unsellable lots which are in stock (that will expire in less than 6 months)
-SELECT * FROM tagms.lot AS l
+
+
+Return the list of unsellable lots which are in stock (that will expire in less than 6 months).
+
+SELECT
+       l.lot\_id,
+       DATE(l.expiration\_date) AS expiration\_date,
+       l.product\_id,
+       l.product\_quantity,
+       l.package\_id,
+       l.package\_quantity,
+       l.lot\_discount,
+       l.vat,
+       l.lot\_price
+       FROM tagms.lot AS l
     LEFT OUTER JOIN tagms.draws\_from AS df ON l.lot\_id = df.lot\_id
 WHERE l.expiration\_date <= (current\_date + interval '6 months')
   AND df.order\_id IS NULL;
