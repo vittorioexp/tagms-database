@@ -75,7 +75,17 @@ public class ListContracts {
 
             // -- Return the list of unsellable lots which are in stock (that will expire in less than 6 months)
 
-            String sql="SELECT * FROM tagms.lot AS l\n" +
+            String sql="SELECT\n" +
+                    "       l.lot_id,\n" +
+                    "       DATE(l.expiration_date) AS expiration_date,\n" +
+                    "       l.product_id,\n" +
+                    "       l.product_quantity,\n" +
+                    "       l.package_id,\n" +
+                    "       l.package_quantity,\n" +
+                    "       l.lot_discount,\n" +
+                    "       l.vat,\n" +
+                    "       l.lot_price\n" +
+                    "       FROM tagms.lot AS l\n" +
                     "    LEFT OUTER JOIN tagms.draws_from AS df ON l.lot_id = df.lot_id\n" +
                     "WHERE l.expiration_date <= (current_date + interval "+interval+")\n" +
                     "  AND df.order_id IS NULL;";
