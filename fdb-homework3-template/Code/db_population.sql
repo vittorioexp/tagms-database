@@ -99,62 +99,40 @@ INSERT INTO Tagms.package(Name, Description, Weight, Height, Width, Depth, Packa
 -- 50 beers, 100 beers of 0.33L price 2 without discount
 INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity,
                       Package_Quantity,Package_ID, Product_ID) VALUES
-    ('2022-03-14','0.0','22.0', '200', '50', '5','1', '1');
-
-INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity,
-                      Package_Quantity,Package_ID, Product_ID) VALUES
+    ('2022-03-14','0.0','22.0', '200', '50', '5','1', '1'),
     ('2022-04-14','0.0','22.0', '400', '100', '3','1', '1');
 
 -- 50 cokes, 100 cokes of 0.5L price 1.5 without discount
 INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity,
                       Package_Quantity,Package_ID, Product_ID) VALUES
-    ('2022-05-14','0.0','22', '225', '50', '2','3', '3');
-
-INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity,
-                      Package_Quantity,Package_ID, Product_ID) VALUES
+    ('2022-05-14','0.0','22', '225', '50', '2','3', '3'),
     ('2022-05-14','0.0','22', '450', '100', '5','3', '3');
 
 -- 50 juices price 1.3, 100 juices price 3.5 with 10% discount
 INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity,
                       Package_Quantity,Package_ID, Product_ID) VALUES
-    ('2022-05-14','0.0','22.0', '227.5', '50', '4','5', '5');
-
-
-INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity,
-                      Package_Quantity,Package_ID, Product_ID) VALUES
+    ('2022-05-14','0.0','22.0', '227.5', '50', '4','5', '5'),
     ('2022-04-14','10.0','22.0', '455', '100', '4','5', '3');
 
 -- 100 fanta explosive price 1.5 with 5% discount, 70 fanta explosive price 1.5 without discount, 110 fanta explosive price 1.5 with 15% discount
 INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity,
                       Package_Quantity,Package_ID, Product_ID) VALUES
-    ('2022-11-19','5.0','22.0', '1008.00', '100', '3','5', '6');
-
-INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity,
-                      Package_Quantity,Package_ID, Product_ID) VALUES
-    ('2022-10-14','0.0','22.0', '165.00', '70', '6','3', '6');
-
-INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity,
-                      Package_Quantity,Package_ID, Product_ID) VALUES
+    ('2022-11-19','5.0','22.0', '1008.00', '100', '3','5', '6'),
+    ('2022-10-14','0.0','22.0', '165.00', '70', '6','3', '6'),
     ('2022-06-19','15.0','22.0', '1008.00', '110', '100','5', '6');
 
 -- 30 smoothie of 0.5L price 3.6 with 10% discount (expired), 40 smoothie of 0.5L price 3.6 with 0% discount (expired)
 
 INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity,
                       Package_Quantity,Package_ID, Product_ID) VALUES
-    ('2017-06-19','10.0','22.0', '302.40', '30', '100','5', '7');
-
-INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity,
-                      Package_Quantity,Package_ID, Product_ID) VALUES
+    ('2017-06-19','10.0','22.0', '302.40', '30', '100','5', '7'),
     ('2018-11-24','0.0','22.0', '403.20', '30', '100','5', '7');
 
 -- 30 sprite of 0.5L price 2.15 with 10% discount, 60 sprite of 0.5L price 2.15 with 0% discount (expired)
 
 INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity,
                       Package_Quantity,Package_ID, Product_ID) VALUES
-    ('2022-06-10','10.0','22.0', '172.5', '30', '100','5', '8');
-
-INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity,
-                      Package_Quantity,Package_ID, Product_ID) VALUES
+    ('2022-06-10','10.0','22.0', '172.5', '30', '100','5', '8'),
     ('2020-08-17','0.0','22.0', '345', '60', '100','5', '8');
 
 
@@ -163,49 +141,29 @@ INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quant
 
 -- Beer Atomic: contains low mineral water, sugar w, coloring e100
 INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
-    ('1','4','330');
-
-INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
-    ('1','2','15');
-
-INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
+    ('1','4','330'),
+    ('1','2','15'),
     ('1','5','3');
 
 -- Coke Mega: contains sugar c, sugar w, low mineral water, coloring e150
 INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
-    ('2','1','3');
-
-INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
-    ('2','2','3');
-
-INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
-    ('2','4','500');
-
-INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
+    ('2','1','3'),
+    ('2','2','3'),
+    ('2','4','500'),
     ('2','7','4');
 
 
 -- Juice: contains sugar c, sugar w, coloring e101, low mineral water
 INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
-    ('3','1','2');
-
-INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
-    ('3','2','4');
-
-INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
-    ('3','6','2');
-
-INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
+    ('3','1','2'),
+    ('3','2','4'),
+    ('3','6','2'),
     ('3','4','600');
 
 -- Fanta: contains sugar c, coloring e100, low mineral water
 INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
-    ('6','1','10');
-
-INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
-    ('6','5','20');
-
-INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
+    ('6','1','10'),
+    ('6','5','20'),
     ('6','4','550');
 
 
