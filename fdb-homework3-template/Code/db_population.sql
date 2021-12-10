@@ -2,9 +2,7 @@
 -- Product_Category
 
 INSERT INTO Tagms.product_Category(Name, Description) VALUES
-    ('Beer','An alcoholic beverage typically obtained from the fermentation of wort based on barley malt');
-
-INSERT INTO Tagms.product_Category(Name, Description) VALUES
+    ('Beer','An alcoholic beverage typically obtained from the fermentation of wort based on barley malt'),
     ('Soft Drink','Soft Drink is a sparkling flavored drink');
 
 INSERT INTO Tagms.product_Category(Name, Description) VALUES
