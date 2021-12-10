@@ -69,7 +69,7 @@ public class ListContracts {
                     "Statement successfully created in %d milliseconds .%n",
                     end - start);
 
-            String interval = '6 months';
+            String interval = "6 months";
 
             start = System.currentTimeMillis();
 
@@ -105,7 +105,16 @@ public class ListContracts {
             String lot_discount;
             String lot_price;
 
-            System.out.printf(" LOT ID\t\t\t\t\tEXPIRATION DATE\t\t\tPRODUCT ID\t\t\tPRODUCT QUANTITY\t\t\tPACKAGE ID \t\t\t PACKAGE QUANTITY \t\t\t LOT DISCOUNT \t\t\t LOT PRICE %n");
+            System.out.println(
+                pad("LOT ID", 20) +
+                pad("EXPIRATION DATE", 20) +
+                pad("PRODUCT ID", 20) +
+                pad("PRODUCT QUANTITY", 20) +
+                pad("PACKAGE ID ", 20) +
+                pad("PACKAGE QUANTITY", 20) +
+                pad("LOT DISCOUNT", 20) +
+                pad("LOT PRICE", 20)
+            );
 
 
             // cycle on the query results
@@ -121,8 +130,16 @@ public class ListContracts {
                 lot_discount = rs.getString("lot_discount");
                 lot_price = rs.getString("lot_price");
 
-
-                System.out.printf(" %s\t\t%s\t\t\t\t%s\t\t\t\t%s\t\t\t\t\t%s\t\t\t\t\t%s\t\t\t\t\t%s\t\t\t\t\t%s\t\t\t\t\t%s\t\t\t\t\t%s%n", lot_id; expiration_date; product_id; product_quantity; package_id; package_quantity; lot_discount; lot_price);
+                System.out.println(
+                pad(String.valueOf(lot_id), 20) +
+                pad(String.valueOf(expiration_date), 20) +
+                pad(String.valueOf(product_id), 20) +
+                pad(String.valueOf(product_quantity), 20) +
+                pad(String.valueOf(packet_id), 20) +
+                pad(String.valueOf(packet_quantity), 20) +
+                pad(String.valueOf(lot_discount), 20) +
+                pad(String.valueOf(lot_price), 20)
+                );
 
 
 
