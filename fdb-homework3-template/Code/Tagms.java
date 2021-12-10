@@ -85,9 +85,67 @@ public class Tagms {
             // cycle on the query results ( i . e . for each employee we will select the events to be printed )
             while ( rs.next ()) {
                 // TODO: put code here...
-                //...
+                /*
+                // read visit identifier
+                id = rs . getString ("id");
+                // read the diagnosis
+                name = rs . getString (" name ");
+                // read the date scheduled for the visit
+                email = rs . getString (" email ");
+                System . out . printf ("% nPark %s - Name : %s, Reference Email : %s%n",
+                id , name , email );
+                // set up the query to get the list of events performed on
+                // the rides installed in the current park
+                sql =" SELECT p. name as Park ,e. starttime :: date as Date ,
+                r. name as Ride , e.type , e. description , u. first˙name ,
+                u. last˙name , c. name as Company , c. email as ReferenceEmail
+                FROM Amusementrides . Park as p
+                INNER JOIN Amusementrides . ride as r on r. parkid =p.id
+                INNER JOIN Amusementrides . event as e on e. rideid =r.id
+                INNER JOIN Amusementrides . user as u ON e. userid =u. email
+                INNER JOIN Amusementrides . Company as c ON u. companyID =c.vat
+                WHERE p.id="+ id +" ORDER BY Ride , Date DESC ";
+                rs2 = stmt . executeQuery ( sql );
+                String Ride ;
+                String Technician ;
+                String Date ;
+                String Company ;
+                String companyEmail ;
+                String Description ;
+                String prev ="";
+                if (! rs2 . isBeforeFirst ()){ // if there are nno events related to this park
+                   System . out . printf (" There are no events in %s park %n", name );
+                }
+                else {
+                while ( rs2 . next ()) { // if there is at least one event
+                    Ride = rs2 . getString (" ride ");
+                    Technician = rs2 . getString (" first˙name ") + ’ ’ + rs2 . getString (" last˙name ");
+                    Date = rs2 . getString (" date ");
+                    Company = rs2 . getString (" company ");
+                    companyEmail = rs2 . getString (" referenceemail ");
+                    Description = rs2 . getString (" description ");
+                    if (! Ride . equals ( prev )) {
+                        // if the current ride is equal to the previous row ,
+                        // we continue to write events
+                        // if the current ride is different from the previous
+                        // row , we start the new list related to the new ride
+                        System . out . printf ("%n - Ride : %s%n", Ride );
+                        System . out . printf (" DATE “ tCOMPANY “ tEMAIL “ tTECHNICIAN “ tDESCRIPTION %n");
+                        prev = Ride ;
+                    }
+                    System . out . printf ("“t%s“t%s“t%s“t%s“t%s%n", Date , Company ,
+                    companyEmail , Technician , Description );
+                }
+                 */
+                rs2 . close ();
+            
             }
-
+            rs . close ();
+            stmt . close ();
+            con . close ();
+            end = System . currentTimeMillis ();
+            System . out . printf ("% nData correctly exctracted and visualized in %d milliseconds .%n",
+            end - start );
         } catch (SQLException e ) {
             System.out.printf ("Database access error :%n");
             // cycle in the exception chain
