@@ -25,17 +25,22 @@ SELECT c.contract\_id,
 WHERE e.tax\_number='FGDVSF30C62D012T'
   AND s.supplier\_name='Reg s.r.l.';
 
--- list all outbound transactions sorted from most to least amount of money:
-select tagms.order.* from tagms.order order by tagms.order.net\_price DESC;
+Show all the details of the employees in the organization.
 
--- list all inbound transactions sorted from most to least amount of money:
-select tagms.specify.* from tagms.specify order by tagms.specify.price DESC;
-
--- Show all the details of the employees in the organization
-
-select tagms.employee.*, tagms.department.name from tagms.employee inner join tagms.work on
-        tagms.employee.tax\_number=tagms.work.employee\_id inner join tagms.department on
-        tagms.work.department\_id=tagms.department.department\_id where tagms.employee.still\_working=TRUE;
+SELECT e.tax\_number,
+       e.first\_name,
+       e.last\_name,
+       e.phone\_number,
+       e.email\_address,
+       e.birth\_date,
+       e.hiring\_date,
+       r.name,
+       d.name
+FROM tagms.employee AS e
+    INNER JOIN tagms.work AS w ON e.tax\_number = w.employee\_id
+    INNER JOIN tagms.department AS d ON w.department\_id = d.department\_id
+    INNER JOIN tagms.role AS r ON r.role\_id = e.role\_id
+WHERE e.still_working = TRUE;
 
 -- TODO: Explain briefly the principal queries
 
