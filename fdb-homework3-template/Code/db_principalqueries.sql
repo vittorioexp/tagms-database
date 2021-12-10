@@ -99,7 +99,6 @@ ORDER BY l.expiration_date ASC;
 
 
 
--- TODO: Possiamo mettere i risultati di queste selezioni all'interno di una tabella
 --  e fare qualche operazione tra queste 3 diverse righe
 --  oppure teniamo tre query separate per semplicità?
 
