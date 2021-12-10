@@ -174,7 +174,7 @@ INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quant
                       Package_Quantity,Package_ID, Product_ID) VALUES
     ('2022-04-14','0.0','22.0', '400', '100', '3','1', '1');
 
--- 50 cokes, 100 cokes of 0.5L price 3 without discount
+-- 50 cokes, 100 cokes of 0.5L price 1.5 without discount
 INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity,
                       Package_Quantity,Package_ID, Product_ID) VALUES
     ('2022-05-14','0.0','22', '225', '50', '2','3', '3');
@@ -183,19 +183,20 @@ INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quant
                       Package_Quantity,Package_ID, Product_ID) VALUES
     ('2022-05-14','0.0','22', '450', '100', '5','3', '3');
 
---50 juices price 3.5
+-- 50 juices price 1.3, 100 juices price 3.5 with 10% discount
 INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity,
                       Package_Quantity,Package_ID, Product_ID) VALUES
-    ('2022-05-14','0.0','22.0', '', '50', '4','5', '5');
+    ('2022-05-14','0.0','22.0', '227.5', '50', '4','5', '5');
 
---100 juices price 1.4 with 10% discount
-INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity,
-                      Package_Quantity,Package_ID, Product_ID) VALUES
-    ('2022-04-14','10.0','22.0', '140.00', '100', '4','5', '3');
 
 INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity,
                       Package_Quantity,Package_ID, Product_ID) VALUES
-    ('2022-11-19','10.0','22.0', '1008.00', '100', '3','5', '6');
+    ('2022-04-14','10.0','22.0', '455', '100', '4','5', '3');
+
+-- 100 fanta explosive price 1.5 with 5% discount, 70 fanta explosive price 1.5 without discount, 110 fanta explosive price 1.5 with 15% discount
+INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity,
+                      Package_Quantity,Package_ID, Product_ID) VALUES
+    ('2022-11-19','5.0','22.0', '1008.00', '100', '3','5', '6');
 
 INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity,
                       Package_Quantity,Package_ID, Product_ID) VALUES
@@ -203,9 +204,13 @@ INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quant
 
 INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity,
                       Package_Quantity,Package_ID, Product_ID) VALUES
-    ('2022-06-19','10.0','22.0', '1008.00', '100', '100','5', '6');
+    ('2022-06-19','15.0','22.0', '1008.00', '110', '100','5', '6');
 
+-- 30 smoothie of 0.5L price 3.6 with 10% discount (expired)
 
+INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity,
+                      Package_Quantity,Package_ID, Product_ID) VALUES
+    ('2017-06-19','10.0','22.0', '1008.00', '30', '100','5', '7');
 
 
 
