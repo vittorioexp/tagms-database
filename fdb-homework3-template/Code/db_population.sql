@@ -3,12 +3,8 @@
 
 INSERT INTO Tagms.product_Category(Name, Description) VALUES
     ('Beer','An alcoholic beverage typically obtained from the fermentation of wort based on barley malt'),
-    ('Soft Drink','Soft Drink is a sparkling flavored drink');
-
-INSERT INTO Tagms.product_Category(Name, Description) VALUES
-    ('Juice Pineapple','Juice Pineapple is a drink made from the extraction or pressing of the natural liquid contained in fruit and vegetables') ;
-
-INSERT INTO Tagms.product_Category(Name, Description) VALUES
+    ('Soft Drink','Soft Drink is a sparkling flavored drink'),
+    ('Juice Pineapple','Juice Pineapple is a drink made from the extraction or pressing of the natural liquid contained in fruit and vegetables'),
     ('Smoothie','Smoothie is a drink made by fruit and vegetables in a blender') ;
 
 
@@ -17,30 +13,14 @@ INSERT INTO Tagms.product_Category(Name, Description) VALUES
 -- Insert Item_Category
 
 INSERT INTO Tagms.item_Category(name, description) VALUES
-    ('Soft Sugar','Soft sugar');
-
-INSERT INTO Tagms.item_Category(name, description) VALUES
-    ('Sugar','Special sugar');
-
-INSERT INTO Tagms.item_Category(name, description) VALUES
-    ('Coloring','Food coloring');
-
-INSERT INTO Tagms.item_Category(name, description) VALUES
-    ('Water','Water');
-
-INSERT INTO Tagms.item_Category(name, description) VALUES
-    ('Tape','Tape employed for packaging');
-
-INSERT INTO Tagms.item_Category(name, description) VALUES
-    ('Polystyrene','Polystyrene employed for packaging');
-
-INSERT INTO Tagms.item_Category(name, description) VALUES
-    ('Aluminum','Aluminum employed for packaging');
-
-INSERT INTO Tagms.item_Category(name, description) VALUES
-    ('Plastic','Plastic employed for packaging');
-
-INSERT INTO Tagms.item_Category(name, description) VALUES
+    ('Soft Sugar','Soft sugar'),
+    ('Sugar','Special sugar'),
+    ('Coloring','Food coloring'),
+    ('Water','Water'),
+    ('Tape','Tape employed for packaging'),
+    ('Polystyrene','Polystyrene employed for packaging'),
+    ('Aluminum','Aluminum employed for packaging'),
+    ('Plastic','Plastic employed for packaging'),
     ('Glass','Glass employed for packaging');
 
 
