@@ -227,40 +227,25 @@ INSERT INTO Tagms.department(Name, Description) VALUES
 -- Insert in Work
 -- Operations: 2 employees Sales: 2 employees Administration: 1 employee Maintenance: 1 employee Shipping: 2 employees
 
-INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES ('1','FGDVSF30C62D012T');
-
-INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES ('1','BDBBHH72S22C841N');
-
-INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES ('2','HGDVSF40C62D012T');
-
-INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES ('2','RNNZLB88S21B046D');
-
-INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES ('3','DKLERT23D96A316T');
-
-INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES ('2','MGHRLQ80B49H779S');
-
-INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES ('4','QMUHFE38E25G815G');
-
-INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES ('5','QMUHFE38E25G815G');
-
-INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES ('5','RNNZLB88S21B046D');
+INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES
+    ('1','FGDVSF30C62D012T'),
+    ('1','BDBBHH72S22C841N'),
+    ('2','HGDVSF40C62D012T'),
+    ('2','RNNZLB88S21B046D'),
+    ('3','DKLERT23D96A316T'),
+    ('2','MGHRLQ80B49H779S'),
+    ('4','QMUHFE38E25G815G'),
+    ('5','QMUHFE38E25G815G'),
+    ('5','RNNZLB88S21B046D');
 
 
 -- Insert suppliers
 
 INSERT INTO Tagms.supplier(vat_number, supplier_name, phone_number, email_address, address, registration_date) VALUES
-    ('86334519757','Reg s.r.l.','3794567845','regsrl@gmail.com','Via Roma 4 35100 Padova','2021-12-04');
-
-INSERT INTO Tagms.supplier(vat_number, supplier_name, phone_number, email_address, address, registration_date) VALUES
-    ('23932902833','VisumH2O','3396547835','vish2o@gmail.com','Via Trieste 4 31100 Treviso','2021-10-07');
-
-INSERT INTO Tagms.supplier(vat_number, supplier_name, phone_number, email_address, address, registration_date) VALUES
-    ('23232503889','EnergyFeed s.p.a.','3365447309','feed4life@gmail.com','Via Venezia 7 19100 Spezia','2021-04-08');
-
-INSERT INTO Tagms.supplier(vat_number, supplier_name, phone_number, email_address, address, registration_date) VALUES
-    ('22134054695','ReSugar','3366244789','sugar@gmail.com','Via Marsalis 1 81290 Firenze','2021-01-02');
-
-INSERT INTO Tagms.supplier(vat_number, supplier_name, phone_number, email_address, address, registration_date) VALUES
+    ('86334519757','Reg s.r.l.','3794567845','regsrl@gmail.com','Via Roma 4 35100 Padova','2021-12-04'),
+    ('23932902833','VisumH2O','3396547835','vish2o@gmail.com','Via Trieste 4 31100 Treviso','2021-10-07'),
+    ('23232503889','EnergyFeed s.p.a.','3365447309','feed4life@gmail.com','Via Venezia 7 19100 Spezia','2021-04-08'),
+    ('22134054695','ReSugar','3366244789','sugar@gmail.com','Via Marsalis 1 81290 Firenze','2021-01-02'),
     ('45288712635','MaterialPCK','3366244789','matforpack@gmail.com','Via Resto 1 23202 Rovigo','2021-02-011');
 
 
@@ -269,27 +254,13 @@ INSERT INTO Tagms.supplier(vat_number, supplier_name, phone_number, email_addres
 -- Inserting contracts, be careful that the supplier_id and employee_id to be inserted already exist in tables supplier and employee
 
 INSERT INTO tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) VALUES
-    ('contract with Reg s.r.l.','2020-01-18','2021-12-06','2023-12-31','86334519757','FGDVSF30C62D012T');
-
-INSERT INTO tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) VALUES
-    ('contract with Reg s.r.l.','2021-02-01','2021-12-08','2024-12-31','86334519757','DKLERT23D96A316T');
-
-INSERT INTO tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) VALUES
-    ('contract with VisumH2O','2019-01-25','2021-12-07','2022-12-31','23932902833','FGDVSF30C62D012T');
-
-INSERT INTO tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) VALUES
-    ('contract with ReSugar','2017-06-11','2021-12-21','2025-04-01','22134054695','RNNZLB88S21B046D');
-
-INSERT INTO tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) VALUES
-    ('contract with MaterialPCK','2021-01-17','2021-12-01','2023-05-22','45288712635','RNNZLB88S21B046D');
-
-INSERT INTO tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) VALUES
-    ('contract with EnergyFeed s.p.a.','2018-02-07','2021-12-05','2022-03-14','45288712635','DKLERT23D96A316T');
-
-INSERT INTO tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) VALUES
-    ('contract with Reg s.r.l.','2020-03-12','2021-11-06','2023-10-31','86334519757','FGDVSF30C62D012T');
-
-INSERT INTO tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) VALUES
+    ('contract with Reg s.r.l.','2020-01-18','2021-12-06','2023-12-31','86334519757','FGDVSF30C62D012T'),
+    ('contract with Reg s.r.l.','2021-02-01','2021-12-08','2024-12-31','86334519757','DKLERT23D96A316T'),
+    ('contract with VisumH2O','2019-01-25','2021-12-07','2022-12-31','23932902833','FGDVSF30C62D012T'),
+    ('contract with ReSugar','2017-06-11','2021-12-21','2025-04-01','22134054695','RNNZLB88S21B046D'),
+    ('contract with MaterialPCK','2021-01-17','2021-12-01','2023-05-22','45288712635','RNNZLB88S21B046D'),
+    ('contract with EnergyFeed s.p.a.','2018-02-07','2021-12-05','2022-03-14','45288712635','DKLERT23D96A316T'),
+    ('contract with Reg s.r.l.','2020-03-12','2021-11-06','2023-10-31','86334519757','FGDVSF30C62D012T'),
     ('contract with Reg s.r.l.','2020-04-17','2021-10-06','2023-12-30','86334519757','FGDVSF30C62D012T');
 
 -- Inserting rows in specify, be sure that item_id and contract_id exist in tables item and contract
