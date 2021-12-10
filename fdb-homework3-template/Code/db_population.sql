@@ -165,28 +165,28 @@ INSERT INTO Tagms.package(Name, Description, Weight, Height, Width, Depth, Packa
 
 -- Lot
 
--- 50 beers, 100 beers of 0.33L price 1.5 without discount
+-- 50 beers, 100 beers of 0.33L price 2 without discount
 INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity,
                       Package_Quantity,Package_ID, Product_ID) VALUES
-    ('2022-03-14','0.0','22.0', '75.00', '50', '5','1', '1');
+    ('2022-03-14','0.0','22.0', '200', '50', '5','1', '1');
 
 INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity,
                       Package_Quantity,Package_ID, Product_ID) VALUES
-    ('2022-04-14','0.0','22.0', '150.00', '100', '3','1', '1');
+    ('2022-04-14','0.0','22.0', '400', '100', '3','1', '1');
 
--- 50 cokes, 100 cokes of 0.5L price 1.6 without discount
+-- 50 cokes, 100 cokes of 0.5L price 3 without discount
 INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity,
                       Package_Quantity,Package_ID, Product_ID) VALUES
-    ('2022-05-14','0.0','22', '80.00', '50', '2','3', '2');
+    ('2022-05-14','0.0','22', '225', '50', '2','3', '3');
 
 INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity,
                       Package_Quantity,Package_ID, Product_ID) VALUES
-    ('2022-05-14','0.0','22', '160.00', '100', '5','3', '2');
+    ('2022-05-14','0.0','22', '450', '100', '5','3', '3');
 
---50 juices price 1.4
+--50 juices price 3.5
 INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity,
                       Package_Quantity,Package_ID, Product_ID) VALUES
-    ('2022-05-14','0.0','22.0', '70.00', '50', '4','5', '3');
+    ('2022-05-14','0.0','22.0', '', '50', '4','5', '5');
 
 --100 juices price 1.4 with 10% discount
 INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity,
@@ -203,7 +203,9 @@ INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quant
 
 INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity,
                       Package_Quantity,Package_ID, Product_ID) VALUES
-    ('2022-06-19','10.0','22.0', '1008.00', '100', '100','5', '6');	
+    ('2022-06-19','10.0','22.0', '1008.00', '100', '100','5', '6');
+
+
 
 
 
