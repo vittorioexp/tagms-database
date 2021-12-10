@@ -7,128 +7,205 @@ Following are some examples of queries used to populate the database. The comple
 
 \begin{lstlisting}[
 language=SQL,
+breaklines=true,
 keywordstyle=\color{blue},
 stringstyle=\color{mauve},
 showstringspaces=false,
 basicstyle=\ttfamily\footnotesize]
 
--- Product\_Category
 
-INSERT INTO Tagms.product\_Category(Name, Description) VALUES
-    ('Beer','An alcoholic beverage typically obtained from the fermentation of wort based on barley malt');
+
+
+-- Product_Category
+INSERT INTO Tagms.product_Category(Name, Description) VALUES
+('Beer','An alcoholic beverage typically obtained from the fermentation of wort based on barley malt');
+
+-- Insert Item_Category
+INSERT INTO Tagms.item_Category(name, description) VALUES
+('Soft Sugar','Soft sugar');
+
+-- Package_Category
+INSERT INTO Tagms.package_Category(Name, Description) VALUES
+('Package XS','Extra small package');
+
+-- Product
+INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Volume, Net_weight, Package_weight, Nutritional_Facts, Product_Category_ID)  VALUES
+('Beer Atomic in aluminum can','An alcoholic beverage typically obtained from the fermentation of wort based on barley malt','2.00', '2.0', '450', '450', '15', 'Calories: 153, Alcohol: 14 grams, Carbs: 13 grams, Protein: 2 grams, Fat: 0 grams.', '1');
+
+-- Item
+INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
+('Sugar C','Raw cane sugar is a less caloric and healthier sugar','3000000','100000','1');
+
+-- Package
+INSERT INTO Tagms.package(Name, Description, Weight, Height, Width, Depth, Package_Category_ID) VALUES
+('Package XS-1', 'Extra small package, type 1', '10', '3', '5', '2', '1');
+
+-- Lot
+INSERT INTO Tagms.lot(Expiration_date,Lot_discount,VAT, Lot_price, Product_Quantity, Package_Quantity,Package_ID, Product_ID) VALUES
+('2022-03-14','0.0','22.0', '200', '50', '5','1', '1'),
+('2022-04-14','0.0','22.0', '400', '100', '3','1', '1');
+
+-- Made_Up_Of_1
+INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
+('1','4','330'), ('1','2','15'), ('1','5','3');
+
+-- Made_Up_Of_2
+INSERT INTO tagms.made_up_of_2(Package_ID,Item_ID,Quantity) VALUES
+('3','14','20'), ('3','8','10');
+
+-- Customer
+INSERT INTO Tagms.customer VALUES
+('74853719034','Conad','+393895562233','Via Prato 25, Pordenone','conad_pordenone@mail.com',current_date);
+
+-- Role
+INSERT INTO Tagms.role(Name,Description) VALUES
+('Manager','The managers are in charge of interacting with suppliers and concluding contracts with them');
+
+-- Employee
+INSERT INTO Tagms.employee VALUES
+('FGDVSF30C62D012T','John','Smith','3516235214','johnsmith@gmail.com','1995-12-30','2018-12-12','true',1);
+
+-- Department
+INSERT INTO Tagms.department(Name, Description) VALUES
+('Operations','Responsible for converting raw materials and packaging materials into finished goods and work to improve the efficiency of the production.');
+
+-- Work
+INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES
+('1','FGDVSF30C62D012T');
+
+-- Supplier
+INSERT INTO Tagms.supplier(vat_number, supplier_name, phone_number, email_address, address, registration_date) VALUES
+('86334519757','Reg s.r.l.','3794567845','regsrl@gmail.com','Via Roma 4 35100 Padova','2021-12-04'),
+
+-- Contract
+INSERT INTO tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) VALUES
+('contract with Reg s.r.l.','2020-01-18','2021-12-06','2023-12-31','86334519757','FGDVSF30C62D012T');
+
+-- Specify
+INSERT INTO tagms.specify VALUES
+(1,4,10200,7500),(2,4,12200,1000),(3,4,10231,5000);
+
+-- Order
+INSERT INTO Tagms.order(net_price, taxes, order_date, order_paid, employee_id, customer_id) VALUES
+(100,50,'2020-04-25','true','HGDVSF40C62D012T','56983717634');
+
+-- Draws_from
+INSERT INTO Tagms.draws_from(Lot_ID, Order_ID) VALUES
+('1','1'),('3','2'),('2','3');
+
+-- Ship
+INSERT INTO Tagms.ship(Order_ID, Employee_ID, Shipping_date,Track_num) VALUES
+(1,'BDBBHH72S22C841N','2021-04-27','LM003926195IT'),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 -- Insert Item\_Category
-
 INSERT INTO Tagms.item\_Category(name, description) VALUES
     ('Soft Sugar','Soft sugar');
-
-
+    
 -- Package\_Category
-
-INSERT INTO Tagms.package\_Category(Name, Description) VALUES ('Package XS','Extra small package');
-
-
--- Same products can have different packages (and so different Package\_weight)
--- E.g., Beer Atomic in aluminum can VS Beer Atomic in glass bottle
+INSERT INTO Tagms.package\_Category(Name, Description) VALUES 
+('Package XS','Extra small package');
 
 -- Product
 INSERT INTO Tagms.product(Name, Description, Production\_cost, Price\_increase, Volume, Net\_weight, Package\_weight, Nutritional\_Facts, Product\_Category\_ID)  VALUES
-    ('Beer Atomic in aluminum can','An alcoholic beverage typically obtained from the fermentation of wort based on barley malt',
-     '2.00', '2.0', '450', '450', '15', 'Calories: 153, Alcohol: 14 grams, Carbs: 13 grams, Protein: 2 grams, Fat: 0 grams.', '1');
-
+('Beer Atomic in aluminum can','An alcoholic beverage typically obtained from the fermentation of wort based on barley malt','2.00', '2.0', '450', '450', '15', 'Calories: 153, Alcohol: 14 grams, Carbs: 13 grams, Protein: 2 grams, Fat: 0 grams.', '1');
 
 -- Package
-
 INSERT INTO Tagms.package(Name, Description, Weight, Height, Width, Depth, Package\_Category\_ID) VALUES
-    ('Package XS-1', 'Extra small package, type 1', '10', '3', '5', '2', ‘1');
+('Package XS-1', 'Extra small package, type 1', '10', '3', '5', '2', ‘1');
 
 
 -- Lot
-
--- 50 beers, 100 beers of 0.33L price 1.5 without discount
-INSERT INTO Tagms.lot(Expiration\_date,Lot\_discount,VAT, Lot\_price, Product\_Quantity,
-                      Package\_Quantity,Package\_ID, Product\_ID) VALUES
-    ('2022-03-14','0.0','22.0', '75.00', '50', '5','1', '1');
+INSERT INTO Tagms.lot(Expiration\_date,Lot\_discount,VAT, Lot\_price, Product\_Quantity,Package\_Quantity,Package\_ID, Product\_ID) VALUES
+('2022-03-14','0.0','22.0', '75.00', '50', '5','1', '1');
 
 
 -- Made\_Up\_Of\_1
--- (For sake of simplicity, we inserted only few tuples in made\_up\_of 1 and 2)
-
--- Beer Atomic: contains low mineral water, sugar w, coloring e100
 INSERT INTO Tagms.made\_Up\_Of\_1(Product\_ID, Item\_ID,Quantity) VALUES
-    ('1','4','330');
+('1','4','330');
 
 
 -- Made\_Up\_Of\_2
--- (For sake of simplicity, we inserted only few tuples in made\_up\_of 1 and 2)
-
---Aluminum Cans 0.33
 INSERT INTO tagms.made\_up\_of\_2(Package\_ID,Item\_ID,Quantity) VALUES
-    (‘3','14','20');									
+(‘3','14','20');									
 
 
 -- Insert customers
 INSERT INTO Tagms.customer VALUES
-    ('74853719034','Conad','+393895562233','Via Prato 25, Pordenone’,'conad\_pordenone@mail.com',current\_date);
+('74853719034','Conad','+393895562233','Via Prato 25, Pordenone’,'conad\_pordenone@mail.com',current\_date);
 
 
 -- Insert Roles
-
 INSERT INTO Tagms.role(Name,Description) VALUES
-    ('Manager','The managers are in charge of interacting with suppliers and concluding contracts with them');
+('Manager','The managers are in charge of interacting with suppliers and concluding contracts with them');
 
 
 -- Insert employees
-
 INSERT INTO Tagms.employee VALUES
-    (‘FGDVSF30C62D012T','John','Smith','3516235214','johnsmith@gmail.com','1995-12-30','2018-12-12','true',1);
+(‘FGDVSF30C62D012T','John','Smith','3516235214','johnsmith@gmail.com','1995-12-30','2018-12-12','true',1);
 
 -- Insert departments
-
 INSERT INTO Tagms.department(Name, Description) VALUES
-    ('Operations','Responsible for converting raw materials and packaging materials into finished goods and work to improve the efficiency of the production.');
+('Operations','Responsible for converting raw materials and packaging materials into finished goods and work to improve the efficiency of the production.');
 
 
 
 -- Insert in Work
--- Operations: 2 employees Sales: 2 employees Administration: 1 employee Maintenance: 1 employee Shipping: 2 employees
-
-INSERT INTO Tagms.work(Department\_ID, Employee\_ID) VALUES ('1','FGDVSF30C62D012T');
+INSERT INTO Tagms.work(Department\_ID, Employee\_ID) VALUES
+('1','FGDVSF30C62D012T');
 
 
 -- Insert suppliers
-
 INSERT INTO Tagms.supplier(vat\_number, supplier\_name, phone\_number, email\_address, address, registration\_date) VALUES
-    ('86334519757','Reg s.r.l.','3794567845','regsrl@gmail.com','Via Roma 4 35100 Padova','2021-12-04');
+('86334519757','Reg s.r.l.','3794567845','regsrl@gmail.com','Via Roma 4 35100 Padova','2021-12-04');
 
-
--- Inserting contracts, be careful that the supplier\_id and employee\_id to be inserted already exist in tables supplier and employee
-
+-- Insert contract
 INSERT INTO tagms.contract (description,contract\_date,delivery\_date,expiration\_date,supplier\_id,employee\_id) VALUES
-    ('contract with Reg s.r.l.','2020-01-18','2021-12-06','2023-12-31','86334519757','FGDVSF30C62D012T');
+('contract with Reg s.r.l.','2020-01-18','2021-12-06','2023-12-31','86334519757','FGDVSF30C62D012T');
 
-
--- Inserting rows in specify, be sure that item\_id and contract\_id exist in tables item and contract
-
--- Attributes order: item\_id, contract\_id, price, purchased\_quantity
-
+-- Insert specify
 INSERT INTO tagms.specify VALUES
-    (1,4,10200,7500);
-
+(1,4,10200,7500);
 
 -- Insert orders
 INSERT INTO Tagms.order(net\_price, taxes, order\_date, order\_paid, employee\_id, customer\_id) VALUES
-    (100,50,’2020-04-25','true','HGDVSF40C62D012T','56983717634');
-
+(100,50,’2020-04-25','true','HGDVSF40C62D012T','56983717634');
 
 -- Draws\_from
 INSERT INTO Tagms.draws\_from(Lot\_ID, Order\_ID) VALUES
-    ('1','1');
+('1','1');
 
 
--- Inserting ships, be careful with the shipping\_date and with the Order\_ID that must be in the table order
+-- Insert ship
 INSERT INTO Tagms.ship(Order\_ID, Employee\_ID, Shipping\_date,Track\_num) VALUES
-    (1,’BDBBHH72S22C841N','2021-04-27','LM003926195IT');
+(1,’BDBBHH72S22C841N','2021-04-27','LM003926195IT');
 
 \end{lstlisting}
