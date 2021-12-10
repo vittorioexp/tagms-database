@@ -30,6 +30,7 @@ select tagms.employee.*, tagms.department.name from tagms.employee inner join ta
         tagms.employee.tax\_number=tagms.work.employee\_id inner join tagms.department on
         tagms.work.department\_id=tagms.department.department\_id where tagms.employee.still\_working=TRUE;
 
+-- TODO: Explain briefly the principal queries
 
 -- After inserting a new lot with identifier Lot\_id (see the "populate" section)
 -- decrease the quantity of the items involved in the production of a lot
