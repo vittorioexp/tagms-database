@@ -27,15 +27,12 @@ INSERT INTO Tagms.item_Category(name, description) VALUES
 
 -- Package_Category
 
-INSERT INTO Tagms.package_Category(Name, Description) VALUES ('Package XS','Extra small package');
-
-INSERT INTO Tagms.package_Category(Name, Description) VALUES ('Package S','Small package');
-
-INSERT INTO Tagms.package_Category(Name, Description) VALUES ('Package M','Medium package');
-
-INSERT INTO Tagms.package_Category(Name, Description) VALUES ('Package L','Large package');
-
-INSERT INTO Tagms.package_Category(Name, Description) VALUES ('Package XL','Extra large package');
+INSERT INTO Tagms.package_Category(Name, Description) VALUES
+    ('Package XS','Extra small package'),
+    ('Package S','Small package'),
+    ('Package M','Medium package'),
+    ('Package L','Large package'),
+    ('Package XL','Extra large package');
 
 
 
