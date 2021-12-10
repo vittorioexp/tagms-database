@@ -1,9 +1,8 @@
-
 package com.example.tagmswebapp;
 
-        import java.sql.*;
+import java.sql.*;
 
-public class ListContracts {
+public class UnexpiredLots {
 
     /* *
      * The JDBC driver to be used
@@ -55,27 +54,27 @@ public class ListContracts {
 
         try {
             // connect to the database
-            start = System.currentTimeMillis ();
-            con = DriverManager.getConnection (DATABASE , USER , PASSWORD);
-            end = System.currentTimeMillis ();
-            System.out.printf (
+            start = System.currentTimeMillis();
+            con = DriverManager.getConnection(DATABASE, USER, PASSWORD);
+            end = System.currentTimeMillis();
+            System.out.printf(
                     "Connection to database %s successfully established in %d milliseconds .%n",
-                    DATABASE , end - start );
+                    DATABASE, end - start);
             // create the statement to execute the query
             start = System.currentTimeMillis();
-            stmt = con.createStatement ();
-            end = System.currentTimeMillis ();
-            System.out.printf (
+            stmt = con.createStatement();
+            end = System.currentTimeMillis();
+            System.out.printf(
                     "Statement successfully created in %d milliseconds .%n",
                     end - start);
 
-            String interval = "6 months";
+            //String test = "12 months";
 
             start = System.currentTimeMillis();
 
-            // -- Return the list of unsellable lots which are in stock (that will expire in less than 6 months)
+            // -- Return the list of unsellable lots which are in stock (that will expire in less than 12 months)
 
-            String sql="SELECT\n" +
+            String sql= "SELECT\n" +
                     "       l.lot_id,\n" +
                     "       DATE(l.expiration_date) AS expiration_date,\n" +
                     "       l.product_id,\n" +
@@ -87,8 +86,9 @@ public class ListContracts {
                     "       l.lot_price\n" +
                     "       FROM tagms.lot AS l\n" +
                     "    LEFT OUTER JOIN tagms.draws_from AS df ON l.lot_id = df.lot_id\n" +
-                    "WHERE l.expiration_date <= (current_date + interval "+interval+")\n" +
-                    "  AND df.order_id IS NULL;";
+                    "WHERE l.expiration_date <= current_date + interval '12 months' \n" +
+                    "AND df.order_id IS NULL;";
+
 
 
             // execute the query
@@ -106,14 +106,14 @@ public class ListContracts {
             String lot_price;
 
             System.out.println(
-                pad("LOT ID", 20) +
-                pad("EXPIRATION DATE", 20) +
-                pad("PRODUCT ID", 20) +
-                pad("PRODUCT QUANTITY", 20) +
-                pad("PACKAGE ID ", 20) +
-                pad("PACKAGE QUANTITY", 20) +
-                pad("LOT DISCOUNT", 20) +
-                pad("LOT PRICE", 20)
+                    pad("LOT ID", 20) +
+                            pad("EXPIRATION DATE", 20) +
+                            pad("PRODUCT ID", 20) +
+                            pad("PRODUCT QUANTITY", 20) +
+                            pad("PACKAGE ID ", 20) +
+                            pad("PACKAGE QUANTITY", 20) +
+                            pad("LOT DISCOUNT", 20) +
+                            pad("LOT PRICE", 20)
             );
 
 
@@ -131,25 +131,25 @@ public class ListContracts {
                 lot_price = rs.getString("lot_price");
 
                 System.out.println(
-                pad(String.valueOf(lot_id), 20) +
-                pad(String.valueOf(expiration_date), 20) +
-                pad(String.valueOf(product_id), 20) +
-                pad(String.valueOf(product_quantity), 20) +
-                pad(String.valueOf(packet_id), 20) +
-                pad(String.valueOf(packet_quantity), 20) +
-                pad(String.valueOf(lot_discount), 20) +
-                pad(String.valueOf(lot_price), 20)
+                        pad(String.valueOf(lot_id), 20) +
+                                pad(String.valueOf(expiration_date), 20) +
+                                pad(String.valueOf(product_id), 20) +
+                                pad(String.valueOf(product_quantity), 20) +
+                                pad(String.valueOf(package_id), 20) +
+                                pad(String.valueOf(package_quantity), 20) +
+                                pad(String.valueOf(lot_discount), 20) +
+                                pad(String.valueOf(lot_price), 20)
                 );
 
 
-
-                rs.close ();
-            stmt.close ();
-            con.close ();
-            end = System.currentTimeMillis ();
-            System.out.printf ("%n Data correctly extracted and visualized in %d milliseconds .%n",
-                    end - start );
-        } catch (SQLException e ) {
+                rs.close();
+                stmt.close();
+                con.close();
+                end = System.currentTimeMillis();
+                System.out.printf("%n Data correctly extracted and visualized in %d milliseconds .%n",
+                        end - start);
+            }
+        }catch (SQLException e ) {
             System.out.printf ("Database access error :%n");
             // cycle in the exception chain
             while ( e != null ) {
@@ -204,6 +204,7 @@ public class ListContracts {
             }
         }
         System.out.printf (" Program end .%n");
+
     }
 
     private static String pad(String text, int length) {
