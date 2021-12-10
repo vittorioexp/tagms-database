@@ -198,15 +198,9 @@ INSERT INTO Tagms.customer VALUES
 -- Insert Roles
 
 INSERT INTO Tagms.role(Name,Description) VALUES
-    ('Manager','The managers are in charge of interacting with suppliers and concluding contracts with them');
-
-INSERT INTO Tagms.role(Name,Description) VALUES
-    ('Worker','The workers take care of production and shipments');
-
-INSERT INTO Tagms.role(Name,Description) VALUES
-    ('Salesman','The sellers have to deal with customers and create orders');
-
-INSERT INTO Tagms.role(Name,Description) VALUES
+    ('Manager','The managers are in charge of interacting with suppliers and concluding contracts with them'),
+    ('Worker','The workers take care of production and shipments'),
+    ('Salesman','The sellers have to deal with customers and create orders'),
     ('Data Analyst','The data analyst has access to the acquired data for inventory, cost and profit analysis');
 
 -- Insert employees
@@ -224,18 +218,10 @@ INSERT INTO Tagms.employee VALUES
 -- Insert departments
 
 INSERT INTO Tagms.department(Name, Description) VALUES
-    ('Operations','Responsible for converting raw materials and packaging materials into finished goods and work to improve the efficiency of the production.');
-
-INSERT INTO Tagms.department(Name, Description) VALUES
-    ('Sales','Responsible for the sale of lots.');
-
-INSERT INTO Tagms.department(Name, Description) VALUES
-    ('Administration','Responsible for the administration of the accounting of employment contracts and management of personnel, customers and suppliers.');
-
-INSERT INTO Tagms.department(Name, Description) VALUES
-    ('Maintenance','Department responsible for the management and maintenance of the different machinery used for production.');
-
-INSERT INTO Tagms.department(Name, Description) VALUES
+    ('Operations','Responsible for converting raw materials and packaging materials into finished goods and work to improve the efficiency of the production.'),
+    ('Sales','Responsible for the sale of lots.'),
+    ('Administration','Responsible for the administration of the accounting of employment contracts and management of personnel, customers and suppliers.'),
+    ('Maintenance','Department responsible for the management and maintenance of the different machinery used for production.'),
     ('Shipping','Responsible for marking and shipping lots.');
 
 -- Insert in Work
