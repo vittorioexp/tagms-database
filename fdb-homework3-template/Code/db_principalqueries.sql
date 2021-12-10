@@ -1,7 +1,8 @@
 
 -- list all contracts between a certain manager and a certain supplier
 
-SELECT c.description,
+SELECT c.contract_id,
+       c.description,
        DATE(c.contract_date) AS contract_date,
        DATE(c.expiration_date) AS expiration_date,
        e.first_name AS manager_name,
