@@ -49,8 +49,8 @@ public class Tagms {
         // "data structures" for the data to be read from the database
         try {
             // register the JDBC driver
-            Class . forName ( DRIVER );
-            System . out . printf ("Driver %s successfully registered .%n", DRIVER );
+            Class.forName ( DRIVER );
+            System.out.printf ("Driver %s successfully registered .%n", DRIVER );
         }  catch ( ClassNotFoundException e ) {
             System.out.printf(
             "Driver % s not found : %s. % n",DRIVER, e.getMessage());
@@ -137,14 +137,14 @@ public class Tagms {
                     companyEmail , Technician , Description );
                 }
                  */
-                rs2 . close ();
+                rs2.close ();
             
             }
-            rs . close ();
-            stmt . close ();
-            con . close ();
-            end = System . currentTimeMillis ();
-            System . out . printf ("% nData correctly exctracted and visualized in %d milliseconds .%n",
+            rs.close ();
+            stmt.close ();
+            con.close ();
+            end = System.currentTimeMillis ();
+            System.out.printf ("% nData correctly exctracted and visualized in %d milliseconds .%n",
             end - start );
         } catch (SQLException e ) {
             System.out.printf ("Database access error :%n");
@@ -160,16 +160,15 @@ public class Tagms {
         } finally {
             try {
                 // close the used resources
-                if (! rs . isClosed () || ! rs2 . isClosed ()){
+                if (! rs.isClosed () || ! rs2.isClosed ()){
                     start = System.currentTimeMillis();
                     rs.close();
                     rs2.close();
                     end = System.currentTimeMillis();
-                    System.out
-                            .printf(" Result set successfully closed in finally block in % ,d milliseconds .%n",
+                    System.out.printf(" Result set successfully closed in finally block in % ,d milliseconds .%n",
                     end - start );
                 }
-                if (! stmt . isClosed ()) {
+                if (!stmt.isClosed ()) {
                     start = System.currentTimeMillis();
                     stmt.close();
                     end = System.currentTimeMillis();
@@ -177,16 +176,15 @@ public class Tagms {
                                     "in finally block in % ,d milliseconds .%n",
                     end - start );
                 }
-                if (! con . isClosed ()) {
+                if (! con.isClosed ()) {
                     start = System.currentTimeMillis();
                     con.close();
                     end = System.currentTimeMillis();
-                    System.out
-                            .printf(" Connection successfully closed in finally block in % ,d milliseconds .%n",
+                    System.out.printf(" Connection successfully closed in finally block in % ,d milliseconds .%n",
                     end - start );
                 }
             } catch (SQLException e) {
-                System . out . printf (" Error while releasing resources in finally block :%n");
+                System.out.printf (" Error while releasing resources in finally block :%n");
                 // cycle in the exception chain
                 while ( e != null ) {
                     System.out.printf(" - Message : %s % n",e.getMessage());
@@ -200,9 +198,9 @@ public class Tagms {
                 rs = null ;
                 stmt = null ;
                 con = null ;
-                System . out . printf (" Resources released to the garbage collector .%n");
+                System.out.printf (" Resources released to the garbage collector .%n");
             }
         }
-        System . out . printf (" Program end .%n");
+        System.out.printf (" Program end .%n");
     }
 }
