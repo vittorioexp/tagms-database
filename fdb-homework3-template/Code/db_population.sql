@@ -411,6 +411,11 @@ INSERT INTO tagms.contract (description,contract_date,delivery_date,expiration_d
 INSERT INTO tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) VALUES
     ('contract with EnergyFeed s.p.a.','2018-02-07','2021-12-05','2022-03-14','45288712635','DKLERT23D96A316T');
 
+INSERT INTO tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) VALUES
+    ('contract with Reg s.r.l.','2020-03-12','2021-11-06','2023-10-31','86334519757','FGDVSF30C62D012T');
+
+INSERT INTO tagms.contract (description,contract_date,delivery_date,expiration_date,supplier_id,employee_id) VALUES
+    ('contract with Reg s.r.l.','2020-04-17','2021-10-06','2023-12-30','86334519757','FGDVSF30C62D012T');
 
 -- Inserting rows in specify, be sure that item_id and contract_id exist in tables item and contract
 
