@@ -73,18 +73,41 @@ public class Tagms {
             System.out.printf (
             "Statement successfully created in % ,d milliseconds .%n",
             end - start);
-            // get all the employees
-            String sql ="SELECT * from Tagms.employee;";
-            start = System.currentTimeMillis ();
-            rs = stmt.executeQuery ( sql );
-            System.out.printf ("% nEvent List :%n");
-            String id;
-            String name;
-            String email;
+            
+            // get description, dates of  contracts with supplier Reg s.r.l and name and surname of the manager with tax_number='FGDVSF30C62D012T' that manages these contracts
+            String sql ="select c.description,c.contract_date,c.expiration_date,e.first_name as manager_name,e.last_name as manager_surname\r\n"
+            		+ "		from tagms.contract as c inner join tagms.employee as e on\r\n"
+            		+ "        c.employee_id=e.tax_number inner join tagms.supplier as s on\r\n"
+            		+ "        c.supplier_id=s.vat_number where e.tax_number='FGDVSF30C62D012T' and\r\n"
+            		+ "        s.supplier_name='Reg s.r.l.';";
+            start = System.currentTimeMillis();
+            rs = stmt.executeQuery(sql);
+            
+            String description;
+            String contract_date;
+            String expiration_date;
+            String manager_name;
+            String manager_surname;
+            
+            System.out.printf(" DESCRIPTION\t\t\tCONTRACT_DATE\t\t\tEXPIRATION_DATE\t\t\tMANAGER_NAME\t\t\tMANAGER_SURNAME%n");
 
             // cycle on the query results ( i . e . for each employee we will select the events to be printed )
             while ( rs.next ()) {
                 // TODO: put code here...
+                 
+                // read description of contract
+                description = rs.getString ("description");
+                
+                // read contract_date and expiration_date
+                contract_date = rs.getString ("contract_date ");
+                expiration_date = rs.getString("expiration_date");
+   
+                // read name and surname of the manager that manages these contracts, it should be the same in each row
+                manager_name = rs.getString ("manager_name");
+                manager_surname = rs.getString("manager_surname");
+                
+                System.out.printf(" %s\t\t%s\t\t%s\t\t%s\t\t\t%s%n", description, contract_date, expiration_date,manager_name,manager_surname);
+                /*
                 /*
                 // read visit identifier
                 id = rs . getString ("id");
