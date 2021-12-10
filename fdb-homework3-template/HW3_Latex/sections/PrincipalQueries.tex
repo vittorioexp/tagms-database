@@ -42,11 +42,8 @@ FROM tagms.employee AS e
     INNER JOIN tagms.role AS r ON r.role\_id = e.role\_id
 WHERE e.still_working = TRUE;
 
--- TODO: Explain briefly the principal queries
 
--- After inserting a new lot with identifier Lot\_id (see the "populate" section)
--- decrease the quantity of the items involved in the production of a lot
--- Note: it is necessary to insert the Lot\_id twice in the query
+After inserting a new lot with identifier Lot\_id (see the "populate" section), decrease the quantity of the items involved in the production of a lot.
 
 UPDATE tagms.item AS i SET
     quantity = c.quantity
