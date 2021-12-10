@@ -61,51 +61,21 @@ INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Vo
 
 
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-    ('Sugar C','Raw cane sugar is a less caloric and healthier sugar','3000000','100000','1');
-
-INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-    ('Sugar W','White sugar for sweeter products','2500000','100000','1');
-
-INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-    ('Sugar I','Brown sugar is rich in vitamins and minerals such as potassium, calcium and magnesium.','500000','200000','2');
-
-INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-    ('Low mineral water','Low mineral content water employed for producing all products','800000','150000','4');
-
-INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-    ('Coloring E100','Food yellow-orange coloring dye extracted from ground rhizomes of natural strains of Curcuma longa','1000000','700000','3');
-
-INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-    ('Coloring E101','Food yellow natural coloring present in milk, it is also present in many green vegetables,','130000','35000','3');
-
-INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-    ('Coloring E150','Food caramel coloring and can also have the function of amalgamating and protecting against oxidation caused by light','2000000','120000','3');
-
-INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-    ('Tape P','Packing tape to ensure a good seal ','220000','75000','5');
-
-INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-    ('Tape T','Transparent adhesive tape available in both silent and noisy unwinding','110000','50000','5');
-
-INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-    ('Tape C','Canvas tape equipped with a dense weave that allows the orker to repair, bind and bead','300000','80000','5');
-
-INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-    ('Polystyrene I','Polystyrene (type I) is an excellent technical insulator','80000','15000','6');
-
-INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-    ('Pallet 4','Pallet (type 4) is an excellent pellet that ensures great resistance against shocks','80','6','6');
-
-INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-    ('Pallet 5','Pallet (type 5) is an excellent pellet that ensures great resistance against shocks','90','5','6');
-
-INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-    ('Aluminum can','Aluminum can with internal coating (coating) which aims to minimize the interaction between the beverage and aluminum','5000','130','7');
-
-INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
-    ('Plastic Bottle 1','Plastic bottle (type 1) with heat-insulating','20000','1100','8');
-
-INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
+    ('Sugar C','Raw cane sugar is a less caloric and healthier sugar','3000000','100000','1'),
+    ('Sugar W','White sugar for sweeter products','2500000','100000','1'),
+    ('Sugar I','Brown sugar is rich in vitamins and minerals such as potassium, calcium and magnesium.','500000','200000','2'),
+    ('Low mineral water','Low mineral content water employed for producing all products','800000','150000','4'),
+    ('Coloring E100','Food yellow-orange coloring dye extracted from ground rhizomes of natural strains of Curcuma longa','1000000','700000','3'),
+    ('Coloring E101','Food yellow natural coloring present in milk, it is also present in many green vegetables,','130000','35000','3'),
+    ('Coloring E150','Food caramel coloring and can also have the function of amalgamating and protecting against oxidation caused by light','2000000','120000','3'),
+    ('Tape P','Packing tape to ensure a good seal ','220000','75000','5'),
+    ('Tape T','Transparent adhesive tape available in both silent and noisy unwinding','110000','50000','5'),
+    ('Tape C','Canvas tape equipped with a dense weave that allows the orker to repair, bind and bead','300000','80000','5'),
+    ('Polystyrene I','Polystyrene (type I) is an excellent technical insulator','80000','15000','6'),
+    ('Pallet 4','Pallet (type 4) is an excellent pellet that ensures great resistance against shocks','80','6','6'),
+    ('Pallet 5','Pallet (type 5) is an excellent pellet that ensures great resistance against shocks','90','5','6'),
+    ('Aluminum can','Aluminum can with internal coating (coating) which aims to minimize the interaction between the beverage and aluminum','5000','130','7'),
+    ('Plastic Bottle 1','Plastic bottle (type 1) with heat-insulating','20000','1100','8'),
     ('Glass Bottle 1','Glass bottle (type 1) with heat-insulating','26000','150','9');
 
 
