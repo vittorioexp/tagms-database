@@ -288,18 +288,12 @@ INSERT INTO Tagms.order(net_price, taxes, order_date, order_paid, employee_id, c
 
 -- Draws_from
 INSERT INTO Tagms.draws_from(Lot_ID, Order_ID) VALUES
-    ('1','1');
-INSERT INTO Tagms.draws_from(Lot_ID, Order_ID) VALUES
-    ('3','2');
-INSERT INTO Tagms.draws_from(Lot_ID, Order_ID) VALUES
-    ('2','3');
-INSERT INTO Tagms.draws_from(Lot_ID, Order_ID) VALUES
-    ('4','1');
-INSERT INTO Tagms.draws_from(Lot_ID, Order_ID) VALUES
-    ('5','1');
-INSERT INTO Tagms.draws_from(Lot_ID, Order_ID) VALUES
-    ('6','4');
-INSERT INTO Tagms.draws_from(Lot_ID, Order_ID) VALUES
+    ('1','1'),
+    ('3','2'),
+    ('2','3'),
+    ('4','1'),
+    ('5','1'),
+    ('6','4'),
     ('7','5');
 
 
