@@ -42,33 +42,19 @@ INSERT INTO Tagms.package_Category(Name, Description) VALUES
 -- Product
 INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Volume, Net_weight, Package_weight, Nutritional_Facts, Product_Category_ID)  VALUES
     ('Beer Atomic in aluminum can','An alcoholic beverage typically obtained from the fermentation of wort based on barley malt',
-     '2.00', '2.0', '450', '450', '15', 'Calories: 153, Alcohol: 14 grams, Carbs: 13 grams, Protein: 2 grams, Fat: 0 grams.', '1');
-
-INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Volume, Net_weight, Package_weight, Nutritional_Facts, Product_Category_ID)  VALUES
+     '2.00', '2.0', '450', '450', '15', 'Calories: 153, Alcohol: 14 grams, Carbs: 13 grams, Protein: 2 grams, Fat: 0 grams.', '1'),
     ('Beer Atomic in glass bottle','An alcoholic beverage typically obtained from the fermentation of wort based on barley malt',
-     '2.00', '2.0', '450', '450', '50', 'Calories: 153, Alcohol: 14 grams, Carbs: 13 grams, Protein: 2 grams, Fat: 0 grams.', '1');
-
-INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Volume, Net_weight, Package_weight, Nutritional_Facts, Product_Category_ID)  VALUES
+     '2.00', '2.0', '450', '450', '50', 'Calories: 153, Alcohol: 14 grams, Carbs: 13 grams, Protein: 2 grams, Fat: 0 grams.', '1'),
     ('Coke Mega in aluminum can','Coca Mega is a carbonated soft drink',
-     '1.5', '3', '300', '300', '30', 'Calories: 180, Alcohol: 0 grams, Carbs: 38 grams, Protein: 10 grams, Fat: 4 grams.', '2');
-
-INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Volume, Net_weight, Package_weight, Nutritional_Facts, Product_Category_ID)  VALUES
+     '1.5', '3', '300', '300', '30', 'Calories: 180, Alcohol: 0 grams, Carbs: 38 grams, Protein: 10 grams, Fat: 4 grams.', '2'),
     ('Coke Mega in glass bottle','Coca Mega is a carbonated soft drink',
-     '1.5', '3', '300', '300', '52', 'Calories: 180, Alcohol: 0 grams, Carbs: 38 grams, Protein: 10 grams, Fat: 4 grams.', '2');
-
-INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Volume, Net_weight, Package_weight, Nutritional_Facts, Product_Category_ID)  VALUES
+     '1.5', '3', '300', '300', '52', 'Calories: 180, Alcohol: 0 grams, Carbs: 38 grams, Protein: 10 grams, Fat: 4 grams.', '2'),
     ('Juice Pineapple Turbo','Juice Pineapple Turbo is a drink made from the extraction or pressing of the natural liquid contained in fruit and vegetables',
-     '1.30', '3.5', '500', '520', '25', 'Calories: 9, Alcohol: 0 grams, Carbs: 2 grams, Protein: 32 grams, Fat: 8 grams.', '3');
-
-INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Volume, Net_weight, Package_weight, Nutritional_Facts, Product_Category_ID)  VALUES
+     '1.30', '3.5', '500', '520', '25', 'Calories: 9, Alcohol: 0 grams, Carbs: 2 grams, Protein: 32 grams, Fat: 8 grams.', '3'),
     ('Fanta explosive','Fanta explosive is a fruit-flavored carbonated soft drinks',
-     '1.5', '2.5', '450', '480', '13', 'Calories: 212, Alcohol: 0 grams, Carbs: 12 grams, Protein: 35 grams, Fat: 120 grams.', '2');
-
-INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Volume, Net_weight, Package_weight, Nutritional_Facts, Product_Category_ID)  VALUES
+     '1.5', '2.5', '450', '480', '13', 'Calories: 212, Alcohol: 0 grams, Carbs: 12 grams, Protein: 35 grams, Fat: 120 grams.', '2'),
     ('Strawberry Smoothie','Strawberry Smoothie is a vegetable smoothie rich in vitamins',
-     '3.60', '2.8', '300', '340', '28', 'Calories: 2, Alcohol: 0 grams, Carbs: 218 grams, Protein: 23 grams, Fat: 8 grams.', '3');
-
-INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Volume, Net_weight, Package_weight, Nutritional_Facts, Product_Category_ID)  VALUES
+     '3.60', '2.8', '300', '340', '28', 'Calories: 2, Alcohol: 0 grams, Carbs: 218 grams, Protein: 23 grams, Fat: 8 grams.', '3'),
     ('Sprite Refreshing','Sprite Refreshing is a colorless, lemon, lime-flavored and refreshing soft drink',
      '2.15', '2.3', '400', '417', '20', 'Calories: 234, Alcohol: 0 grams, Carbs: 80 grams, Protein: 21 grams, Fat: 48.', '2');
 
