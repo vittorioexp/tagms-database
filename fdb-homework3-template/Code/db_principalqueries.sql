@@ -47,7 +47,26 @@ FROM (
             INNER JOIN tagms.item AS i ON m2.item_id = i.item_id
         WHERE l.lot_id = '3'
      )
-         AS c(item_id, quantity)
+    AS c(item_id, quantity)
+WHERE c.item_id = i.item_id
+RETURNING i.item_id, name, description, i.quantity, minimum_quantity, item_category_id;
+
+
+-- In this query the output of the union is wrapped into another select to apply the WHERE condition on lot_id
+-- Note that lot_id has been added in the two inner select
+UPDATE tagms.item AS i SET
+    quantity = c.quantity
+FROM (SELECT * FROM (
+    (SELECT i.item_id, i.quantity - l.product_quantity * m1.quantity AS quantity,l.lot_id FROM tagms.lot AS l
+        INNER JOIN tagms.made_up_of_1 AS m1 ON l.product_id = m1.product_id
+        INNER JOIN tagms.item AS i ON m1.item_id = i.item_id)
+    UNION
+    (SELECT i.item_id, i.quantity - l.package_quantity * m2.quantity AS quantity,l.lot_id FROM tagms.lot AS l
+        INNER JOIN tagms.made_up_of_2 AS m2 ON l.package_id = m2.package_id
+        INNER JOIN tagms.item AS i ON m2.item_id = i.item_id)) AS l
+    WHERE l.lot_id = '3'
+    ORDER BY item_id ASC)
+    AS c(item_id, quantity)
 WHERE c.item_id = i.item_id
 RETURNING i.item_id, name, description, i.quantity, minimum_quantity, item_category_id;
 
