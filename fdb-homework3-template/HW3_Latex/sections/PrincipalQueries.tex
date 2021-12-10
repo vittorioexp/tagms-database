@@ -11,6 +11,8 @@ FROM table1 as t1
     LEFT JOIN table2 as t2 ON t1.attr2=t2.attr1 
 WHERE t1.attr3=1
 
+
+
 List all contracts between a specific manager and a specific supplier.
 
 SELECT c.contract\_id,
@@ -24,6 +26,8 @@ SELECT c.contract\_id,
 		    INNER JOIN tagms.supplier AS s ON c.supplier\_id = s.vat\_number
 WHERE e.tax\_number='FGDVSF30C62D012T'
   AND s.supplier\_name='Reg s.r.l.';
+
+
 
 Show all the details of the employees in the organization.
 
@@ -41,6 +45,7 @@ FROM tagms.employee AS e
     INNER JOIN tagms.department AS d ON w.department\_id = d.department\_id
     INNER JOIN tagms.role AS r ON r.role\_id = e.role\_id
 WHERE e.still_working = TRUE;
+
 
 
 After inserting a new lot with identifier Lot\_id (see the "populate" section), decrease the quantity of the items involved in the production of a lot.
@@ -64,8 +69,7 @@ RETURNING i.item\_id, name, description, i.quantity, minimum\_quantity, item\_ca
 
 
 
--- After inserting a new contract with identifier Contract\_id,
--- in the delivery date the quantities of items in stock must be incremented
+After inserting a new contract with identifier Contract\_id, the quantities of items in stock must be incremented in the delivery date.
 
 UPDATE tagms.item AS i SET
     quantity = c.quantity
@@ -81,9 +85,7 @@ RETURNING i.item\_id, name, description, i.quantity, minimum\_quantity, item\_ca
 
 
 
--- Lists all available lots (unsold and that won't expire in 6 months) containing
--- a particular product having a given Product\_id as identifier,
--- sorted by expiration date (oldest lots must be sold first).
+Lists all available lots (unsold and that won't expire in 6 months) containing a particular product having a given Product\_id as identifier, sorted by expiration date (oldest lots must be sold first).
 
 SELECT l.lot\_id,
        DATE(l.expiration\_date) AS expiration\_date,
@@ -98,31 +100,37 @@ WHERE l.product\_id = '6'
 ORDER BY l.expiration\_date ASC;
 
 
--- Get the net sales and paid taxes in a given time interval
+
+Get the net sales and paid taxes in a given time interval.
+
 SELECT SUM(o.net\_price) AS net\_sales, SUM(o.taxes) AS taxes FROM tagms.order AS o
     WHERE DATE(o.order\_date) >= '2021-01-01' AND
           DATE(o.order\_date) <= '2021-12-31' AND
           o.order\_paid = TRUE;
 
--- Get the cost of materials in a given time interval
+
+
+Get the cost of materials in a given time interval.
+
 SELECT SUM(sp.price) AS cost\_of\_material FROM tagms.specify as sp
     INNER JOIN tagms.contract AS c ON c.contract\_id = sp.contract\_id
 WHERE DATE(c.contract\_date) >= '2021-01-01' AND DATE(c.contract\_date) <= '2021-12-31';
 
--- Get the production cost in a given time interval
+
+
+Get the production cost in a given time interval.
+
 SELECT SUM(p.production\_cost * l.product\_quantity) AS production\_cost FROM tagms.lot AS l
     JOIN tagms.product AS p ON l.product\_id = p.product\_id
     JOIN tagms.draws\_from AS df ON l.lot\_id = df.lot\_id
     JOIN tagms.order AS o ON df.order\_id = o.order\_id
 WHERE DATE(o.order\_date) >= '2021-01-01' AND DATE(o.order\_date) <= '2021-12-31';
 
--- Note: BETWEEN was not used as it makes a strict comparison (extremes excluded)
+Note: BETWEEN was not used as it makes a strict comparison (extremes excluded).
 
 
--- When inserting an order, the operator can choose a custom price (e.g., decided with the customer)
--- or use the following query.
--- Given an order with Order\_id, compute the order's net\_price and total taxes.
--- Note: the given Order\_id must be written twice in the query
+
+When inserting an order, the operator can choose a custom price (e.g., decided with the customer) or use the following query. Given an order with Order\_id, compute the order's net\_price and total taxes.
 
 UPDATE tagms.order AS o
 SET net\_price = tmp.net\_price,
@@ -136,6 +144,9 @@ FROM (
     ) AS tmp(net\_price, taxes)
 WHERE o.order\_id = '2'
 RETURNING o.order\_id, o.net\_price, o.taxes;
+
+Note: the given Order\_id must be written twice in the query
+
 
 
 -- When inserting a lot, the operator can choose a custom price
