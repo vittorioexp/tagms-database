@@ -3,8 +3,8 @@
 
 SELECT c.contract_id,
        c.description,
-       DATE(c.contract_date) AS contract_date,
-       DATE(c.expiration_date) AS expiration_date,
+       c.contract_date AS contract_date,
+       c.expiration_date AS expiration_date,
        e.first_name AS manager_name,
        e.last_name AS manager_surname
 		FROM tagms.contract AS c
@@ -85,7 +85,7 @@ RETURNING i.item_id, name, description, i.quantity, minimum_quantity, item_categ
 -- sorted by expiration date (oldest lots must be sold first).
 
 SELECT l.lot_id,
-       DATE(l.expiration_date) AS expiration_date,
+       l.expiration_date AS expiration_date,
        l.product_id,
        l.product_quantity,
        ROUND(l.lot_price * (1 + l.vat/100) * (1 - l.lot_discount/100), 2) AS gross_price
@@ -111,7 +111,7 @@ SELECT SUM(o.net_price) AS net_sales, SUM(o.taxes) AS taxes FROM tagms.order AS 
 -- Get the cost of materials in a given time interval
 SELECT SUM(sp.price) AS cost_of_material FROM tagms.specify as sp
     INNER JOIN tagms.contract AS c ON c.contract_id = sp.contract_id
-WHERE DATE(c.contract_date) >= '2021-01-01' AND DATE(c.contract_date) <= '2021-12-31';
+WHERE c.contract_date >= '2021-01-01' AND c.contract_date <= '2021-12-31';
 
 -- Get the production cost in a given time interval
 SELECT SUM(p.production_cost * l.product_quantity) AS production_cost FROM tagms.lot AS l
@@ -182,7 +182,7 @@ WHERE m1.item_id = '1'
 
 SELECT
        l.lot_id,
-       DATE(l.expiration_date) AS expiration_date,
+       l.expiration_date AS expiration_date,
        l.product_id,
        l.product_quantity,
        l.package_id,
