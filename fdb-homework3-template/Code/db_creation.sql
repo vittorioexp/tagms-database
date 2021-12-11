@@ -18,7 +18,7 @@ CREATE DOMAIN Tagms.vatnumber AS CHAR(11)
 CONSTRAINT properVAT CHECK (VALUE ~ '^[0-9]{11}$');
 
 CREATE DOMAIN Tagms.taxnumber AS CHAR(16)
-CONSTRAINT propertaxnumber CHECK (VALUE ~ '^[A-Za-z]{6}\d{2}[A-Za-z]\d{2}[A-Za-z]\d{3}[A-Za-z]$' );
+CONSTRAINT propertaxnumber CHECK (VALUE ~ '^[A-Za-z]{6}\d{2}[A-Za-z]\d{2}[A-Za-z]\d{3}[A-Za-z]$');
 
 -- TODO: check price
 CREATE DOMAIN Tagms.price AS NUMERIC(9, 3)
