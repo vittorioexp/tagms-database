@@ -17,8 +17,8 @@ List all contracts between a specific manager and a specific supplier.
 
 SELECT c.contract\_id,
        c.description,
-       DATE(c.contract\_date) AS contract_date,
-       DATE(c.expiration\_date) AS expiration_date,
+       c.contract\_date AS contract_date,
+       c.expiration\_date AS expiration_date,
        e.first\_name AS manager\_name,
        e.last\_name AS manager\_surname
 		FROM tagms.contract AS c
@@ -88,7 +88,7 @@ RETURNING i.item\_id, name, description, i.quantity, minimum\_quantity, item\_ca
 Lists all available lots (unsold and that won't expire in 6 months) containing a particular product having a given Product\_id as identifier, sorted by expiration date (oldest lots must be sold first).
 
 SELECT l.lot\_id,
-       DATE(l.expiration\_date) AS expiration\_date,
+       l.expiration\_date AS expiration\_date,
        l.product\_id,
        l.product\_quantity,
        ROUND(l.lot\_price * (1 + l.vat/100) * (1 - l.lot\_discount/100), 2) AS gross\_price
@@ -114,7 +114,7 @@ Get the cost of materials in a given time interval.
 
 SELECT SUM(sp.price) AS cost\_of\_material FROM tagms.specify as sp
     INNER JOIN tagms.contract AS c ON c.contract\_id = sp.contract\_id
-WHERE DATE(c.contract\_date) >= '2021-01-01' AND DATE(c.contract\_date) <= '2021-12-31';
+WHERE c.contract\_date >= '2021-01-01' AND c.contract\_date <= '2021-12-31';
 
 
 
@@ -189,7 +189,7 @@ Return the list of unsellable lots which are in stock (that will expire in less 
 
 SELECT
        l.lot\_id,
-       DATE(l.expiration\_date) AS expiration\_date,
+       l.expiration\_date AS expiration\_date,
        l.product\_id,
        l.product\_quantity,
        l.package\_id,
