@@ -172,7 +172,7 @@ supplier_name VARCHAR(50) NOT NULL,
 phone_number Tagms.phonenumber NOT NULL,
 email_address Tagms.emailaddress NOT NULL,
 address VARCHAR(100) NOT NULL,
-registration_date DATE NOT NULL
+registration_date TIMESTAMP WITH TIME ZONE NOT NULL
 );
 
 CREATE TABLE Tagms.contract (
