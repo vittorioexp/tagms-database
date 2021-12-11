@@ -130,20 +130,23 @@ Note: BETWEEN was not used as it makes a strict comparison (extremes excluded).
 
 
 
-When inserting an order, the operator can choose a custom price (e.g., decided with the customer) or use the following query. Given an order with Order\_id, compute the order's net\_price and total taxes.
+When inserting an order, the operator can choose a custom price (e.g., decided with the customer)
+or use the following query.
+Given an order with Order_id, compute the order's net_price and total taxes.
+Note: the given Order_id must be written twice in the query
 
 UPDATE tagms.order AS o
-SET net\_price = tmp.net\_price,
+SET net_price = tmp.net_price,
     taxes = tmp.taxes
 FROM (
-         SELECT SUM(l.lot\_price * (1 - l.lot\_discount / 100)) AS net\_price,
-                SUM(l.lot\_price * l.VAT/100) as taxes
-         FROM tagms.draws\_from AS df
-                  INNER JOIN tagms.lot AS l ON df.lot\_id = l.lot\_id
-        WHERE df.order\_id = '2'
-    ) AS tmp(net\_price, taxes)
-WHERE o.order\_id = '2'
-RETURNING o.order\_id, o.net\_price, o.taxes;
+         SELECT SUM(l.lot_price * (1 - l.lot_discount / 100)) AS net_price,
+                SUM(l.lot_price * l.VAT/100) as taxes
+         FROM tagms.draws_from AS df
+                  INNER JOIN tagms.lot AS l ON df.lot_id = l.lot_id
+        WHERE df.order_id = '2'
+    ) AS tmp(net_price, taxes)
+WHERE o.order_id = '2'
+RETURNING o.order_id, o.net_price, o.taxes;
 
 Note: the given Order\_id must be written twice in the query
 
