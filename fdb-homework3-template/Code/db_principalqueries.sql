@@ -99,9 +99,6 @@ ORDER BY l.expiration_date ASC;
 
 
 
---  e fare qualche operazione tra queste 3 diverse righe
---  oppure teniamo tre query separate per semplicità?
-
 -- Get the net sales and paid taxes in a given time interval
 SELECT SUM(o.net_price) AS net_sales, SUM(o.taxes) AS taxes FROM tagms.order AS o
     WHERE DATE(o.order_date) >= '2021-01-01' AND
