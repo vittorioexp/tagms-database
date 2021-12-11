@@ -94,7 +94,7 @@ FOREIGN KEY (package_category_id) REFERENCES Tagms.package_category(package_cate
 
 CREATE TABLE Tagms.lot (
 lot_id SERIAL PRIMARY KEY,
-expiration_date TIMESTAMP WITH TIME ZONE NOT NULL,
+expiration_date DATE NOT NULL,
 product_id INTEGER NOT NULL,
 product_quantity Tagms.quantity,
 package_id INTEGER NOT NULL,
@@ -178,9 +178,9 @@ registration_date DATE NOT NULL
 CREATE TABLE Tagms.contract (
 contract_id SERIAL PRIMARY KEY,
 description VARCHAR(500),
-contract_date TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
-delivery_date TIMESTAMP WITH TIME ZONE NOT NULL,
-expiration_date TIMESTAMP WITH TIME ZONE NOT NULL,
+contract_date DATE NOT NULL DEFAULT CURRENT_DATE,
+delivery_date DATE NOT NULL,
+expiration_date DATE NOT NULL,
 supplier_id Tagms.vatnumber NOT NULL,
 employee_id Tagms.taxnumber NOT NULL,
 FOREIGN KEY (supplier_id) REFERENCES Tagms.supplier(vat_number),
