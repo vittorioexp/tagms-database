@@ -5,7 +5,7 @@ INSERT INTO Tagms.product_Category(Name, Description) VALUES
     ('Beer','An alcoholic beverage typically obtained from the fermentation of wort based on barley malt'),
     ('Soft Drink','Soft Drink is a sparkling flavored drink'),
     ('Juice Pineapple','Juice Pineapple is a drink made from the extraction or pressing of the natural liquid contained in fruit and vegetables'),
-    ('Smoothie','Smoothie is a drink made by fruit and vegetables in a blender') ;
+    ('Smoothie','Smoothie is a drink made by fruit and vegetables in a blender');
 
 
 
@@ -151,7 +151,6 @@ INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
     ('2','2','3'),
     ('2','4','500'),
     ('2','7','4');
-
 
 -- Juice: contains sugar c, sugar w, coloring e101, low mineral water
 INSERT INTO Tagms.made_Up_Of_1(Product_ID, Item_ID,Quantity) VALUES
