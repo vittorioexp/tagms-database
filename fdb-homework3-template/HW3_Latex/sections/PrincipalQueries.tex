@@ -118,15 +118,14 @@ WHERE c.contract\_date >= '2021-01-01' AND c.contract\_date <= '2021-12-31';
 
 
 
-Get the production cost in a given time interval.
 
-SELECT SUM(p.production\_cost * l.product\_quantity) AS production\_cost FROM tagms.lot AS l
-    JOIN tagms.product AS p ON l.product\_id = p.product\_id
-    JOIN tagms.draws\_from AS df ON l.lot\_id = df.lot\_id
-    JOIN tagms.order AS o ON df.order\_id = o.order\_id
-WHERE DATE(o.order\_date) >= '2021-01-01' AND DATE(o.order\_date) <= '2021-12-31';
+Get the production cost in a given time interval
 
-Note: BETWEEN was not used as it makes a strict comparison (extremes excluded).
+SELECT SUM(p.production_cost * l.product_quantity) AS production_cost FROM tagms.lot AS l
+    JOIN tagms.product AS p ON l.product_id = p.product_id
+    JOIN tagms.draws_from AS df ON l.lot_id = df.lot_id
+    JOIN tagms.order AS o ON df.order_id = o.order_id
+WHERE DATE(o.order_date) >= '2021-01-01' AND DATE(o.order_date) <= '2021-12-31';
 
 
 
