@@ -177,12 +177,6 @@ WHERE m1.item_id = '1'
 
 
 
--- Return the list of items which have stock quantity lower than the minimum one
-
-SELECT * FROM tagms.item AS i
-WHERE i.quantity < i.minimum_quantity;
-
-
 
 -- Return the list of unsellable lots which are in stock (that will expire in less than 6 months)
 
