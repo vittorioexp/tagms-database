@@ -75,16 +75,17 @@ public class ListContracts {
             String tax_number = "FGDVSF30C62D012T";
             String supplier_name = "Reg s.r.l.";
 
-            String sql ="SELECT c.contract_id, c.description,\n" +
-                    "       DATE(c.contract_date) AS contract_date,\n" +
-                    "       DATE(c.expiration_date) AS expiration_date,\n" +
+            String sql ="SELECT c.contract_id,\n" +
+                    "       c.description,\n" +
+                    "       c.contract_date AS contract_date,\n" +
+                    "       c.expiration_date AS expiration_date,\n" +
                     "       e.first_name AS manager_name,\n" +
                     "       e.last_name AS manager_surname\n" +
-                    "   FROM tagms.contract AS c\n" +
-                    "    INNER JOIN tagms.employee AS e ON c.employee_id = e.tax_number\n" +
-                    "    INNER JOIN tagms.supplier AS s ON c.supplier_id = s.vat_number\n" +
-                    "WHERE e.tax_number='" + tax_number + "'\n" +
-                    "  AND s.supplier_name='" + supplier_name + "';";
+                    "\t\tFROM tagms.contract AS c\n" +
+                    "\t\t    INNER JOIN tagms.employee AS e ON c.employee_id = e.tax_number\n" +
+                    "\t\t    INNER JOIN tagms.supplier AS s ON c.supplier_id = s.vat_number\n" +
+                    "WHERE e.tax_number='"+ tax_number +"'\n" +
+                    "  AND s.supplier_name='"+ supplier_name +"';";
 
             rs = stmt.executeQuery(sql);
 
@@ -97,11 +98,11 @@ public class ListContracts {
 
             System.out.println(
                     pad("CONTRACT_ID", 20) +
-                    pad("DESCRIPTION", 30) +
-                    pad("CONTRACT_DATE", 20) +
-                    pad("EXPIRATION_DATE", 20) +
-                    pad("MANAGER_NAME", 20) +
-                    pad("MANAGER_SURNAME", 20)
+                            pad("DESCRIPTION", 30) +
+                            pad("CONTRACT_DATE", 20) +
+                            pad("EXPIRATION_DATE", 20) +
+                            pad("MANAGER_NAME", 20) +
+                            pad("MANAGER_SURNAME", 20)
             );
 
             // cycle on the query results ( i . e . for each employee we will select the events to be printed )
@@ -122,11 +123,11 @@ public class ListContracts {
 
                 System.out.println(
                         pad(contract_id, 20) +
-                        pad(description, 30) +
-                        pad(String.valueOf(contract_date), 20) +
-                        pad(String.valueOf(expiration_date), 20) +
-                        pad(manager_name, 20) +
-                        pad(manager_surname, 20)
+                                pad(description, 30) +
+                                pad(String.valueOf(contract_date), 20) +
+                                pad(String.valueOf(expiration_date), 20) +
+                                pad(manager_name, 20) +
+                                pad(manager_surname, 20)
                 );
 
             }
