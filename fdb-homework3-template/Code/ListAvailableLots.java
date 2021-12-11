@@ -20,8 +20,8 @@ public class ListAvailableLots {
      * The password for accessing the database
      */
     private static final String PASSWORD = "";
-    
-     /* *
+
+    /* *
      * Lists all available lots (unsold and that won't expire in 6 months) containing
      * a particular product having a given Product_id as identifier,
      * sorted by expiration date (oldest lots must be sold first).
@@ -70,32 +70,38 @@ public class ListAvailableLots {
                     end - start);
 
             start = System.currentTimeMillis();
-            String sql ="SELECT l.lot_id,,\n" +
-                    "       DATE(l.expiration_date) AS expiration_date,\n" +
+
+
+
+            // Note: the following variable must be properly initialized
+
+            int product_id = 6;
+
+            String sql ="SELECT l.lot_id,\n" +
+                    "       l.expiration_date AS expiration_date,\n" +
                     "       l.product_id,\n" +
                     "       l.product_quantity,\n" +
                     "       ROUND(l.lot_price * (1 + l.vat/100) * (1 - l.lot_discount/100), 2) AS gross_price\n" +
-                    "    FROM tagms.lot AS l\n" +
+                    "FROM tagms.lot AS l\n" +
                     "    LEFT OUTER JOIN tagms.draws_from AS df ON l.lot_id = df.lot_id\n" +
-                    "    WHERE l.product_id = '6'\n" +
-                    "    AND l.expiration_date > (current_date + interval '6 months')\n" +
-                    "    AND df.order_id IS NULL \n" +
-                    "    ORDER BY l.expiration_date ASC;";
+                    "WHERE l.product_id = '" + product_id + "'\n" +
+                    "  AND l.expiration_date > (current_date + interval '6 months')\n" +
+                    "  AND df.order_id IS NULL\n" +
+                    "ORDER BY l.expiration_date ASC;";
 
             rs = stmt.executeQuery(sql);
 
             int lot_id;
-            int product_id;
             Date expiration_date;
             int product_quantity;
             float gross_price;
 
             System.out.println(
                     pad("LOT_ID", 15) +
-                    pad("PRODUCT_ID", 15) +
-                    pad("EXPIRATION_DATE", 15) +
-                    pad("PRODUCT_QUANTITY", 15) +
-                    pad("GROSS_PRICE", 15)
+                            pad("PRODUCT_ID", 15) +
+                            pad("EXPIRATION_DATE", 15) +
+                            pad("PRODUCT_QUANTITY", 15) +
+                            pad("GROSS_PRICE", 15)
             );
 
             while ( rs.next()) {
@@ -103,15 +109,15 @@ public class ListAvailableLots {
                 lot_id = rs.getInt("lot_id");  // read item id
                 product_id = rs.getInt("product_id"); // read product id
                 product_quantity = rs.getInt("product_quantity"); // read product quantity
-		gross_price=rs.getFloat("gross_price"); // read gross price
-		expiration_date=rs.getData("expiration_date"); // read expiration date
+                gross_price=rs.getFloat("gross_price"); // read gross price
+                expiration_date=rs.getDate("expiration_date"); // read expiration date
 
                 System.out.println(
                         pad(String.valueOf(lot_id), 15) +
-                        pad(String.valueOf(lot_id), 15)  +
-                        pad(String.valueOf(expiration_date), 15) +
-                        pad(String.valueOf(product_quantity), 15) +
-			pad(String.valueOf(gross_price), 15)
+                                pad(String.valueOf(lot_id), 15)  +
+                                pad(String.valueOf(expiration_date), 15) +
+                                pad(String.valueOf(product_quantity), 15) +
+                                pad(String.valueOf(gross_price), 15)
                 );
             }
 
