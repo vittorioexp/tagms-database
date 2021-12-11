@@ -2,7 +2,7 @@ package com.example.tagmswebapp;
 
 import java.sql.*;
 
-public class UnexpiredLots {
+public class ListUnavailableLots {
 
     /* *
      * The JDBC driver to be used
