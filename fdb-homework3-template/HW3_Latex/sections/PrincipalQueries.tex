@@ -151,18 +151,18 @@ RETURNING o.order_id, o.net_price, o.taxes;
 Note: the given Order\_id must be written twice in the query
 
 
-
-When inserting a lot, the operator can choose a custom price or use the following query. Given a lot with Lot\_id, compute the lot price.
+When inserting a lot, the operator can choose a custom price or use the following query.Given a lot with Lot_id, compute the lot price
+Note: the given Lot_id must be written twice in the query
 
 UPDATE tagms.lot AS l
-SET lot\_price = tmp.lot\_price
+SET lot_price = tmp.lot_price
 FROM (
-         SELECT p.production\_cost*p.price\_increase*l.product\_quantity
-             AS lot\_price FROM tagms.lot AS l
-            INNER JOIN tagms.product AS p ON l.product\_id = p.product\_id
-         WHERE l.lot\_id = '3'
-     ) AS tmp(lot\_price)
-WHERE l.lot\_id = '3'
+         SELECT p.production_cost*p.price_increase*l.product_quantity
+             AS lot_price FROM tagms.lot AS l
+            INNER JOIN tagms.product AS p ON l.product_id = p.product_id
+         WHERE l.lot_id = '3'
+     ) AS tmp(lot_price)
+WHERE l.lot_id = '3'
 RETURNING *;
 
 Note: the given Lot\_id must be written twice in the query.
