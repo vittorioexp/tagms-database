@@ -213,18 +213,43 @@ INSERT INTO Tagms.role(Name,Description) VALUES
 
 
 -- Employee
+
 INSERT INTO Tagms.employee VALUES
-('FGDVSF30C62D012T','John','Smith','3516235214','johnsmith@gmail.com','1995-12-30','2018-12-12','true',1);
+    ('FGDVSF30C62D012T','John','Smith','3516235214','johnsmith@gmail.com','1995-12-30','2018-12-12','true',1),
+    ('BDBBHH72S22C841N','Adam','Willis','3516931849','adamwillis@gmail.com','1993-11-20','2019-11-11','true',2),
+    ('HGDVSF40C62D012T','Bruce','De Forest','3319856644','deforest@gmail.com','1992-11-20','2012-11-11','true',3),
+    ('MGHRLQ80B49H779S','Lena','Choi','3358853696','deforest@gmail.com','1992-11-20','2014-05-23','true',3),
+    ('QMUHFE38E25G815G','Ronald','Vickers','3352317485','rvickers@gmail.com','1998-07-11','2010-04-23','true',4),
+    ('DKLERT23D96A316T','Gurver','Maata','00393403631287','gmaata@gmail.com','1953-06-24','2017-09-14','true',1),
+    ('RNNZLB88S21B046D','Solomon','Ayala','00393666549821','sayala@gmail.com','1952-09-10','2016-10-22','true',1);
+
 
 -- Department
+
 INSERT INTO Tagms.department(Name, Description) VALUES
-('Operations','Responsible for converting raw materials and packaging materials into finished goods and work to improve the efficiency of the production.');
+    ('Operations','Responsible for converting raw materials and packaging materials into finished goods and work to improve the efficiency of the production.'),
+    ('Sales','Responsible for the sale of lots.'),
+    ('Administration','Responsible for the administration of the accounting of employment contracts and management of personnel, customers and suppliers.'),
+    ('Maintenance','Department responsible for the management and maintenance of the different machinery used for production.'),
+    ('Shipping','Responsible for marking and shipping lots.');
+
 
 -- Work
+
 INSERT INTO Tagms.work(Department_ID, Employee_ID) VALUES
-('1','FGDVSF30C62D012T');
+    ('1','FGDVSF30C62D012T'),
+    ('1','BDBBHH72S22C841N'),
+    ('2','HGDVSF40C62D012T'),
+    ('2','RNNZLB88S21B046D'),
+    ('3','DKLERT23D96A316T'),
+    ('2','MGHRLQ80B49H779S'),
+    ('4','QMUHFE38E25G815G'),
+    ('5','QMUHFE38E25G815G'),
+    ('5','RNNZLB88S21B046D');
+
 
 -- Supplier
+
 INSERT INTO Tagms.supplier(vat_number, supplier_name, phone_number, email_address, address, registration_date) VALUES
 ('86334519757','Reg s.r.l.','3794567845','regsrl@gmail.com','Via Roma 4 35100 Padova','2021-12-04'),
 
