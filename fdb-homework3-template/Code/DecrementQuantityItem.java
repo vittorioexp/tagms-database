@@ -80,12 +80,12 @@ public class DecrementQuantityItem {
                     "        SELECT i.item_id, i.quantity - l.product_quantity * m1.quantity AS quantity FROM tagms.lot AS l\n" +
                     "            INNER JOIN tagms.made_up_of_1 AS m1 ON l.product_id = m1.product_id\n" +
                     "            INNER JOIN tagms.item AS i ON m1.item_id = i.item_id\n" +
-                    "        WHERE l.lot_id = '" + String.valueOf(lot_id) +"'\n" +
+                    "        WHERE l.lot_id = '" + lot_id + "'\n" +
                     "    UNION\n" +
                     "        SELECT i.item_id, i.quantity - l.package_quantity * m2.quantity AS quantity FROM tagms.lot AS l\n" +
                     "            INNER JOIN tagms.made_up_of_2 AS m2 ON l.package_id = m2.package_id\n" +
                     "            INNER JOIN tagms.item AS i ON m2.item_id = i.item_id\n" +
-                    "        WHERE l.lot_id = '" + String.valueOf(lot_id) +"'\n" +
+                    "        WHERE l.lot_id = '" + lot_id + "'\n" +
                     "     )\n" +
                     "    AS c(item_id, quantity)\n" +
                     "WHERE c.item_id = i.item_id\n" +
@@ -101,9 +101,9 @@ public class DecrementQuantityItem {
 
             System.out.println(
                     pad("ITEM_ID", 15) +
-                    pad("NAME", 35) +
-                    pad("QUANTITY", 15) +
-                    pad("MINIMUM_QUANTITY", 20)
+                            pad("NAME", 35) +
+                            pad("QUANTITY", 15) +
+                            pad("MINIMUM_QUANTITY", 20)
             );
 
 
@@ -123,9 +123,9 @@ public class DecrementQuantityItem {
 
                 System.out.println(
                         pad(String.valueOf(item_id), 15) +
-                        pad(name, 35) +
-                        pad(String.valueOf(quantity), 15) +
-                        pad(String.valueOf(minimum_quantity), 20)
+                                pad(name, 35) +
+                                pad(String.valueOf(quantity), 15) +
+                                pad(String.valueOf(minimum_quantity), 20)
                 );
             }
 
