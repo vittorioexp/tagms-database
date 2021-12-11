@@ -10,6 +10,7 @@ showstringspaces=false,
 basicstyle=\ttfamily\footnotesize]
 
 -- Database Creation
+-- Database Creation
 CREATE DATABASE tagmsdb OWNER admin ENCODING = 'UTF8';
 
 -- Create new Schema (you can use the public schema without creating a new one, if you want)
@@ -28,7 +29,8 @@ CREATE DOMAIN Tagms.vatnumber AS CHAR(11)
 CONSTRAINT properVAT CHECK (VALUE ~ '^[0-9]{11}$');
 
 CREATE DOMAIN Tagms.taxnumber AS CHAR(16)
-CONSTRAINT propertaxnumber CHECK (VALUE ~ '^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$' );
+CONSTRAINT propertaxnumber CHECK (VALUE ~ '^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$');
+
 
 CREATE DOMAIN Tagms.price AS NUMERIC(9, 3)
 CONSTRAINT properprice NOT NULL CHECK (VALUE > 0.0);
@@ -103,7 +105,7 @@ FOREIGN KEY (package_category_id) REFERENCES Tagms.package_category(package_cate
 
 CREATE TABLE Tagms.lot (
 lot_id SERIAL PRIMARY KEY,
-expiration_date TIMESTAMP WITH TIME ZONE NOT NULL,
+expiration_date DATE NOT NULL,
 product_id INTEGER NOT NULL,
 product_quantity Tagms.quantity,
 package_id INTEGER NOT NULL,
@@ -181,15 +183,15 @@ supplier_name VARCHAR(50) NOT NULL,
 phone_number Tagms.phonenumber NOT NULL,
 email_address Tagms.emailaddress NOT NULL,
 address VARCHAR(100) NOT NULL,
-registration_date DATE NOT NULL
+registration_date TIMESTAMP WITH TIME ZONE NOT NULL
 );
 
 CREATE TABLE Tagms.contract (
 contract_id SERIAL PRIMARY KEY,
 description VARCHAR(500),
-contract_date TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
-delivery_date TIMESTAMP WITH TIME ZONE NOT NULL,
-expiration_date TIMESTAMP WITH TIME ZONE NOT NULL,
+contract_date DATE NOT NULL DEFAULT CURRENT_DATE,
+delivery_date DATE NOT NULL,
+expiration_date DATE NOT NULL,
 supplier_id Tagms.vatnumber NOT NULL,
 employee_id Tagms.taxnumber NOT NULL,
 FOREIGN KEY (supplier_id) REFERENCES Tagms.supplier(vat_number),
@@ -233,5 +235,6 @@ track_num Tagms.tracknum,
 FOREIGN KEY (order_id) REFERENCES Tagms.order(order_id),
 FOREIGN KEY (employee_id) REFERENCES Tagms.employee(tax_number)
 );
+
 
 \end{lstlisting}
