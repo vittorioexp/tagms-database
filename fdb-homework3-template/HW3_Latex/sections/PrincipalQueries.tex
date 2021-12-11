@@ -15,89 +15,89 @@ WHERE t1.attr3=1
 
 List all contracts between a specific manager and a specific supplier.
 
-SELECT c.contract\_id,
+SELECT c.contract_id,
        c.description,
-       c.contract\_date AS contract_date,
-       c.expiration\_date AS expiration_date,
-       e.first\_name AS manager\_name,
-       e.last\_name AS manager\_surname
+       c.contract_date AS contract_date,
+       c.expiration_date AS expiration_date,
+       e.first_name AS manager_name,
+       e.last_name AS manager_surname
 		FROM tagms.contract AS c
-		    INNER JOIN tagms.employee AS e ON c.employee\_id = e.tax\_number
-		    INNER JOIN tagms.supplier AS s ON c.supplier\_id = s.vat\_number
-WHERE e.tax\_number='FGDVSF30C62D012T'
-  AND s.supplier\_name='Reg s.r.l.';
+		    INNER JOIN tagms.employee AS e ON c.employee_id = e.tax_number
+		    INNER JOIN tagms.supplier AS s ON c.supplier_id = s.vat_number
+WHERE e.tax_number='FGDVSF30C62D012T'
+  AND s.supplier_name='Reg s.r.l.';
 
 
 
 Show all the details of the employees in the organization.
 
-SELECT e.tax\_number,
-       e.first\_name,
-       e.last\_name,
-       e.phone\_number,
-       e.email\_address,
-       e.birth\_date,
-       e.hiring\_date,
+SELECT e.tax_number,
+       e.first_name,
+       e.last_name,
+       e.phone_number,
+       e.email_address,
+       e.birth_date,
+       e.hiring_date,
        r.name,
        d.name
 FROM tagms.employee AS e
-    INNER JOIN tagms.work AS w ON e.tax\_number = w.employee\_id
-    INNER JOIN tagms.department AS d ON w.department\_id = d.department\_id
-    INNER JOIN tagms.role AS r ON r.role\_id = e.role\_id
+    INNER JOIN tagms.work AS w ON e.tax_number = w.employee_id
+    INNER JOIN tagms.department AS d ON w.department_id = d.department_id
+    INNER JOIN tagms.role AS r ON r.role_id = e.role_id
 WHERE e.still_working = TRUE;
 
 
 
-After inserting a new lot with identifier Lot\_id (see the "populate" section), decrease the quantity of the items involved in the production of a lot.
+After inserting a new lot with identifier Lot_id (see the "populate" section), decrease the quantity of the items involved in the production of a lot.
 
 UPDATE tagms.item AS i SET
     quantity = c.quantity
 FROM (
-    SELECT i.item\_id, i.quantity - l.product\_quantity * m1.quantity AS quantity FROM tagms.lot AS l
-        INNER JOIN tagms.made\_up\_of\_1 AS m1 ON l.product\_id = m1.product\_id
-        INNER JOIN tagms.item AS i ON m1.item\_id = i.item\_id
+        SELECT i.item_id, i.quantity - l.product_quantity * m1.quantity AS quantity FROM tagms.lot AS l
+            INNER JOIN tagms.made_up_of_1 AS m1 ON l.product_id = m1.product_id
+            INNER JOIN tagms.item AS i ON m1.item_id = i.item_id
+        WHERE l.lot_id = '3'
     UNION
-    SELECT i.item\_id, i.quantity - l.package\_quantity * m2.quantity AS quantity FROM tagms.lot AS l
-        INNER JOIN tagms.made\_up\_of\_2 AS m2 ON l.package\_id = m2.package\_id
-        INNER JOIN tagms.item AS i ON m2.item\_id = i.item\_id
-    WHERE l.lot\_id = '3'
-    ORDER BY item\_id ASC
+        SELECT i.item_id, i.quantity - l.package_quantity * m2.quantity AS quantity FROM tagms.lot AS l
+            INNER JOIN tagms.made_up_of_2 AS m2 ON l.package_id = m2.package_id
+            INNER JOIN tagms.item AS i ON m2.item_id = i.item_id
+        WHERE l.lot_id = '3'
      )
-         AS c(item\_id, quantity)
-WHERE c.item\_id = i.item\_id
-RETURNING i.item\_id, name, description, i.quantity, minimum\_quantity, item\_category\_id;
+    AS c(item_id, quantity)
+WHERE c.item_id = i.item_id
+RETURNING i.item_id, name, i.quantity, minimum_quantity;
 
 
 
-After inserting a new contract with identifier Contract\_id, the quantities of items in stock must be incremented in the delivery date.
+After inserting a new contract with identifier Contract_id, the quantities of items in stock must be incremented in the delivery date.
 
 UPDATE tagms.item AS i SET
     quantity = c.quantity
 FROM (
-    SELECT i.item\_id, i.quantity + s.purchased\_quantity AS quantity FROM tagms.contract AS c
-        INNER JOIN tagms.specify AS s ON c.contract\_id = s.contract\_id
-        INNER JOIN tagms.item AS i ON s.item\_id = i.item\_id
-    WHERE c.contract\_id = '4'
+    SELECT i.item_id, i.quantity + s.purchased_quantity AS quantity FROM tagms.contract AS c
+        INNER JOIN tagms.specify AS s ON c.contract_id = s.contract_id
+        INNER JOIN tagms.item AS i ON s.item_id = i.item_id
+    WHERE c.contract_id = '4'
      )
-     AS c(item\_id, quantity)
-WHERE c.item\_id = i.item\_id
-RETURNING i.item\_id, name, description, i.quantity, minimum\_quantity, item\_category\_id;
+     AS c(item_id, quantity)
+WHERE c.item_id = i.item_id
+RETURNING i.item_id, name, description, i.quantity, minimum_quantity, item_category_id;
 
 
 
 Lists all available lots (unsold and that won't expire in 6 months) containing a particular product having a given Product\_id as identifier, sorted by expiration date (oldest lots must be sold first).
 
-SELECT l.lot\_id,
-       l.expiration\_date AS expiration\_date,
-       l.product\_id,
-       l.product\_quantity,
-       ROUND(l.lot\_price * (1 + l.vat/100) * (1 - l.lot\_discount/100), 2) AS gross\_price
+SELECT l.lot_id,
+       l.expiration_date AS expiration_date,
+       l.product_id,
+       l.product_quantity,
+       ROUND(l.lot_price * (1 + l.vat/100) * (1 - l.lot_discount/100), 2) AS gross_price
 FROM tagms.lot AS l
-    LEFT OUTER JOIN tagms.draws\_from AS df ON l.lot\_id = df.lot\_id
-WHERE l.product\_id = '6'
-  AND l.expiration\_date > (current\_date + interval '6 months')
-  AND df.order\_id IS NULL
-ORDER BY l.expiration\_date ASC;
+    LEFT OUTER JOIN tagms.draws_from AS df ON l.lot_id = df.lot_id
+WHERE l.product_id = '6'
+  AND l.expiration_date > (current_date + interval '6 months')
+  AND df.order_id IS NULL
+ORDER BY l.expiration_date ASC;
 
 
 
