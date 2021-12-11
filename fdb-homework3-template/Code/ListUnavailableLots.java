@@ -21,9 +21,8 @@ public class ListUnavailableLots {
      */
     private static final String PASSWORD = "";
     /* *
-     * Get details about all the contracts stipulated between
-     * a supplier, given his name, (e.g., "Reg s.r.l"),
-     * and a manager, given his/her tax_number (e.g., 'FGDVSF30C62D012T')
+     * Return the list of unsellable lots which are
+     * in stock (that will expire in less than 6 months)
      *
      * @param args command - line arguments ( not used ).
      */
@@ -54,29 +53,26 @@ public class ListUnavailableLots {
 
         try {
             // connect to the database
-            start = System.currentTimeMillis();
-            con = DriverManager.getConnection(DATABASE, USER, PASSWORD);
-            end = System.currentTimeMillis();
-            System.out.printf(
+            start = System.currentTimeMillis ();
+            con = DriverManager.getConnection (DATABASE , USER , PASSWORD);
+            end = System.currentTimeMillis ();
+            System.out.printf (
                     "Connection to database %s successfully established in %d milliseconds .%n",
-                    DATABASE, end - start);
+                    DATABASE , end - start );
             // create the statement to execute the query
             start = System.currentTimeMillis();
-            stmt = con.createStatement();
-            end = System.currentTimeMillis();
-            System.out.printf(
+            stmt = con.createStatement ();
+            end = System.currentTimeMillis ();
+            System.out.printf (
                     "Statement successfully created in %d milliseconds .%n",
                     end - start);
 
-            //String test = "12 months";
-
             start = System.currentTimeMillis();
 
-            // -- Return the list of unsellable lots which are in stock (that will expire in less than 12 months)
 
             String sql= "SELECT\n" +
                     "       l.lot_id,\n" +
-                    "       DATE(l.expiration_date) AS expiration_date,\n" +
+                    "       l.expiration_date AS expiration_date,\n" +
                     "       l.product_id,\n" +
                     "       l.product_quantity,\n" +
                     "       l.package_id,\n" +
@@ -86,13 +82,12 @@ public class ListUnavailableLots {
                     "       l.lot_price\n" +
                     "       FROM tagms.lot AS l\n" +
                     "    LEFT OUTER JOIN tagms.draws_from AS df ON l.lot_id = df.lot_id\n" +
-                    "WHERE l.expiration_date <= current_date + interval '12 months' \n" +
-                    "AND df.order_id IS NULL;";
+                    "WHERE l.expiration_date <= (current_date + interval '6 months')\n" +
+                    "  AND df.order_id IS NULL;";
 
 
 
             // execute the query
-            start = System.currentTimeMillis();
             rs = stmt.executeQuery(sql);
 
 
@@ -140,16 +135,15 @@ public class ListUnavailableLots {
                                 pad(String.valueOf(lot_discount), 20) +
                                 pad(String.valueOf(lot_price), 20)
                 );
-
-
-                rs.close();
-                stmt.close();
-                con.close();
-                end = System.currentTimeMillis();
-                System.out.printf("%n Data correctly extracted and visualized in %d milliseconds .%n",
-                        end - start);
             }
-        }catch (SQLException e ) {
+
+            rs.close ();
+            stmt.close ();
+            con.close ();
+            end = System.currentTimeMillis ();
+            System.out.printf ("%n Data correctly extracted and visualized in %d milliseconds .%n",
+                    end - start );
+        } catch (SQLException e ) {
             System.out.printf ("Database access error :%n");
             // cycle in the exception chain
             while ( e != null ) {
@@ -204,7 +198,6 @@ public class ListUnavailableLots {
             }
         }
         System.out.printf (" Program end .%n");
-
     }
 
     private static String pad(String text, int length) {
