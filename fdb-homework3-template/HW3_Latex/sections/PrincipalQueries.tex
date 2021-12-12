@@ -119,8 +119,7 @@ SELECT SUM(p.production_cost * l.product_quantity) AS production_cost FROM tagms
 WHERE DATE(o.order_date) >= '2021-01-01' AND DATE(o.order_date) <= '2021-12-31';
 
 
-When inserting an order, the operator can choose a custom price (e.g., decided with the customer)
-or use the following query.
+When inserting an order, the operator can choose a custom price (e.g., decided with the customer) or use the following query.
 Given an order with Order_id, compute the order's net_price and total taxes.
 Note: the given Order_id must be written twice in the query
 
@@ -140,7 +139,7 @@ RETURNING o.order_id, o.net_price, o.taxes;
 Note: the given Order\_id must be written twice in the query
 
 
-Given an item (which is used to create a product) having Item_id as identifier and a time interval (actually, two dates),
+Given an item (which is used to create a product) having Item_id as identifier and a time interval (actually, two dates), 
 find the total quantity of that item that has been used for production or packaging during that time.
 
 SELECT SUM(l.product_quantity * m1.quantity) AS quantity FROM tagms.made_up_of_1 AS m1
@@ -152,7 +151,8 @@ WHERE m1.item_id = '1'
   AND DATE(o.order_date) <= '2021-12-31';
 
 
-Given an item (which is used to create a product) having Item\_id as identifier and a time interval (actually, two dates), find the total quantity of that item that has been used for production or packaging during that time.
+Given an item (which is used to create a product) having Item\_id as identifier and a time interval (actually, two dates),
+find the total quantity of that item that has been used for production or packaging during that time.
 
 SELECT SUM(l.product\_quantity * m1.quantity) AS quantity FROM tagms.made\_up\_of\_1 AS m1
     INNER JOIN tagms.lot AS l ON m1.product\_id = l.product\_id
