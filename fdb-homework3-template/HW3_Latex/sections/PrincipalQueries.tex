@@ -150,9 +150,8 @@ RETURNING o.order_id, o.net_price, o.taxes;
 Note: the given Order\_id must be written twice in the query
 
 
--- Given an item (which is used to create a product) having Item_id as identifier
--- and a time interval (actually, two dates),
--- find the total quantity of that item that has been used for production or packaging during that time.
+Given an item (which is used to create a product) having Item_id as identifier and a time interval (actually, two dates),
+find the total quantity of that item that has been used for production or packaging during that time.
 
 SELECT SUM(l.product_quantity * m1.quantity) AS quantity FROM tagms.made_up_of_1 AS m1
     INNER JOIN tagms.lot AS l ON m1.product_id = l.product_id
