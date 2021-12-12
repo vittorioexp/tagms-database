@@ -1,6 +1,10 @@
 \section{JDBC Implementations of the Principal Queries and Visualization}
 \textcolor{red}{[Report java code to test your DB. Perform 1-2 queries and display the results]}
 
+In the following are listed two examples of java classes that execute different INSERT.
+
+
+
 \begin{lstlisting}[language=JAVA,
 commentstyle = \color{gray},
 keywordstyle = \color{blue}, 
@@ -10,9 +14,8 @@ breaklines=true,
 basicstyle=\ttfamily\footnotesize,
 showstringspaces=false]
 
-In the following are listed two examples of java classes that execute different INSERT.
 
-In the first eample, the java class lists all available lots (unsold and that won't expire in 6 months) containing a particular product having a given Product_id as identifier, sorted by expiration date (oldest lots must be sold first).
+//In the first eample, the java class lists all available lots (unsold and that won't expire in 6 months) containing a particular product having a given Product_id as identifier, sorted by expiration date (oldest lots must be sold first).
 
 package com.example.tagmswebapp;
 
@@ -198,7 +201,7 @@ public class ListAvailableLots {
 
 
 
-In the second eample the java class, after inserting a new lot with identifier Lot_id (see the "populate" section), decrease the quantity of the items involved in the production of a lot.
+//In the second eample the java class, after inserting a new lot with identifier Lot_id (see the "populate" section), decrease the quantity of the items involved in the production of a lot.
 
 package com.example.tagmswebapp;
 
@@ -395,10 +398,6 @@ public class DecrementQuantityItem {
     private static String pad(String text, int length) {
         return String.format("%-" + length + "." + length + "s", text);
     }
-
 }
-
-
-
 
 \end{lstlisting}
