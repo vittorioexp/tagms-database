@@ -27,7 +27,6 @@ WHERE e.tax_number='FGDVSF30C62D012T'
   AND s.supplier_name='Reg s.r.l.';
 
 
-
 Show all the details of the employees in the organization.
 
 SELECT e.tax_number,
@@ -44,7 +43,6 @@ FROM tagms.employee AS e
     INNER JOIN tagms.department AS d ON w.department_id = d.department_id
     INNER JOIN tagms.role AS r ON r.role_id = e.role_id
 WHERE e.still_working = TRUE;
-
 
 
 After inserting a new lot with identifier Lot_id (see the "populate" section), decrease the quantity of the items involved in the production of a lot.
@@ -67,7 +65,6 @@ WHERE c.item_id = i.item_id
 RETURNING i.item_id, name, i.quantity, minimum_quantity;
 
 
-
 After inserting a new contract with identifier Contract_id, the quantities of items in stock must be incremented in the delivery date.
 
 UPDATE tagms.item AS i SET
@@ -81,7 +78,6 @@ FROM (
      AS c(item_id, quantity)
 WHERE c.item_id = i.item_id
 RETURNING i.item_id, name, description, i.quantity, minimum_quantity, item_category_id;
-
 
 
 Lists all available lots (unsold and that won't expire in 6 months) containing a particular product having a given Product\_id as identifier, sorted by expiration date (oldest lots must be sold first).
@@ -99,14 +95,12 @@ WHERE l.product_id = '6'
 ORDER BY l.expiration_date ASC;
 
 
-
 Get the net sales and paid taxes in a given time interval.
 
 SELECT SUM(o.net\_price) AS net\_sales, SUM(o.taxes) AS taxes FROM tagms.order AS o
     WHERE DATE(o.order\_date) >= '2021-01-01' AND
           DATE(o.order\_date) <= '2021-12-31' AND
           o.order\_paid = TRUE;
-
 
 
 Get the cost of materials in a given time interval
@@ -116,8 +110,6 @@ SELECT SUM(sp.price) AS cost_of_material FROM tagms.specify as sp
 WHERE c.contract_date >= '2021-01-01' AND c.contract_date <= '2021-12-31';
 
 
-
-
 Get the production cost in a given time interval
 
 SELECT SUM(p.production_cost * l.product_quantity) AS production_cost FROM tagms.lot AS l
@@ -125,7 +117,6 @@ SELECT SUM(p.production_cost * l.product_quantity) AS production_cost FROM tagms
     JOIN tagms.draws_from AS df ON l.lot_id = df.lot_id
     JOIN tagms.order AS o ON df.order_id = o.order_id
 WHERE DATE(o.order_date) >= '2021-01-01' AND DATE(o.order_date) <= '2021-12-31';
-
 
 
 When inserting an order, the operator can choose a custom price (e.g., decided with the customer)
@@ -161,7 +152,6 @@ WHERE m1.item_id = '1'
   AND DATE(o.order_date) <= '2021-12-31';
 
 
-
 Given an item (which is used to create a product) having Item\_id as identifier and a time interval (actually, two dates), find the total quantity of that item that has been used for production or packaging during that time.
 
 SELECT SUM(l.product\_quantity * m1.quantity) AS quantity FROM tagms.made\_up\_of\_1 AS m1
@@ -172,9 +162,8 @@ WHERE m1.item\_id = '9'
   AND DATE(o.order\_date) >= '2021-01-01'
   AND DATE(o.order\_date) <= '2021-12-31';
 
-
-
 Return the list of items which have stock quantity lower than the minimum one.
+
 
 SELECT * FROM tagms.item AS i
 WHERE i.quantity < i.minimum\_quantity;
