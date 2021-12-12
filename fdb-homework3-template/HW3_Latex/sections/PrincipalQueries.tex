@@ -183,22 +183,23 @@ WHERE i.quantity < i.minimum\_quantity;
 
 
 
-Return the list of unsellable lots which are in stock (that will expire in less than 6 months).
+
+Return the list of unsellable lots which are in stock (that will expire in less than 6 months)
 
 SELECT
-       l.lot\_id,
-       l.expiration\_date AS expiration\_date,
-       l.product\_id,
-       l.product\_quantity,
-       l.package\_id,
-       l.package\_quantity,
-       l.lot\_discount,
+       l.lot_id,
+       l.expiration_date AS expiration_date,
+       l.product_id,
+       l.product_quantity,
+       l.package_id,
+       l.package_quantity,
+       l.lot_discount,
        l.vat,
-       l.lot\_price
+       l.lot_price
        FROM tagms.lot AS l
-    LEFT OUTER JOIN tagms.draws\_from AS df ON l.lot\_id = df.lot\_id
-WHERE l.expiration\_date <= (current\_date + interval '6 months')
-  AND df.order\_id IS NULL;
+    LEFT OUTER JOIN tagms.draws_from AS df ON l.lot_id = df.lot_id
+WHERE l.expiration_date <= (current_date + interval '6 months')
+  AND df.order_id IS NULL;
 
 \end{lstlisting}
 
