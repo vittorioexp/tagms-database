@@ -110,11 +110,11 @@ SELECT SUM(o.net\_price) AS net\_sales, SUM(o.taxes) AS taxes FROM tagms.order A
 
 
 
-Get the cost of materials in a given time interval.
+Get the cost of materials in a given time interval
 
-SELECT SUM(sp.price) AS cost\_of\_material FROM tagms.specify as sp
-    INNER JOIN tagms.contract AS c ON c.contract\_id = sp.contract\_id
-WHERE c.contract\_date >= '2021-01-01' AND c.contract\_date <= '2021-12-31';
+SELECT SUM(sp.price) AS cost_of_material FROM tagms.specify as sp
+    INNER JOIN tagms.contract AS c ON c.contract_id = sp.contract_id
+WHERE c.contract_date >= '2021-01-01' AND c.contract_date <= '2021-12-31';
 
 
 
