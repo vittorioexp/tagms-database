@@ -150,21 +150,17 @@ RETURNING o.order_id, o.net_price, o.taxes;
 Note: the given Order\_id must be written twice in the query
 
 
-When inserting a lot, the operator can choose a custom price or use the following query.Given a lot with Lot_id, compute the lot price
-Note: the given Lot_id must be written twice in the query
+-- Given an item (which is used to create a product) having Item_id as identifier
+-- and a time interval (actually, two dates),
+-- find the total quantity of that item that has been used for production or packaging during that time.
 
-UPDATE tagms.lot AS l
-SET lot_price = tmp.lot_price
-FROM (
-         SELECT p.production_cost*p.price_increase*l.product_quantity
-             AS lot_price FROM tagms.lot AS l
-            INNER JOIN tagms.product AS p ON l.product_id = p.product_id
-         WHERE l.lot_id = '3'
-     ) AS tmp(lot_price)
-WHERE l.lot_id = '3'
-RETURNING *;
-
-Note: the given Lot\_id must be written twice in the query.
+SELECT SUM(l.product_quantity * m1.quantity) AS quantity FROM tagms.made_up_of_1 AS m1
+    INNER JOIN tagms.lot AS l ON m1.product_id = l.product_id
+    INNER JOIN tagms.draws_from AS df ON l.lot_id = df.lot_id
+    INNER JOIN tagms.order AS o ON df.order_id = o.order_id
+WHERE m1.item_id = '1'
+  AND DATE(o.order_date) >= '2021-01-01'
+  AND DATE(o.order_date) <= '2021-12-31';
 
 
 
