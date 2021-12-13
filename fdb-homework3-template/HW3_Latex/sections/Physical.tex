@@ -1,7 +1,6 @@
 \section{Physical Schema}
 \textcolor{red}{[Report SQL statements for the database creation]}
 
--- Database Creation
 \begin{lstlisting}[
 language=SQL,
 keywordstyle=\color{blue},
@@ -47,7 +46,8 @@ CONSTRAINT properpercentage CHECK (VALUE >= 0 and VALUE <= 100);
 CREATE DOMAIN Tagms.tracknum AS VARCHAR(30)
 CONSTRAINT propertracknum CHECK(VALUE ~ '[A-Za-z0-9]');
 
--- Table Creation (create tables in the correct order, i.e. use FKeys only referring to already created tables)
+-- Table Creation (create tables in the correct order,
+-- i.e. use FKeys only referring to already created tables)
 
 CREATE TABLE Tagms.product_category (
 product_category_id SMALLSERIAL PRIMARY KEY,

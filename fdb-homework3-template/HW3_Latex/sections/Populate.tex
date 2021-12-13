@@ -1,8 +1,7 @@
 
 \section{Populate the Database: Example}
-\textcolor{red}{[Report SQL statements for the database population: one row per table is enough for the HW, but we suggest to insert a sufficient amount of data in your DB to run queries]}
-
-Following are some examples of queries used to populate the database.
+\textcolor{red}{[Report SQL statements for the database population: one row per table is enough for the HW, but we suggest to insert a sufficient amount of data in your DB to run queries]}\\
+Below are reported several examples of the INSERT statement. For the complete list, refer to the ``db\_population.sql" file.
 
 
 \begin{lstlisting}[
@@ -12,8 +11,6 @@ keywordstyle=\color{blue},
 stringstyle=\color{mauve},
 showstringspaces=false,
 basicstyle=\ttfamily\footnotesize]
-
-In the following are reported several example of INSERT statement. For the complete list refer to the "db_population.sql" file.
 
 -- Product_Category
 
@@ -75,7 +72,7 @@ INSERT INTO Tagms.product(Name, Description, Production_cost, Price_increase, Vo
      '2.15', '2.3', '400', '417', '20', 'Calories: 234, Alcohol: 0 grams, Carbs: 80 grams, Protein: 21 grams, Fat: 48.', '2');
 
 
-
+-- Item
 INSERT INTO Tagms.item(name, description, quantity, minimum_quantity, item_category_id) VALUES
     ('Sugar C','Raw cane sugar is a less caloric and healthier sugar','3000000','100000','1'),
     ('Sugar W','White sugar for sweeter products','2500000','100000','1'),
