@@ -1,5 +1,5 @@
 \section{Physical Schema}
-\textcolor{red}{[Report SQL statements for the database creation]}
+
 
 \begin{lstlisting}[
 language=SQL,
@@ -10,26 +10,30 @@ basicstyle=\ttfamily\footnotesize]
 
 
 -- Database Creation
+
 CREATE DATABASE tagmsdb OWNER admin ENCODING = 'UTF8';
 
 -- Create new Schema (you can use the public schema without creating a new one, if you want)
+
 DROP SCHEMA IF EXISTS Tagms CASCADE;
 CREATE SCHEMA Tagms;
 
 -- Create new domains
+
 CREATE DOMAIN Tagms.emailaddress AS VARCHAR(255)
 CONSTRAINT properemail CHECK (VALUE ~ '^[A-Za-z0-9._%]+@[A-Za-z0-9.]+[.][A-Za-z]+$');
 
--- checks for the italian number structure w/ or w/o prefix
+-- Checks for the italian number structure w/ or w/o prefix
 CREATE DOMAIN Tagms.phonenumber AS VARCHAR(17)
 CONSTRAINT properphonenumber CHECK (VALUE ~ '^(\((00|\+)39\)|(00|\+)39)?3\d{9}$');
 
+-- Checks for the italian vat number (11 digits)
 CREATE DOMAIN Tagms.vatnumber AS CHAR(11)
 CONSTRAINT properVAT CHECK (VALUE ~ '^[0-9]{11}$');
 
+-- Checks for the italian tax number
 CREATE DOMAIN Tagms.taxnumber AS CHAR(16)
 CONSTRAINT propertaxnumber CHECK (VALUE ~ '^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$');
-
 
 CREATE DOMAIN Tagms.price AS NUMERIC(9, 3)
 CONSTRAINT properprice NOT NULL CHECK (VALUE > 0.0);
@@ -46,8 +50,7 @@ CONSTRAINT properpercentage CHECK (VALUE >= 0 and VALUE <= 100);
 CREATE DOMAIN Tagms.tracknum AS VARCHAR(30)
 CONSTRAINT propertracknum CHECK(VALUE ~ '[A-Za-z0-9]');
 
--- Table Creation (create tables in the correct order,
--- i.e. use FKeys only referring to already created tables)
+-- Table Creation (create tables in the correct order, i.e. use FKeys only referring to already created tables)
 
 CREATE TABLE Tagms.product_category (
 product_category_id SMALLSERIAL PRIMARY KEY,
