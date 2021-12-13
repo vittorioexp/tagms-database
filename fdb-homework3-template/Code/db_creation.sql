@@ -1,4 +1,4 @@
--- Database Creation
+
 -- Database Creation
 CREATE DATABASE tagmsdb OWNER admin ENCODING = 'UTF8';
 
