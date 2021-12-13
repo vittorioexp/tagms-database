@@ -191,3 +191,15 @@ SELECT
     LEFT OUTER JOIN tagms.draws_from AS df ON l.lot_id = df.lot_id
 WHERE l.expiration_date <= (current_date + interval '6 months')
   AND df.order_id IS NULL;
+
+
+
+SELECT
+       EXTRACT(year FROM o.order_date) AS year,
+       COUNT(*) AS lots_sold,
+       SUM(o.net_price) AS net_sales,
+       SUM(o.taxes) AS taxes
+FROM tagms.lot AS l
+    INNER JOIN tagms.draws_from AS df ON l.lot_id = df.lot_id
+    INNER JOIN tagms.order AS o ON df.order_id = o.order_id
+GROUP BY year HAVING SUM(o.net_price) > '100';
