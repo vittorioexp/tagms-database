@@ -133,9 +133,9 @@ FROM (
                 SUM(l.lot_price * l.VAT/100) as taxes
          FROM tagms.draws_from AS df
                   INNER JOIN tagms.lot AS l ON df.lot_id = l.lot_id
-        WHERE df.order_id = '2'
+        WHERE df.order_id = '1'
     ) AS tmp(net_price, taxes)
-WHERE o.order_id = '2'
+WHERE o.order_id = '1'
 RETURNING o.order_id, o.net_price, o.taxes;
 
 
@@ -194,12 +194,19 @@ WHERE l.expiration_date <= (current_date + interval '6 months')
 
 
 
+-- For each year, return the number of lots sold, the net sales and the added taxes paid by the customers
+
 SELECT
-       EXTRACT(year FROM o.order_date) AS year,
-       COUNT(*) AS lots_sold,
-       SUM(o.net_price) AS net_sales,
-       SUM(o.taxes) AS taxes
-FROM tagms.lot AS l
-    INNER JOIN tagms.draws_from AS df ON l.lot_id = df.lot_id
-    INNER JOIN tagms.order AS o ON df.order_id = o.order_id
-GROUP BY year HAVING SUM(o.net_price) > '100';
+    EXTRACT(year FROM o.order_date) AS year,
+    COUNT(*) AS orders,
+    SUM(o.net_price) AS net_sales,
+    SUM(o.taxes) AS taxes
+FROM tagms.order AS o
+WHERE o.order_paid = TRUE
+GROUP BY year
+    HAVING SUM(o.net_price) > '100';
+
+
+
+
+
