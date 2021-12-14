@@ -45,7 +45,7 @@ CREATE DOMAIN Tagms.dimension AS INTEGER
 CONSTRAINT properdimension NOT NULL CHECK (VALUE > 0);
 
 CREATE DOMAIN Tagms.percentage AS DECIMAL(4,1)
-CONSTRAINT properpercentage CHECK (VALUE >= 0 and VALUE <= 100);
+CONSTRAINT properpercentage CHECK (VALUE >= 0 AND VALUE <= 100);
 
 CREATE DOMAIN Tagms.tracknum AS VARCHAR(30)
 CONSTRAINT propertracknum CHECK(VALUE ~ '[A-Za-z0-9]');
@@ -220,8 +220,7 @@ order_paid BOOLEAN NOT NULL,
 employee_id Tagms.taxnumber NOT NULL,
 customer_id Tagms.vatnumber NOT NULL,
 FOREIGN KEY (employee_id) REFERENCES Tagms.employee(tax_number),
-FOREIGN KEY (customer_id) REFERENCES Tagms.customer(vat_number)
-);
+FOREIGN KEY (customer_id) REFERENCES Tagms.customer(vat_number));
 
 CREATE TABLE Tagms.draws_from (
 lot_id INTEGER PRIMARY KEY,
