@@ -61,11 +61,8 @@ public class InsertData {
 		Connection con = null;
 
 		// the SQL statement to be executed
-		PreparedStatement pstmtAuthor = null;
-		PreparedStatement pstmtPublisher = null;
-		PreparedStatement pstmtReference = null;
-		PreparedStatement pstmtWrite = null;
-		PreparedStatement pstmtInformation = null;
+		PreparedStatement pstmtPackageCategory = null;
+		PreparedStatement pstmtRole = null;
 		
 		// start time of a statement
 		long start;
@@ -84,7 +81,7 @@ public class InsertData {
 
 		String namePackageCategory = null;
 
-		String = descriptionPackageCategory = null;
+		String = null;
 
 		String nameRole = null;
 
