@@ -1,10 +1,5 @@
-##1##Package XS##Extra small package##Manager##The managers are in charge of interacting with suppliers and concluding contracts with them##
-##1##Package S##Small package##Salesman##The sellers have to deal with customers and create orders##
-##1##Package M##Medium package##Data Analyst##The data analyst has access to the acquired data for inventory, cost and profit analysis##
-##1##Package L##Large package##Worker##The workers take care of production and shipments##
-##0##Package XL##Extra large package##
-
-
- 
-     
-     
+##Package XS##Extra small package##
+##Package S##Small package##
+##Package M##Medium package##
+##Package L##Large package##
+##Package XL##Extra large package##
