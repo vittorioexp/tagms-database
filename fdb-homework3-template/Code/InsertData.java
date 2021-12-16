@@ -43,12 +43,6 @@ public class InsertData {
 	 */
 	private static final String INSERT_INTO_PACKAGE_CATEGORY = "INSERT INTO Tagms.package_Category (Name, Description) VALUES (?, ?)";
 
-	/**
-	 * The SQL statement for inserting data into the Role table.
-	 */
-	private static final String INSERT_INTO_ROLE = "INSERT INTO Tagms.role (Name,Description) VALUES (?, ?)";
-
-
 
 	/**
 	 * Reads from a CVS-like text file the data to be inserted into the database.
@@ -65,7 +59,6 @@ public class InsertData {
 
 		// the SQL statement to be executed
 		PreparedStatement pstmtPackageCategory = null;
-		PreparedStatement pstmtRole = null;
 
 		// start time of a statement
 		long start;
@@ -85,12 +78,6 @@ public class InsertData {
 		String namePackageCategory = null;
 
 		String descriptionPackageCategory = null;
-
-		String nameRole = null;
-
-		String descriptionRole = null;
-
-		Boolean roleInfo = false;
 
 
 		try {
@@ -124,7 +111,6 @@ public class InsertData {
 			start = System.currentTimeMillis();
 
 			pstmtPackageCategory = con.prepareStatement(INSERT_INTO_PACKAGE_CATEGORY);
-			pstmtRole = con.prepareStatement(INSERT_INTO_ROLE);
 
 			end = System.currentTimeMillis();
 
@@ -207,23 +193,12 @@ public class InsertData {
 				// read one line from the input file
 				start = System.currentTimeMillis();
 
-				// read if there is a role
-				roleInfo = (s.nextInt() == 1);
 
 				// read the name of a package category
 				namePackageCategory = s.next();
 
 				// read the description of a package category
 				descriptionPackageCategory = s.next();
-
-				if(roleInfo){
-
-					// read the name of a role
-					nameRole = s.next();
-
-					// read the description of a role
-					descriptionRole = s.next();
-				}
 
 
 				// go to the next line
@@ -266,33 +241,6 @@ public class InsertData {
 				}
 
 
-				// insert the role if present
-				if(roleInfo){
-
-					try {
-						pstmtRole.setString(1, nameRole);
-						pstmtRole.setString(2, descriptionRole);
-
-						pstmtRole.execute();
-
-					} catch (SQLException e) {
-
-						if (e.getSQLState().equals("23505")) {
-							System.out
-									.printf("Role %s already inserted, skip it. [%s]%n",
-											nameRole, e.getMessage());
-						} else {
-							System.out
-									.printf("Unrecoverable error while inserting publisher %s:%n",
-											nameRole);
-							System.out.printf("- Message: %s%n", e.getMessage());
-							System.out.printf("- SQL status code: %s%n", e.getSQLState());
-							System.out.printf("- SQL error code: %s%n", e.getErrorCode());
-							System.out.printf("%n");
-						}
-					}
-				}
-
 				end = System.currentTimeMillis();
 
 				System.out.printf(
@@ -301,12 +249,6 @@ public class InsertData {
 
 				System.out.printf("Name of PackageCategory: %s", namePackageCategory);
 				System.out.printf("Description of PackageCategory: %s", descriptionPackageCategory);
-				if(roleInfo){
-
-					System.out.printf("Name of the role: %s", nameRole);
-					System.out.printf("Description of the role: %s", descriptionRole);
-
-				}
 
 			}
 		} finally {
@@ -319,13 +261,11 @@ public class InsertData {
 			try {
 
 				// close the statements
-				if (pstmtPackageCategory != null &&
-						pstmtRole != null) {
+				if (pstmtPackageCategory != null) {
 
 					start = System.currentTimeMillis();
 
 					pstmtPackageCategory.close();
-					pstmtRole.close();
 
 					end = System.currentTimeMillis();
 
