@@ -248,7 +248,9 @@ public class InsertData {
 						l, end-start);
 
 				System.out.printf("Name of PackageCategory: %s", namePackageCategory);
+				System.out.printf("\n");
 				System.out.printf("Description of PackageCategory: %s", descriptionPackageCategory);
+				System.out.printf("\n");
 
 			}
 		} finally {
