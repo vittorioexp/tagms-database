@@ -1,12 +1,15 @@
+
 package com.example.tagmswebapp;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.*;
 import java.io.*;
 import java.util.Scanner;
 
 /**
  * Reads from a CVS-like text file the data to be inserted into the database..
- * 
+ *
  */
 public class InsertData {
 
@@ -14,7 +17,7 @@ public class InsertData {
 	 * The JDBC driver to be used
 	 */
 	private static final String DRIVER = "org.postgresql.Driver";
-	
+
 	/**
 	 * The URL of the database to be accessed
 	 */
@@ -23,18 +26,18 @@ public class InsertData {
 	/**
 	 * The username for accessing the database
 	 */
-	private static final String USER = "nopass";  
+	private static final String USER = "nopass";
 
 	/**
 	 * The password for accessing the database
 	 */
-	private static final String PASSWORD = "";  
-	
+	private static final String PASSWORD = "";
+
 	/**
 	 * The default input file for reading the data
 	 */
 	private static final String DEFAULT_INPUT_FILE = "data.txt";
-	
+
 	/**
 	 * The SQL statement for inserting data into the Package_category table.
 	 */
@@ -42,18 +45,18 @@ public class InsertData {
 
 	/**
 	 * The SQL statement for inserting data into the Role table.
-	 */	
+	 */
 	private static final String INSERT_INTO_ROLE = "INSERT INTO Tagms.role (Name,Description) VALUES (?, ?)";
 
 
 
 	/**
 	 * Reads from a CVS-like text file the data to be inserted into the database.
-	 * 
+	 *
 	 * @param args
 	 *            command-line arguments. If provided, {@code args[0]} contains
 	 *            the name of the file to be read.
-	 *            
+	 *
 	 */
 	public static void main(String[] args) {
 
@@ -63,25 +66,25 @@ public class InsertData {
 		// the SQL statement to be executed
 		PreparedStatement pstmtPackageCategory = null;
 		PreparedStatement pstmtRole = null;
-		
+
 		// start time of a statement
 		long start;
 
 		// end time of a statement
 		long end;
-		
+
 		// the input file from which data are read
 		Reader input = null;
-		
+
 		// a scanner for parsing the content of the input file
 		Scanner s = null;
-		
+
 		// current line number in the input file
 		int l = 0;
 
 		String namePackageCategory = null;
 
-		String = null;
+		String descriptionPackageCategory = null;
 
 		String nameRole = null;
 
@@ -89,7 +92,7 @@ public class InsertData {
 
 		Boolean roleInfo = false;
 
-		
+
 		try {
 			// register the JDBC driver
 			Class.forName(DRIVER);
@@ -107,10 +110,10 @@ public class InsertData {
 		try {
 
 			// connect to the database
-			start = System.currentTimeMillis();			
-			
-			con = DriverManager.getConnection(DATABASE, USER, PASSWORD);								
-			
+			start = System.currentTimeMillis();
+
+			con = DriverManager.getConnection(DATABASE, USER, PASSWORD);
+
 			end = System.currentTimeMillis();
 
 			System.out.printf(
@@ -119,12 +122,12 @@ public class InsertData {
 
 			// create the statements for inserting the data
 			start = System.currentTimeMillis();
-			
+
 			pstmtPackageCategory = con.prepareStatement(INSERT_INTO_PACKAGE_CATEGORY);
 			pstmtRole = con.prepareStatement(INSERT_INTO_ROLE);
-			
+
 			end = System.currentTimeMillis();
-			
+
 			System.out.printf(
 					"Statements successfully created in %,d milliseconds.%n",
 					end-start);
@@ -140,12 +143,12 @@ public class InsertData {
 				System.out.printf("%n");
 				e = e.getNextException();
 			}
-			
+
 			// terminate with a generic error code
 			System.exit(-1);
 		}
 
-		
+
 		// if there are no input arguments, use the default input file
 		if (args.length == 0) {
 
@@ -160,26 +163,26 @@ public class InsertData {
 
 			if (is == null) {
 				System.out.printf("Input file %s not found.%n", DEFAULT_INPUT_FILE);
-				
+
 				// terminate with a generic error code
 				System.exit(-1);
 			}
-			
+
 			input = new BufferedReader(new InputStreamReader(is));
-			
+
 			System.out.printf("Input file %s successfully opened.%n", DEFAULT_INPUT_FILE);
-			
+
 		} else {
-			
+
 			try {
 				input = new BufferedReader(new FileReader(args[0]));
-				
+
 				System.out.printf("Input file %s successfully opened.%n", args[0]);
 			} catch (IOException ioe) {
 				System.out.printf(
 						"Impossible to read input file %s: %s%n", args[0],
 						ioe.getMessage());
-				
+
 				// terminate with a generic error code
 				System.exit(-1);
 			}
@@ -190,20 +193,20 @@ public class InsertData {
 
 		// set the delimiter for the fields in the input file
 		s.useDelimiter("##");
-	
+
 		try {
-			
+
 			// while the are lines to be read from the input file
 			while (s.hasNext()) {
-				
+
 				// increment the line number counter
 				l++;
-				
+
 				System.out.printf("%n--------------------------------------------------------%n");
-				
+
 				// read one line from the input file
 				start = System.currentTimeMillis();
-				
+
 				// read if there is a role
 				roleInfo = (s.nextInt() == 1);
 
@@ -225,17 +228,17 @@ public class InsertData {
 
 				// go to the next line
 				s.nextLine();
-				
+
 				end = System.currentTimeMillis();
-				
+
 				System.out.printf(
 						"Line %,d successfully read in %,d milliseconds.%n",
 						l, end-start);
 
-				
+
 				// insert one line from the input file into the database
 				start = System.currentTimeMillis();
-				
+
 				// insert the package category
 
 				try {
@@ -261,27 +264,27 @@ public class InsertData {
 						System.out.printf("%n");
 					}
 				}
-				
+
 
 				// insert the role if present
 				if(roleInfo){
 
 					try {
-					pstmtRole.setString(1, nameRole);
-					pstmtRole.setString(2, descriptionRole);
+						pstmtRole.setString(1, nameRole);
+						pstmtRole.setString(2, descriptionRole);
 
-					pstmtRole.execute();
+						pstmtRole.execute();
 
 					} catch (SQLException e) {
 
 						if (e.getSQLState().equals("23505")) {
 							System.out
-								.printf("Role %s already inserted, skip it. [%s]%n",
-									nameRole, e.getMessage());
+									.printf("Role %s already inserted, skip it. [%s]%n",
+											nameRole, e.getMessage());
 						} else {
 							System.out
-								.printf("Unrecoverable error while inserting publisher %s:%n",
-									nameRole);
+									.printf("Unrecoverable error while inserting publisher %s:%n",
+											nameRole);
 							System.out.printf("- Message: %s%n", e.getMessage());
 							System.out.printf("- SQL status code: %s%n", e.getSQLState());
 							System.out.printf("- SQL error code: %s%n", e.getErrorCode());
@@ -289,9 +292,9 @@ public class InsertData {
 						}
 					}
 				}
-				
+
 				end = System.currentTimeMillis();
-				
+
 				System.out.printf(
 						"Line %,d successfully inserted into the database in %,d milliseconds.%n%n",
 						l, end-start);
@@ -304,7 +307,7 @@ public class InsertData {
 					System.out.printf("Description of the role: %s", descriptionRole);
 
 				}
-				
+
 			}
 		} finally {
 
@@ -316,37 +319,38 @@ public class InsertData {
 			try {
 
 				// close the statements
-				if (pstmtPackageCategory != null && 
-					pstmtRole != null) {						
-					
+				if (pstmtPackageCategory != null &&
+						pstmtRole != null) {
+
 					start = System.currentTimeMillis();
-						
+
 					pstmtPackageCategory.close();
 					pstmtRole.close();
-					
+
 					end = System.currentTimeMillis();
 
 					System.out
-						.printf("Prepared statements successfully closed in %,d milliseconds.%n",
-								end-start);
-				
+							.printf("Prepared statements successfully closed in %,d milliseconds.%n",
+									end-start);
+
 				}
+
 
 				// close the connection to the database
 				if(con != null) {
-					
+
 					start = System.currentTimeMillis();
-					
+
 					con.close();
-					
+
 					end = System.currentTimeMillis();
-					
+
 					System.out
-					.printf("Connection successfully closed in %,d milliseconds.%n",
-							end-start);
-					
+							.printf("Connection successfully closed in %,d milliseconds.%n",
+									end-start);
+
 				}
-				
+
 				System.out.printf("Resources successfully released.%n");
 
 			} catch (SQLException e) {
