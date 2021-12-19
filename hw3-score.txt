@@ -1,0 +1,21 @@
+"SCORE: 6.00
+
+
+COMMENTS ABOUT THE HOMEWORK:
+
+Physical Schema:
+
+- The ENUM data type would have been a better choice for roles. For instance, would have been harder to make mistakes in terms of typos.
+-  Excessive use of NOT NULL
+
+Principal Queries:
+
+- Well done.
+
+JDBC Implementation:
+
+- Ok.
+
+CONTRIBUTION TO THE HOMEWORK
+
+- Ok."
